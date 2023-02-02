@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Portion
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 128
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: b93167e3feb8a1543a9efbf48efe78a8, type: 3}
+    - {fileID: 2800000, guid: f0492456e34d9ff42a6d3dc637e3529f, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 643387376, guid: 407a3af03c240e547a605fead092d464, type: 3}
+  - {fileID: -1306062076, guid: 407a3af03c240e547a605fead092d464, type: 3}
+  - {fileID: 939346721, guid: 9cdaa6a12b5007240b2d0858eed56b3b, type: 3}
+  - {fileID: -1208190764, guid: 9cdaa6a12b5007240b2d0858eed56b3b, type: 3}
+  - {fileID: 74076475, guid: aa7404523a01e3e4e84db26d17f63db4, type: 3}
+  - {fileID: -522310448, guid: aa7404523a01e3e4e84db26d17f63db4, type: 3}
+  - {fileID: -1038074679, guid: 2f79ff84fdfcaaf4a8ffc90cccd2b8e4, type: 3}
+  - {fileID: -1536713409, guid: 2f79ff84fdfcaaf4a8ffc90cccd2b8e4, type: 3}
+  - {fileID: 1255131575, guid: f0492456e34d9ff42a6d3dc637e3529f, type: 3}
+  - {fileID: 256805443, guid: f0492456e34d9ff42a6d3dc637e3529f, type: 3}
+  - {fileID: -544060575, guid: 206341df0f3103141adb37bef778d341, type: 3}
+  - {fileID: -555357206, guid: 206341df0f3103141adb37bef778d341, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Portion#1_1
+  - Portion#1_0
+  - Portion#5_1
+  - Portion#5_0
+  - Portion#4_0
+  - Portion#4_1
+  - Portion#2_0
+  - Portion#2_1
+  - BossPortion_0
+  - BossPortion_1
+  - Portion#3_1
+  - Portion#3_0
+  m_RenderDataMap: {}
+  m_Tag: Portion
+  m_IsVariant: 0
