@@ -113,6 +113,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -136,14 +148,14 @@ TextureImporter:
         width: 4
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 1, y: 1, z: 1, w: 1}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ede7aee80981f4048aee9d753a3312f5
-      internalID: -2086890915
+      spriteID: 88f5c60b3bc2023449444665292cbeda
+      internalID: -244439267
       vertices: []
       indices: 
       edges: []
@@ -157,14 +169,14 @@ TextureImporter:
         width: 4
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 1, y: 1, z: 1, w: 1}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 969d17b0850a8d34db46f7c838d77585
-      internalID: -1722302073
+      spriteID: d24352ce02db8c445815d9c0b741e8db
+      internalID: -1229514005
       vertices: []
       indices: 
       edges: []
@@ -180,8 +192,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Slider_0: -2086890915
-      Slider_1: -1722302073
+      Slider_0: -244439267
+      Slider_1: -1229514005
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

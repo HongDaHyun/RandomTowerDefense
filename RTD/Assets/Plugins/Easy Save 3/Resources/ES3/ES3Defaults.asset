@@ -32,6 +32,9 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - Nementic.SelectionUtility.Editor
+    - Nementic.SelectionUtility.Runtime
+    - Nementic.SelectionUtility.Samples
     - ProCamera2D.Editor
     - ProCamera2D.Examples
     - ProCamera2D.Runtime

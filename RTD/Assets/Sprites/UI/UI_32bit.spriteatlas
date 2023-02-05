@@ -44,39 +44,21 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-    - {fileID: 2800000, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
     - {fileID: 2800000, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
+    - {fileID: 2800000, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: -1722302073, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
-  - {fileID: -2086890915, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
-  - {fileID: -1061717896, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
-  - {fileID: 1336278973, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
-  - {fileID: 778598399, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
-  - {fileID: -1600706271, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
-  - {fileID: -900536030, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
-  - {fileID: -18875420, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
-  - {fileID: 1285561331, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -847410594, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -1396596504, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -318519963, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: 799280467, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -1953991483, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: 661634385, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -531038660, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -1638255871, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -1738937426, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: 1473207971, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: 802413931, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -251312502, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -1268518252, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -608402085, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: 2021701545, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
-  - {fileID: -1302273349, guid: 8afe2b0def782cc4c9de077efb8c258a, type: 3}
+  - {fileID: -1229514005, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
+  - {fileID: -244439267, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
+  - {fileID: 1318828422, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
+  - {fileID: -1234451256, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
+  - {fileID: -631174478, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
+  - {fileID: 175522842, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
+  - {fileID: -2104433833, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
+  - {fileID: 1533205302, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
   m_PackedSpriteNamesToIndex:
   - Slider_1
   - Slider_0
@@ -86,23 +68,6 @@ SpriteAtlas:
   - Pannel_3
   - Pannel_4
   - Pannel_5
-  - Sound_10
-  - Sound_11
-  - Sound_12
-  - Sound_13
-  - Sound_14
-  - Sound_15
-  - Sound_16
-  - Sound_1
-  - Sound_0
-  - Sound_3
-  - Sound_2
-  - Sound_5
-  - Sound_4
-  - Sound_7
-  - Sound_6
-  - Sound_9
-  - Sound_8
   m_RenderDataMap: {}
   m_Tag: UI_32bit
   m_IsVariant: 0
