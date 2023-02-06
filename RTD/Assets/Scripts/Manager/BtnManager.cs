@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
 
 public class BtnManager : Singleton<BtnManager>
 {
@@ -10,5 +12,11 @@ public class BtnManager : Singleton<BtnManager>
             obj.SetActive(true);
         else
             obj.SetActive(false);
+    }
+
+    public void GameStart(string _level)
+    {
+        GameManager.Instance.level = (Level)Enum.Parse(typeof(Level), _level);
+        SceneManager.LoadScene(1);
     }
 }
