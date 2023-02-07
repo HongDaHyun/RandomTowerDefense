@@ -24,12 +24,16 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        if(transform.parent != null && transform.root != null)
+        if (instance == null)
         {
-            DontDestroyOnLoad(this.transform.root.gameObject);
+            if (transform.parent != null && transform.root != null)
+                DontDestroyOnLoad(this.transform.root.gameObject);
+            else
+                DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        else
+            Destroy(this.gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class BtnManager : Singleton<BtnManager>
+public class BtnManager : MonoBehaviour
 {
     public void Tab(GameObject obj)
     {
