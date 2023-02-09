@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
 
-public class BtnManager : MonoBehaviour
+public class BtnManager : Singleton<BtnManager>
 {
     public void Tab(GameObject obj)
     {
@@ -17,6 +16,14 @@ public class BtnManager : MonoBehaviour
     public void GameStart(string _level)
     {
         GameManager.Instance.level = (Level)Enum.Parse(typeof(Level), _level);
-        SceneManager.LoadScene(1);
+        for(int i = 0; i < UIManager.Instance.mainPannel.Length; i++)
+        {
+            UIManager.Instance.mainPannel[i].SetActive(false);
+        }
+        for (int i = 0; i < UIManager.Instance.inGamePannel.Length; i++)
+        {
+            UIManager.Instance.inGamePannel[i].SetActive(true);
+        }
+        AdMobManager.Instance.ToggleBannerAd(false);
     }
 }
