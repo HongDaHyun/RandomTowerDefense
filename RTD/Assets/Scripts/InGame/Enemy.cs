@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Redcode.Pools;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour, IPoolObject
 {
+    public string idName;
     #region Movement
-    protected float moveSpeed = 0.01f;
-    protected Vector3 moveDirection = Vector3.zero;
+    protected float moveSpeed = 0.1f;
+    protected Vector3 moveDirection;
     protected Transform[] wayPoints;
     protected int curWayPoint;
     #endregion
 
-    protected virtual void Awake()
+    public void OnCreatedInPool() //최초
+    {
+    }
+
+    public void OnGettingFromPool() //재사용
     {
         SetWayPoint();
+        ResetWayPoint();
     }
+
     protected virtual void FixedUpdate()
     {
         Movement();
@@ -26,11 +34,17 @@ public abstract class Enemy : MonoBehaviour
     #region Movement Code
     private void SetWayPoint()
     {
+        if (wayPoints != null)
+            return;
         wayPoints = new Transform[GameManager.Instance.wayPointsObj.childCount];
         for (int i = 0; i < wayPoints.Length; i++)
         {
             wayPoints[i] = GameManager.Instance.wayPointsObj.GetChild(i);
         }
+    }
+    private void ResetWayPoint()
+    {
+        curWayPoint = 0;
 
         transform.position = wayPoints[curWayPoint].position;
 
@@ -55,6 +69,10 @@ public abstract class Enemy : MonoBehaviour
             curWayPoint++;
             Vector3 direction = wayPoints[curWayPoint].position;
             MoveTo(direction);
+        }
+        else
+        {
+            PoolManager.Instance.TakeToPool<Enemy>(idName, this);
         }
     }
     #endregion

@@ -6,7 +6,6 @@ public class Enemy_People : Enemy
 {
     protected override void Die()
     {
-        throw new System.NotImplementedException();
     }
     protected override void Movement()
     {
