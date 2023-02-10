@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Level level;
+    public Transform wayPointsObj;
 
     protected override void Awake()
     {

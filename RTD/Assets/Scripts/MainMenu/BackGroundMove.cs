@@ -11,9 +11,9 @@ public class BackGroundMove: MonoBehaviour
     private void FixedUpdate()
     {
         if(!isLeft)
-            transform.position = Vector2.MoveTowards(transform.position, R, 0.1f);
+            transform.position = Vector2.MoveTowards(transform.position, R, 0.01f);
         else
-            transform.position = Vector2.MoveTowards(transform.position, L, 0.1f);
+            transform.position = Vector2.MoveTowards(transform.position, L, 0.01f);
 
         if (transform.position.x == L.x)
             isLeft = false;
