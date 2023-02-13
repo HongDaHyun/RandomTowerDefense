@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public Level level;
     public Transform wayPointsObj;
+    public bool isStart;
 
     protected override void Awake()
     {
