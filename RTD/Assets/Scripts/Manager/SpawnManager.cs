@@ -20,4 +20,13 @@ public class SpawnManager : Singleton<SpawnManager>
             yield return new WaitForSeconds(spawnTime);
         }
     }
+
+    public void SpawnUnit()
+    {
+        if (!UIManager.Instance.clickTile.activeSelf || UIManager.Instance.clickTile.GetComponentInParent<TileGround>().isBuild)
+            return;
+        Unit newUnit = PoolManager.Instance.GetFromPool<Unit>();
+        UIManager.Instance.clickTile.GetComponentInParent<TileGround>().isBuild = true;
+        newUnit.transform.position = UIManager.Instance.clickTile.transform.position;
+    }
 }

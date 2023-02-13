@@ -6,4 +6,5 @@ public class UIManager : Singleton<UIManager>
 {
     public GameObject[] mainPannel;
     public GameObject[] inGamePannel;
+    public GameObject clickTile;
 }
