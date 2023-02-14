@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Com.LuisPedroFonseca.ProCamera2D;
+using UnityEngine.EventSystems;
 
 public class ObjectDetector : MonoBehaviour
 {
@@ -19,14 +20,18 @@ public class ObjectDetector : MonoBehaviour
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
-            if (hit.collider != null)
+            if (hit.collider != null && !EventSystem.current.IsPointerOverGameObject())
             {
                 if (hit.collider.CompareTag("TileGround")) //타워 설치 가능 땅
                 {
-                    if (!UIManager.Instance.clickTile.activeSelf)
+                    if (!UIManager.Instance.clickTile.activeSelf) //클릭 타일 없으면 생성
                         UIManager.Instance.clickTile.SetActive(true);
-                    else if (UIManager.Instance.clickTile.transform.parent == hit.transform)
+                    else if (UIManager.Instance.clickTile.transform.parent == hit.transform) //동일한 클릭타일 있을 시 제거
                         UIManager.Instance.clickTile.SetActive(false);
+
+                    TileGround tileGround = hit.transform.GetComponent<TileGround>();
+                    if (tileGround.isBuild) //클릭타일에 유닛있을 시 정보창 생성
+                        UIManager.Instance.SetUnitInfo(tileGround);
                     UIManager.Instance.clickTile.transform.SetParent(hit.transform);
                     UIManager.Instance.clickTile.transform.localPosition = new Vector3(0, 0, 0);
                 }

@@ -9,10 +9,14 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemy());
     }
 
-    private IEnumerator SpawnEnemy()
+    public void SpawnEnemy()
+    {
+        StartCoroutine(SpawnEnemyCoroutine());
+    }
+
+    private IEnumerator SpawnEnemyCoroutine()
     {
         while(true)
         {
@@ -26,7 +30,9 @@ public class SpawnManager : Singleton<SpawnManager>
         if (!UIManager.Instance.clickTile.activeSelf || UIManager.Instance.clickTile.GetComponentInParent<TileGround>().isBuild)
             return;
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>();
-        UIManager.Instance.clickTile.GetComponentInParent<TileGround>().isBuild = true;
-        newUnit.transform.position = UIManager.Instance.clickTile.transform.position;
+        TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
+        tileGround.SetTile(newUnit);
+        if (UIManager.Instance.clickTile.activeSelf)
+            UIManager.Instance.clickTile.SetActive(false);
     }
 }

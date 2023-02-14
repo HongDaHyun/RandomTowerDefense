@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4137091548554510566}
   - component: {fileID: 5217720132303527204}
   m_Layer: 0
-  m_Name: Unit_Bow_Archer
+  m_Name: "\uAD81\uC218"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

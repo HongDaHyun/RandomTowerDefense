@@ -23,6 +23,8 @@ public class BtnManager : Singleton<BtnManager>
         for (int i = 0; i < UIManager.Instance.inGamePannel.Length; i++)
         {
             UIManager.Instance.inGamePannel[i].SetActive(true);
+            if (UIManager.Instance.inGamePannel[i].name == "ClickTile")
+                UIManager.Instance.inGamePannel[i].SetActive(false);
         }
         AdMobManager.Instance.ToggleBannerAd(false);
     }

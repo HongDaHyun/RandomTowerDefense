@@ -33,12 +33,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             else
                 DontDestroyOnLoad(this.gameObject);
         }
-        else
-        {
-            if (transform.parent != null && transform.root != null)
-                Destroy(this.transform.root.gameObject);
-            else
-                Destroy(this.gameObject);
-        }
     }
 }
