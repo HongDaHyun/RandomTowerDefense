@@ -29,8 +29,18 @@ public struct EnemyStat
 }
 
 [Serializable]
+public struct ProjectileStat
+{
+    public string projectileName;
+    public UnitType projectileType;
+    public int dmg, critPercent, critDmg;
+    public float atkSpeed, range, projectileSpeed;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
+    public ProjectileStat[] projectileStat;
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TileGround
   - TileRoad
+  - Enemy
   layers:
   - Default
   - TransparentFX

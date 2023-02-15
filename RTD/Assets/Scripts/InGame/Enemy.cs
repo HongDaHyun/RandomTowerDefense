@@ -6,8 +6,8 @@ using Redcode.Pools;
 public abstract class Enemy : MonoBehaviour, IPoolObject
 {
     public string idName;
+    public EnemyStat enemyStat;
     #region Movement
-    protected float moveSpeed = 0.1f;
     protected Vector3 moveDirection;
     protected Transform[] wayPoints;
     protected int curWayPoint;
@@ -19,6 +19,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
 
     public void OnGettingFromPool() //Àç»ç¿ë
     {
+        enemyStat = CSVReader.Instance.EnemyExport(idName);
         SetWayPoint();
         ResetWayPoint();
     }
@@ -72,7 +73,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         }
         else
         {
-            PoolManager.Instance.TakeToPool<Enemy>(idName, this);
+            SpawnManager.Instance.DeSpawnEnemy(this);
         }
     }
     #endregion

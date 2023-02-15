@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Redcode.Pools;
+
+public abstract class Projectile : MonoBehaviour, IPoolObject
+{
+    public string idName;
+    public ProjectileStat projectileStat;
+    public Transform target;
+
+    void IPoolObject.OnCreatedInPool()
+    {
+    }
+
+    void IPoolObject.OnGettingFromPool()
+    {
+        SetUp();
+    }
+
+    private void Update()
+    {
+        if (target != null)
+        {
+            Vector3 direction = target.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, projectileStat.projectileSpeed);
+        }
+        else
+            SpawnManager.Instance.DeSpawnProjectile(this);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Enemy"))
+            return;
+        if (collision.transform != target)
+            return;
+
+        SpawnManager.Instance.DeSpawnEnemy(collision.GetComponent<Enemy>());
+        SpawnManager.Instance.DeSpawnProjectile(this);
+    }
+
+    public void SetTarget(Transform target) //rotationµµ
+    {
+        this.target = target;
+    }
+
+    public void SetUp()
+    {
+        projectileStat = CSVReader.Instance.ProjectileExport(idName);
+    }
+}

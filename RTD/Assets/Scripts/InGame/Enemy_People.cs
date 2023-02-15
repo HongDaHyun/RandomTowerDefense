@@ -9,6 +9,6 @@ public class Enemy_People : Enemy
     }
     protected override void Movement()
     {
-        transform.position = Vector2.MoveTowards(transform.position, moveDirection, moveSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, moveDirection, enemyStat.moveSpeed);
     }
 }
