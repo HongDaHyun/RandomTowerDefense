@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
+    public bool isDestroy;
     private static T instance;
 
     public static T Instance
@@ -26,12 +27,21 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
+        if (isDestroy)
+            return;
         if (instance == null)
         {
             if (transform.parent != null && transform.root != null)
                 DontDestroyOnLoad(this.transform.root.gameObject);
             else
                 DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            if (transform.parent != null && transform.root != null)
+                Destroy(this.transform.root.gameObject);
+            else
+                Destroy(this.gameObject);
         }
     }
 }

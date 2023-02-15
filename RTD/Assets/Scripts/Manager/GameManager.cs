@@ -5,14 +5,12 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Level level;
-    public Transform wayPointsObj;
     public bool isStart;
 
     protected override void Awake()
     {
         base.Awake();
         GPGSBinder.Inst.Login();
-        TestStart();
 
         #region GPGS
         //GPGSBinder.Inst.ShowAchievementUI(); 업적보기
@@ -26,17 +24,5 @@ public class GameManager : Singleton<GameManager>
         //GPGSBinder.Inst.LoadEvent(GPGSIds.event_testevent); 이벤트 불러오기
         //GPGSBinder.Inst.LoadAllEvent(); 이벤트 모두 불러오기
         #endregion
-    }
-
-    void TestStart()
-    {
-        for(int i = 0; i < UIManager.Instance.mainPannel.Length; i++)
-        {
-            UIManager.Instance.mainPannel[i].SetActive(true);
-        }
-        for (int i = 0; i < UIManager.Instance.inGamePannel.Length; i++)
-        {
-            UIManager.Instance.inGamePannel[i].SetActive(false);
-        }
     }
 }

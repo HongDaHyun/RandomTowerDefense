@@ -5,11 +5,8 @@ using Redcode.Pools;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
+    public Transform wayPointsObj;
     public float spawnTime;
-
-    private void Start()
-    {
-    }
 
     public void SpawnEnemy()
     {

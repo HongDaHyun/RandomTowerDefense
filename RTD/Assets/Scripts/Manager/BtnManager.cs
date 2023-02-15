@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class BtnManager : Singleton<BtnManager>
 {
@@ -16,16 +17,13 @@ public class BtnManager : Singleton<BtnManager>
     public void GameStart(string _level)
     {
         GameManager.Instance.level = (Level)Enum.Parse(typeof(Level), _level);
-        for(int i = 0; i < UIManager.Instance.mainPannel.Length; i++)
-        {
-            UIManager.Instance.mainPannel[i].SetActive(false);
-        }
-        for (int i = 0; i < UIManager.Instance.inGamePannel.Length; i++)
-        {
-            UIManager.Instance.inGamePannel[i].SetActive(true);
-            if (UIManager.Instance.inGamePannel[i].name == "ClickTile")
-                UIManager.Instance.inGamePannel[i].SetActive(false);
-        }
         AdMobManager.Instance.ToggleBannerAd(false);
+        SceneManager.LoadScene(1);
+    }
+
+
+    public void Title()
+    {
+        SceneManager.LoadScene(0);
     }
 }

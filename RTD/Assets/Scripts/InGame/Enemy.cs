@@ -36,10 +36,10 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
     {
         if (wayPoints != null)
             return;
-        wayPoints = new Transform[GameManager.Instance.wayPointsObj.childCount];
+        wayPoints = new Transform[SpawnManager.Instance.wayPointsObj.childCount];
         for (int i = 0; i < wayPoints.Length; i++)
         {
-            wayPoints[i] = GameManager.Instance.wayPointsObj.GetChild(i);
+            wayPoints[i] = SpawnManager.Instance.wayPointsObj.GetChild(i);
         }
     }
     private void ResetWayPoint()
