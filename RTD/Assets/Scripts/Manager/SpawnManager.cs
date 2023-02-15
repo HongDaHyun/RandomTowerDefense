@@ -24,8 +24,6 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void SpawnUnit()
     {
-        if (!UIManager.Instance.clickTile.activeSelf || UIManager.Instance.clickTile.GetComponentInParent<TileGround>().isBuild)
-            return;
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>();
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         tileGround.SetTile(newUnit);

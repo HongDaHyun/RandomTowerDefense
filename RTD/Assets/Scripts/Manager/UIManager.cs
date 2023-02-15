@@ -6,12 +6,16 @@ using System;
 
 public class UIManager : Singleton<UIManager>
 {
+    [Header("MainMenu")]
     public GameObject[] mainPannel;
+    [Header("InGame")]
     public GameObject[] inGamePannel;
     public GameObject clickTile;
     public GameObject unitInfoPannel;
     public GameObject enemyInfoPannel;
     public UnitInfo unitInfoContents;
+    public GameObject gatchaPannel;
+    public GameObject slotObj;
 
     public void SetUnitInfo(TileGround tile)
     {
