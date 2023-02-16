@@ -75,13 +75,9 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     private IEnumerator AttackToTarget()
     {
-        while(true)
-        {
-            yield return new WaitForSeconds(unitStat.atkSpeed);
-
-            SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat);
-            ChangeState(UnitState.SearchTarget);
-        }
+        SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat);
+        yield return new WaitForSeconds(unitStat.atkSpeed);
+        ChangeState(UnitState.SearchTarget);
     }
     #endregion
 }
