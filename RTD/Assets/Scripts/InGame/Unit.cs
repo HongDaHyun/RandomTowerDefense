@@ -55,7 +55,8 @@ public abstract class Unit : MonoBehaviour, IPoolObject
         while(true)
         {
             float closetDistSqr = Mathf.Infinity;
-            for(int i = 0; i < SpawnManager.Instance.enemyList.Count; i++)
+            attackTarget = null;
+            for (int i = 0; i < SpawnManager.Instance.enemyList.Count; i++)
             {
                 float distance = Vector3.Distance(SpawnManager.Instance.enemyList[i].transform.position,
                     transform.position);
@@ -76,24 +77,10 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     {
         while(true)
         {
-            if(attackTarget == null)
-            {
-                ChangeState(UnitState.SearchTarget);
-                yield break;
-            }
-
-            float distance = Vector3.Distance(attackTarget.position, transform.position);
-            if(distance > unitStat.range)
-            {
-                attackTarget = null;
-                ChangeState(UnitState.SearchTarget);
-                yield break;
-            }
-
             yield return new WaitForSeconds(unitStat.atkSpeed);
 
-            SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget);
-            
+            SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat);
+            ChangeState(UnitState.SearchTarget);
         }
     }
     #endregion

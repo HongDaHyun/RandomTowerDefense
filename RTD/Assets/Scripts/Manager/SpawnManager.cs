@@ -59,11 +59,12 @@ public class SpawnManager : Singleton<SpawnManager>
     #endregion
 
     #region SpawnProjectile
-    public void SpawnProjectile(Transform transform, Transform target)
+    public void SpawnProjectile(Transform transform, Transform target, UnitStat unitStat)
     {
         Projectile newProjectile = PoolManager.Instance.GetFromPool<Projectile>();
         newProjectile.transform.position = transform.position;
         newProjectile.SetTarget(target);
+        newProjectile.unitStat = unitStat;
     }
 
     public void DeSpawnProjectile(Projectile projectile)

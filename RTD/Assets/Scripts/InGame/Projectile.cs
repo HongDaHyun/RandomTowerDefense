@@ -7,6 +7,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 {
     public string idName;
     public ProjectileStat projectileStat;
+    public UnitStat unitStat;
     public Transform target;
 
     void IPoolObject.OnCreatedInPool()
@@ -20,7 +21,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 
     private void Update()
     {
-        if (target != null)
+        if (target.gameObject.activeSelf)
         {
             Vector3 direction = target.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -38,7 +39,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         if (collision.transform != target)
             return;
 
-        SpawnManager.Instance.DeSpawnEnemy(collision.GetComponent<Enemy>());
+        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg);
         SpawnManager.Instance.DeSpawnProjectile(this);
     }
 

@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
+using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour, IPoolObject
 {
+    protected SpriteRenderer spriteRenderer;
     public string idName;
     public EnemyStat enemyStat;
     #region Movement
     protected Vector3 moveDirection;
     protected Transform[] wayPoints;
     protected int curWayPoint;
+    #endregion
+    #region HP
+    protected int curHp;
+    protected bool isDie = false;
+    protected Slider hpSlider;
     #endregion
 
     public void OnCreatedInPool() //최초
@@ -19,7 +26,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
 
     public void OnGettingFromPool() //재사용
     {
-        enemyStat = CSVReader.Instance.EnemyExport(idName);
+        SetUp();
         SetWayPoint();
         ResetWayPoint();
     }
@@ -29,8 +36,22 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         Movement();
     }
 
+    protected virtual void Update()
+    {
+        HpSliderUpdate();
+    }
+
     protected abstract void Die();
     protected abstract void Movement();
+    protected virtual void SetUp()
+    {
+        enemyStat = CSVReader.Instance.EnemyExport(idName);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        hpSlider = GetComponentInChildren<Slider>();
+        curHp = enemyStat.hp;
+        isDie = false;
+        spriteRenderer.color = Color.white;
+    }
 
     #region Movement Code
     private void SetWayPoint()
@@ -76,10 +97,44 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
             SpawnManager.Instance.DeSpawnEnemy(this);
         }
     }
-    #endregion
 
     public void MoveTo(Vector3 direction)
     {
         moveDirection = direction;
     }
+    #endregion
+
+    #region Damaged
+    public void TakeDmg(int dmg)
+    {
+        if (isDie)
+            return;
+        curHp -= dmg;
+
+        StopCoroutine(HitColorAnimation());
+        StartCoroutine(HitColorAnimation());
+
+        if(curHp <= 0)
+        {
+            isDie = true;
+            SpawnManager.Instance.DeSpawnEnemy(this);
+        }
+    }
+
+    private IEnumerator HitColorAnimation()
+    {
+        spriteRenderer.color = Color.red;
+
+        yield return new WaitForSeconds(0.05f);
+
+        spriteRenderer.color = Color.white;
+    }
+
+    private void HpSliderUpdate()
+    {
+        float imsi = (float)curHp / (float)enemyStat.hp;
+
+        hpSlider.value = Mathf.Lerp(hpSlider.value, imsi, Time.deltaTime * 10);
+    }
+    #endregion
 }

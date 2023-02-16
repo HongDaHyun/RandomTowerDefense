@@ -2499,7 +2499,7 @@ RectTransform:
   m_Children:
   - {fileID: 172341157}
   - {fileID: 484761390}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4371,7 +4371,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   inGamePannel:
-  - {fileID: 1195142859}
+  - {fileID: 0}
   - {fileID: 1352732951}
   - {fileID: 273825764623961686}
   - {fileID: 459346292}
@@ -8309,471 +8309,471 @@ MonoBehaviour:
       unitType: 0
       tier: 0
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uBC1C\uB9AC\uC2A4\uD0C0"
       unitType: 0
       tier: 2
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uBBF8\uB77C"
       unitType: 0
       tier: 3
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uAC10\uC2DC\uD0D1"
       unitType: 0
       tier: 1
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uBCF5\uC11C"
       unitType: 1
       tier: 0
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uACE0\uB9B4\uB77C"
       unitType: 1
       tier: 1
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uD3F0"
       unitType: 1
       tier: 2
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC2DC\uBC14\uACAC"
       unitType: 1
       tier: 3
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uBD90\uBC14\uB9E8"
       unitType: 2
       tier: 3
       attribute: 1
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uCE98\uB85D\uC2DC\uD37C"
       unitType: 2
       tier: 1
       attribute: 1
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uBD88\uB9C8\uBC95\uC0AC"
       unitType: 2
       tier: 0
       attribute: 1
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC194\uB77C"
       unitType: 2
       tier: 2
       attribute: 1
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uB9C8\uC2A4\uD06C\uB9E8"
       unitType: 3
       tier: 3
       attribute: 2
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uADE0\uB3CC\uC774"
       unitType: 3
       tier: 1
       attribute: 2
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uADE0\uBCA0\uC774\uBE44"
       unitType: 3
       tier: 0
       attribute: 2
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC5ED\uBCD1\uC758\uC0AC"
       unitType: 3
       tier: 2
       attribute: 2
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC13C\uD2B8\uB9AC\uAC74"
       unitType: 4
       tier: 1
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: F-35
       unitType: 4
       tier: 3
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uAD70\uC778"
       unitType: 4
       tier: 0
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uD0F1\uD06C"
       unitType: 4
       tier: 2
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC5BC\uC74C\uC6A9"
       unitType: 5
       tier: 3
       attribute: 3
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC5BC\uC74C\uC815\uB839"
       unitType: 5
       tier: 1
       attribute: 3
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uB0C9\uC7A5\uACE0"
       unitType: 5
       tier: 0
       attribute: 3
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uB208\uC0AC\uB78C"
       unitType: 5
       tier: 2
       attribute: 3
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uB300\uAC80\uC0AC"
       unitType: 6
       tier: 1
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
       tier: 2
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uAC80\uC0AC"
       unitType: 6
       tier: 0
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
       tier: 3
       attribute: 0
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC804\uAD6C"
       unitType: 7
       tier: 1
       attribute: 4
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uB85C\uBD07"
       unitType: 7
       tier: 0
       attribute: 4
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC2A4\uBC14\uD034"
       unitType: 7
       tier: 2
       attribute: 4
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     - unitName: "\uC36C\uB77C\uC784"
       unitType: 7
       tier: 3
       attribute: 4
-      dmg: 0
+      dmg: 1
       critPercent: 0
       critDmg: 0
-      atkSpeed: 2
+      atkSpeed: 1
       range: 3.5
     enemyStat:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC2DC\uAD11\uACE8\uB818"
       enemyType: 0
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC11D\uD0C4\uACE8\uB818"
       enemyType: 0
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC790\uC218\uC815\uACE8\uB818"
       enemyType: 0
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD615\uC11D\uACE8\uB818"
       enemyType: 0
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC7BC\uBBFC\uC774"
       enemyType: 1
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uACFC\uD559\uC790"
       enemyType: 1
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD2B8\uB808\uC774\uB108"
       enemyType: 1
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD3B8\uC758\uC810\uC54C\uBC14"
       enemyType: 1
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD560\uC544\uBC84\uC9C0"
       enemyType: 1
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uBE68\uAC04\uD3EC\uC158"
       enemyType: 2
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uB178\uB780\uD3EC\uC158"
       enemyType: 2
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uCD08\uB85D\uD3EC\uC158"
       enemyType: 2
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD30C\uB791\uD3EC\uC158"
       enemyType: 2
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC8FC\uD669\uD3EC\uC158"
       enemyType: 2
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC2A4\uCEEC"
       enemyType: 3
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uAC80\uC2A4\uCEEC"
       enemyType: 3
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD65C\uC2A4\uCEEC"
       enemyType: 3
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC8FC\uBA39\uC2A4\uCEEC"
       enemyType: 3
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uB9C8\uBC95\uC2A4\uCEEC"
       enemyType: 3
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uBB3C\uB77C\uC784"
       enemyType: 4
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD480\uB77C\uC784"
       enemyType: 4
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uD478\uB529\uB77C\uC784"
       enemyType: 4
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uBD88\uB77C\uC784"
       enemyType: 4
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC5BC\uB77C\uC784"
       enemyType: 4
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uB179\uC2A8\uACE8\uB818"
       enemyType: 0
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC778\uD615\uD0C8"
       enemyType: 1
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uAC80\uC815\uD3EC\uC158"
       enemyType: 2
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uC2A4\uCE74\uC2A4\uCE74"
       enemyType: 3
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     - enemyName: "\uBD80\uC6B8\uB77C\uC784"
       enemyType: 4
-      hp: 0
+      hp: 3
       strength: 0
       defense: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.03
     projectileStat:
     - projectileName: Arrow
       projectileType: 0
@@ -8782,7 +8782,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.05
+      projectileSpeed: 0.1
 --- !u!1 &577862665
 GameObject:
   m_ObjectHideFlags: 0
@@ -8907,7 +8907,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1611317327}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10341,13 +10341,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682507173}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 462265551}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -13105,7 +13105,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 667154536}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -13144,7 +13144,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1424027521}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -15147,7 +15147,7 @@ MonoBehaviour:
   _pools:
   - _name: "\uC7BC\uBBFC\uC774"
     _component: {fileID: 6635571574041197296, guid: cea8cbfa2e0be9b4bacf4c962c3f9b5a, type: 3}
-    _count: 30
+    _count: 200
     _container: {fileID: 1917533221}
     _nonLazy: 1
   - _name: "\uAD81\uC218"
@@ -15362,7 +15362,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943999925}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15371,7 +15371,7 @@ RectTransform:
   - {fileID: 1976594114}
   - {fileID: 1656750093}
   - {fileID: 786144171}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -16556,7 +16556,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 2400}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -16595,7 +16595,17 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1195142860}
+  - {fileID: 943999926}
+  - {fileID: 2131184139}
+  - {fileID: 1454599979}
+  - {fileID: 1471929909}
+  - {fileID: 771374520}
+  - {fileID: 595425708}
+  - {fileID: 769886288}
+  - {fileID: 1902797591}
+  - {fileID: 156966626}
+  - {fileID: 2116753106}
+  - {fileID: 682507174}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17589,62 +17599,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5720371020968932641, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
   m_PrefabInstance: {fileID: 762417100}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1195142859
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1195142860}
-  - component: {fileID: 1195142861}
-  m_Layer: 5
-  m_Name: InGame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1195142860
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195142859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 943999926}
-  - {fileID: 2131184139}
-  - {fileID: 1454599979}
-  - {fileID: 1471929909}
-  - {fileID: 771374520}
-  - {fileID: 595425708}
-  - {fileID: 769886288}
-  - {fileID: 1902797591}
-  - {fileID: 156966626}
-  - {fileID: 2116753106}
-  - {fileID: 682507174}
-  m_Father: {fileID: 1106824237}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1195142861
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195142859}
-  m_CullTransparentMesh: 1
 --- !u!1 &1196693316
 GameObject:
   m_ObjectHideFlags: 0
@@ -20589,12 +20543,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454599978}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
@@ -21016,13 +20970,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471929908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 624295625}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -26072,7 +26026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestroy: 1
   wayPointsObj: {fileID: 681473874}
-  spawnTime: 2
+  spawnTime: 0.8
   enemyList: []
   unitList: []
 --- !u!1 &1860344794
@@ -26730,7 +26684,7 @@ RectTransform:
   m_Children:
   - {fileID: 1558702577}
   - {fileID: 808970256}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -29125,7 +29079,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1131380762}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -29409,7 +29363,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131184138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29417,7 +29371,7 @@ RectTransform:
   - {fileID: 560906174}
   - {fileID: 803447322}
   - {fileID: 1957239124}
-  m_Father: {fileID: 1195142860}
+  m_Father: {fileID: 1106824237}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
