@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public Level level;
     public bool isStart;
+    public int gatchaKey, maxHealth, curHealth;
 
     protected override void Awake()
     {

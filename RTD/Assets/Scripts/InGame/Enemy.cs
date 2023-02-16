@@ -92,9 +92,10 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
             Vector3 direction = wayPoints[curWayPoint].position;
             MoveTo(direction);
         }
-        else
+        else //³¡ µµ´Þ
         {
             SpawnManager.Instance.DeSpawnEnemy(this);
+            GameManager.Instance.curHealth--;
         }
     }
 

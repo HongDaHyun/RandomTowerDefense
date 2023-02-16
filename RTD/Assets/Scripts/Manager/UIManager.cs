@@ -14,8 +14,14 @@ public class UIManager : Singleton<UIManager>
     public GameObject unitInfoPannel;
     public GameObject enemyInfoPannel;
     public UnitInfo unitInfoContents;
+    public UpPannel upPannel;
     public GameObject gatchaPannel;
     public GameObject slotObj;
+
+    private void Update()
+    {
+        UpdateUpPannel();
+    }
 
     public void SetUnitInfo(TileGround tile)
     {
@@ -30,6 +36,12 @@ public class UIManager : Singleton<UIManager>
         unitInfoContents.texts[4].text = $"{unit.unitStat.critPercent}%";
         unitInfoContents.texts[5].text = $"{unit.unitStat.critDmg}%";
     }
+
+    public void UpdateUpPannel()
+    {
+        upPannel.gatchaKeyTxt.text = GameManager.Instance.gatchaKey.ToString();
+        upPannel.healthTxt.text = $"{GameManager.Instance.curHealth}/{GameManager.Instance.maxHealth}";
+    }
 }
 
 [Serializable]
@@ -37,4 +49,10 @@ public struct UnitInfo
 {
     public Image img;
     public Text[] texts;
+}
+
+[Serializable]
+public struct UpPannel
+{
+    public Text gatchaKeyTxt, healthTxt;
 }

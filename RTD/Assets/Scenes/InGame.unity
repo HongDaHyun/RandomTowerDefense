@@ -3354,6 +3354,9 @@ MonoBehaviour:
   isDestroy: 0
   level: 0
   isStart: 0
+  gatchaKey: 0
+  maxHealth: 0
+  curHealth: 0
 --- !u!1 &199933289
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,6 +4392,9 @@ MonoBehaviour:
     - {fileID: 34992093}
     - {fileID: 2092404707}
     - {fileID: 490310368}
+  upPannel:
+    gatchaKeyTxt: {fileID: 317570390}
+    healthTxt: {fileID: 74955528}
   gatchaPannel: {fileID: 771374519}
   slotObj: {fileID: 1841786110}
 --- !u!4 &253012259

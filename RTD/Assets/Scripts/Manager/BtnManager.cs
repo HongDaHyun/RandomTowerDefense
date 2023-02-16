@@ -17,6 +17,29 @@ public class BtnManager : Singleton<BtnManager>
     public void GameStart(string _level)
     {
         GameManager.Instance.level = (Level)Enum.Parse(typeof(Level), _level);
+        switch(GameManager.Instance.level)
+        {
+            case Level.Easy:
+                GameManager.Instance.gatchaKey = 3;
+                GameManager.Instance.maxHealth = 30;
+                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                break;
+            case Level.Normal:
+                GameManager.Instance.gatchaKey = 2;
+                GameManager.Instance.maxHealth = 25;
+                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                break;
+            case Level.Hard:
+                GameManager.Instance.gatchaKey = 1;
+                GameManager.Instance.maxHealth = 20;
+                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                break;
+            case Level.Infinite:
+                GameManager.Instance.gatchaKey = 2;
+                GameManager.Instance.maxHealth = 25;
+                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                break;
+        }
         AdMobManager.Instance.ToggleBannerAd(false);
         SceneManager.LoadScene(1);
     }
@@ -48,11 +71,14 @@ public class BtnManager : Singleton<BtnManager>
         yield return new WaitForSeconds(1f);
         UIManager.Instance.slotObj.transform.localPosition = new Vector3(0, 0, 0);
         UIManager.Instance.gatchaPannel.SetActive(false);
+        GameManager.Instance.gatchaKey--;
         SpawnManager.Instance.SpawnUnit();
     }
 
     public void SlotMachineBtn()
     {
+        if (GameManager.Instance.gatchaKey < 1)
+            return;
         StartCoroutine(SlotMachine());
     }
 }

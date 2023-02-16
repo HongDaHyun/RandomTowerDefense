@@ -38,9 +38,8 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
             return;
         if (collision.transform != target)
             return;
-
-        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg);
         SpawnManager.Instance.DeSpawnProjectile(this);
+        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg);
     }
 
     public void SetTarget(Transform target) //rotationµµ
