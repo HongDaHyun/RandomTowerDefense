@@ -8,6 +8,7 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("MainMenu")]
     public GameObject[] mainPannel;
+    public Text[] levelWaveTxt;
     [Header("InGame")]
     public GameObject[] inGamePannel;
     public GameObject clickTile;
@@ -17,6 +18,7 @@ public class UIManager : Singleton<UIManager>
     public UpPannel upPannel;
     public GameObject gatchaPannel;
     public GameObject slotObj;
+    public Text gameSpeedTxt;
 
     private void Update()
     {
@@ -39,6 +41,8 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateUpPannel()
     {
+        if (upPannel.gatchaKeyTxt == null || upPannel.healthTxt == null)
+            return;
         upPannel.gatchaKeyTxt.text = GameManager.Instance.gatchaKey.ToString();
         upPannel.healthTxt.text = $"{GameManager.Instance.curHealth}/{GameManager.Instance.maxHealth}";
     }

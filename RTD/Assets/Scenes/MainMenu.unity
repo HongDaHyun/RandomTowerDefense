@@ -1048,8 +1048,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestroy: 0
   level: 0
-  wayPointsObj: {fileID: 0}
+  gameTime: 10
   isStart: 0
+  gatchaKey: 0
+  maxHealth: 0
+  curHealth: 0
+  maxWave: 0
 --- !u!1 &200118006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1247,10 @@ MonoBehaviour:
   mainPannel:
   - {fileID: 536593571}
   - {fileID: 716416031}
+  levelWaveTxt:
+  - {fileID: 62084848}
+  - {fileID: 379856835}
+  - {fileID: 38373021}
   inGamePannel:
   - {fileID: 0}
   - {fileID: 0}
@@ -1262,6 +1270,12 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  upPannel:
+    gatchaKeyTxt: {fileID: 0}
+    healthTxt: {fileID: 0}
+  gatchaPannel: {fileID: 0}
+  slotObj: {fileID: 0}
+  gameSpeedTxt: {fileID: 0}
 --- !u!4 &253012259
 Transform:
   m_ObjectHideFlags: 0

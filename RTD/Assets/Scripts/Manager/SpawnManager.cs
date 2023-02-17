@@ -20,6 +20,14 @@ public class SpawnManager : Singleton<SpawnManager>
     #region SpawnEnemy
     public void SpawnEnemy()
     {
+        if (enemyList.Count != 0)
+            return;
+        if (WaveManager.Instance.curWave >= GameManager.Instance.maxWave)
+        {
+            if(GameManager.Instance.level != Level.Infinite) //무한모드일 때 웨이브 초기화 (적 스탯 모두 증가)
+                return;
+            WaveManager.Instance.curWave = 0;
+        }
         StartCoroutine(SpawnEnemyCoroutine());
     }
 
@@ -31,12 +39,34 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private IEnumerator SpawnEnemyCoroutine()
     {
-        while(true)
+        Wave curWave = WaveManager.Instance.waves[WaveManager.Instance.curWave];
+
+        for(int i = 0; i < curWave.enemy.Length; i++)
         {
-            Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(0);
-            enemyList.Add(newEnemy);
-            yield return new WaitForSeconds(spawnTime);
+            int spawnEnemyCount = 0;
+            while (spawnEnemyCount < curWave.enemy[i].maxCount)
+            {
+                switch(curWave.enemy[i].type)
+                {
+                    case EnemyType.Golem:
+                        break;
+                    case EnemyType.Human:
+                        Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy_People>(curWave.enemy[i].index);
+                        enemyList.Add(newEnemy);
+                        break;
+                    case EnemyType.Portion:
+                        break;
+                    case EnemyType.Skeleton:
+                        break;
+                    case EnemyType.Slime:
+                        break;
+                }
+                spawnEnemyCount++;
+                yield return new WaitForSeconds(curWave.spawnTime);
+            }
         }
+        //웨이브 종료
+        WaveManager.Instance.curWave++;
     }
     #endregion
 

@@ -16,28 +16,34 @@ public class BtnManager : Singleton<BtnManager>
 
     public void GameStart(string _level)
     {
-        GameManager.Instance.level = (Level)Enum.Parse(typeof(Level), _level);
-        switch(GameManager.Instance.level)
+        GameManager gm = GameManager.Instance;
+        gm.isStart = true;
+        gm.level = (Level)Enum.Parse(typeof(Level), _level);
+        switch(gm.level)
         {
             case Level.Easy:
-                GameManager.Instance.gatchaKey = 3;
-                GameManager.Instance.maxHealth = 30;
-                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                gm.gatchaKey = 3;
+                gm.maxHealth = 30;
+                gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[0].text);
+                gm.curHealth = gm.maxHealth;
                 break;
             case Level.Normal:
-                GameManager.Instance.gatchaKey = 2;
-                GameManager.Instance.maxHealth = 25;
-                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                gm.gatchaKey = 2;
+                gm.maxHealth = 25;
+                gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[1].text);
+                gm.curHealth = gm.maxHealth;
                 break;
             case Level.Hard:
-                GameManager.Instance.gatchaKey = 1;
-                GameManager.Instance.maxHealth = 20;
-                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                gm.gatchaKey = 1;
+                gm.maxHealth = 20;
+                gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[2].text);
+                gm.curHealth = gm.maxHealth;
                 break;
             case Level.Infinite:
-                GameManager.Instance.gatchaKey = 2;
-                GameManager.Instance.maxHealth = 25;
-                GameManager.Instance.curHealth = GameManager.Instance.maxHealth;
+                gm.gatchaKey = 2;
+                gm.maxHealth = 25;
+                gm.maxWave = 40;
+                gm.curHealth = gm.maxHealth;
                 break;
         }
         AdMobManager.Instance.ToggleBannerAd(false);
@@ -46,6 +52,8 @@ public class BtnManager : Singleton<BtnManager>
 
     public void Title()
     {
+        GameManager.Instance.isStart = false;
+        GameManager.Instance.gameTime = TimeScale.Slow;
         SceneManager.LoadScene(0);
     }
 
@@ -80,5 +88,25 @@ public class BtnManager : Singleton<BtnManager>
         if (GameManager.Instance.gatchaKey < 1)
             return;
         StartCoroutine(SlotMachine());
+    }
+
+    public void SpeedBtn()
+    {
+        switch(GameManager.Instance.gameTime)
+        {
+            case TimeScale.Slow:
+                GameManager.Instance.gameTime = TimeScale.Commonly;
+                break;
+            case TimeScale.Commonly:
+                GameManager.Instance.gameTime = TimeScale.Fast;
+                break;
+            case TimeScale.Fast:
+                GameManager.Instance.gameTime = TimeScale.Slow;
+                break;
+        }
+        float curTime = (int)GameManager.Instance.gameTime / 10f;
+        Time.timeScale = curTime;
+        UIManager.Instance.gameSpeedTxt.text = "x " + curTime.ToString("F1");
+
     }
 }

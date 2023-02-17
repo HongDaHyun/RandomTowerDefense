@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum TimeScale { Pause = 0, Slow = 10, Commonly = 15, Fast = 20}
 
 public class GameManager : Singleton<GameManager>
 {
     public Level level;
+    public TimeScale gameTime = TimeScale.Slow;
     public bool isStart;
-    public int gatchaKey, maxHealth, curHealth;
+    public int gatchaKey, maxHealth, curHealth, maxWave;
 
     protected override void Awake()
     {
