@@ -2,6 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit_Archer : Unit
+public class Unit_Bow : Unit
 {
 }

@@ -1274,6 +1274,7 @@ MonoBehaviour:
     gatchaKeyTxt: {fileID: 0}
     healthTxt: {fileID: 0}
   gatchaPannel: {fileID: 0}
+  gatchaBtn: {fileID: 0}
   slotObj: {fileID: 0}
   gameSpeedTxt: {fileID: 0}
 --- !u!4 &253012259
@@ -2355,8 +2356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7f6dc85fcb37643a29c7b046410a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  L: {x: 3.3, y: 0}
-  R: {x: -3.3, y: 0}
+  L: {x: 3, y: 0}
+  R: {x: -3, y: 0}
 --- !u!1 &605979734
 GameObject:
   m_ObjectHideFlags: 0
@@ -5359,7 +5360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 450}
+  m_AnchoredPosition: {x: 0, y: 500}
   m_SizeDelta: {x: 960, y: 576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1606396711

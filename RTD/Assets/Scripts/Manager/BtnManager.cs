@@ -67,9 +67,12 @@ public class BtnManager : Singleton<BtnManager>
 
     IEnumerator SlotMachine()
     {
-        int ran = UnityEngine.Random.Range(0, 4); // 0: Common, 1: Rare, 2: Epic, 3: Legend
+        UIManager.Instance.gatchaBtn.interactable = false;
+        //int ranType = UnityEngine.Random.Range(0, 8); // 0: Bow, 1: Fighter...
+        int ranType = 0; // 활밖에 없기에 임시방편
+        int ranTier = UnityEngine.Random.Range(0, 4); // 0: Common, 1: Rare, 2: Epic, 3: Legend
 
-        for (int i = 0; i < (4 * 6 + ran) * 4; i++)
+        for (int i = 0; i < (4 * 6 + ranTier) * 4; i++) //슬롯 돌리기
         {
             UIManager.Instance.slotObj.transform.localPosition += new Vector3(0, 50f, 0);
             if (UIManager.Instance.slotObj.transform.localPosition.y > 800f)
@@ -79,8 +82,9 @@ public class BtnManager : Singleton<BtnManager>
         yield return new WaitForSeconds(1f);
         UIManager.Instance.slotObj.transform.localPosition = new Vector3(0, 0, 0);
         UIManager.Instance.gatchaPannel.SetActive(false);
+        UIManager.Instance.gatchaBtn.interactable = true;
         GameManager.Instance.gatchaKey--;
-        SpawnManager.Instance.SpawnUnit();
+        SpawnManager.Instance.SpawnUnit((UnitType)ranType, (Tier)ranTier);
     }
 
     public void SlotMachineBtn()

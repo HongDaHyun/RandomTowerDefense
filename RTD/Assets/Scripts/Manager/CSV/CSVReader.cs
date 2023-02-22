@@ -96,6 +96,18 @@ public class CSVReader : Singleton<CSVReader>
         return ref csvList.unitStat[0];
     }
 
+    public ref string UnitExport_forSpawn(UnitType type, Tier tier)
+    {
+        for(int i = 0; i < csvList.unitStat.Length; i++)
+        {
+            if(type == csvList.unitStat[i].unitType && tier == csvList.unitStat[i].tier)
+            {
+                return ref csvList.unitStat[i].unitName;
+            }
+        }
+        return ref csvList.unitStat[0].unitName;
+    }    
+
     public ref EnemyStat EnemyExport(string name)
     {
         for (int i = 0; i < csvList.enemyStat.Length; i++)

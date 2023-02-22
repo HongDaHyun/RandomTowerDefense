@@ -4006,6 +4006,7 @@ MonoBehaviour:
     gatchaKeyTxt: {fileID: 317570390}
     healthTxt: {fileID: 74955528}
   gatchaPannel: {fileID: 771374519}
+  gatchaBtn: {fileID: 1057437465}
   slotObj: {fileID: 1841786110}
   gameSpeedTxt: {fileID: 624295626}
 --- !u!4 &253012259
@@ -15356,7 +15357,22 @@ MonoBehaviour:
     _nonLazy: 1
   - _name: "\uAD81\uC218"
     _component: {fileID: 5217720132303527204, guid: a5513cf3055bf474db02c8f2e00e79ac, type: 3}
-    _count: 30
+    _count: 50
+    _container: {fileID: 1843318193}
+    _nonLazy: 1
+  - _name: "\uBC1C\uB9AC\uC2A4\uD0C0"
+    _component: {fileID: 5217720132303527204, guid: 30177434a3711d449b67a200b51a8b14, type: 3}
+    _count: 50
+    _container: {fileID: 1843318193}
+    _nonLazy: 1
+  - _name: "\uBBF8\uB77C"
+    _component: {fileID: 5217720132303527204, guid: 4de45bb4b5e007f44b2eb660fc24b8d2, type: 3}
+    _count: 50
+    _container: {fileID: 1843318193}
+    _nonLazy: 1
+  - _name: "\uAC10\uC2DC\uD0D1"
+    _component: {fileID: 5217720132303527204, guid: 074cfbae54c2cbd4ab5643b9b1ae53b0, type: 3}
+    _count: 50
     _container: {fileID: 1843318193}
     _nonLazy: 1
   - _name: Arrow

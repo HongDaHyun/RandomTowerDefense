@@ -71,9 +71,9 @@ public class SpawnManager : Singleton<SpawnManager>
     #endregion
 
     #region SpawnUnit
-    public void SpawnUnit()
+    public void SpawnUnit(UnitType type, Tier tier)
     {
-        Unit newUnit = PoolManager.Instance.GetFromPool<Unit>();
+        Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.UnitExport_forSpawn(type, tier));
         unitList.Add(newUnit);
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         tileGround.SetTile(newUnit);

@@ -17,6 +17,7 @@ public class UIManager : Singleton<UIManager>
     public UnitInfo unitInfoContents;
     public UpPannel upPannel;
     public GameObject gatchaPannel;
+    public Button gatchaBtn;
     public GameObject slotObj;
     public Text gameSpeedTxt;
 
