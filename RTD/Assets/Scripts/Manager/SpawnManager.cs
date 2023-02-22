@@ -6,7 +6,6 @@ using Redcode.Pools;
 public class SpawnManager : Singleton<SpawnManager>
 {
     public Transform wayPointsObj;
-    public float spawnTime;
     public List<Enemy> enemyList;
     public List<Unit> unitList;
 
@@ -15,6 +14,11 @@ public class SpawnManager : Singleton<SpawnManager>
         base.Awake();
         enemyList = new List<Enemy>();
         unitList = new List<Unit>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(UIManager.Instance.WaveTimer());
     }
 
     #region SpawnEnemy
@@ -39,19 +43,21 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private IEnumerator SpawnEnemyCoroutine()
     {
-        Wave curWave = WaveManager.Instance.waves[WaveManager.Instance.curWave];
+        WaveManager.Instance.isWave = true;
+        WaveManager.Instance.curWave++; //웨이브 시작 시 curWave 증가
+        Wave realCurWave = WaveManager.Instance.waves[WaveManager.Instance.curWave - 1]; //증가된 상태이므로 1 감소시킨 웨이브 등장
 
-        for(int i = 0; i < curWave.enemy.Length; i++)
+        for(int i = 0; i < realCurWave.enemy.Length; i++)
         {
             int spawnEnemyCount = 0;
-            while (spawnEnemyCount < curWave.enemy[i].maxCount)
+            while (spawnEnemyCount < realCurWave.enemy[i].maxCount)
             {
-                switch(curWave.enemy[i].type)
+                switch(realCurWave.enemy[i].type)
                 {
                     case EnemyType.Golem:
                         break;
                     case EnemyType.Human:
-                        Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy_People>(curWave.enemy[i].index);
+                        Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy_People>(realCurWave.enemy[i].index);
                         enemyList.Add(newEnemy);
                         break;
                     case EnemyType.Portion:
@@ -62,12 +68,10 @@ public class SpawnManager : Singleton<SpawnManager>
                         break;
                 }
                 spawnEnemyCount++;
-                yield return new WaitForSeconds(curWave.spawnTime);
+                yield return new WaitForSeconds(realCurWave.spawnTime);
             }
         }
-        //웨이브 종료
-        WaveManager.Instance.curWave++;
-        GameManager.Instance.gatchaKey += 2;
+        //모든 적 소환 완료
     }
     #endregion
 

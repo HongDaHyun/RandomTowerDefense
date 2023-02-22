@@ -24,6 +24,7 @@ public class BtnManager : Singleton<BtnManager>
             case Level.Easy:
                 gm.gatchaKey = 3;
                 gm.maxHealth = 30;
+                gm.maxExp = 3;
                 gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[0].text);
                 gm.curHealth = gm.maxHealth;
                 break;
@@ -36,12 +37,14 @@ public class BtnManager : Singleton<BtnManager>
             case Level.Hard:
                 gm.gatchaKey = 1;
                 gm.maxHealth = 20;
+                gm.maxExp = 3;
                 gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[2].text);
                 gm.curHealth = gm.maxHealth;
                 break;
             case Level.Infinite:
                 gm.gatchaKey = 2;
                 gm.maxHealth = 25;
+                gm.maxExp = 3;
                 gm.maxWave = 40;
                 gm.curHealth = gm.maxHealth;
                 break;

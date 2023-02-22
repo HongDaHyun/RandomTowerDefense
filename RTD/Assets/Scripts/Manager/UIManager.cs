@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class UIManager : Singleton<UIManager>
@@ -41,10 +42,43 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateUpPannel()
     {
-        if (upPannel.gatchaKeyTxt == null || upPannel.healthTxt == null)
+        if (SceneManager.GetActiveScene().buildIndex == 0) //씬이 0이면 함수 실행 x
             return;
         upPannel.gatchaKeyTxt.text = GameManager.Instance.gatchaKey.ToString();
         upPannel.healthTxt.text = $"{GameManager.Instance.curHealth}/{GameManager.Instance.maxHealth}";
+        upPannel.waveTxt.text = $"{WaveManager.Instance.curWave}/{GameManager.Instance.maxWave}";
+
+        ExpSlider();
+    }
+
+    public void ExpSlider()
+    {
+        float imsi = (float)GameManager.Instance.curExp / GameManager.Instance.maxExp;
+        upPannel.expSlider.value = Mathf.Lerp(upPannel.expSlider.value, imsi, Time.deltaTime * 10);
+
+        if (GameManager.Instance.curExp >= GameManager.Instance.maxExp)
+        {
+            GameManager.Instance.curExp = 0;
+            GameManager.Instance.level++;
+            //Level Up!!
+        }
+    }
+
+    public IEnumerator WaveTimer()
+    {
+        float readyTime = 10f;
+
+        while (readyTime > 0) // 타이머 시작
+        {
+            readyTime -= Time.deltaTime;
+            upPannel.timerTxt.text = readyTime.ToString("00.0");
+            yield return null;
+
+            if (readyTime <= 0) //웨이브 시작(타이머 0)
+            {
+                SpawnManager.Instance.SpawnEnemy();
+            }
+        }
     }
 }
 
@@ -58,7 +92,8 @@ public struct UnitInfo
 [Serializable]
 public struct UpPannel
 {
-    public Text gatchaKeyTxt, healthTxt;
+    public Text gatchaKeyTxt, healthTxt, waveTxt, timerTxt;
+    public Slider expSlider;
 }
 
 [Serializable]

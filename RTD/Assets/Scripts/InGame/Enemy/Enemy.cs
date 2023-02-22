@@ -133,7 +133,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
 
     private void HpSliderUpdate()
     {
-        float imsi = (float)curHp / (float)enemyStat.hp;
+        float imsi = (float)curHp / enemyStat.hp;
 
         hpSlider.value = Mathf.Lerp(hpSlider.value, imsi, Time.deltaTime * 10);
     }
