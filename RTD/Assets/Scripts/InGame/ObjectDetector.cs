@@ -26,12 +26,20 @@ public class ObjectDetector : MonoBehaviour
                 {
                     if (!UIManager.Instance.clickTile.activeSelf) //클릭 타일 없으면 생성
                         UIManager.Instance.clickTile.SetActive(true);
+
                     else if (UIManager.Instance.clickTile.transform.parent == hit.transform) //동일한 클릭타일 있을 시 제거
+                    {
                         UIManager.Instance.clickTile.SetActive(false);
+                        return;
+                    }
 
                     TileGround tileGround = hit.transform.GetComponent<TileGround>();
                     if (tileGround.isBuild) //클릭타일에 유닛있을 시 정보창 생성
                         UIManager.Instance.SetUnitInfo(tileGround);
+                    else //클릭타일에 유닛 없는 빈 타일일 때 정보창 제거
+                        if (UIManager.Instance.unitInfoPannel.activeSelf)
+                        UIManager.Instance.unitInfoPannel.SetActive(false);
+
                     UIManager.Instance.clickTile.transform.SetParent(hit.transform);
                     UIManager.Instance.clickTile.transform.localPosition = new Vector3(0, 0, 0);
                 }
@@ -42,5 +50,7 @@ public class ObjectDetector : MonoBehaviour
             else
                 return;
         }
+        if (!UIManager.Instance.clickTile.activeSelf) //클릭타일 없을 때 유닛정보패널 비활성화
+            UIManager.Instance.unitInfoPannel.SetActive(false);
     }
 }

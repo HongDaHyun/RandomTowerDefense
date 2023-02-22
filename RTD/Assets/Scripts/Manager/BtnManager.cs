@@ -62,12 +62,13 @@ public class BtnManager : Singleton<BtnManager>
         //Only Open
         if (!UIManager.Instance.clickTile.activeSelf || UIManager.Instance.clickTile.GetComponentInParent<TileGround>().isBuild) // 클릭타일 활성화 x -> 가챠패널 열리지 않음
             return;
-        UIManager.Instance.gatchaPannel.SetActive(true);
+        UIManager.Instance.gatchaPannel.gatchaPannel.SetActive(true);
     }
 
     IEnumerator SlotMachine()
     {
-        UIManager.Instance.gatchaBtn.interactable = false;
+        UIManager.Instance.gatchaPannel.gatchaBtn.interactable = false;
+        UIManager.Instance.gatchaPannel.gatchaTab.interactable = false;
         //int ranType = UnityEngine.Random.Range(0, 8); // 0: Bow, 1: Fighter...
         int ranType = 0; // 활밖에 없기에 임시방편
         int ranTier = UnityEngine.Random.Range(0, 4); // 0: Common, 1: Rare, 2: Epic, 3: Legend
@@ -81,8 +82,9 @@ public class BtnManager : Singleton<BtnManager>
         }
         yield return new WaitForSeconds(1f);
         UIManager.Instance.slotObj.transform.localPosition = new Vector3(0, 0, 0);
-        UIManager.Instance.gatchaPannel.SetActive(false);
-        UIManager.Instance.gatchaBtn.interactable = true;
+        UIManager.Instance.gatchaPannel.gatchaPannel.SetActive(false);
+        UIManager.Instance.gatchaPannel.gatchaBtn.interactable = true;
+        UIManager.Instance.gatchaPannel.gatchaTab.interactable = true;
         GameManager.Instance.gatchaKey--;
         SpawnManager.Instance.SpawnUnit((UnitType)ranType, (Tier)ranTier);
     }
@@ -112,5 +114,26 @@ public class BtnManager : Singleton<BtnManager>
         Time.timeScale = curTime;
         UIManager.Instance.gameSpeedTxt.text = "x " + curTime.ToString("F1");
 
+    }
+
+    public void UpgradeUnit()
+    {
+        List<Unit> unitList = SpawnManager.Instance.unitList;
+        TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
+        Unit thisUnit = tileGround.GetComponentInChildren<Unit>();
+
+        if (thisUnit.unitStat.tier == Tier.Legend) // 티어가 레전드면 리턴
+            return;
+
+        for (int i = 0; i < unitList.Count; i++)
+        {
+            if(unitList[i].unitStat.unitName == thisUnit.unitStat.unitName && unitList[i] != thisUnit)
+            {
+                SpawnManager.Instance.DeSpawnUnit(unitList[i]); //순서 중요 (리스트 Remove때문)
+                SpawnManager.Instance.DeSpawnUnit(thisUnit); //순서 바꾸지 말 것
+                SpawnManager.Instance.SpawnUnit(thisUnit.unitStat.unitType, thisUnit.unitStat.tier + 1);
+                return;
+            }
+        }
     }
 }

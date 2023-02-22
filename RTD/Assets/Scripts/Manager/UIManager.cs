@@ -16,8 +16,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject enemyInfoPannel;
     public UnitInfo unitInfoContents;
     public UpPannel upPannel;
-    public GameObject gatchaPannel;
-    public Button gatchaBtn;
+    public GatchaPannel gatchaPannel;
     public GameObject slotObj;
     public Text gameSpeedTxt;
 
@@ -60,4 +59,12 @@ public struct UnitInfo
 public struct UpPannel
 {
     public Text gatchaKeyTxt, healthTxt;
+}
+
+[Serializable]
+public struct GatchaPannel
+{
+    public GameObject gatchaPannel;
+    public Button gatchaBtn;
+    public Button gatchaTab;
 }

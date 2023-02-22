@@ -4005,8 +4005,10 @@ MonoBehaviour:
   upPannel:
     gatchaKeyTxt: {fileID: 317570390}
     healthTxt: {fileID: 74955528}
-  gatchaPannel: {fileID: 771374519}
-  gatchaBtn: {fileID: 1057437465}
+  gatchaPannel:
+    gatchaPannel: {fileID: 771374519}
+    gatchaBtn: {fileID: 1057437465}
+    gatchaTab: {fileID: 71285651}
   slotObj: {fileID: 1841786110}
   gameSpeedTxt: {fileID: 624295626}
 --- !u!4 &253012259
@@ -7536,7 +7538,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.3828125
+  orthographic size: 10.714286
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7560,7 +7562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -1, z: -10}
+  m_LocalPosition: {x: 2, y: -1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16934,7 +16936,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1104999705}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1060610722}
+        m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+        m_MethodName: UpgradeUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1104999705
 MonoBehaviour:
   m_ObjectHideFlags: 0

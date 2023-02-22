@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
-public enum UnitState { SearchTarget =0, AttackToTarget }
+public enum UnitState { SearchTarget = 0, AttackToTarget }
 
 public abstract class Unit : MonoBehaviour, IPoolObject
 {

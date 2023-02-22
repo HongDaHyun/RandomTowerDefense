@@ -67,6 +67,7 @@ public class SpawnManager : Singleton<SpawnManager>
         }
         //웨이브 종료
         WaveManager.Instance.curWave++;
+        GameManager.Instance.gatchaKey += 2;
     }
     #endregion
 
@@ -84,6 +85,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnUnit(Unit unit)
     {
         unitList.Remove(unit);
+        unit.GetComponentInParent<TileGround>().ResetTile();
         PoolManager.Instance.TakeToPool<Unit>(unit.idName, unit);
     }
     #endregion

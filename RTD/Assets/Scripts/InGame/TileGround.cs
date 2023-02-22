@@ -14,4 +14,10 @@ public class TileGround : MonoBehaviour
         inUnitName = newUnit.unitStat.unitName;
         newUnit.transform.localPosition = new Vector2(0, -0.2f);
     }
+
+    public void ResetTile()
+    {
+        isBuild = false;
+        inUnitName = null;
+    }
 }
