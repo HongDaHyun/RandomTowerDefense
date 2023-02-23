@@ -21,6 +21,11 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 
     private void Update()
     {
+        if (target == null)
+        {
+            SpawnManager.Instance.DeSpawnProjectile(this);
+            return;
+        }
         if (target.gameObject.activeSelf)
         {
             Vector3 direction = target.position - transform.position;

@@ -11,6 +11,11 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
     private Transform attackTarget = null;
+    private bool isAtk;
+    #endregion
+    #region Animation
+    protected Animator anim;
+    protected bool isAnim;
     #endregion
     public UnitStat unitStat;
     void IPoolObject.OnCreatedInPool()
@@ -31,6 +36,8 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     void SetUp()
     {
         unitStat = CSVReader.Instance.UnitExport(idName);
+        anim = GetComponent<Animator>();
+        isAnim = (anim != null) ? true : false;
         ChangeState(UnitState.SearchTarget);
     }
 
@@ -52,6 +59,9 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     private IEnumerator SearchTarget()
     {
+        isAtk = false;
+        if (isAnim)
+            anim.SetBool("IsAtk", false);
         while(true)
         {
             float closetDistSqr = Mathf.Infinity;
@@ -68,14 +78,23 @@ public abstract class Unit : MonoBehaviour, IPoolObject
             }
 
             if (attackTarget != null)
-                ChangeState(UnitState.AttackToTarget);
+            {
+                if(isAnim && !isAtk)
+                    anim.SetBool("IsAtk", true);
+                else
+                    ChangeState(UnitState.AttackToTarget);
+            }
             yield return null;
         }
     }
 
     private IEnumerator AttackToTarget()
     {
-        SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat);
+        if(!isAtk) // 한번만 작동
+            SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat);
+        isAtk = true;
+        if (isAnim)
+            anim.SetBool("IsAtk", false);
         yield return new WaitForSeconds(unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
     }

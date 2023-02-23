@@ -27,8 +27,6 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
     public void OnGettingFromPool() //재사용
     {
         SetUp();
-        SetWayPoint();
-        ResetWayPoint();
     }
 
     protected virtual void FixedUpdate()
@@ -51,6 +49,9 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         curHp = enemyStat.hp;
         isDie = false;
         spriteRenderer.color = Color.white;
+
+        SetWayPoint();
+        ResetWayPoint();
     }
 
     #region Movement Code
@@ -88,6 +89,11 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         if(curWayPoint < wayPoints.Length - 1)
         {
             transform.position = wayPoints[curWayPoint].position;
+
+            if (wayPoints[curWayPoint + 1].position.x >= wayPoints[curWayPoint].position.x) //방향 전환
+                spriteRenderer.flipX = true;
+            else
+                spriteRenderer.flipX = false;
             curWayPoint++;
             Vector3 direction = wayPoints[curWayPoint].position;
             MoveTo(direction);
