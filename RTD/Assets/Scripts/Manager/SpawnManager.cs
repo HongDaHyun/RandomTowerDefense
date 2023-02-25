@@ -38,7 +38,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnEnemy(Enemy enemy)
     {
         enemyList.Remove(enemy);
-        PoolManager.Instance.TakeToPool<Enemy>(enemy.idName, enemy);
+        PoolManager.Instance.TakeToPool<Enemy>(enemy.enemyStat.enemyName, enemy);
     }
 
     private IEnumerator SpawnEnemyCoroutine()
@@ -52,21 +52,8 @@ public class SpawnManager : Singleton<SpawnManager>
             int spawnEnemyCount = 0;
             while (spawnEnemyCount < realCurWave.enemy[i].maxCount)
             {
-                switch(realCurWave.enemy[i].type)
-                {
-                    case EnemyType.Golem:
-                        break;
-                    case EnemyType.Human:
-                        Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy_People>(realCurWave.enemy[i].index);
-                        enemyList.Add(newEnemy);
-                        break;
-                    case EnemyType.Portion:
-                        break;
-                    case EnemyType.Skeleton:
-                        break;
-                    case EnemyType.Slime:
-                        break;
-                }
+                Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(realCurWave.enemy[i].name);
+                enemyList.Add(newEnemy);
                 spawnEnemyCount++;
                 yield return new WaitForSeconds(realCurWave.spawnTime);
             }
@@ -90,7 +77,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         unitList.Remove(unit);
         unit.GetComponentInParent<TileGround>().ResetTile();
-        PoolManager.Instance.TakeToPool<Unit>(unit.idName, unit);
+        PoolManager.Instance.TakeToPool<Unit>(unit.unitStat.unitName, unit);
     }
     #endregion
 
@@ -105,7 +92,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void DeSpawnProjectile(Projectile projectile)
     {
-        PoolManager.Instance.TakeToPool<Projectile>(projectile.idName, projectile);
+        PoolManager.Instance.TakeToPool<Projectile>(projectile.projectileStat.projectileName, projectile);
     }
     #endregion
 }

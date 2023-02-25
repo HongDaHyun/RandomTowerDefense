@@ -5,13 +5,13 @@ using Redcode.Pools;
 
 public abstract class Projectile : MonoBehaviour, IPoolObject
 {
-    public string idName;
     public ProjectileStat projectileStat;
     public UnitStat unitStat;
     public Transform target;
 
     void IPoolObject.OnCreatedInPool()
     {
+        name = name.Replace("(Clone)", "");
     }
 
     void IPoolObject.OnGettingFromPool()
@@ -54,6 +54,6 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 
     public void SetUp()
     {
-        projectileStat = CSVReader.Instance.ProjectileExport(idName);
+        projectileStat = CSVReader.Instance.ProjectileExport(name);
     }
 }

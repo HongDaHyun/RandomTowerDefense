@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public abstract class Enemy : MonoBehaviour, IPoolObject
 {
     protected SpriteRenderer spriteRenderer;
-    public string idName;
     public EnemyStat enemyStat;
     #region Movement
     protected Vector3 moveDirection;
@@ -22,6 +21,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
 
     public void OnCreatedInPool() //최초
     {
+        name = name.Replace("(Clone)", "");
     }
 
     public void OnGettingFromPool() //재사용
@@ -39,11 +39,19 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         HpSliderUpdate();
     }
 
-    protected abstract void Die();
-    protected abstract void Movement();
+    protected virtual void Die()
+    {
+        isDie = true;
+        SpawnManager.Instance.DeSpawnEnemy(this);
+    }
+    protected virtual void Movement()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, moveDirection, enemyStat.moveSpeed);
+    }
     protected virtual void SetUp()
     {
-        enemyStat = CSVReader.Instance.EnemyExport(idName);
+        name = name.Replace("(Clone)", "");
+        enemyStat = CSVReader.Instance.EnemyExport(name); //(Clone) 삭제
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpSlider = GetComponentInChildren<Slider>();
         curHp = enemyStat.hp;
@@ -122,10 +130,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         StartCoroutine(HitColorAnimation());
 
         if(curHp <= 0)
-        {
-            isDie = true;
-            SpawnManager.Instance.DeSpawnEnemy(this);
-        }
+            Die();
     }
 
     private IEnumerator HitColorAnimation()

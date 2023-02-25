@@ -7,7 +7,6 @@ public enum UnitState { SearchTarget = 0, AttackToTarget }
 
 public abstract class Unit : MonoBehaviour, IPoolObject
 {
-    public string idName;
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
     private Transform attackTarget = null;
@@ -18,8 +17,10 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     protected bool isAnim;
     #endregion
     public UnitStat unitStat;
+
     void IPoolObject.OnCreatedInPool()
     {
+        name = name.Replace("(Clone)", "");
     }
 
     void IPoolObject.OnGettingFromPool()
@@ -35,7 +36,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     void SetUp()
     {
-        unitStat = CSVReader.Instance.UnitExport(idName);
+        unitStat = CSVReader.Instance.UnitExport(name); //(Clone) ªË¡¶
         anim = GetComponent<Animator>();
         isAnim = (anim != null) ? true : false;
         ChangeState(UnitState.SearchTarget);

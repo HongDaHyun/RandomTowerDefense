@@ -34,7 +34,6 @@ public struct Wave
 [System.Serializable]
 public class WaveEnemy
 {
-    public EnemyType type;
-    public int index;
+    public string name;
     public int maxCount;
 }

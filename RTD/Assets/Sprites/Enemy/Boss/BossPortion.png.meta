@@ -135,8 +135,8 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.06}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,27 +144,6 @@ TextureImporter:
       bones: []
       spriteID: cbaa028975941554fbda199d712cc0df
       internalID: 1255131575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BossPortion_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.06}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e25fe64aede0dc4c8cbcdc4e9706cc4
-      internalID: 256805443
       vertices: []
       indices: 
       edges: []
@@ -180,7 +159,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BossPortion_1: 256805443
       BossPortion_0: 1255131575
   spritePackingTag: 
   pSDRemoveMatte: 0

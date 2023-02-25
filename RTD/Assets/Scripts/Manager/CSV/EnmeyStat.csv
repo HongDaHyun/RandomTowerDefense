@@ -9,8 +9,8 @@ Name,Type,Hp,Strength,Defense,MoveSpeed
 트레이너,Human,3,0,0,0.03
 편의점알바,Human,3,0,0,0.03
 할아버지,Human,3,0,0,0.03
-빨간포션,Portion,3,0,0,0.03
-노란포션,Portion,3,0,0,0.03
+빨강포션,Portion,3,0,0,0.03
+노랑포션,Portion,3,0,0,0.03
 초록포션,Portion,3,0,0,0.03
 파랑포션,Portion,3,0,0,0.03
 주황포션,Portion,3,0,0,0.03
