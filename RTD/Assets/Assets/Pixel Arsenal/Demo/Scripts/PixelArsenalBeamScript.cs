@@ -4,136 +4,122 @@ using UnityEngine.UI;
 
 namespace PixelArsenal
 {
-
-public class PixelArsenalBeamScript : MonoBehaviour {
-
-    [Header("Prefabs")]
-    public GameObject[] beamLineRendererPrefab;
-    public GameObject[] beamStartPrefab;
-    public GameObject[] beamEndPrefab;
-
-    private int currentBeam = 0;
-
-    private GameObject beamStart;
-    private GameObject beamEnd;
-    private GameObject beam;
-    private LineRenderer line;
-
-    [Header("Adjustable Variables")]
-    public float beamEndOffset = 1f; //How far from the raycast hit point the end effect is positioned
-    public float textureScrollSpeed = 8f; //How fast the texture scrolls along the beam
-	public float textureLengthScale = 3; //Length of the beam texture
-
-    [Header("Put Sliders here (Optional)")]
-    public Slider endOffSetSlider; //Use UpdateEndOffset function on slider
-    public Slider scrollSpeedSlider; //Use UpdateScrollSpeed function on slider
-
-    [Header("Put UI Text object here to show beam name")]
-    public Text textBeamName;
-
-    // Use this for initialization
-    void Start()
+    public enum BeamType
     {
-        if (textBeamName)
-            textBeamName.text = beamLineRendererPrefab[currentBeam].name;
-        if (endOffSetSlider)
-            endOffSetSlider.value = beamEndOffset;
-        if (scrollSpeedSlider)
-            scrollSpeedSlider.value = textureScrollSpeed;
+        Type1,
+        Type2,
+        Type3
     }
 
-    // Update is called once per frame
-    void Update()
+    public class PixelArsenalBeamScript : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
+        [Header("Prefabs")]
+        public GameObject[] beamLineRendererPrefab;
+        public GameObject[] beamStartPrefab;
+        public GameObject[] beamEndPrefab;
 
-        if (Input.GetMouseButtonDown(0))
+        private BeamType currentBeam = BeamType.Type1;
+        private GameObject beamStart;
+        private GameObject beamEnd;
+        private GameObject beam;
+        private LineRenderer line;
+        private Transform transform;
+        private float textureScrollOffset;
+
+        [Header("Adjustable Variables")]
+        public float beamEndOffset = 1f;
+        public float textureScrollSpeed = 8f;
+        public float textureLengthScale = 3;
+
+        [Header("Put Sliders here (Optional)")]
+        public Slider endOffSetSlider;
+        public Slider scrollSpeedSlider;
+
+        [Header("Put UI Text object here to show beam name")]
+        public Text textBeamName;
+
+        private bool isFiringBeam = false;
+
+        // Use this for initialization
+        void Start()
         {
-            beamStart = Instantiate(beamStartPrefab[currentBeam], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            beamEnd = Instantiate(beamEndPrefab[currentBeam], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            beam = Instantiate(beamLineRendererPrefab[currentBeam], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            transform = gameObject.transform;
+            if (textBeamName)
+                textBeamName.text = beamLineRendererPrefab[(int)currentBeam].name;
+            if (endOffSetSlider)
+                endOffSetSlider.value = beamEndOffset;
+            if (scrollSpeedSlider)
+                scrollSpeedSlider.value = textureScrollSpeed;
+            CreateBeamObjects();
+        }
+
+        void CreateBeamObjects()
+        {
+            beamStart = Instantiate(beamStartPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, transform);
+            beamEnd = Instantiate(beamEndPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, transform);
+            beam = Instantiate(beamLineRendererPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, transform);
             line = beam.GetComponent<LineRenderer>();
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            Destroy(beamStart);
-            Destroy(beamEnd);
-            Destroy(beam);
+            beamStart.SetActive(false);
+            beamEnd.SetActive(false);
+            beam.SetActive(false);
         }
 
-        if (Input.GetMouseButton(0))
+        // Update is called once per frame
+        void Update()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray.origin, ray.direction, out hit))
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Application.Quit();
+
+            if (Input.GetMouseButtonDown(0))
             {
-                Vector3 tdir = hit.point - transform.position;
-                ShootBeamInDir(transform.position, tdir);
+                isFiringBeam = true;
+                beamStart.SetActive(true);
+                beamEnd.SetActive(true);
+                beam.SetActive(true);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                isFiringBeam = false;
+                beamStart.SetActive(false);
+                beamEnd.SetActive(false);
+                beam.SetActive(false);
+            }
+
+            if (isFiringBeam)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray.origin, ray.direction, out hit))
+                {
+                    Vector3 tdir = hit.point - transform.position;
+                    ShootBeamInDir(transform.position, tdir);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) //Cycle beams
+            {
+                currentBeam = (BeamType)(((int)currentBeam + 1) % beamLineRendererPrefab.Length);
+                UpdateBeam();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) //Cycle beams
+            {
+                currentBeam = (BeamType)(((int)currentBeam - 1 + beamLineRendererPrefab.Length) % beamLineRendererPrefab.Length);
+                UpdateBeam();
             }
         }
-		
-		if (Input.GetKeyDown(KeyCode.RightArrow)) //4 next if commands are just hotkeys for cycling beams
-        {
-            nextBeam();
-        }
 
-		if (Input.GetKeyDown(KeyCode.D))
-		{
-			nextBeam();
-		}
-
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			previousBeam();
-		}
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            previousBeam();
-        }
-		
-    }
-
-    public void nextBeam() // Next beam
+        void UpdateBeam()
     {
-        if (currentBeam < beamLineRendererPrefab.Length - 1)
-            currentBeam++;
-        else
-            currentBeam = 0;
-
         if (textBeamName)
-            textBeamName.text = beamLineRendererPrefab[currentBeam].name;
-    }
-	
-	    public void previousBeam() // Previous beam
-    {
-        if (currentBeam > - 0)
-            currentBeam--;
-        else
-            currentBeam = beamLineRendererPrefab.Length - 1;
-
-        if (textBeamName)
-            textBeamName.text = beamLineRendererPrefab[currentBeam].name;
-    }
-	
-
-    public void UpdateEndOffset()
-    {
-        beamEndOffset = endOffSetSlider.value;
-    }
-
-    public void UpdateScrollSpeed()
-    {
-        textureScrollSpeed = scrollSpeedSlider.value;
+            textBeamName.text = beamLineRendererPrefab[(int)currentBeam].name;
+        Destroy(beamStart);
+        Destroy(beamEnd);
+        Destroy(beam);
+        CreateBeamObjects();
     }
 
     void ShootBeamInDir(Vector3 start, Vector3 dir)
     {
-        #if UNITY_5_5_OR_NEWER
-		line.positionCount = 2;
-		#else
-		line.SetVertexCount(2); 
-		#endif
         line.SetPosition(0, start);
         beamStart.transform.position = start;
 
@@ -152,7 +138,10 @@ public class PixelArsenalBeamScript : MonoBehaviour {
 
         float distance = Vector3.Distance(start, end);
         line.sharedMaterial.mainTextureScale = new Vector2(distance / textureLengthScale, 1);
-        line.sharedMaterial.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0);
+        textureScrollOffset -= Time.deltaTime * textureScrollSpeed;
+        if (textureScrollOffset < 0f)
+            textureScrollOffset += 1f;
+        line.sharedMaterial.mainTextureOffset = new Vector2(textureScrollOffset, 0);
     }
 }
 }

@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class Unit_Bow : Unit
 {
+    protected override void Shoot()
+    {
+        SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, "Arrow");
+    }
 }

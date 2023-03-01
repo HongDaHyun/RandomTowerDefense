@@ -66,7 +66,7 @@ namespace PixelArsenal
                 }
 
                 Destroy(projectileParticle, 3f); // Removes particle effect after delay
-                Destroy(impactP, 3.5f); // Removes impact effect after delay
+                Destroy(impactP, 2.5f); // Removes impact effect after delay
                 Destroy(gameObject); // Removes the projectile
             }
         }

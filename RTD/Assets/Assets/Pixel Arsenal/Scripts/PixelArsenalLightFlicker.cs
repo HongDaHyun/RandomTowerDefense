@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+namespace PixelArsenal
+{
+
 public class PixelArsenalLightFlicker : MonoBehaviour
 {
 // Properties
@@ -57,5 +60,6 @@ float EvalWave (){
         y = 1.0f;
     }        
     return (y*amplitude)+startValue;     
+}
 }
 }

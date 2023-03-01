@@ -1001,7 +1001,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1060610722}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
-        m_MethodName: Tab
+        m_MethodName: PauseTab
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2116753103}
@@ -8598,6 +8598,62 @@ MonoBehaviour:
       atkSpeed: 0
       range: 0
       projectileSpeed: 0.1
+    - projectileName: Axid
+      projectileType: 3
+      dmg: 0
+      critPercent: 0
+      critDmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 0.1
+    - projectileName: Bullet
+      projectileType: 4
+      dmg: 0
+      critPercent: 0
+      critDmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 0.05
+    - projectileName: Flame
+      projectileType: 2
+      dmg: 0
+      critPercent: 0
+      critDmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 0.1
+    - projectileName: Iceball
+      projectileType: 5
+      dmg: 0
+      critPercent: 0
+      critDmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 0.05
+    - projectileName: Punch
+      projectileType: 1
+      dmg: 0
+      critPercent: 0
+      critDmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 0.1
+    - projectileName: SwordCup
+      projectileType: 6
+      dmg: 0
+      critPercent: 0
+      critDmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 0.1
+    - projectileName: Thunderball
+      projectileType: 7
+      dmg: 0
+      critPercent: 0
+      critDmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 0.1
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15413,8 +15469,183 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 1843318193}
     _nonLazy: 0
+  - _name: "\uACE0\uB9B4\uB77C"
+    _component: {fileID: -7583596511877275422, guid: f119889d84326ae498761b0b37bccbd7, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uBCF5\uC11C"
+    _component: {fileID: 3670714259806959248, guid: d1088853d8dc0c24883c992667eeb72e, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC2DC\uBC14\uACAC"
+    _component: {fileID: -6854584086174779059, guid: 186eafe57a8c381498d1166d0b359fe3, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uD3F0"
+    _component: {fileID: -1107597110567072790, guid: c16f7343610183e4cba04dbc0455c399, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uBD88\uB9C8\uBC95\uC0AC"
+    _component: {fileID: -9026384749643122397, guid: b92ed229e735b5c42b6aa14458605a7b, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uBD90\uBC14\uB9E8"
+    _component: {fileID: -3321832308852947347, guid: 18ddc204537a9c24c9cb94ceac152925, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC194\uB77C"
+    _component: {fileID: -1499279732272640783, guid: 1e4cd564dbfe70f4381e68ecf1feafec, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uCE98\uB85D\uC2DC\uD37C"
+    _component: {fileID: -687750686352369048, guid: 43248a9d7870b314db273d8374c3c03f, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uADE0\uB3CC\uC774"
+    _component: {fileID: 1568778298498033929, guid: e9b41caa416312d49bf8590db0b8ca1f, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uADE0\uBCA0\uC774\uBE44"
+    _component: {fileID: 8838602706250169765, guid: 81069fcf9ab0f2c439ee0e37c785aba8, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uB9C8\uC2A4\uD06C\uB9E8"
+    _component: {fileID: 255265471164766176, guid: 0d7ec75d6b603b440867bf1bd35ddd4c, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC5ED\uBCD1\uC758\uC0AC"
+    _component: {fileID: 2806511124900974972, guid: 09fc4c07280ae954281ad9e74a05e395, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: F-35
+    _component: {fileID: -1346234158673751857, guid: 969989691720b4948a86a20805c9912a, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uAD70\uC778"
+    _component: {fileID: -2213450092343779130, guid: 9299d2afbf2ed0345ac61a765198ee3d, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC13C\uD2B8\uB9AC\uAC74"
+    _component: {fileID: -3233322113431716091, guid: 4cacce88a5a7f96479bb172f348cb6ce, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uD0F1\uD06C"
+    _component: {fileID: -965000483655890554, guid: 75efae2ac9f8df149a6d0dc1d73a26e9, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uB0C9\uC7A5\uACE0"
+    _component: {fileID: 2857269243029194503, guid: 795ad1b6d4a0db24585160b093b92c26, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uB208\uC0AC\uB78C"
+    _component: {fileID: -2821273417920349076, guid: 1f6768e28c265b248a505a561dc853c6, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC5BC\uC74C\uC6A9"
+    _component: {fileID: 5705364440210518804, guid: e858de5aec8980a43bf8090436f58521, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC5BC\uC74C\uC815\uB839"
+    _component: {fileID: -8372188740777992512, guid: 3f8525e6921b19d4bb24bd12c799298a, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uAC80\uC0AC"
+    _component: {fileID: 1178421491499836396, guid: 30e448e9b037f854390a0fd63251f6d7, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uACE0\uAE38\uB625"
+    _component: {fileID: 7438392557397216927, guid: 8348908c47a2f604eb84b6b13add2c3d, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uB300\uAC80\uC0AC"
+    _component: {fileID: -182657464747389178, guid: 50c632fc1ebb56b47ba3a0e83b071031, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC57C\uC2A4\uC721"
+    _component: {fileID: -4014725939671042943, guid: 5963eb2b9da6b6b46b7f6844cb59dede, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uB85C\uBD07"
+    _component: {fileID: -33728753594692803, guid: a4faae9cda3ccaf449ca1abf16ab568f, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC2A4\uBC14\uD034"
+    _component: {fileID: 3884585311652449667, guid: 207dd59ca72cb18459ada7b4d0ceccd4, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC36C\uB77C\uC784"
+    _component: {fileID: 8218393545416371293, guid: dd1612bb967cbe043bd07e5c2c599ec4, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
+  - _name: "\uC804\uAD6C"
+    _component: {fileID: 971981110504439539, guid: 1a4ce73422558fc43823179071c83c31, type: 3}
+    _count: 0
+    _container: {fileID: 1843318193}
+    _nonLazy: 0
   - _name: Arrow
     _component: {fileID: -4190706733542816097, guid: 687a092410122ca4e961ea84342cbbe2, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Axid
+    _component: {fileID: 3666634662602129511, guid: f66ec1e0d4bdc774b86e048c9cac7015, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Bullet
+    _component: {fileID: 4173786471559489169, guid: a14e21685d546734b876bb41bb0a65b4, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Flame
+    _component: {fileID: 9084899537127939069, guid: 83d3969a89c7f2a419c30a10f275be6c, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Iceball
+    _component: {fileID: 873447825128706441, guid: 7098e1546d5d1374fb7bec1618ee60b4, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Punch
+    _component: {fileID: 4937963754812133352, guid: 455ac7fb07c3d0d4fbfc2b169153ea65, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: SwordCup
+    _component: {fileID: 6031251915371759728, guid: 6b81a50e9f33a724c8273c8f7bc6d95e, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Thunderball
+    _component: {fileID: 8565052518463782003, guid: f229c62069bb9af47bd53ee5f6ed2cf3, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
@@ -21006,7 +21237,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1060610722}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
-        m_MethodName: Tab
+        m_MethodName: PauseTab
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2116753103}

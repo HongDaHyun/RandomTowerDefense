@@ -9,12 +9,12 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 {
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
-    private Transform attackTarget = null;
+    protected Transform attackTarget = null;
     private bool isAtk;
     #endregion
     #region Animation
     protected Animator anim;
-    protected bool isAnim;
+    public bool isAnim; //공격 방식 animation or default
     #endregion
     public UnitStat unitStat;
 
@@ -38,7 +38,6 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     {
         unitStat = CSVReader.Instance.UnitExport(name); //(Clone) 삭제
         anim = GetComponent<Animator>();
-        isAnim = (anim != null) ? true : false;
         ChangeState(UnitState.SearchTarget);
     }
 
@@ -91,13 +90,14 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     private IEnumerator AttackToTarget()
     {
-        if(!isAtk) // 한번만 작동
-            SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat);
         isAtk = true;
+        Shoot();
         if (isAnim)
             anim.SetBool("IsAtk", false);
         yield return new WaitForSeconds(unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
     }
+
+    protected abstract void Shoot();
     #endregion
 }

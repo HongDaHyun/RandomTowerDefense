@@ -28,10 +28,8 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         }
         if (target.gameObject.activeSelf)
         {
-            Vector3 direction = target.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.position = Vector2.MoveTowards(transform.position, target.position, projectileStat.projectileSpeed);
+            MoveRot();
+            MovePos();
         }
         else
             SpawnManager.Instance.DeSpawnProjectile(this);
@@ -55,5 +53,17 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
     public void SetUp()
     {
         projectileStat = CSVReader.Instance.ProjectileExport(name);
+    }
+
+    protected virtual void MovePos()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, target.position, projectileStat.projectileSpeed);
+    }
+
+    protected virtual void MoveRot()
+    {
+        Vector3 direction = target.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 95c043a6266ee91468acb6c5033b38ab, type: 3}
+  m_Sprite: {fileID: -1116044613, guid: b5be906befa7316469e44a136504f65d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.9, y: 0.3}
   m_EdgeRadius: 0
 --- !u!50 &4405807905537318816
 Rigidbody2D:
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9a996d8d98b0e4e93749df0ebb8038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: Arrow
   projectileStat:
     projectileName: 
     projectileType: 0
@@ -156,4 +155,14 @@ MonoBehaviour:
     atkSpeed: 0
     range: 0
     projectileSpeed: 0
+  unitStat:
+    unitName: 
+    unitType: 0
+    tier: 0
+    attribute: 0
+    dmg: 0
+    critPercent: 0
+    critDmg: 0
+    atkSpeed: 0
+    range: 0
   target: {fileID: 0}

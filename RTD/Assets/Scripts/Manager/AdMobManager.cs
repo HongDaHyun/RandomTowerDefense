@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using UnityEngine.SceneManagement;
 
 public class AdMobManager : Singleton<AdMobManager>
 {
@@ -34,6 +35,8 @@ public class AdMobManager : Singleton<AdMobManager>
 
     void LoadBannerAd()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 1) //씬이 1이면 함수 실행 x
+            return;
         AdSize adaptiveSize = AdSize.GetPortraitAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
         bannerAd = new BannerView(isTestMode ? bannerTestID : bannerID,
             adaptiveSize, AdPosition.Top);

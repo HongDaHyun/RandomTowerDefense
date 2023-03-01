@@ -67,6 +67,25 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+    public IEnumerator CountingKey(int count)
+    {
+        float duration = 0.5f;
+        float curKey = GameManager.Instance.gatchaKey;
+        int targetKey = (int)curKey + count;
+        float offset = (targetKey - curKey) / duration;
+
+        while(curKey < targetKey)
+        {
+            curKey += offset * Time.deltaTime;
+            GameManager.Instance.gatchaKey = (int)curKey;
+            //upPannel.gatchaKeyTxt.text = ((int)curKey).ToString();
+            yield return null;
+        }
+        GameManager.Instance.gatchaKey = targetKey;
+        //curKey = targetKey;
+        //upPannel.gatchaKeyTxt.text = ((int)curKey).ToString();
+    }
+
     public IEnumerator WaveTimer()
     {
         float readyTime = 10f;

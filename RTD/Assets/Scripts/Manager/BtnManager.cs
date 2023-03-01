@@ -14,6 +14,20 @@ public class BtnManager : Singleton<BtnManager>
             obj.SetActive(false);
     }
 
+    public void PauseTab(GameObject pausePannel)
+    {
+        if(!pausePannel.activeSelf)
+        {
+            Time.timeScale = 0;
+            pausePannel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = (int)GameManager.Instance.gameTime / 10f;
+            pausePannel.SetActive(false);
+        }
+    }
+
     public void GameStart(string _level)
     {
         GameManager gm = GameManager.Instance;
@@ -56,7 +70,7 @@ public class BtnManager : Singleton<BtnManager>
     public void Title()
     {
         GameManager.Instance.isStart = false;
-        GameManager.Instance.gameTime = TimeScale.Slow;
+        GameManager.Instance.gameTime = CurTime.Slow;
         SceneManager.LoadScene(0);
     }
 
@@ -73,7 +87,7 @@ public class BtnManager : Singleton<BtnManager>
         UIManager.Instance.gatchaPannel.gatchaBtn.interactable = false;
         UIManager.Instance.gatchaPannel.gatchaTab.interactable = false;
         //int ranType = UnityEngine.Random.Range(0, 8); // 0: Bow, 1: Fighter...
-        int ranType = 0; // 활밖에 없기에 임시방편
+        int ranType = 4;
         int ranTier = UnityEngine.Random.Range(0, 4); // 0: Common, 1: Rare, 2: Epic, 3: Legend
 
         for (int i = 0; i < (4 * 6 + ranTier) * 4; i++) //슬롯 돌리기
@@ -103,20 +117,19 @@ public class BtnManager : Singleton<BtnManager>
     {
         switch(GameManager.Instance.gameTime)
         {
-            case TimeScale.Slow:
-                GameManager.Instance.gameTime = TimeScale.Commonly;
+            case CurTime.Slow:
+                GameManager.Instance.gameTime = CurTime.Commonly;
                 break;
-            case TimeScale.Commonly:
-                GameManager.Instance.gameTime = TimeScale.Fast;
+            case CurTime.Commonly:
+                GameManager.Instance.gameTime = CurTime.Fast;
                 break;
-            case TimeScale.Fast:
-                GameManager.Instance.gameTime = TimeScale.Slow;
+            case CurTime.Fast:
+                GameManager.Instance.gameTime = CurTime.Slow;
                 break;
         }
         float curTime = (int)GameManager.Instance.gameTime / 10f;
         Time.timeScale = curTime;
         UIManager.Instance.gameSpeedTxt.text = "x " + curTime.ToString("F1");
-
     }
 
     public void UpgradeUnit()
