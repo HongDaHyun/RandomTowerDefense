@@ -8118,6 +8118,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 115b8e1c3cee1d543a4e97b24e067cf9, type: 3}
   - {fileID: 4900000, guid: 08fd09b9276ddab459a2e02626fb096f, type: 3}
   - {fileID: 4900000, guid: 1f363589cd0bc28458e38a7900fd9d7c, type: 3}
+  - {fileID: 4900000, guid: d78e4cfb6a40aca41ab6357c76c8ad01, type: 3}
   csvList:
     unitStat:
     - unitName: "\uAD81\uC218"
@@ -8597,7 +8598,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.1
+      projectileSpeed: 10
     - projectileName: Axid
       projectileType: 3
       dmg: 0
@@ -8605,7 +8606,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.1
+      projectileSpeed: 10
     - projectileName: Bullet
       projectileType: 4
       dmg: 0
@@ -8613,7 +8614,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.05
+      projectileSpeed: 10
     - projectileName: Flame
       projectileType: 2
       dmg: 0
@@ -8621,7 +8622,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.1
+      projectileSpeed: 10
     - projectileName: Iceball
       projectileType: 5
       dmg: 0
@@ -8629,7 +8630,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.05
+      projectileSpeed: 10
     - projectileName: Punch
       projectileType: 1
       dmg: 0
@@ -8637,7 +8638,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.1
+      projectileSpeed: 10
     - projectileName: SwordCup
       projectileType: 6
       dmg: 0
@@ -8645,7 +8646,7 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.1
+      projectileSpeed: 10
     - projectileName: Thunderball
       projectileType: 7
       dmg: 0
@@ -8653,7 +8654,8 @@ MonoBehaviour:
       critDmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0.1
+      projectileSpeed: 10
+    debuffStat: []
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0

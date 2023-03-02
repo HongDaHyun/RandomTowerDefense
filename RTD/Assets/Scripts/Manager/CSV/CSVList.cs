@@ -38,9 +38,18 @@ public struct ProjectileStat
 }
 
 [Serializable]
+public struct DebuffStat
+{
+    public string debuffName;
+    public bool isActive;
+    public float activeTime;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
     public ProjectileStat[] projectileStat;
+    public DebuffStat[] debuffStat;
 }

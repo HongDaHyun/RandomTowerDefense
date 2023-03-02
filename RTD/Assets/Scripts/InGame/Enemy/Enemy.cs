@@ -133,6 +133,13 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
             Die();
     }
 
+    public IEnumerator TakeFire(int dmg)
+    {
+        if (isDie)
+            yield break;
+
+    }
+
     private IEnumerator HitColorAnimation()
     {
         spriteRenderer.color = Color.red;

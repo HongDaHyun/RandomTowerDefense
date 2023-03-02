@@ -7,7 +7,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 {
     public ProjectileStat projectileStat;
     public UnitStat unitStat;
-    public Transform target;
+    public Transform startTrans, target;
 
     void IPoolObject.OnCreatedInPool()
     {
@@ -19,7 +19,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         SetUp();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (target == null)
         {
@@ -35,7 +35,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
             SpawnManager.Instance.DeSpawnProjectile(this);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Enemy"))
             return;
@@ -45,8 +45,9 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg);
     }
 
-    public void SetTarget(Transform target) //rotationµµ
+    public virtual void SetTarget(Transform start, Transform target)
     {
+        startTrans = start;
         this.target = target;
     }
 
@@ -57,7 +58,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 
     protected virtual void MovePos()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, projectileStat.projectileSpeed);
+        transform.Translate(Vector2.right * projectileStat.projectileSpeed * Time.deltaTime);
     }
 
     protected virtual void MoveRot()

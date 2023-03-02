@@ -87,7 +87,7 @@ public class BtnManager : Singleton<BtnManager>
         UIManager.Instance.gatchaPannel.gatchaBtn.interactable = false;
         UIManager.Instance.gatchaPannel.gatchaTab.interactable = false;
         //int ranType = UnityEngine.Random.Range(0, 8); // 0: Bow, 1: Fighter...
-        int ranType = 4;
+        int ranType = 1;
         int ranTier = UnityEngine.Random.Range(0, 4); // 0: Common, 1: Rare, 2: Epic, 3: Legend
 
         for (int i = 0; i < (4 * 6 + ranTier) * 4; i++) //½½·Ô µ¹¸®±â

@@ -15,6 +15,7 @@ public class CSVReader : Singleton<CSVReader>
         UnitCSVReader();
         EnemyCSVReader();
         ProjectileCSVReader();
+        DebuffCSVReader();
     }
 
     public void UnitCSVReader()
@@ -79,6 +80,22 @@ public class CSVReader : Singleton<CSVReader>
             csvList.projectileStat[i].atkSpeed = float.Parse(data[size * k + 5]);
             csvList.projectileStat[i].range = float.Parse(data[size * k + 6]);
             csvList.projectileStat[i].projectileSpeed = float.Parse(data[size * k + 7]);
+        }
+    }
+
+    public void DebuffCSVReader()
+    {
+        int order = 3; int size = 2;
+        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / size - 1;
+        csvList.debuffStat = new DebuffStat[tableSize];
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            int k = i + 1;
+            csvList.debuffStat[i] = new DebuffStat();
+            csvList.debuffStat[i].debuffName = data[size * k];
+            csvList.debuffStat[i].activeTime = float.Parse(data[size * k + 1]);
         }
     }
     #endregion
