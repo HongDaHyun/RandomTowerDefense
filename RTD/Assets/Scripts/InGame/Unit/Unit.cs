@@ -10,7 +10,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
     protected Transform attackTarget = null;
-    private bool isAtk;
+    protected bool isAtk;
     #endregion
     #region Animation
     protected Animator anim;
@@ -88,7 +88,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
         }
     }
 
-    private IEnumerator AttackToTarget()
+    protected virtual IEnumerator AttackToTarget()
     {
         isAtk = true;
         Shoot();
@@ -98,6 +98,6 @@ public abstract class Unit : MonoBehaviour, IPoolObject
         ChangeState(UnitState.SearchTarget);
     }
 
-    protected abstract void Shoot();
+    protected abstract Projectile Shoot();
     #endregion
 }

@@ -7,10 +7,10 @@ Name,Type,Tier,Attribute,Dmg,CritPercent,CritDmg,AtkSpeed,Range
 고릴라,Fighter,Rare,None,1,0,0,1,3.5
 폰,Fighter,Epic,None,1,0,0,1,3.5
 시바견,Fighter,Legend,None,1,0,0,1,3.5
-붐바맨,Fire,Legend,Fire,1,0,0,1,3.5
-캘록시퍼,Fire,Rare,Fire,1,0,0,1,3.5
-불마법사,Fire,Common,Fire,1,0,0,1,3.5
-솔라,Fire,Epic,Fire,1,0,0,1,3.5
+붐바맨,Fire,Legend,Fire,0,0,0,1,3.5
+캘록시퍼,Fire,Rare,Fire,0,0,0,1,3.5
+불마법사,Fire,Common,Fire,0,0,0,1,3.5
+솔라,Fire,Epic,Fire,0,0,0,1,3.5
 마스크맨,Germ,Legend,Germ,1,0,0,1,3.5
 균돌이,Germ,Rare,Germ,1,0,0,1,3.5
 균베이비,Germ,Common,Germ,1,0,0,1,3.5

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Unit_Sword : Unit
 {
-    protected override void Shoot()
+    protected override Projectile Shoot()
     {
-        SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, "SwordCup");
+        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, "SwordCup");
+        return projectile;
     }
 }

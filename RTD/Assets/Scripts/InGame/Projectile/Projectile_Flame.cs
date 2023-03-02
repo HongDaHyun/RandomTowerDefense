@@ -12,6 +12,16 @@ public class Projectile_Flame : Projectile
     {
         if (!collision.CompareTag("Enemy"))
             return;
+        Enemy enemy = collision.GetComponent<Enemy>();
+        enemy.StartCoroutine(enemy.TakeFire(unitStat.dmg + projectileStat.dmg));
+    }
+    public override void SetTarget(Transform start, Transform target)
+    {
+        base.SetTarget(start, target);
+        MoveRot();
+    }
 
+    protected override void Update()
+    {
     }
 }

@@ -230,6 +230,10 @@ MonoBehaviour:
   waves:
   - spawnTime: 1
     enemy:
+    - name: "\uD65C\uC2A4\uCEEC"
+      maxCount: 1
+  - spawnTime: 1
+    enemy:
     - name: "\uC7BC\uBBFC\uC774"
       maxCount: 10
   - spawnTime: 1
@@ -8125,537 +8129,566 @@ MonoBehaviour:
       unitType: 0
       tier: 0
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uBC1C\uB9AC\uC2A4\uD0C0"
       unitType: 0
       tier: 2
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uBBF8\uB77C"
       unitType: 0
       tier: 3
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uAC10\uC2DC\uD0D1"
       unitType: 0
       tier: 1
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uBCF5\uC11C"
       unitType: 1
       tier: 0
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uACE0\uB9B4\uB77C"
       unitType: 1
       tier: 1
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uD3F0"
       unitType: 1
       tier: 2
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC2DC\uBC14\uACAC"
       unitType: 1
       tier: 3
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uBD90\uBC14\uB9E8"
       unitType: 2
       tier: 3
       attribute: 1
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uCE98\uB85D\uC2DC\uD37C"
       unitType: 2
       tier: 1
       attribute: 1
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uBD88\uB9C8\uBC95\uC0AC"
       unitType: 2
       tier: 0
       attribute: 1
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC194\uB77C"
       unitType: 2
       tier: 2
       attribute: 1
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uB9C8\uC2A4\uD06C\uB9E8"
       unitType: 3
       tier: 3
       attribute: 2
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uADE0\uB3CC\uC774"
       unitType: 3
       tier: 1
       attribute: 2
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uADE0\uBCA0\uC774\uBE44"
       unitType: 3
       tier: 0
       attribute: 2
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC5ED\uBCD1\uC758\uC0AC"
       unitType: 3
       tier: 2
       attribute: 2
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC13C\uD2B8\uB9AC\uAC74"
       unitType: 4
       tier: 1
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: F-35
       unitType: 4
       tier: 3
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uAD70\uC778"
       unitType: 4
       tier: 0
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uD0F1\uD06C"
       unitType: 4
       tier: 2
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC5BC\uC74C\uC6A9"
       unitType: 5
       tier: 3
       attribute: 3
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC5BC\uC74C\uC815\uB839"
       unitType: 5
       tier: 1
       attribute: 3
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uB0C9\uC7A5\uACE0"
       unitType: 5
       tier: 0
       attribute: 3
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uB208\uC0AC\uB78C"
       unitType: 5
       tier: 2
       attribute: 3
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uB300\uAC80\uC0AC"
       unitType: 6
       tier: 1
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
       tier: 2
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uAC80\uC0AC"
       unitType: 6
       tier: 0
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
       tier: 3
       attribute: 0
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC804\uAD6C"
       unitType: 7
       tier: 1
       attribute: 4
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uB85C\uBD07"
       unitType: 7
       tier: 0
       attribute: 4
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC2A4\uBC14\uD034"
       unitType: 7
       tier: 2
       attribute: 4
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC36C\uB77C\uC784"
       unitType: 7
       tier: 3
       attribute: 4
-      dmg: 1
       critPercent: 0
       critDmg: 0
+      dmg: 1
       atkSpeed: 1
       range: 3.5
     enemyStat:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2DC\uAD11\uACE8\uB818"
       enemyType: 0
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC11D\uD0C4\uACE8\uB818"
       enemyType: 0
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC790\uC218\uC815\uACE8\uB818"
       enemyType: 0
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD615\uC11D\uACE8\uB818"
       enemyType: 0
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC7BC\uBBFC\uC774"
       enemyType: 1
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uACFC\uD559\uC790"
       enemyType: 1
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD2B8\uB808\uC774\uB108"
       enemyType: 1
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD3B8\uC758\uC810\uC54C\uBC14"
       enemyType: 1
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD560\uC544\uBC84\uC9C0"
       enemyType: 1
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBE68\uAC15\uD3EC\uC158"
       enemyType: 2
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB178\uB791\uD3EC\uC158"
       enemyType: 2
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uCD08\uB85D\uD3EC\uC158"
       enemyType: 2
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD30C\uB791\uD3EC\uC158"
       enemyType: 2
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uD669\uD3EC\uC158"
       enemyType: 2
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCEEC"
       enemyType: 3
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC2A4\uCEEC"
       enemyType: 3
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD65C\uC2A4\uCEEC"
       enemyType: 3
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uBA39\uC2A4\uCEEC"
       enemyType: 3
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB9C8\uBC95\uC2A4\uCEEC"
       enemyType: 3
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBB3C\uB77C\uC784"
       enemyType: 4
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD480\uB77C\uC784"
       enemyType: 4
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD478\uB529\uB77C\uC784"
       enemyType: 4
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD88\uB77C\uC784"
       enemyType: 4
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC5BC\uB77C\uC784"
       enemyType: 4
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB179\uC2A8\uACE8\uB818"
       enemyType: 0
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC778\uD615\uD0C8"
       enemyType: 1
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC815\uD3EC\uC158"
       enemyType: 2
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCE74\uC2A4\uCE74"
       enemyType: 3
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD80\uC6B8\uB77C\uC784"
       enemyType: 4
-      hp: 3
       strength: 0
+      debuff: 6
+      hp: 3
       defense: 0
       moveSpeed: 0.03
     projectileStat:
     - projectileName: Arrow
       projectileType: 0
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
     - projectileName: Axid
       projectileType: 3
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
     - projectileName: Bullet
       projectileType: 4
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
     - projectileName: Flame
       projectileType: 2
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0.5
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
     - projectileName: Iceball
       projectileType: 5
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
     - projectileName: Punch
       projectileType: 1
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
     - projectileName: SwordCup
       projectileType: 6
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
     - projectileName: Thunderball
       projectileType: 7
-      dmg: 0
       critPercent: 0
       critDmg: 0
+      dmg: 0
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
-    debuffStat: []
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0

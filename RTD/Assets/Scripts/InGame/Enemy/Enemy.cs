@@ -8,13 +8,14 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
 {
     protected SpriteRenderer spriteRenderer;
     public EnemyStat enemyStat;
+    public bool isFire, isGerm, isIce, isThunder;
     #region Movement
     protected Vector3 moveDirection;
     protected Transform[] wayPoints;
     protected int curWayPoint;
     #endregion
     #region HP
-    protected int curHp;
+    protected float curHp;
     protected bool isDie = false;
     protected Slider hpSlider;
     #endregion
@@ -51,12 +52,13 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
     protected virtual void SetUp()
     {
         name = name.Replace("(Clone)", "");
-        enemyStat = CSVReader.Instance.EnemyExport(name); //(Clone) ªË¡¶
+        enemyStat = CSVReader.Instance.EnemyExport(name);
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpSlider = GetComponentInChildren<Slider>();
         curHp = enemyStat.hp;
-        isDie = false;
+        isDie = false; isFire = false; isGerm = false; isIce = false; isThunder = false;
         spriteRenderer.color = Color.white;
+
 
         SetWayPoint();
         ResetWayPoint();
@@ -120,7 +122,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
     #endregion
 
     #region Damaged
-    public void TakeDmg(int dmg)
+    public void TakeDmg(float dmg)
     {
         if (isDie)
             return;
@@ -133,11 +135,17 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
             Die();
     }
 
-    public IEnumerator TakeFire(int dmg)
+    public IEnumerator TakeFire(float dmg)
     {
-        if (isDie)
+        if (isFire)
             yield break;
-
+        isFire = true;
+        for(int i = 0; i < enemyStat.debuff; i++)
+        {
+            TakeDmg(dmg);
+            yield return new WaitForSeconds(0.5f);
+        }
+        isFire = false;
     }
 
     private IEnumerator HitColorAnimation()
@@ -151,7 +159,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
 
     private void HpSliderUpdate()
     {
-        float imsi = (float)curHp / enemyStat.hp;
+        float imsi = curHp / enemyStat.hp;
 
         hpSlider.value = Mathf.Lerp(hpSlider.value, imsi, Time.deltaTime * 10);
     }

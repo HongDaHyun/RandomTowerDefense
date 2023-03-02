@@ -23,7 +23,9 @@ namespace PixelArsenal
         private GameObject beamEnd;
         private GameObject beam;
         private LineRenderer line;
+#pragma warning disable CS0108 // 멤버가 상속된 멤버를 숨깁니다. new 키워드가 없습니다.
         private Transform transform;
+#pragma warning restore CS0108 // 멤버가 상속된 멤버를 숨깁니다. new 키워드가 없습니다.
         private float textureScrollOffset;
 
         [Header("Adjustable Variables")]

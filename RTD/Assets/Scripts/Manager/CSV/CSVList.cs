@@ -15,8 +15,8 @@ public struct UnitStat
     public UnitType unitType;
     public Tier tier;
     public Attribute attribute;
-    public int dmg, critPercent, critDmg;
-    public float atkSpeed, range;
+    public int critPercent, critDmg;
+    public float dmg ,atkSpeed, range;
 }
 
 [Serializable]
@@ -24,8 +24,8 @@ public struct EnemyStat
 {
     public string enemyName;
     public EnemyType enemyType;
-    public int hp, strength;
-    public float defense, moveSpeed;
+    public int strength, debuff;
+    public float hp, defense, moveSpeed;
 }
 
 [Serializable]
@@ -33,16 +33,8 @@ public struct ProjectileStat
 {
     public string projectileName;
     public UnitType projectileType;
-    public int dmg, critPercent, critDmg;
-    public float atkSpeed, range, projectileSpeed;
-}
-
-[Serializable]
-public struct DebuffStat
-{
-    public string debuffName;
-    public bool isActive;
-    public float activeTime;
+    public int critPercent, critDmg;
+    public float dmg, atkSpeed, range, projectileSpeed;
 }
 
 [Serializable]
@@ -51,5 +43,4 @@ public class CSVList
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
     public ProjectileStat[] projectileStat;
-    public DebuffStat[] debuffStat;
 }

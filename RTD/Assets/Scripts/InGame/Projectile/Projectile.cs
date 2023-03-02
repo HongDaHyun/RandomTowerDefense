@@ -8,6 +8,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
     public ProjectileStat projectileStat;
     public UnitStat unitStat;
     public Transform startTrans, target;
+    public float remainTime = 2f;
 
     void IPoolObject.OnCreatedInPool()
     {
@@ -17,6 +18,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
     void IPoolObject.OnGettingFromPool()
     {
         SetUp();
+        StartCoroutine(Remain());
     }
 
     protected virtual void Update()
@@ -66,5 +68,17 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    public float time;
+    protected virtual IEnumerator Remain()
+    {
+        time = 0f;
+        while(time <= remainTime)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        SpawnManager.Instance.DeSpawnProjectile(this);
     }
 }
