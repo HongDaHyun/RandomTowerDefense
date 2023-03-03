@@ -53,7 +53,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         this.target = target;
     }
 
-    public void SetUp()
+    public virtual void SetUp()
     {
         projectileStat = CSVReader.Instance.ProjectileExport(name);
     }

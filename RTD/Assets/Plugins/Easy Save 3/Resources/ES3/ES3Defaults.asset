@@ -32,6 +32,9 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - DOTween.Modules
+    - DOTweenPro.EditorScripts
+    - DOTweenPro.Scripts
     - GoogleMobileAds.Editor
     - Nementic.SelectionUtility.Editor
     - Nementic.SelectionUtility.Runtime
