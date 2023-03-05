@@ -8239,7 +8239,7 @@ MonoBehaviour:
       attribute: 2
       critPercent: 0
       critDmg: 0
-      dmg: 1
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uADE0\uB3CC\uC774"
@@ -8248,7 +8248,7 @@ MonoBehaviour:
       attribute: 2
       critPercent: 0
       critDmg: 0
-      dmg: 1
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uADE0\uBCA0\uC774\uBE44"
@@ -8257,7 +8257,7 @@ MonoBehaviour:
       attribute: 2
       critPercent: 0
       critDmg: 0
-      dmg: 1
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC5ED\uBCD1\uC758\uC0AC"
@@ -8266,7 +8266,7 @@ MonoBehaviour:
       attribute: 2
       critPercent: 0
       critDmg: 0
-      dmg: 1
+      dmg: 0
       atkSpeed: 1
       range: 3.5
     - unitName: "\uC13C\uD2B8\uB9AC\uAC74"
@@ -8416,211 +8416,181 @@ MonoBehaviour:
     enemyStat:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2DC\uAD11\uACE8\uB818"
       enemyType: 0
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC11D\uD0C4\uACE8\uB818"
       enemyType: 0
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC790\uC218\uC815\uACE8\uB818"
       enemyType: 0
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD615\uC11D\uACE8\uB818"
       enemyType: 0
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC7BC\uBBFC\uC774"
       enemyType: 1
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uACFC\uD559\uC790"
       enemyType: 1
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD2B8\uB808\uC774\uB108"
       enemyType: 1
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD3B8\uC758\uC810\uC54C\uBC14"
       enemyType: 1
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD560\uC544\uBC84\uC9C0"
       enemyType: 1
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBE68\uAC15\uD3EC\uC158"
       enemyType: 2
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB178\uB791\uD3EC\uC158"
       enemyType: 2
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uCD08\uB85D\uD3EC\uC158"
       enemyType: 2
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD30C\uB791\uD3EC\uC158"
       enemyType: 2
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uD669\uD3EC\uC158"
       enemyType: 2
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCEEC"
       enemyType: 3
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC2A4\uCEEC"
       enemyType: 3
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD65C\uC2A4\uCEEC"
       enemyType: 3
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uBA39\uC2A4\uCEEC"
       enemyType: 3
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB9C8\uBC95\uC2A4\uCEEC"
       enemyType: 3
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBB3C\uB77C\uC784"
       enemyType: 4
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD480\uB77C\uC784"
       enemyType: 4
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD478\uB529\uB77C\uC784"
       enemyType: 4
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD88\uB77C\uC784"
       enemyType: 4
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC5BC\uB77C\uC784"
       enemyType: 4
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB179\uC2A8\uACE8\uB818"
       enemyType: 0
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC778\uD615\uD0C8"
       enemyType: 1
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC815\uD3EC\uC158"
       enemyType: 2
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCE74\uC2A4\uCE74"
       enemyType: 3
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD80\uC6B8\uB77C\uC784"
       enemyType: 4
-      strength: 0
-      debuff: 6
+      strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
@@ -8637,7 +8607,7 @@ MonoBehaviour:
       projectileType: 3
       critPercent: 0
       critDmg: 0
-      dmg: 0
+      dmg: 0.8
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
@@ -8689,6 +8659,15 @@ MonoBehaviour:
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
+    debuffStat:
+    - debuffName: Fire
+      ticTime: 0.5
+    - debuffName: Germ
+      ticTime: 0.1
+    - debuffName: Ice
+      ticTime: 3
+    - debuffName: Thunder
+      ticTime: 3
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15681,6 +15660,11 @@ MonoBehaviour:
     _nonLazy: 0
   - _name: Thunderball
     _component: {fileID: 8565052518463782003, guid: f229c62069bb9af47bd53ee5f6ed2cf3, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: DeathExplosion
+    _component: {fileID: 7186707951879045562, guid: 8c71cf29e0143cc4d9cc2523de29c7ad, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0

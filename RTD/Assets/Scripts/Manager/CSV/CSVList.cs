@@ -24,7 +24,7 @@ public struct EnemyStat
 {
     public string enemyName;
     public EnemyType enemyType;
-    public int strength, debuff;
+    public int strength;
     public float hp, defense, moveSpeed;
 }
 
@@ -38,9 +38,17 @@ public struct ProjectileStat
 }
 
 [Serializable]
+public struct DebuffStat
+{
+    public string debuffName;
+    public float ticTime;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
     public ProjectileStat[] projectileStat;
+    public DebuffStat[] debuffStat;
 }

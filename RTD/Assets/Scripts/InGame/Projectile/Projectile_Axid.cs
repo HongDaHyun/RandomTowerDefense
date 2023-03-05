@@ -20,7 +20,7 @@ public class Projectile_Axid : Projectile
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        return;
     }
 
     protected override void Update()
@@ -31,5 +31,6 @@ public class Projectile_Axid : Projectile
     public void Explosion()
     {
         SpawnManager.Instance.DeSpawnProjectile(this);
+        SpawnManager.Instance.SpawnExplosion(transform, unitStat.dmg + projectileStat.dmg, "DeathExplosion");
     }
 }

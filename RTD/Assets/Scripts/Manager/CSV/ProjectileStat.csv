@@ -1,6 +1,6 @@
 Name,Type,Dmg,CritPercent,CritDmg,AtkSpeed,Range,ProjectileSpeed
 Arrow,Bow,0,0,0,0,0,10
-Axid,Germ,0,0,0,0,0,10
+Axid,Germ,0.2,0,0,0,0,10
 Bullet,Gun,0,0,0,0,0,10
 Flame,Fire,0.5,0,0,0,0,10
 Iceball,Ice,0,0,0,0,0,10

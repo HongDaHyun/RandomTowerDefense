@@ -95,5 +95,18 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         PoolManager.Instance.TakeToPool<Projectile>(projectile.name, projectile);
     }
+
+    public Explosion_Death SpawnExplosion(Transform start, float damage, string name)
+    {
+        Explosion_Death newProjectile = PoolManager.Instance.GetFromPool<Explosion_Death>(name);
+        newProjectile.transform.position = start.position;
+        newProjectile.SetDmg(damage);
+        return newProjectile;
+    }
+
+    public void DeSpawnExplosion(Explosion_Death explosion)
+    {
+        PoolManager.Instance.TakeToPool<Explosion_Death>(explosion.name, explosion);
+    }
     #endregion
 }

@@ -140,12 +140,25 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         if (isFire)
             yield break;
         isFire = true;
-        for(int i = 0; i < enemyStat.debuff; i++)
+        for(int i = 0; i < enemyStat.strength; i++)
         {
             TakeDmg(dmg);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(CSVReader.Instance.DebuffExport("Fire").ticTime);
         }
         isFire = false;
+    }
+
+    public IEnumerator TakeGerm(float dmg)
+    {
+        if (isGerm)
+            yield break;
+        isGerm = true;
+        for (int i = 0; i < enemyStat.strength; i++)
+        {
+            TakeDmg(dmg);
+            yield return new WaitForSeconds(CSVReader.Instance.DebuffExport("Germ").ticTime);
+        }
+        isGerm = false;
     }
 
     private IEnumerator HitColorAnimation()

@@ -15,6 +15,7 @@ public class CSVReader : Singleton<CSVReader>
         UnitCSVReader();
         EnemyCSVReader();
         ProjectileCSVReader();
+        DebuffCSVReader();
     }
 
     public void UnitCSVReader()
@@ -42,7 +43,7 @@ public class CSVReader : Singleton<CSVReader>
 
     public void EnemyCSVReader()
     {
-        int order = 1; int size = 7;
+        int order = 1; int size = 6;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.enemyStat = new EnemyStat[tableSize];
@@ -57,7 +58,6 @@ public class CSVReader : Singleton<CSVReader>
             csvList.enemyStat[i].strength = int.Parse(data[size * k + 3]);
             csvList.enemyStat[i].defense = float.Parse(data[size * k + 4]);
             csvList.enemyStat[i].moveSpeed = float.Parse(data[size * k + 5]);
-            csvList.enemyStat[i].debuff = int.Parse(data[size * k + 6]);
         }
     }
 
@@ -80,6 +80,22 @@ public class CSVReader : Singleton<CSVReader>
             csvList.projectileStat[i].atkSpeed = float.Parse(data[size * k + 5]);
             csvList.projectileStat[i].range = float.Parse(data[size * k + 6]);
             csvList.projectileStat[i].projectileSpeed = float.Parse(data[size * k + 7]);
+        }
+    }
+
+    public void DebuffCSVReader()
+    {
+        int order = 3; int size = 2;
+        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / size - 1;
+        csvList.debuffStat = new DebuffStat[tableSize];
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            int k = i + 1;
+            csvList.debuffStat[i] = new DebuffStat();
+            csvList.debuffStat[i].debuffName = data[size * k];
+            csvList.debuffStat[i].ticTime = float.Parse(data[size * k + 1]);
         }
     }
     #endregion
@@ -131,6 +147,16 @@ public class CSVReader : Singleton<CSVReader>
             }
         }
         return ref csvList.projectileStat[0];
+    }
+
+    public ref DebuffStat DebuffExport(string name)
+    {
+        for(int i = 0; i < csvList.debuffStat.Length; i++)
+        {
+            if (name == csvList.debuffStat[i].debuffName.ToString())
+                return ref csvList.debuffStat[i];
+        }
+        return ref csvList.debuffStat[0];
     }
     #endregion
 }
