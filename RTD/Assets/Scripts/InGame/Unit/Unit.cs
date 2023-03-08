@@ -21,6 +21,9 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     void IPoolObject.OnCreatedInPool()
     {
         name = name.Replace("(Clone)", "");
+        anim = GetComponent<Animator>();
+        SetUp();
+        SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
     }
 
     void IPoolObject.OnGettingFromPool()
@@ -37,7 +40,6 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     void SetUp()
     {
         unitStat = CSVReader.Instance.UnitExport(name); //(Clone) ªË¡¶
-        anim = GetComponent<Animator>();
         ChangeState(UnitState.SearchTarget);
     }
 
@@ -45,7 +47,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     public void ChangeState(UnitState newState)
     {
         StopCoroutine(unitState.ToString());
-        unitState = newState; ;
+        unitState = newState;
         StartCoroutine(unitState.ToString());
     }
 
@@ -77,7 +79,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
                 }
             }
 
-            if (attackTarget != null)
+            if (attackTarget != null && attackTarget.gameObject.activeSelf)
             {
                 if(isAnim && !isAtk)
                     anim.SetBool("IsAtk", true);

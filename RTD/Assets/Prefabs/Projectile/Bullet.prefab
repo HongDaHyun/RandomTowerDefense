@@ -150,9 +150,9 @@ MonoBehaviour:
   projectileStat:
     projectileName: 
     projectileType: 0
-    dmg: 0
     critPercent: 0
     critDmg: 0
+    dmg: 0
     atkSpeed: 0
     range: 0
     projectileSpeed: 0
@@ -161,12 +161,14 @@ MonoBehaviour:
     unitType: 0
     tier: 0
     attribute: 0
-    dmg: 0
     critPercent: 0
     critDmg: 0
+    dmg: 0
     atkSpeed: 0
     range: 0
+  startTrans: {fileID: 0}
   target: {fileID: 0}
+  remainTime: 2
 --- !u!1001 &6714058945309347716
 PrefabInstance:
   m_ObjectHideFlags: 0

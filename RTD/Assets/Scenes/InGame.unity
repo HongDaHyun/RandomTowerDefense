@@ -8349,7 +8349,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 2
+      range: 1.5
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
       tier: 2
@@ -8358,7 +8358,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 2
+      range: 1.5
     - unitName: "\uAC80\uC0AC"
       unitType: 6
       tier: 0
@@ -8367,7 +8367,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 2
+      range: 1.5
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
       tier: 3
@@ -8376,7 +8376,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 2
+      range: 1.5
     - unitName: "\uC804\uAD6C"
       unitType: 7
       tier: 1
@@ -8667,7 +8667,7 @@ MonoBehaviour:
     - debuffName: Ice
       ticTime: 3
     - debuffName: Thunder
-      ticTime: 3
+      ticTime: 0.5
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15659,7 +15659,7 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Thunderball
-    _component: {fileID: 8565052518463782003, guid: f229c62069bb9af47bd53ee5f6ed2cf3, type: 3}
+    _component: {fileID: 5549743491747481143, guid: 0068d4b7322ef1d4d869eb416bde9701, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
@@ -15667,6 +15667,26 @@ MonoBehaviour:
     _component: {fileID: 7186707951879045562, guid: 8c71cf29e0143cc4d9cc2523de29c7ad, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Common
+    _component: {fileID: 8668357480140483311, guid: 2ead009ab50f9c34c8789acbf8297361, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Rare
+    _component: {fileID: 6261363322096125383, guid: f54cfb51c42026d4899d40a428d3aaa5, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Epic
+    _component: {fileID: 620753532793543587, guid: 055faa6c3b984dc448629f921d7edd8f, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Legend
+    _component: {fileID: 2886222644574685298, guid: 451f5facf36588740b4eecd66e582c9f, type: 3}
+    _count: 0
+    _container: {fileID: 0}
     _nonLazy: 0
 --- !u!1 &931559323
 GameObject:

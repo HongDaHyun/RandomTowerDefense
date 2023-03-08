@@ -177,6 +177,22 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         isIce = false;
     }
 
+    public IEnumerator TakeThunder(float dmg)
+    {
+        DebuffStat thunder = CSVReader.Instance.DebuffExport("Thunder");
+        TakeDmg(dmg, Color.blue, thunder.ticTime);
+
+        if (isThunder)
+            yield break;
+        isThunder = true;
+        float temp = enemyStat.moveSpeed;
+        enemyStat.moveSpeed = 0;
+        yield return new WaitForSeconds(thunder.ticTime);
+        enemyStat.moveSpeed = temp;
+
+        isThunder = false;
+    }
+
     private IEnumerator HitColorAnimation(Color _color, float time)
     {
         spriteRenderer.color = _color;

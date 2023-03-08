@@ -41,6 +41,6 @@ public class Projectile_SwordCup : Projectile
 
     protected override void MovePos()
     {
-        //ÇØ¾ßÇÔ
+        transform.position = target.position;
     }
 }

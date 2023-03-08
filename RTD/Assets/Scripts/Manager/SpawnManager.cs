@@ -79,6 +79,14 @@ public class SpawnManager : Singleton<SpawnManager>
         unit.GetComponentInParent<TileGround>().ResetTile();
         PoolManager.Instance.TakeToPool<Unit>(unit.unitStat.unitName, unit);
     }
+
+    public void SpawnTier(Tier _tier, Transform spawnPoint)
+    {
+        Transform trans = PoolManager.Instance.GetFromPool<Transform>(_tier.ToString());
+        trans.SetParent(spawnPoint);
+        trans.localPosition = new Vector3(0, 0, 0);
+        trans.localScale = new Vector2(0.2f, 0.2f);
+    }
     #endregion
 
     #region SpawnProjectile
