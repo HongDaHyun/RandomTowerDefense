@@ -8,7 +8,7 @@ public class Projectile_Punch : Projectile
     {
         if (!collision.CompareTag("Enemy"))
             return;
-        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg);
+        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg, Color.red, 0.05f);
     }
 
     public override void SetTarget(Transform start, Transform target)

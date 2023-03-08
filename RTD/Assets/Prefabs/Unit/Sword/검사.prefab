@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 55855422068721460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6041578630045607699}
@@ -99,14 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76d69a49933da743bbd2baf85a35d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAnim: 0
   unitStat:
     unitName: 
     unitType: 0
     tier: 0
     attribute: 0
-    dmg: 0
     critPercent: 0
     critDmg: 0
+    dmg: 0
     atkSpeed: 0
     range: 0
 --- !u!95 &7798635296158700986

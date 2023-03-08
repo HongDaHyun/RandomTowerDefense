@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
+#pragma warning disable 0618
 
 public class Explosion_Death : MonoBehaviour, IPoolObject
 {
@@ -16,6 +17,7 @@ public class Explosion_Death : MonoBehaviour, IPoolObject
 
     void IPoolObject.OnGettingFromPool()
     {
+        StartCoroutine(ActiveTime());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,10 +28,10 @@ public class Explosion_Death : MonoBehaviour, IPoolObject
         enemy.StartCoroutine(enemy.TakeGerm(dmg));
     }
 
-    private void Update()
+    IEnumerator ActiveTime()
     {
-        if (!particle.IsAlive())
-            SpawnManager.Instance.DeSpawnExplosion(this);
+        yield return new WaitForSeconds(particle.duration);
+        SpawnManager.Instance.DeSpawnExplosion(this);
     }
 
     public void SetDmg(float damage)

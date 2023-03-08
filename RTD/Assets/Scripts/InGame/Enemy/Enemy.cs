@@ -122,14 +122,14 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
     #endregion
 
     #region Damaged
-    public void TakeDmg(float dmg)
+    public void TakeDmg(float dmg, Color _color, float time)
     {
         if (isDie)
             return;
         curHp -= dmg;
 
-        StopCoroutine(HitColorAnimation());
-        StartCoroutine(HitColorAnimation());
+        StopCoroutine(HitColorAnimation(_color, time));
+        StartCoroutine(HitColorAnimation(_color, time));
 
         if(curHp <= 0)
             Die();
@@ -142,7 +142,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         isFire = true;
         for(int i = 0; i < enemyStat.strength; i++)
         {
-            TakeDmg(dmg);
+            TakeDmg(dmg, Color.red, 0.05f);
             yield return new WaitForSeconds(CSVReader.Instance.DebuffExport("Fire").ticTime);
         }
         isFire = false;
@@ -155,17 +155,33 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         isGerm = true;
         for (int i = 0; i < enemyStat.strength; i++)
         {
-            TakeDmg(dmg);
+            TakeDmg(dmg, Color.black, 0.05f);
             yield return new WaitForSeconds(CSVReader.Instance.DebuffExport("Germ").ticTime);
         }
         isGerm = false;
     }
 
-    private IEnumerator HitColorAnimation()
+    public IEnumerator TakeIce(float dmg)
     {
-        spriteRenderer.color = Color.red;
+        DebuffStat ice = CSVReader.Instance.DebuffExport("Ice");
+        TakeDmg(dmg, Color.cyan, ice.ticTime);
 
-        yield return new WaitForSeconds(0.05f);
+        if (isIce) //½½·Î¿ì
+            yield break;
+        isIce = true;
+        float temp = enemyStat.moveSpeed;
+        enemyStat.moveSpeed *= 0.7f;
+        yield return new WaitForSeconds(ice.ticTime);
+        enemyStat.moveSpeed = temp;
+
+        isIce = false;
+    }
+
+    private IEnumerator HitColorAnimation(Color _color, float time)
+    {
+        spriteRenderer.color = _color;
+
+        yield return new WaitForSeconds(time);
 
         spriteRenderer.color = Color.white;
     }

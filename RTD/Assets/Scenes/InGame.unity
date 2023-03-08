@@ -8349,7 +8349,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 3.5
+      range: 2
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
       tier: 2
@@ -8358,7 +8358,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 3.5
+      range: 2
     - unitName: "\uAC80\uC0AC"
       unitType: 6
       tier: 0
@@ -8367,7 +8367,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 3.5
+      range: 2
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
       tier: 3
@@ -8376,7 +8376,7 @@ MonoBehaviour:
       critDmg: 0
       dmg: 1
       atkSpeed: 1
-      range: 3.5
+      range: 2
     - unitName: "\uC804\uAD6C"
       unitType: 7
       tier: 1
@@ -8607,7 +8607,7 @@ MonoBehaviour:
       projectileType: 3
       critPercent: 0
       critDmg: 0
-      dmg: 0.8
+      dmg: 0.2
       atkSpeed: 0
       range: 0
       projectileSpeed: 10
@@ -15654,7 +15654,7 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: SwordCup
-    _component: {fileID: 6031251915371759728, guid: 6b81a50e9f33a724c8273c8f7bc6d95e, type: 3}
+    _component: {fileID: 6112597688786950807, guid: 1ff945ca18840744bb0ffb338b6e96c5, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0

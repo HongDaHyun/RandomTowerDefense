@@ -44,7 +44,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         if (collision.transform != target)
             return;
         SpawnManager.Instance.DeSpawnProjectile(this);
-        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg);
+        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg, Color.red, 0.05f);
     }
 
     public virtual void SetTarget(Transform start, Transform target)
@@ -69,11 +69,9 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-
-    public float time;
     protected virtual IEnumerator Remain()
     {
-        time = 0f;
+        float time = 0f;
         while(time <= remainTime)
         {
             time += Time.deltaTime;
