@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Unit_Bow : Unit
 {
-    protected override Projectile Shoot()
+    protected override void SetUp()
     {
-        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, "Arrow");
-        return projectile;
+        base.SetUp();
+        weapon = "Arrow";
     }
 }

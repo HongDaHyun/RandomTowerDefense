@@ -97,12 +97,12 @@ public class BtnManager : Singleton<BtnManager>
         else
             ranTier = 0;
 
-        for (int i = 0; i < (4 * 6 + ranTier) * 4; i++) //½½·Ô µ¹¸®±â
+        for (int i = 0; i < (4 * 6 + ranTier) * 2; i++) //½½·Ô µ¹¸®±â
         {
-            UIManager.Instance.slotObj.transform.localPosition += new Vector3(0, 50f, 0);
+            UIManager.Instance.slotObj.transform.localPosition += new Vector3(0, 100f, 0);
             if (UIManager.Instance.slotObj.transform.localPosition.y > 800f)
                 UIManager.Instance.slotObj.transform.localPosition -= new Vector3(0, 800f, 0);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
         }
         yield return new WaitForSeconds(1f);
         UIManager.Instance.slotObj.transform.localPosition = new Vector3(0, 0, 0);

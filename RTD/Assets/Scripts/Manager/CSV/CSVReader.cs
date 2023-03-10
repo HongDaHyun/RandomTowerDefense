@@ -16,6 +16,7 @@ public class CSVReader : Singleton<CSVReader>
         EnemyCSVReader();
         ProjectileCSVReader();
         DebuffCSVReader();
+        QuestCSVReader();
     }
 
     public void UnitCSVReader()
@@ -96,6 +97,23 @@ public class CSVReader : Singleton<CSVReader>
             csvList.debuffStat[i] = new DebuffStat();
             csvList.debuffStat[i].debuffName = data[size * k];
             csvList.debuffStat[i].ticTime = float.Parse(data[size * k + 1]);
+        }
+    }
+
+    public void QuestCSVReader()
+    {
+        int order = 4; int size = 2;
+        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / size - 1;
+        csvList.quest = new Quest[tableSize];
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            int k = i + 1;
+            csvList.quest[i] = new Quest();
+            csvList.quest[i].questName = data[size * k];
+            csvList.quest[i].explanation = data[size * k + 1];
+            csvList.quest[i].ID = i;
         }
     }
     #endregion

@@ -4041,6 +4041,10 @@ MonoBehaviour:
     gatchaPannel: {fileID: 771374519}
     gatchaBtn: {fileID: 1057437465}
     gatchaTab: {fileID: 71285651}
+  questPannel:
+    questPannel: {fileID: 273591673}
+    titleTxt: {fileID: 0}
+    explainTxt: {fileID: 0}
   slotObj: {fileID: 1841786110}
   gameSpeedTxt: {fileID: 624295626}
 --- !u!4 &253012259
@@ -5395,9 +5399,9 @@ RectTransform:
   m_Father: {fileID: 1841786111}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358750200
@@ -5512,9 +5516,9 @@ RectTransform:
   m_Father: {fileID: 1841786111}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -700}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &368944130
@@ -8123,6 +8127,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 08fd09b9276ddab459a2e02626fb096f, type: 3}
   - {fileID: 4900000, guid: 1f363589cd0bc28458e38a7900fd9d7c, type: 3}
   - {fileID: 4900000, guid: d78e4cfb6a40aca41ab6357c76c8ad01, type: 3}
+  - {fileID: 4900000, guid: 909420c994ef3024bb6a82210c36f3ea, type: 3}
   csvList:
     unitStat:
     - unitName: "\uAD81\uC218"
@@ -8668,6 +8673,99 @@ MonoBehaviour:
       ticTime: 3
     - debuffName: Thunder
       ticTime: 0.5
+    quest:
+    - questName: "\uC874\uBC84"
+      explanation: "{0} \uC6E8\uC774\uBE0C \uB3D9\uC548 \uBC84\uD2F0\uC138\uC694.\r"
+      ID: 0
+    - questName: "\uC644\uBCBD\uC874\uBC84"
+      explanation: "\uCCB4\uB825\uC744 \uC783\uC9C0 \uC54A\uACE0 {0} \uC6E8\uC774\uBE0C
+        \uB3D9\uC548 \uBC84\uD2F0\uC138\uC694.\r"
+      ID: 1
+    - questName: "\uC800\uCD95"
+      explanation: "\uAC00\uCC60 \uD0A4\uB97C {0}\uAC1C \uBAA8\uC73C\uC138\uC694.\r"
+      ID: 2
+    - questName: "\uB4F1\uAC00\uAD50\uD658"
+      explanation: "\uD55C \uC6E8\uC774\uBE0C\uC5D0 \uCCB4\uB825 {0} \uC774\uC0C1\uC744
+        \uC783\uACE0 \uC0DD\uC874\uD558\uC138\uC694.\r"
+      ID: 3
+    - questName: "\uB3C4\uB124\uC774\uC158"
+      explanation: "\uAD11\uACE0 \uD558\uB098\uB9CC \uBD10\uC8FC\uC138\uC694.\r"
+      ID: 4
+    - questName: "\uC0AC\uB0E5\uAFBC"
+      explanation: "\uBAAC\uC2A4\uD130 {0}\uB9C8\uB9AC\uB97C \uCC98\uCE58\uD558\uC138\uC694.\r"
+      ID: 5
+    - questName: "\uCF5C\uB809\uD130"
+      explanation: "{0}\uAC1C\uC758 \uB2E4\uB978 \uC885\uB958\uC758 \uC720\uB2DB\uC744
+        \uBF51\uC73C\uC138\uC694.\r"
+      ID: 6
+    - questName: "\uC624\uD0C0\uCFE0"
+      explanation: "\uD55C \uC885\uB958\uC758 \uBAA8\uB4E0 \uC720\uB2DB\uC744 \uBAA8\uC73C\uC138\uC694.\r"
+      ID: 7
+    - questName: "\uD018\uC2A4\uD2B8\uC655"
+      explanation: "\uC81C\uACF5\uB41C \uD018\uC2A4\uD2B8\uB97C \uBAA8\uB450 \uD074\uB9AC\uC5B4\uD558\uC138\uC694.\r"
+      ID: 8
+    - questName: "\uC2EC\uAE30\uC77C\uC804"
+      explanation: "\uCCB4\uB825\uC744 {0}\uB9CC\uD07C \uD68C\uBCF5\uD558\uC138\uC694.\r"
+      ID: 9
+    - questName: "\uB3C4\uBC15\uC911\uB3C5"
+      explanation: "\uAC00\uCC60\uB97C {0}\uBC88 \uD558\uC138\uC694.\r"
+      ID: 10
+    - questName: "\uC77C\uBC18"
+      explanation: "\uC77C\uBC18 \uB4F1\uAE09 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 11
+    - questName: "\uB808\uC5B4"
+      explanation: "\uB808\uC5B4 \uB4F1\uAE09 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 12
+    - questName: "\uC5D0\uD53D"
+      explanation: "\uC5D0\uD53D \uB4F1\uAE09 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 13
+    - questName: "\uB808\uC804\uB4DC"
+      explanation: "\uB808\uC804\uB4DC \uB4F1\uAE09 \uC720\uB2DB\uC744 {0}\uAC1C
+        \uBF51\uC73C\uC138\uC694.\r"
+      ID: 14
+    - questName: "\uAF5D"
+      explanation: "!!?\r"
+      ID: 15
+    - questName: "\uD0C0\uC784\uC5B4\uD0DD"
+      explanation: "\uD55C \uC6E8\uC774\uBE0C\uB97C {0}\uCD08 \uB9CC\uC5D0 \uD074\uB9AC\uC5B4\uD558\uC138\uC694.\r"
+      ID: 16
+    - questName: "\uD5C8\uB9AC\uAC00.."
+      explanation: "\uD65C \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 17
+    - questName: "\uC2A4\uD134\uAC74"
+      explanation: "\uD30C\uC774\uD130 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 18
+    - questName: "\uD654\uB975\uD654\uB975"
+      explanation: "\uBD88 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 19
+    - questName: "\uC804\uC5FC\uBCD1"
+      explanation: "\uBCD1\uADE0 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 20
+    - questName: "\uC9C4\uC9DC\uCD1D"
+      explanation: "\uCD1D \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 21
+    - questName: "\uACA8\uC6B8\uC655\uAD6D"
+      explanation: "\uC5BC\uC74C \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 22
+    - questName: "\uCF5C\uB85C\uC138\uC6C0"
+      explanation: "\uAC80 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 23
+    - questName: "\uCC0C\uB9AC\uB9BF"
+      explanation: "\uC804\uAE30 \uC720\uB2DB\uC744 {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 24
+    - questName: "\uC0C8\uC639\uC9C0\uB9C8"
+      explanation: "\uC77C\uBC18 \uB4F1\uAE09 \uC720\uB2DB\uC744 \uC5F0\uC18D\uC73C\uB85C
+        {0}\uAC1C \uBF51\uC73C\uC138\uC694.\r"
+      ID: 25
+    - questName: "\uD2B8\uB808\uC774\uB108"
+      explanation: "{0}\uAC1C\uC758 \uC9C4\uD654\uB97C \uB9C8\uCE58\uC138\uC694.\r"
+      ID: 26
+    - questName: "\uBC8C\uD06C\uC5C5"
+      explanation: "\uCD5C\uB300 \uCCB4\uB825\uC744 {0}\uB9CC\uD07C \uB298\uB9AC\uC138\uC694.\r"
+      ID: 27
+    - questName: "\uBCF4\uC2A4!"
+      explanation: "\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB97C \uCC98\uCE58\uD558\uC138\uC694.\r"
+      ID: 28
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8845,7 +8943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &595425708
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9207,10 +9305,10 @@ RectTransform:
   m_Father: {fileID: 273591674}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -630}
+  m_SizeDelta: {x: 800, y: 393.33334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613179953
 MonoBehaviour:
@@ -13364,7 +13462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &771374520
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14045,10 +14143,10 @@ RectTransform:
   m_Father: {fileID: 273591674}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -196.66669}
+  m_SizeDelta: {x: 800, y: 393.33334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &848965772
 MonoBehaviour:
@@ -14895,9 +14993,9 @@ RectTransform:
   m_Father: {fileID: 1841786111}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -500}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &888195386
@@ -19001,10 +19099,10 @@ RectTransform:
   m_Father: {fileID: 273591674}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -1063.3334}
+  m_SizeDelta: {x: 800, y: 393.33334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283651374
 MonoBehaviour:
@@ -20122,9 +20220,9 @@ RectTransform:
   m_Father: {fileID: 1841786111}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388414607
@@ -21026,9 +21124,9 @@ RectTransform:
   m_Father: {fileID: 1841786111}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -900}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1441872353

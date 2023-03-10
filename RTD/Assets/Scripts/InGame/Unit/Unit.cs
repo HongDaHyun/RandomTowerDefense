@@ -7,6 +7,7 @@ public enum UnitState { SearchTarget = 0, AttackToTarget }
 
 public abstract class Unit : MonoBehaviour, IPoolObject
 {
+    protected string weapon;
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
     protected Transform attackTarget = null;
@@ -37,7 +38,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
             RotateToTarget();
     }
 
-    void SetUp()
+    protected virtual void SetUp()
     {
         unitStat = CSVReader.Instance.UnitExport(name); //(Clone) ªË¡¶
         ChangeState(UnitState.SearchTarget);
@@ -100,6 +101,15 @@ public abstract class Unit : MonoBehaviour, IPoolObject
         ChangeState(UnitState.SearchTarget);
     }
 
-    protected abstract Projectile Shoot();
+    protected virtual Projectile Shoot()
+    {
+        if (!attackTarget.gameObject.activeSelf)
+        {
+            ChangeState(UnitState.SearchTarget);
+            return null;
+        }
+        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, weapon);
+        return projectile;
+    }
     #endregion
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Unit_Fire : Unit
 {
-    protected override Projectile Shoot()
+    protected override void SetUp()
     {
-        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, "Flame");
-        return projectile;
+        base.SetUp();
+        weapon = "Flame";
     }
 
     protected override IEnumerator AttackToTarget()

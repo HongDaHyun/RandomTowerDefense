@@ -45,10 +45,19 @@ public struct DebuffStat
 }
 
 [Serializable]
+public struct Quest
+{
+    public string questName;
+    public string explanation;
+    public int ID;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
     public ProjectileStat[] projectileStat;
     public DebuffStat[] debuffStat;
+    public Quest[] quest;
 }

@@ -16,7 +16,7 @@ public class ObjectDetector : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonUp(0) && !mainCam.GetComponent<ProCamera2DPanAndZoom>().IsPanning)
+        if(Input.GetMouseButtonUp(0) && !mainCam.GetComponent<ProCamera2DPanAndZoom>().IsPanning && !UIManager.Instance.gatchaPannel.gatchaPannel.activeSelf)
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
