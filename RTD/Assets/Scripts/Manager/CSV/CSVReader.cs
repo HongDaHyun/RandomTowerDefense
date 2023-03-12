@@ -21,7 +21,7 @@ public class CSVReader : Singleton<CSVReader>
 
     public void UnitCSVReader()
     {
-        int order = 0; int size = 9;
+        int order = 0; int size = 8;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.unitStat = new UnitStat[tableSize];
@@ -33,12 +33,11 @@ public class CSVReader : Singleton<CSVReader>
             csvList.unitStat[i].unitName = data[size * k];
             csvList.unitStat[i].unitType = (UnitType)Enum.Parse(typeof(UnitType), (data[size * k + 1]));
             csvList.unitStat[i].tier = (Tier)Enum.Parse(typeof(Tier), (data[size * k + 2]));
-            csvList.unitStat[i].attribute = (Attribute)Enum.Parse(typeof(Attribute), (data[size * k + 3]));
-            csvList.unitStat[i].dmg = float.Parse(data[size * k + 4]);
-            csvList.unitStat[i].critPercent = int.Parse(data[size * k + 5]);
-            csvList.unitStat[i].critDmg = int.Parse(data[size * k + 6]);
-            csvList.unitStat[i].atkSpeed = float.Parse(data[size * k + 7]);
-            csvList.unitStat[i].range = float.Parse(data[size * k + 8]);
+            csvList.unitStat[i].dmg = float.Parse(data[size * k + 3]);
+            csvList.unitStat[i].critPercent = int.Parse(data[size * k + 4]);
+            csvList.unitStat[i].critDmg = int.Parse(data[size * k + 5]);
+            csvList.unitStat[i].atkSpeed = float.Parse(data[size * k + 6]);
+            csvList.unitStat[i].range = float.Parse(data[size * k + 7]);
         }
     }
 
@@ -64,7 +63,7 @@ public class CSVReader : Singleton<CSVReader>
 
     public void ProjectileCSVReader()
     {
-        int order = 2; int size = 8;
+        int order = 2; int size = 9;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.projectileStat = new ProjectileStat[tableSize];
@@ -75,12 +74,15 @@ public class CSVReader : Singleton<CSVReader>
             csvList.projectileStat[i] = new ProjectileStat();
             csvList.projectileStat[i].projectileName = data[size * k];
             csvList.projectileStat[i].projectileType = (UnitType)Enum.Parse(typeof(UnitType), (data[size * k + 1]));
-            csvList.projectileStat[i].dmg = float.Parse(data[size * k + 2]);
-            csvList.projectileStat[i].critPercent = int.Parse(data[size * k + 3]);
-            csvList.projectileStat[i].critDmg = int.Parse(data[size * k + 4]);
-            csvList.projectileStat[i].atkSpeed = float.Parse(data[size * k + 5]);
-            csvList.projectileStat[i].range = float.Parse(data[size * k + 6]);
-            csvList.projectileStat[i].projectileSpeed = float.Parse(data[size * k + 7]);
+            csvList.projectileStat[i].attribute = (Attribute)Enum.Parse(typeof(Attribute), (data[size * k + 2]));
+            if (csvList.projectileStat[i].attribute != Attribute.None)
+                csvList.projectileStat[i].isAttribute = true;
+            csvList.projectileStat[i].dmg = float.Parse(data[size * k + 3]);
+            csvList.projectileStat[i].critPercent = int.Parse(data[size * k + 4]);
+            csvList.projectileStat[i].critDmg = int.Parse(data[size * k + 5]);
+            csvList.projectileStat[i].atkSpeed = float.Parse(data[size * k + 6]);
+            csvList.projectileStat[i].range = float.Parse(data[size * k + 7]);
+            csvList.projectileStat[i].projectileSpeed = float.Parse(data[size * k + 8]);
         }
     }
 
@@ -102,7 +104,7 @@ public class CSVReader : Singleton<CSVReader>
 
     public void QuestCSVReader()
     {
-        int order = 4; int size = 2;
+        int order = 4; int size = 4;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.quest = new Quest[tableSize];
@@ -113,6 +115,8 @@ public class CSVReader : Singleton<CSVReader>
             csvList.quest[i] = new Quest();
             csvList.quest[i].questName = data[size * k];
             csvList.quest[i].explanation = data[size * k + 1];
+            csvList.quest[i].condition = int.Parse(data[size * k + 2]);
+            csvList.quest[i].conditionWidth = int.Parse(data[size * k + 3]);
             csvList.quest[i].ID = i;
         }
     }
@@ -175,6 +179,16 @@ public class CSVReader : Singleton<CSVReader>
                 return ref csvList.debuffStat[i];
         }
         return ref csvList.debuffStat[0];
+    }
+
+    public ref Quest QuestExport(int id)
+    {
+        for (int i = 0; i < csvList.quest.Length; i++)
+        {
+            if (id == csvList.quest[i].ID)
+                return ref csvList.quest[i];
+        }
+        return ref csvList.quest[0];
     }
     #endregion
 }

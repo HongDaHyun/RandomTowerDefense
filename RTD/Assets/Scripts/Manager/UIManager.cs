@@ -19,7 +19,7 @@ public class UIManager : Singleton<UIManager>
     public UnitInfo unitInfoContents;
     public UpPannel upPannel;
     public GatchaPannel gatchaPannel;
-    public QuestPannel questPannel;
+    public QuestUI[] quests;
     public GameObject slotObj;
     public Text gameSpeedTxt;
 
@@ -125,11 +125,4 @@ public struct GatchaPannel
     public GameObject gatchaPannel;
     public Button gatchaBtn;
     public Button gatchaTab;
-}
-
-[Serializable]
-public struct QuestPannel
-{
-    public GameObject questPannel;
-    public Text titleTxt, explainTxt;
 }

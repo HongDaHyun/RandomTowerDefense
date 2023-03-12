@@ -14,7 +14,6 @@ public struct UnitStat
     public string unitName;
     public UnitType unitType;
     public Tier tier;
-    public Attribute attribute;
     public int critPercent, critDmg;
     public float dmg ,atkSpeed, range;
 }
@@ -33,6 +32,8 @@ public struct ProjectileStat
 {
     public string projectileName;
     public UnitType projectileType;
+    public Attribute attribute;
+    public bool isAttribute;
     public int critPercent, critDmg;
     public float dmg, atkSpeed, range, projectileSpeed;
 }
@@ -47,8 +48,8 @@ public struct DebuffStat
 [Serializable]
 public struct Quest
 {
-    public string questName;
-    public string explanation;
+    public string questName, explanation;
+    public int condition, conditionWidth;
     public int ID;
 }
 
