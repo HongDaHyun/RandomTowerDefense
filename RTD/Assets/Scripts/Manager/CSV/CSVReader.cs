@@ -159,6 +159,7 @@ public class CSVReader : Singleton<CSVReader>
         return ref csvList.enemyStat[0];
     }
 
+    #region Projectile
     public ref ProjectileStat ProjectileExport(string name)
     {
         for (int i = 0; i < csvList.projectileStat.Length; i++)
@@ -171,6 +172,47 @@ public class CSVReader : Singleton<CSVReader>
         return ref csvList.projectileStat[0];
     }
 
+    public void ProjectileDmgUp(float count)
+    {
+        for(int i = 0; i < csvList.projectileStat.Length; i++)
+        {
+            csvList.projectileStat[i].dmg += count;
+        }
+    }
+
+    public void ProjectileCritPercentUp(int count)
+    {
+        for (int i = 0; i < csvList.projectileStat.Length; i++)
+        {
+            csvList.projectileStat[i].critPercent += count;
+        }
+    }
+
+    public void ProjectileCritDmgUp(int count)
+    {
+        for (int i = 0; i < csvList.projectileStat.Length; i++)
+        {
+            csvList.projectileStat[i].critDmg += count;
+        }
+    }
+
+    public void ProjectileAsUp(float count)
+    {
+        for (int i = 0; i < csvList.projectileStat.Length; i++)
+        {
+            csvList.projectileStat[i].atkSpeed += count;
+        }
+    }
+
+    public void ProjectileRangeUp(float count)
+    {
+        for (int i = 0; i < csvList.projectileStat.Length; i++)
+        {
+            csvList.projectileStat[i].range += count;
+        }
+    }
+    #endregion
+
     public ref DebuffStat DebuffExport(string name)
     {
         for(int i = 0; i < csvList.debuffStat.Length; i++)
@@ -179,6 +221,14 @@ public class CSVReader : Singleton<CSVReader>
                 return ref csvList.debuffStat[i];
         }
         return ref csvList.debuffStat[0];
+    }
+    
+    public void DebuffUp(int count)
+    {
+        for(int i = 0; i < csvList.debuffStat.Length; i++)
+        {
+            csvList.debuffStat[i].ticTime += count;
+        }
     }
 
     public ref Quest QuestExport(int id)

@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class QuestUI : MonoBehaviour
 {
     public Quest quest;
-    public Text[] texts;
-    private int curCondition;
+    public int curCondition;
     private RewardType rewardType;
     private Tier tier;
     private float reward;
 
+    private Text[] texts;
+    private Button button;
+
     private void Awake()
     {
         texts = GetComponentsInChildren<Text>();
+        button = GetComponent<Button>();
     }
 
     public void SetQuest(int id)
@@ -55,7 +58,7 @@ public class QuestUI : MonoBehaviour
             case RewardType.사거리:
                 reward = 0.1f + 0.1f * (int)tier;
                 break;
-            case RewardType.디버프데미지:
+            case RewardType.디버프지속:
                 reward = 0.1f + 0.1f * (int)tier;
                 break;
         }
@@ -77,5 +80,50 @@ public class QuestUI : MonoBehaviour
         }
 
         texts[2].text = string.Format("{0} {1} 증가", rewardType, reward);
+    }
+
+    private void Update()
+    {
+        if (curCondition < quest.condition)
+        {
+            button.interactable = false;
+            return;
+        }
+        else
+            button.interactable = true; //최적화 필요
+    }
+
+    public void GetReward()
+    {
+        switch(rewardType)
+        {
+            case RewardType.키:
+                GameManager.Instance.gatchaKey += (int)reward;
+                break;
+            case RewardType.체력회복:
+                GameManager.Instance.curHealth += (int)reward;
+                break;
+            case RewardType.최대체력:
+                GameManager.Instance.maxHealth += (int)reward;
+                break;
+            case RewardType.데미지:
+                CSVReader.Instance.ProjectileDmgUp(reward);
+                break;
+            case RewardType.치명타확률:
+                CSVReader.Instance.ProjectileCritPercentUp((int)reward);
+                break;
+            case RewardType.치명타데미지:
+                CSVReader.Instance.ProjectileCritDmgUp((int)reward);
+                break;
+            case RewardType.공격속도:
+                CSVReader.Instance.ProjectileAsUp(reward);
+                break;
+            case RewardType.사거리:
+                CSVReader.Instance.ProjectileRangeUp(reward);
+                break;
+            case RewardType.디버프지속:
+                CSVReader.Instance.DebuffUp((int)reward);
+                break;
+        }
     }
 }

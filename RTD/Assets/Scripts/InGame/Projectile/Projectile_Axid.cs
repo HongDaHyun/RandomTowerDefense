@@ -31,6 +31,6 @@ public class Projectile_Axid : Projectile
     public void Explosion()
     {
         SpawnManager.Instance.DeSpawnProjectile(this);
-        SpawnManager.Instance.SpawnExplosion(transform, unitStat.dmg + projectileStat.dmg, "DeathExplosion");
+        SpawnManager.Instance.SpawnExplosion(transform, (float)System.Math.Round((unitStat.dmg + projectileStat.dmg) / 10, 1), "DeathExplosion");
     }
 }

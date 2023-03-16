@@ -19,7 +19,7 @@ public class WaveManager : Singleton<WaveManager>
             return;
         isWave = false;
         GameManager.Instance.curExp++;
-        StartCoroutine(UIManager.Instance.CountingKey(2));
+        GameManager.Instance.gatchaKey += 2;
         StartCoroutine(UIManager.Instance.WaveTimer());
     }
 }

@@ -82,7 +82,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
             if (attackTarget != null && attackTarget.gameObject.activeSelf)
             {
-                if(isAnim && !isAtk)
+                if (isAnim && !isAtk)
                     anim.SetBool("IsAtk", true);
                 else
                     ChangeState(UnitState.AttackToTarget);
@@ -105,6 +105,8 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     {
         if (!attackTarget.gameObject.activeSelf)
         {
+            if (isAnim)
+                anim.SetBool("IsAtk", false);
             ChangeState(UnitState.SearchTarget);
             return null;
         }

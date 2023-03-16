@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    public bool isDestroy;
     private static T instance;
 
     public static T Instance
@@ -27,7 +26,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (isDestroy)
+        if (this.name != "GameManager")
             return;
         if (instance == null)
         {

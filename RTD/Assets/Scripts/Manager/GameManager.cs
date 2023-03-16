@@ -28,4 +28,18 @@ public class GameManager : Singleton<GameManager>
         //GPGSBinder.Inst.LoadAllEvent(); 이벤트 모두 불러오기
         #endregion
     }
+
+    private void Update()
+    {
+        LimitHealth();
+    }
+
+    public void LimitHealth()
+    {
+        if (curHealth >= maxHealth)
+        {
+            curHealth = maxHealth;
+            return;
+        }
+    }
 }

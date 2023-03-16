@@ -261,7 +261,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1234451256, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
+  m_Sprite: {fileID: -1841259135, guid: 5e26f6baad4d09b4ba7080c4be2665cc, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.04
+  m_PixelsPerUnitMultiplier: 0.08
 --- !u!114 &3509192937588246186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -301,20 +301,32 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 1181886222, guid: 5e26f6baad4d09b4ba7080c4be2665cc, type: 3}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 1181886222, guid: 5e26f6baad4d09b4ba7080c4be2665cc, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3509192937588246187}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6080723466922285799}
+        m_TargetAssemblyTypeName: QuestUI, Assembly-CSharp
+        m_MethodName: GetReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6080723466922285799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +339,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c9854c4bd7cae44a1f7bb5c5256db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quest:
+    questName: 
+    explanation: 
+    condition: 0
+    conditionWidth: 0
+    ID: 0
+  curCondition: 0
 --- !u!1 &3509192937653098359
 GameObject:
   m_ObjectHideFlags: 0

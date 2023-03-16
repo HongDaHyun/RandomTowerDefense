@@ -63,6 +63,7 @@ public class BtnManager : Singleton<BtnManager>
                 gm.curHealth = gm.maxHealth;
                 break;
         }
+        GameManager.Instance.gameTime = CurTime.Slow;
         AdMobManager.Instance.ToggleBannerAd(false);
         SceneManager.LoadScene(1);
     }

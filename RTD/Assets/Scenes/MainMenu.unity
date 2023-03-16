@@ -1031,8 +1031,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 809601072}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &197148353
 MonoBehaviour:
@@ -1046,7 +1046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3793f8b1a288e4e9ab978e32fb78d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroy: 0
   level: 0
   gameTime: 10
   isStart: 0
@@ -1054,6 +1053,8 @@ MonoBehaviour:
   maxHealth: 0
   curHealth: 0
   maxWave: 0
+  maxExp: 0
+  curExp: 0
 --- !u!1 &200118006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef243ecc3f69c9641aa0b3bacb9685cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroy: 1
   mainPannel:
   - {fileID: 536593571}
   - {fileID: 716416031}
@@ -1259,6 +1259,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   clickTile: {fileID: 0}
+  unitRange: {fileID: 0}
   unitInfoPannel: {fileID: 0}
   enemyInfoPannel: {fileID: 0}
   unitInfoContents:
@@ -1273,8 +1274,14 @@ MonoBehaviour:
   upPannel:
     gatchaKeyTxt: {fileID: 0}
     healthTxt: {fileID: 0}
-  gatchaPannel: {fileID: 0}
-  gatchaBtn: {fileID: 0}
+    waveTxt: {fileID: 0}
+    timerTxt: {fileID: 0}
+    expSlider: {fileID: 0}
+  gatchaPannel:
+    gatchaPannel: {fileID: 0}
+    gatchaBtn: {fileID: 0}
+    gatchaTab: {fileID: 0}
+  quests: []
   slotObj: {fileID: 0}
   gameSpeedTxt: {fileID: 0}
 --- !u!4 &253012259
@@ -2899,39 +2906,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792042948}
   m_CullTransparentMesh: 1
---- !u!1 &809601071
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809601072}
-  m_Layer: 0
-  m_Name: RemainManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809601072
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809601071}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 197148352}
-  - {fileID: 1029086215}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &825870221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,6 +3402,30 @@ MonoBehaviour:
     IconTexture: {fileID: 0}
     IsIconRecursive: 0
     BackgroundType: 3000
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 197148351}
+    Ordinal: 16
+    Priority: 0
+    IconType: 103000
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1459125287}
+    Ordinal: 17
+    Priority: 0
+    IconType: 104500
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
@@ -3952,7 +3950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8286452031094a9448a3cd76a6190953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroy: 0
   isTestMode: 1
 --- !u!4 &1029086215
 Transform:
@@ -3966,8 +3963,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 809601072}
-  m_RootOrder: 1
+  m_Father: {fileID: 1459125288}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1048000336
 GameObject:
@@ -4090,7 +4087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee9c75bde8031c4b9d999caeb279d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroy: 1
 --- !u!4 &1060610723
 Transform:
   m_ObjectHideFlags: 0
@@ -5301,7 +5297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1459125288}
   m_Layer: 0
-  m_Name: DestroyManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5321,6 +5317,7 @@ Transform:
   m_Children:
   - {fileID: 253012259}
   - {fileID: 1060610723}
+  - {fileID: 1029086215}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
