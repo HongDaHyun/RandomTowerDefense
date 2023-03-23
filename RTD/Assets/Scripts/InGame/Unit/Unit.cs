@@ -95,8 +95,12 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     {
         isAtk = true;
         Shoot();
-        if (isAnim)
-            anim.SetBool("IsAtk", false);
+        if (!attackTarget.gameObject.activeSelf)
+        {
+            if (isAnim)
+                anim.SetBool("IsAtk", false);
+            ChangeState(UnitState.SearchTarget);
+        }
         yield return new WaitForSeconds(unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
     }

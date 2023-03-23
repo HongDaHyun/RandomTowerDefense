@@ -23,12 +23,53 @@ public class QuestManager : Singleton<QuestManager>
         }
     }
 
-    public void DoQuest(Quest quest)
+    public IEnumerator DoQuest(Quest quest)
     {
-        //switch(quest.ID)
-        //{
-        //    case 0:
-                //퀘스트 작업 해야함
-        //}
+        switch (quest.ID)
+        {
+            case 0:
+                int goalWave = WaveManager.Instance.curWave + quest.condition;
+                while(true)
+                {
+                    Debug.Log("Loop");
+                    if (WaveManager.Instance.curWave != goalWave)
+                        yield return new WaitForEndOfFrame();
+                }
+        }
+        Debug.Log("1");
+    }
+
+    public void GetReward(RewardType type, float rewardAmount)
+    {
+        switch (type)
+        {
+            case RewardType.키:
+                GameManager.Instance.gatchaKey += (int)rewardAmount;
+                break;
+            case RewardType.체력회복:
+                GameManager.Instance.curHealth += (int)rewardAmount;
+                break;
+            case RewardType.최대체력:
+                GameManager.Instance.maxHealth += (int)rewardAmount;
+                break;
+            case RewardType.데미지:
+                CSVReader.Instance.ProjectileDmgUp(rewardAmount);
+                break;
+            case RewardType.치명타확률:
+                CSVReader.Instance.ProjectileCritPercentUp((int)rewardAmount);
+                break;
+            case RewardType.치명타데미지:
+                CSVReader.Instance.ProjectileCritDmgUp((int)rewardAmount);
+                break;
+            case RewardType.공격속도:
+                CSVReader.Instance.ProjectileAsUp(rewardAmount);
+                break;
+            case RewardType.사거리:
+                CSVReader.Instance.ProjectileRangeUp(rewardAmount);
+                break;
+            case RewardType.디버프지속:
+                CSVReader.Instance.DebuffUp((int)rewardAmount);
+                break;
+        }
     }
 }

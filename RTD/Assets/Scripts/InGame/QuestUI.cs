@@ -80,6 +80,9 @@ public class QuestUI : MonoBehaviour
         }
 
         texts[2].text = string.Format("{0} {1} 증가", rewardType, reward);
+
+        StopAllCoroutines();
+        StartCoroutine(QuestManager.Instance.DoQuest(quest));
     }
 
     private void Update()
@@ -91,39 +94,5 @@ public class QuestUI : MonoBehaviour
         }
         else
             button.interactable = true; //최적화 필요
-    }
-
-    public void GetReward()
-    {
-        switch(rewardType)
-        {
-            case RewardType.키:
-                GameManager.Instance.gatchaKey += (int)reward;
-                break;
-            case RewardType.체력회복:
-                GameManager.Instance.curHealth += (int)reward;
-                break;
-            case RewardType.최대체력:
-                GameManager.Instance.maxHealth += (int)reward;
-                break;
-            case RewardType.데미지:
-                CSVReader.Instance.ProjectileDmgUp(reward);
-                break;
-            case RewardType.치명타확률:
-                CSVReader.Instance.ProjectileCritPercentUp((int)reward);
-                break;
-            case RewardType.치명타데미지:
-                CSVReader.Instance.ProjectileCritDmgUp((int)reward);
-                break;
-            case RewardType.공격속도:
-                CSVReader.Instance.ProjectileAsUp(reward);
-                break;
-            case RewardType.사거리:
-                CSVReader.Instance.ProjectileRangeUp(reward);
-                break;
-            case RewardType.디버프지속:
-                CSVReader.Instance.DebuffUp((int)reward);
-                break;
-        }
     }
 }
