@@ -124,7 +124,7 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
     #region Damaged
     public void TakeDmg(float dmg, Color _color, float time)
     {
-        if (isDie)
+        if (isDie || !gameObject.activeSelf)
             return;
         curHp -= dmg;
 
