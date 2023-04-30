@@ -248,8 +248,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: "C:/Users/min35/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Privacy/user.keystore"
-  AndroidKeyaliasName: rtd
+  AndroidKeystoreName: D:/user.keystore
+  AndroidKeyaliasName: him
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
