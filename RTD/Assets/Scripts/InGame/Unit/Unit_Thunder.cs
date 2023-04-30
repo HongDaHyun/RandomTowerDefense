@@ -7,6 +7,6 @@ public class Unit_Thunder : Unit
     protected override void SetUp()
     {
         base.SetUp();
-        weapon = "Thunder";
+        weapon = "Thunderball";
     }
 }

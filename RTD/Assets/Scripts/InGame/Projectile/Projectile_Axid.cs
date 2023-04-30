@@ -5,16 +5,14 @@ using DG.Tweening;
 
 public class Projectile_Axid : Projectile
 {
-    Vector2 targetPos;
     public AnimationCurve animCurve;
 
     public override void SetTarget(Transform start, Transform target)
     {
         base.SetTarget(start, target);
-        targetPos = target.position;
         float dur = 5f / projectileStat.projectileSpeed; //throw speed
         transform.DOScale(0.8f, dur).SetEase(animCurve).OnComplete(() => { Explosion(); });
-        transform.DOMove(targetPos, dur);//이동
+        transform.DOMove(target.position, dur); //이동
         MoveRot();
     }
 
