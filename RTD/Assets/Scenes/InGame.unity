@@ -8682,6 +8682,16 @@ MonoBehaviour:
       projectileSpeed: 10
     - projectileName: Axid
       projectileType: 3
+      attribute: 2
+      isAttribute: 1
+      critPercent: 0
+      critDmg: 0
+      dmg: 2
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 10
+    - projectileName: Bullet
+      projectileType: 4
       attribute: 0
       isAttribute: 0
       critPercent: 0
@@ -8689,9 +8699,29 @@ MonoBehaviour:
       dmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0
-    - projectileName: 
-      projectileType: 0
+      projectileSpeed: 10
+    - projectileName: Flame
+      projectileType: 2
+      attribute: 1
+      isAttribute: 1
+      critPercent: 0
+      critDmg: 0
+      dmg: 5
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 10
+    - projectileName: Iceball
+      projectileType: 5
+      attribute: 3
+      isAttribute: 1
+      critPercent: 0
+      critDmg: 0
+      dmg: 0
+      atkSpeed: 0
+      range: 0
+      projectileSpeed: 10
+    - projectileName: Punch
+      projectileType: 1
       attribute: 0
       isAttribute: 0
       critPercent: 0
@@ -8699,9 +8729,9 @@ MonoBehaviour:
       dmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0
-    - projectileName: 
-      projectileType: 0
+      projectileSpeed: 10
+    - projectileName: SwordCup
+      projectileType: 6
       attribute: 0
       isAttribute: 0
       critPercent: 0
@@ -8709,47 +8739,17 @@ MonoBehaviour:
       dmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0
-    - projectileName: 
-      projectileType: 0
-      attribute: 0
-      isAttribute: 0
+      projectileSpeed: 10
+    - projectileName: Thunderball
+      projectileType: 7
+      attribute: 4
+      isAttribute: 1
       critPercent: 0
       critDmg: 0
       dmg: 0
       atkSpeed: 0
       range: 0
-      projectileSpeed: 0
-    - projectileName: 
-      projectileType: 0
-      attribute: 0
-      isAttribute: 0
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 0
-    - projectileName: 
-      projectileType: 0
-      attribute: 0
-      isAttribute: 0
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 0
-    - projectileName: 
-      projectileType: 0
-      attribute: 0
-      isAttribute: 0
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 0
+      projectileSpeed: 10
     debuffStat:
     - debuffName: Fire
       ticTime: 0.5
@@ -22227,7 +22227,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 640, y: 640}
+  m_SizeDelta: {x: 320, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1592687069
 MonoBehaviour:
@@ -25022,7 +25022,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10%
+  m_Text: 20%
 --- !u!222 &1789048876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26039,7 +26039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 2
 --- !u!222 &1879602301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28199,7 +28199,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 40%
+  m_Text: 0%
 --- !u!222 &2092404708
 CanvasRenderer:
   m_ObjectHideFlags: 0

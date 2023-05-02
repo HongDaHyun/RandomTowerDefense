@@ -41,7 +41,6 @@ public class UIManager : Singleton<UIManager>
         unitInfoContents.texts[4].text = $"{unit.unitStat.critPercent}%";
         unitInfoContents.texts[5].text = $"{unit.unitStat.critDmg}%";
         unitRange.OnAtkRange(unit.transform.position, unit.unitStat.range);
-
     }
 
     public void UpdateUpPannel()
