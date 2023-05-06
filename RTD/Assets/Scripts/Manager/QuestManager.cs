@@ -36,7 +36,6 @@ public class QuestManager : Singleton<QuestManager>
                         yield return new WaitForEndOfFrame();
                 }
         }
-        Debug.Log("1");
     }
 
     public void GetReward(RewardType type, float rewardAmount)

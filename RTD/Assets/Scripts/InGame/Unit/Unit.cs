@@ -11,7 +11,6 @@ public abstract class Unit : MonoBehaviour, IPoolObject
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
     protected Transform attackTarget = null;
-    protected bool isAtk;
     #endregion
     #region Animation
     protected Animator anim;
@@ -62,13 +61,11 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     private IEnumerator SearchTarget()
     {
-        isAtk = false;
         if (isAnim)
             anim.SetBool("IsAtk", false);
         while(true)
         {
             float closetDistSqr = Mathf.Infinity;
-            attackTarget = null;
             for (int i = 0; i < SpawnManager.Instance.enemyList.Count; i++)
             {
                 float distance = Vector3.Distance(SpawnManager.Instance.enemyList[i].transform.position,
@@ -82,7 +79,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
             if (attackTarget != null && attackTarget.gameObject.activeSelf)
             {
-                if (isAnim && !isAtk)
+                if (isAnim)
                     anim.SetBool("IsAtk", true);
                 else
                     ChangeState(UnitState.AttackToTarget);
@@ -93,7 +90,6 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     protected virtual IEnumerator AttackToTarget()
     {
-        isAtk = true;
         Shoot();
         yield return new WaitForSeconds(unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
@@ -101,13 +97,6 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     protected virtual Projectile Shoot()
     {
-        if (!attackTarget.gameObject.activeSelf)
-        {
-            if (isAnim)
-                anim.SetBool("IsAtk", false);
-            ChangeState(UnitState.SearchTarget);
-            return null;
-        }
         Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, weapon);
         return projectile;
     }

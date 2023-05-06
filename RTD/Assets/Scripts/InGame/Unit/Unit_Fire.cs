@@ -12,7 +12,6 @@ public class Unit_Fire : Unit
 
     protected override IEnumerator AttackToTarget()
     {
-        isAtk = true;
         Projectile projectile = Shoot();
         if (isAnim)
             anim.SetBool("IsAtk", false);

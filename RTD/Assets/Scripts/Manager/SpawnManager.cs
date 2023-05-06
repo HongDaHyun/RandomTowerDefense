@@ -93,9 +93,9 @@ public class SpawnManager : Singleton<SpawnManager>
     public Projectile SpawnProjectile(Transform start, Transform target, UnitStat unitStat, string name)
     {
         Projectile newProjectile = PoolManager.Instance.GetFromPool<Projectile>(name);
+        newProjectile.SetTarget(start, target);
         newProjectile.transform.position = start.position;
         newProjectile.unitStat = unitStat;
-        newProjectile.SetTarget(start, target);
         return newProjectile;
     }
 
