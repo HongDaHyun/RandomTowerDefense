@@ -10,7 +10,7 @@ public class Projectile_Axid : Projectile
     public override void SetTarget(Transform start, Transform target)
     {
         base.SetTarget(start, target);
-        float dur = 5f / projectileStat.projectileSpeed; //throw speed
+        float dur = 5f / unitStat.projectileSpeed; //throw speed
         transform.DOScale(0.8f, dur).SetEase(animCurve).OnComplete(() => { Explosion(); });
         transform.DOMove(target.position, dur); //¿Ãµø
         MoveRot();
@@ -29,6 +29,6 @@ public class Projectile_Axid : Projectile
     public void Explosion()
     {
         SpawnManager.Instance.DeSpawnProjectile(this);
-        SpawnManager.Instance.SpawnExplosion(transform, (float)System.Math.Round((unitStat.dmg + projectileStat.dmg) / 10, 1), "DeathExplosion");
+        SpawnManager.Instance.SpawnExplosion(transform, (float)System.Math.Round(unitStat.dmg / 10, 1), "DeathExplosion");
     }
 }

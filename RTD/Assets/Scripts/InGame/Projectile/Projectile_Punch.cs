@@ -8,7 +8,7 @@ public class Projectile_Punch : Projectile
     {
         if (!collision.CompareTag("Enemy"))
             return;
-        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg, Color.red, 0.05f);
+        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg, Color.red, 0.05f);
     }
 
     public override void SetTarget(Transform start, Transform target)
@@ -19,7 +19,7 @@ public class Projectile_Punch : Projectile
 
     protected override void Update()
     {
-        if (Vector2.Distance(startTrans.position, transform.position) > unitStat.range + projectileStat.range)
+        if (Vector2.Distance(startTrans.position, transform.position) > unitStat.range)
         {
             SpawnManager.Instance.DeSpawnProjectile(this);
             return;

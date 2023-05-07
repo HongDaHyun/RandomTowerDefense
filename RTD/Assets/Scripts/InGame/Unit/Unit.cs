@@ -5,9 +5,8 @@ using Redcode.Pools;
 
 public enum UnitState { SearchTarget = 0, AttackToTarget }
 
-public abstract class Unit : MonoBehaviour, IPoolObject
+public class Unit : MonoBehaviour, IPoolObject
 {
-    protected string weapon;
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
     protected Transform attackTarget = null;
@@ -20,7 +19,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     void IPoolObject.OnCreatedInPool()
     {
-        name = name.Replace("(Clone)", "");
+        name = name.Replace("(Clone)", ""); //(Clone) 삭제
         anim = GetComponent<Animator>();
         SetUp();
         SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
@@ -39,7 +38,7 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     protected virtual void SetUp()
     {
-        unitStat = CSVReader.Instance.UnitExport(name); //(Clone) 삭제
+        unitStat = CSVReader.Instance.UnitExport(name);
         ChangeState(UnitState.SearchTarget);
     }
 
@@ -90,14 +89,21 @@ public abstract class Unit : MonoBehaviour, IPoolObject
 
     protected virtual IEnumerator AttackToTarget()
     {
-        Shoot();
+        Projectile projectile = Shoot();
+
+        if(unitStat.unitType == UnitType.Fire) // 불일때 remainTime도 계산해야함
+        {
+            yield return new WaitForSeconds(unitStat.atkSpeed + projectile.remainTime);
+            ChangeState(UnitState.SearchTarget);
+        }
+
         yield return new WaitForSeconds(unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
     }
 
     protected virtual Projectile Shoot()
     {
-        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, weapon);
+        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, unitStat.unitType.ToString());
         return projectile;
     }
     #endregion

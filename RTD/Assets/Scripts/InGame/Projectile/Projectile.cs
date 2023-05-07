@@ -5,7 +5,6 @@ using Redcode.Pools;
 
 public abstract class Projectile : MonoBehaviour, IPoolObject
 {
-    public ProjectileStat projectileStat;
     public UnitStat unitStat;
     public Transform startTrans, target;
     public float remainTime = 2f;
@@ -44,7 +43,7 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
         if (collision.transform != target)
             return;
         SpawnManager.Instance.DeSpawnProjectile(this);
-        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg + projectileStat.dmg, Color.red, 0.05f);
+        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg, Color.red, 0.05f);
     }
 
     public virtual void SetTarget(Transform start, Transform target)
@@ -55,12 +54,12 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 
     public virtual void SetUp()
     {
-        projectileStat = CSVReader.Instance.ProjectileExport(name);
+        unitStat = CSVReader.Instance.UnitExport(name);
     }
 
     protected virtual void MovePos()
     {
-        transform.Translate(Vector2.right * projectileStat.projectileSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * unitStat.projectileSpeed * Time.deltaTime);
     }
 
     protected virtual void MoveRot()

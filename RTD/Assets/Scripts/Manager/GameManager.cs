@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum CurTime { Slow = 10, Commonly = 15, Fast = 20}
 
 public class GameManager : Singleton<GameManager>
 {

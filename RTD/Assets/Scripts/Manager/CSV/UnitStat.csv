@@ -1,33 +1,33 @@
-Name,Type,Tier,Dmg,CritPercent,CritDmg,AtkSpeed,Range
-±Ã¼ö,Bow,Common,1,0,100,10,3.5
-¹ß¸®½ºÅ¸,Bow,Epic,5,0,100,5,5
-¹Ì¶ó,Bow,Legend,7,0,100,15,3
-°¨½ÃÅ¾,Bow,Rare,3,0,100,10,4
-º¹¼­,Fighter,Common,1,0,100,15,2
-°í¸±¶ó,Fighter,Rare,2,0,100,15,2.5
-Æù,Fighter,Epic,4,0,100,20,2
-½Ã¹Ù°ß,Fighter,Legend,6,0,100,30,1.5
-ºÕ¹Ù¸Ç,Fire,Legend,5,0,100,20,3.8
-Ä¶·Ï½ÃÆÛ,Fire,Rare,3,0,100,10,3.2
-ºÒ¸¶¹ı»ç,Fire,Common,1,0,100,5,3.2
-¼Ö¶ó,Fire,Epic,4,0,100,15,3.5
-¸¶½ºÅ©¸Ç,Germ,Legend,5,0,100,10,2.7
-±Õµ¹ÀÌ,Germ,Rare,3,0,100,10,2.5
-±Õº£ÀÌºñ,Germ,Common,2,0,100,10,2.3
-¿ªº´ÀÇ»ç,Germ,Epic,4,0,100,10,3
-¼¾Æ®¸®°Ç,Gun,Rare,1,0,100,20,4
-F-35,Gun,Legend,2,0,100,30,5
-±ºÀÎ,Gun,Common,1,0,100,15,2.5
-ÅÊÅ©,Gun,Epic,2,0,100,25,3.5
-¾óÀ½¿ë,Ice,Legend,4,0,100,10,3
-¾óÀ½Á¤·É,Ice,Rare,1,0,100,5,2.5
-³ÃÀå°í,Ice,Common,1,0,100,5,2
-´«»ç¶÷,Ice,Epic,2,0,100,10,2.3
-´ë°Ë»ç,Sword,Rare,5,0,100,20,1
-°í±æ¶Ë,Sword,Epic,7,0,100,10,1.5
-°Ë»ç,Sword,Common,3,0,100,20,1
-¾ß½ºÀ°,Sword,Legend,8,0,100,30,1.8
-Àü±¸,Thunder,Rare,2,0,100,15,3.5
-·Îº¿,Thunder,Common,2,0,100,15,3.3
-½º¹ÙÄû,Thunder,Epic,2,0,100,15,4
-½ã¶óÀÓ,Thunder,Legend,3,0,100,10,3.1
+Name,Type,Tier,Dmg,CritPercent,CritDmg,AtkSpeed,Range,ProjectileSpeed
+ê¶ìˆ˜,Bow,Common,1,0,100,10,3.5,10
+ë°œë¦¬ìŠ¤íƒ€,Bow,Epic,5,0,100,5,5,10
+ë¯¸ë¼,Bow,Legend,7,0,100,15,3,10
+ê°ì‹œíƒ‘,Bow,Rare,3,0,100,10,4,10
+ë³µì„œ,Fighter,Common,1,0,100,15,2,10
+ê³ ë¦´ë¼,Fighter,Rare,2,0,100,15,2.5,10
+í°,Fighter,Epic,4,0,100,20,2,10
+ì‹œë°”ê²¬,Fighter,Legend,6,0,100,30,1.5,10
+ë¶ë°”ë§¨,Fire,Legend,5,0,100,20,3.8,10
+ìº˜ë¡ì‹œí¼,Fire,Rare,3,0,100,10,3.2,10
+ë¶ˆë§ˆë²•ì‚¬,Fire,Common,1,0,100,5,3.2,10
+ì†”ë¼,Fire,Epic,4,0,100,15,3.5,10
+ë§ˆìŠ¤í¬ë§¨,Germ,Legend,5,0,100,10,2.7,10
+ê· ëŒì´,Germ,Rare,3,0,100,10,2.5,10
+ê· ë² ì´ë¹„,Germ,Common,2,0,100,10,2.3,10
+ì—­ë³‘ì˜ì‚¬,Germ,Epic,4,0,100,10,3,10
+ì„¼íŠ¸ë¦¬ê±´,Gun,Rare,1,0,100,20,4,10
+F-35,Gun,Legend,2,0,100,30,5,10
+êµ°ì¸,Gun,Common,1,0,100,15,2.5,10
+íƒ±í¬,Gun,Epic,2,0,100,25,3.5,10
+ì–¼ìŒìš©,Ice,Legend,4,0,100,10,3,10
+ì–¼ìŒì •ë ¹,Ice,Rare,1,0,100,5,2.5,10
+ëƒ‰ì¥ê³ ,Ice,Common,1,0,100,5,2,10
+ëˆˆì‚¬ëŒ,Ice,Epic,2,0,100,10,2.3,10
+ëŒ€ê²€ì‚¬,Sword,Rare,5,0,100,20,1,10
+ê³ ê¸¸ë˜¥,Sword,Epic,7,0,100,10,1.5,10
+ê²€ì‚¬,Sword,Common,3,0,100,20,1,10
+ì•¼ìŠ¤ìœ¡,Sword,Legend,8,0,100,30,1.8,10
+ì „êµ¬,Thunder,Rare,2,0,100,15,3.5,10
+ë¡œë´‡,Thunder,Common,2,0,100,15,3.3,10
+ìŠ¤ë°”í€´,Thunder,Epic,2,0,100,15,4,10
+ì¬ë¼ì„,Thunder,Legend,3,0,100,10,3.1,10

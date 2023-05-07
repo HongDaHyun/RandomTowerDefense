@@ -8227,7 +8227,6 @@ MonoBehaviour:
   textAssets:
   - {fileID: 4900000, guid: 115b8e1c3cee1d543a4e97b24e067cf9, type: 3}
   - {fileID: 4900000, guid: 08fd09b9276ddab459a2e02626fb096f, type: 3}
-  - {fileID: 4900000, guid: 1f363589cd0bc28458e38a7900fd9d7c, type: 3}
   - {fileID: 4900000, guid: d78e4cfb6a40aca41ab6357c76c8ad01, type: 3}
   - {fileID: 4900000, guid: 909420c994ef3024bb6a82210c36f3ea, type: 3}
   csvList:
@@ -8236,258 +8235,290 @@ MonoBehaviour:
       unitType: 0
       tier: 0
       critPercent: 0
-      critDmg: 0
+      critDmg: 100
+      projectileSpeed: 10
       dmg: 1
-      atkSpeed: 1
+      atkSpeed: 10
       range: 3.5
     - unitName: "\uBC1C\uB9AC\uC2A4\uD0C0"
       unitType: 0
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 5
+      atkSpeed: 5
+      range: 5
     - unitName: "\uBBF8\uB77C"
       unitType: 0
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 7
+      atkSpeed: 15
+      range: 3
     - unitName: "\uAC10\uC2DC\uD0D1"
       unitType: 0
       tier: 1
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 3
+      atkSpeed: 10
+      range: 4
     - unitName: "\uBCF5\uC11C"
       unitType: 1
       tier: 0
       critPercent: 0
-      critDmg: 0
+      critDmg: 100
+      projectileSpeed: 10
       dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      atkSpeed: 15
+      range: 2
     - unitName: "\uACE0\uB9B4\uB77C"
       unitType: 1
       tier: 1
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 15
+      range: 2.5
     - unitName: "\uD3F0"
       unitType: 1
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 4
+      atkSpeed: 20
+      range: 2
     - unitName: "\uC2DC\uBC14\uACAC"
       unitType: 1
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 6
+      atkSpeed: 30
+      range: 1.5
     - unitName: "\uBD90\uBC14\uB9E8"
       unitType: 2
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 5
+      atkSpeed: 20
+      range: 3.8
     - unitName: "\uCE98\uB85D\uC2DC\uD37C"
       unitType: 2
       tier: 1
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 3
+      atkSpeed: 10
+      range: 3.2
     - unitName: "\uBD88\uB9C8\uBC95\uC0AC"
       unitType: 2
       tier: 0
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 1
+      atkSpeed: 5
+      range: 3.2
     - unitName: "\uC194\uB77C"
       unitType: 2
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 4
+      atkSpeed: 15
       range: 3.5
     - unitName: "\uB9C8\uC2A4\uD06C\uB9E8"
       unitType: 3
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 5
+      atkSpeed: 10
+      range: 2.7
     - unitName: "\uADE0\uB3CC\uC774"
       unitType: 3
       tier: 1
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 3
+      atkSpeed: 10
+      range: 2.5
     - unitName: "\uADE0\uBCA0\uC774\uBE44"
       unitType: 3
       tier: 0
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 10
+      range: 2.3
     - unitName: "\uC5ED\uBCD1\uC758\uC0AC"
       unitType: 3
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 4
+      atkSpeed: 10
+      range: 3
     - unitName: "\uC13C\uD2B8\uB9AC\uAC74"
       unitType: 4
       tier: 1
       critPercent: 0
-      critDmg: 0
+      critDmg: 100
+      projectileSpeed: 10
       dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      atkSpeed: 20
+      range: 4
     - unitName: F-35
       unitType: 4
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 30
+      range: 5
     - unitName: "\uAD70\uC778"
       unitType: 4
       tier: 0
       critPercent: 0
-      critDmg: 0
+      critDmg: 100
+      projectileSpeed: 10
       dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      atkSpeed: 15
+      range: 2.5
     - unitName: "\uD0F1\uD06C"
       unitType: 4
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 25
       range: 3.5
     - unitName: "\uC5BC\uC74C\uC6A9"
       unitType: 5
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 4
+      atkSpeed: 10
+      range: 3
     - unitName: "\uC5BC\uC74C\uC815\uB839"
       unitType: 5
       tier: 1
       critPercent: 0
-      critDmg: 0
+      critDmg: 100
+      projectileSpeed: 10
       dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      atkSpeed: 5
+      range: 2.5
     - unitName: "\uB0C9\uC7A5\uACE0"
       unitType: 5
       tier: 0
       critPercent: 0
-      critDmg: 0
+      critDmg: 100
+      projectileSpeed: 10
       dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      atkSpeed: 5
+      range: 2
     - unitName: "\uB208\uC0AC\uB78C"
       unitType: 5
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 10
+      range: 2.3
     - unitName: "\uB300\uAC80\uC0AC"
       unitType: 6
       tier: 1
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 1.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 5
+      atkSpeed: 20
+      range: 1
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 7
+      atkSpeed: 10
       range: 1.5
     - unitName: "\uAC80\uC0AC"
       unitType: 6
       tier: 0
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 1.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 3
+      atkSpeed: 20
+      range: 1
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 1.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 8
+      atkSpeed: 30
+      range: 1.8
     - unitName: "\uC804\uAD6C"
       unitType: 7
       tier: 1
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 15
       range: 3.5
     - unitName: "\uB85C\uBD07"
       unitType: 7
       tier: 0
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 15
+      range: 3.3
     - unitName: "\uC2A4\uBC14\uD034"
       unitType: 7
       tier: 2
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 2
+      atkSpeed: 15
+      range: 4
     - unitName: "\uC36C\uB77C\uC784"
       unitType: 7
       tier: 3
       critPercent: 0
-      critDmg: 0
-      dmg: 1
-      atkSpeed: 1
-      range: 3.5
+      critDmg: 100
+      projectileSpeed: 10
+      dmg: 3
+      atkSpeed: 10
+      range: 3.1
     enemyStat:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
@@ -8669,87 +8700,6 @@ MonoBehaviour:
       hp: 3
       defense: 0
       moveSpeed: 0.03
-    projectileStat:
-    - projectileName: Arrow
-      projectileType: 0
-      attribute: 0
-      isAttribute: 0
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
-    - projectileName: Axid
-      projectileType: 3
-      attribute: 2
-      isAttribute: 1
-      critPercent: 0
-      critDmg: 0
-      dmg: 2
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
-    - projectileName: Bullet
-      projectileType: 4
-      attribute: 0
-      isAttribute: 0
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
-    - projectileName: Flame
-      projectileType: 2
-      attribute: 1
-      isAttribute: 1
-      critPercent: 0
-      critDmg: 0
-      dmg: 5
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
-    - projectileName: Iceball
-      projectileType: 5
-      attribute: 3
-      isAttribute: 1
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
-    - projectileName: Punch
-      projectileType: 1
-      attribute: 0
-      isAttribute: 0
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
-    - projectileName: SwordCup
-      projectileType: 6
-      attribute: 0
-      isAttribute: 0
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
-    - projectileName: Thunderball
-      projectileType: 7
-      attribute: 4
-      isAttribute: 1
-      critPercent: 0
-      critDmg: 0
-      dmg: 0
-      atkSpeed: 0
-      range: 0
-      projectileSpeed: 10
     debuffStat:
     - debuffName: Fire
       ticTime: 0.5
@@ -15595,42 +15545,42 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 1843318193}
     _nonLazy: 0
-  - _name: Arrow
+  - _name: Bow
     _component: {fileID: -4190706733542816097, guid: 687a092410122ca4e961ea84342cbbe2, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
-  - _name: Axid
-    _component: {fileID: 2405596311617476154, guid: f66ec1e0d4bdc774b86e048c9cac7015, type: 3}
-    _count: 0
-    _container: {fileID: 1226476187}
-    _nonLazy: 0
-  - _name: Bullet
-    _component: {fileID: 4173786471559489169, guid: a14e21685d546734b876bb41bb0a65b4, type: 3}
-    _count: 0
-    _container: {fileID: 1226476187}
-    _nonLazy: 0
-  - _name: Flame
-    _component: {fileID: 9084899537127939069, guid: 83d3969a89c7f2a419c30a10f275be6c, type: 3}
-    _count: 0
-    _container: {fileID: 1226476187}
-    _nonLazy: 0
-  - _name: Iceball
-    _component: {fileID: 873447825128706441, guid: 7098e1546d5d1374fb7bec1618ee60b4, type: 3}
-    _count: 0
-    _container: {fileID: 1226476187}
-    _nonLazy: 0
-  - _name: Punch
+  - _name: Fighter
     _component: {fileID: 4937963754812133352, guid: 455ac7fb07c3d0d4fbfc2b169153ea65, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
-  - _name: SwordCup
+  - _name: Fire
+    _component: {fileID: 9084899537127939069, guid: 83d3969a89c7f2a419c30a10f275be6c, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Germ
+    _component: {fileID: 2405596311617476154, guid: f66ec1e0d4bdc774b86e048c9cac7015, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Gun
+    _component: {fileID: 4173786471559489169, guid: a14e21685d546734b876bb41bb0a65b4, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Ice
+    _component: {fileID: 873447825128706441, guid: 7098e1546d5d1374fb7bec1618ee60b4, type: 3}
+    _count: 0
+    _container: {fileID: 1226476187}
+    _nonLazy: 0
+  - _name: Sword
     _component: {fileID: 6112597688786950807, guid: 1ff945ca18840744bb0ffb338b6e96c5, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
-  - _name: Thunderball
+  - _name: Thunder
     _component: {fileID: 5549743491747481143, guid: 0068d4b7322ef1d4d869eb416bde9701, type: 3}
     _count: 0
     _container: {fileID: 1226476187}

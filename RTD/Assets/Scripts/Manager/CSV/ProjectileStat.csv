@@ -1,9 +1,0 @@
-Name,Type,Attribute,Dmg,CritPercent,CritDmg,AtkSpeed,Range,ProjectileSpeed
-Arrow,Bow,None,0,0,0,0,0,10
-Axid,Germ,Germ,2,0,0,0,0,10
-Bullet,Gun,None,0,0,0,0,0,10
-Flame,Fire,Fire,5,0,0,0,0,10
-Iceball,Ice,Ice,0,0,0,0,0,10
-Punch,Fighter,None,0,0,0,0,0,10
-SwordCup,Sword,None,0,0,0,0,0,10
-Thunderball,Thunder,Thunder,0,0,0,0,0,10

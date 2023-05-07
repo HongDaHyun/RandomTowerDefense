@@ -13,7 +13,7 @@ public class Projectile_Flame : Projectile
         if (!collision.CompareTag("Enemy"))
             return;
         Enemy enemy = collision.GetComponent<Enemy>();
-        enemy.StartCoroutine(enemy.TakeFire((float)System.Math.Round((unitStat.dmg + projectileStat.dmg) / 10, 1)));
+        enemy.StartCoroutine(enemy.TakeFire((float)System.Math.Round(unitStat.dmg / 10, 1)));
     }
     public override void SetTarget(Transform start, Transform target)
     {

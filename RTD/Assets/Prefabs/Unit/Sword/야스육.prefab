@@ -96,18 +96,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 55855422068721460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b76d69a49933da743bbd2baf85a35d3e, type: 3}
+  m_Script: {fileID: 11500000, guid: bb3155d0418163844b1e5e218ddb7ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnim: 1
+  isAnim: 0
   unitStat:
     unitName: 
     unitType: 0
     tier: 0
-    attribute: 0
-    dmg: 0
     critPercent: 0
     critDmg: 0
+    projectileSpeed: 0
+    dmg: 0
     atkSpeed: 0
     range: 0
 --- !u!95 &-3097192319039867124
