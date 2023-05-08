@@ -7,14 +7,14 @@ public class Projectile_Axid : Projectile
 {
     public AnimationCurve animCurve;
 
-    public override void SetTarget(Transform start, Transform target)
-    {
-        base.SetTarget(start, target);
-        float dur = 5f / unitStat.projectileSpeed; //throw speed
-        transform.DOScale(0.8f, dur).SetEase(animCurve).OnComplete(() => { Explosion(); });
-        transform.DOMove(target.position, dur); //이동
-        MoveRot();
-    }
+    //public override void SetUp()
+    //{
+    //    base.SetUp();
+    //    float dur = 5f / unitStat.projectileSpeed; //throw speed
+    //    transform.DOScale(0.8f, dur).SetEase(animCurve).OnComplete(() => { Explosion(); });
+    //    transform.DOMove(target.position, dur); //이동
+    //    SetRotation();
+    //}
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

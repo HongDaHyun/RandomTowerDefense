@@ -10,21 +10,4 @@ public class Projectile_Punch : Projectile
             return;
         collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg, Color.red, 0.05f);
     }
-
-    public override void SetTarget(Transform start, Transform target)
-    {
-        base.SetTarget(start, target);
-        MoveRot();
-    }
-
-    protected override void Update()
-    {
-        if (Vector2.Distance(startTrans.position, transform.position) > unitStat.range)
-        {
-            SpawnManager.Instance.DeSpawnProjectile(this);
-            return;
-        }
-
-        MovePos();
-    }
 }

@@ -14264,7 +14264,7 @@ GameObject:
   - component: {fileID: 2716012619079537073}
   - component: {fileID: 6528097974677309344}
   - component: {fileID: 3925829914943358315}
-  - component: {fileID: 5549743491747481143}
+  - component: {fileID: 4427597666988656255}
   m_Layer: 0
   m_Name: Thunder
   m_TagString: Untagged
@@ -18975,7 +18975,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5549743491747481143
+--- !u!114 &4427597666988656255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18984,28 +18984,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2716012619059656765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89974de5c719947469d6c8b24cdd4445, type: 3}
+  m_Script: {fileID: 11500000, guid: e44647a9b96fb0845b86b03c8b272ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileStat:
-    projectileName: 
-    projectileType: 0
-    critPercent: 0
-    critDmg: 0
-    dmg: 0
-    atkSpeed: 0
-    range: 0
-    projectileSpeed: 0
   unitStat:
     unitName: 
     unitType: 0
     tier: 0
-    attribute: 0
     critPercent: 0
     critDmg: 0
+    projectileSpeed: 0
     dmg: 0
     atkSpeed: 0
     range: 0
-  startTrans: {fileID: 0}
   target: {fileID: 0}
+  startTrans: {fileID: 0}
   remainTime: 2

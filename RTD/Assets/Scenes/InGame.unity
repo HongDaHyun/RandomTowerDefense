@@ -15551,17 +15551,17 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Fighter
-    _component: {fileID: 4937963754812133352, guid: 455ac7fb07c3d0d4fbfc2b169153ea65, type: 3}
+    _component: {fileID: 519361599005526148, guid: 455ac7fb07c3d0d4fbfc2b169153ea65, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Fire
-    _component: {fileID: 9084899537127939069, guid: 83d3969a89c7f2a419c30a10f275be6c, type: 3}
+    _component: {fileID: 6224470623211341720, guid: 83d3969a89c7f2a419c30a10f275be6c, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Germ
-    _component: {fileID: 2405596311617476154, guid: f66ec1e0d4bdc774b86e048c9cac7015, type: 3}
+    _component: {fileID: 6675815604142605122, guid: f66ec1e0d4bdc774b86e048c9cac7015, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
@@ -15571,22 +15571,22 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Ice
-    _component: {fileID: 873447825128706441, guid: 7098e1546d5d1374fb7bec1618ee60b4, type: 3}
+    _component: {fileID: 3158258859745589579, guid: 7098e1546d5d1374fb7bec1618ee60b4, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Sword
-    _component: {fileID: 6112597688786950807, guid: 1ff945ca18840744bb0ffb338b6e96c5, type: 3}
+    _component: {fileID: 4367979940162987705, guid: 1ff945ca18840744bb0ffb338b6e96c5, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Thunder
-    _component: {fileID: 5549743491747481143, guid: 0068d4b7322ef1d4d869eb416bde9701, type: 3}
+    _component: {fileID: 4427597666988656255, guid: 0068d4b7322ef1d4d869eb416bde9701, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: DeathExplosion
-    _component: {fileID: 7186707951879045562, guid: 8c71cf29e0143cc4d9cc2523de29c7ad, type: 3}
+    _component: {fileID: 3028198837046200209, guid: 8c71cf29e0143cc4d9cc2523de29c7ad, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0

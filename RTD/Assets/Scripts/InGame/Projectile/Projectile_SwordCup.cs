@@ -18,29 +18,10 @@ public class Projectile_SwordCup : Projectile
     {
     }
 
-    public override void SetUp()
-    {
-        base.SetUp();
-        particle = GetComponent<ParticleSystem>();
-        remainTime = particle.duration;
-    }
-
-    public override void SetTarget(Transform start, Transform target)
-    {
-        base.SetTarget(start, target);
-        MoveRot();
-        MovePos();
-    }
-
-    protected override void MoveRot()
-    {
-        Vector3 direction = target.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-    }
-
-    protected override void MovePos()
-    {
-        transform.position = target.position;
-    }
+    //public override void SetUp()
+    //{
+    //    base.SetUp();
+    //    particle = GetComponent<ParticleSystem>();
+    //    remainTime = particle.duration;
+    //}
 }

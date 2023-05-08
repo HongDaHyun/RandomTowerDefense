@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 
-public abstract class Projectile : MonoBehaviour, IPoolObject
+public class Projectile : MonoBehaviour, IPoolObject
 {
     public UnitStat unitStat;
-    public Transform startTrans, target;
+    public Transform target, startTrans;
     public float remainTime = 2f;
 
     void IPoolObject.OnCreatedInPool()
@@ -16,21 +16,28 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 
     void IPoolObject.OnGettingFromPool()
     {
-        SetUp();
+        //SetUp 관련된 것들은 SpawnManager에 명시
         StartCoroutine(Remain());
     }
 
     protected virtual void Update()
     {
-        if (target == null)
-        {
-            SpawnManager.Instance.DeSpawnProjectile(this);
-            return;
-        }
         if (target.gameObject.activeSelf)
         {
-            MoveRot();
-            MovePos();
+            switch(unitStat.unitType)
+            {
+                case UnitType.Bow:
+                case UnitType.Gun:
+                    ShootFollow();
+                    break;
+                case UnitType.Fighter:
+                    if (unitStat.range < Vector2.Distance(transform.position, startTrans.position))
+                    {
+                        SpawnManager.Instance.DeSpawnProjectile(this);
+                    }
+                    ShootStraight();
+                    break;
+            }
         }
         else
             SpawnManager.Instance.DeSpawnProjectile(this);
@@ -38,36 +45,42 @@ public abstract class Projectile : MonoBehaviour, IPoolObject
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Enemy"))
-            return;
-        if (collision.transform != target)
-            return;
+        if (!collision.CompareTag("Enemy"))     return;
+        if (collision.transform != target)      return;
         SpawnManager.Instance.DeSpawnProjectile(this);
         collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg, Color.red, 0.05f);
     }
 
-    public virtual void SetTarget(Transform start, Transform target)
+    public virtual void SetUp(Transform _start, Transform _target, UnitStat _unitStat)
     {
-        startTrans = start;
-        this.target = target;
+        startTrans = _start;    target = _target;   unitStat = _unitStat;
+        transform.position = _start.position;
+        SetRotation();
     }
 
-    public virtual void SetUp()
-    {
-        unitStat = CSVReader.Instance.UnitExport(name);
-    }
-
-    protected virtual void MovePos()
+    #region ShootType
+    protected virtual void ShootStraight()
     {
         transform.Translate(Vector2.right * unitStat.projectileSpeed * Time.deltaTime);
     }
 
-    protected virtual void MoveRot()
+    protected virtual void ShootFollow()
+    {
+        SetRotation();
+        ShootStraight();
+    }
+
+    protected virtual void SetRotation()
     {
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+    #endregion
+
+    #region Hit
+    #endregion
+
     protected virtual IEnumerator Remain()
     {
         float time = 0f;

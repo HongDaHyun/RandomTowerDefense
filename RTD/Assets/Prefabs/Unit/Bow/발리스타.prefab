@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3155d0418163844b1e5e218ddb7ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackTarget: {fileID: 0}
+  anim: {fileID: 0}
   isAnim: 0
   unitStat:
     unitName: 

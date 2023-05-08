@@ -9,10 +9,11 @@ public class Unit : MonoBehaviour, IPoolObject
 {
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
-    protected Transform attackTarget = null;
+    public Transform attackTarget = null;
+    private bool isAtkCool;
     #endregion
     #region Animation
-    protected Animator anim;
+    public Animator anim;
     public bool isAnim; //공격 방식 animation or default
     #endregion
     public UnitStat unitStat;
@@ -21,6 +22,8 @@ public class Unit : MonoBehaviour, IPoolObject
     {
         name = name.Replace("(Clone)", ""); //(Clone) 삭제
         anim = GetComponent<Animator>();
+        if (anim != null)
+            isAnim = true;
         SetUp();
         SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
     }
@@ -60,14 +63,13 @@ public class Unit : MonoBehaviour, IPoolObject
 
     private IEnumerator SearchTarget()
     {
-        if (isAnim)
-            anim.SetBool("IsAtk", false);
+        isAtkCool = false;
         while(true)
         {
             float closetDistSqr = Mathf.Infinity;
             for (int i = 0; i < SpawnManager.Instance.enemyList.Count; i++)
             {
-                float distance = Vector3.Distance(SpawnManager.Instance.enemyList[i].transform.position,
+                float distance = Vector2.Distance(SpawnManager.Instance.enemyList[i].transform.position,
                     transform.position);
                 if(distance <= unitStat.range && distance <= closetDistSqr)
                 {
@@ -78,10 +80,7 @@ public class Unit : MonoBehaviour, IPoolObject
 
             if (attackTarget != null && attackTarget.gameObject.activeSelf)
             {
-                if (isAnim)
-                    anim.SetBool("IsAtk", true);
-                else
-                    ChangeState(UnitState.AttackToTarget);
+                ChangeState(UnitState.AttackToTarget);
             }
             yield return null;
         }
@@ -89,21 +88,51 @@ public class Unit : MonoBehaviour, IPoolObject
 
     protected virtual IEnumerator AttackToTarget()
     {
-        Projectile projectile = Shoot();
-
-        if(unitStat.unitType == UnitType.Fire) // 불일때 remainTime도 계산해야함
+        // 1. target이 있는지 검사(다른 발사체에 의해 제거, Goal 지점 이동해 삭제 등)
+        if(attackTarget == null || !attackTarget.gameObject.activeSelf)
+            ChangeState(UnitState.SearchTarget);
+        
+        // 2. 사거리 벗어났는지 체크
+        float distance = Vector2.Distance(attackTarget.position, transform.position);
+        if (distance > unitStat.range)
         {
-            yield return new WaitForSeconds(unitStat.atkSpeed + projectile.remainTime);
+            attackTarget = null;
             ChangeState(UnitState.SearchTarget);
         }
 
-        yield return new WaitForSeconds(unitStat.atkSpeed);
+        // 3. 공격
+        if (isAnim && !isAtkCool)
+        {
+            anim.SetBool("IsAtk", true);
+        }
+        else
+        {
+            Projectile projectile = Shoot();
+            isAtkCool = true;
+
+            if (unitStat.unitType == UnitType.Fire) // 불일때 remainTime도 계산해야함
+            {
+                yield return new WaitForSeconds(20f / unitStat.atkSpeed + projectile.remainTime);
+                ChangeState(UnitState.SearchTarget);
+            }
+
+            yield return new WaitForSeconds(20f / unitStat.atkSpeed);
+            ChangeState(UnitState.SearchTarget);
+        }
+    }
+
+    IEnumerator AtkCoolAnim()
+    {
+        isAtkCool = true;
+        anim.SetBool("IsAtk", false);
+        yield return new WaitForSeconds(20f / unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
     }
 
-    protected virtual Projectile Shoot()
+    Projectile Shoot()
     {
         Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, unitStat.unitType.ToString());
+
         return projectile;
     }
     #endregion

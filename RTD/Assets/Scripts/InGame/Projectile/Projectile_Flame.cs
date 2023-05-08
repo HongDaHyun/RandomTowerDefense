@@ -15,11 +15,6 @@ public class Projectile_Flame : Projectile
         Enemy enemy = collision.GetComponent<Enemy>();
         enemy.StartCoroutine(enemy.TakeFire((float)System.Math.Round(unitStat.dmg / 10, 1)));
     }
-    public override void SetTarget(Transform start, Transform target)
-    {
-        base.SetTarget(start, target);
-        MoveRot();
-    }
 
     protected override void Update()
     {

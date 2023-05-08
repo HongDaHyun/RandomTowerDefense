@@ -144,30 +144,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 515752179090386938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2d8508af8be5f44bcdafb2543b9e93, type: 3}
+  m_Script: {fileID: 11500000, guid: e44647a9b96fb0845b86b03c8b272ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileStat:
-    projectileName: 
-    projectileType: 0
-    critPercent: 0
-    critDmg: 0
-    dmg: 0
-    atkSpeed: 0
-    range: 0
-    projectileSpeed: 0
   unitStat:
     unitName: 
     unitType: 0
     tier: 0
-    attribute: 0
     critPercent: 0
     critDmg: 0
+    projectileSpeed: 0
     dmg: 0
     atkSpeed: 0
     range: 0
-  startTrans: {fileID: 0}
   target: {fileID: 0}
+  startTrans: {x: 0, y: 0}
   remainTime: 2
 --- !u!1001 &6714058945309347716
 PrefabInstance:

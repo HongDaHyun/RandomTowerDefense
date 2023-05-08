@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5227512794339955428}
   - component: {fileID: 6984194680931831941}
   - component: {fileID: 4405807905537318816}
-  - component: {fileID: 4937963754812133352}
+  - component: {fileID: 519361599005526148}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4937963754812133352
+--- !u!114 &519361599005526148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,28 +143,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 515752179090386938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2993100f7c7ca5e449dced0ef88e63d1, type: 3}
+  m_Script: {fileID: 11500000, guid: e44647a9b96fb0845b86b03c8b272ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileStat:
-    projectileName: 
-    projectileType: 0
-    critPercent: 0
-    critDmg: 0
-    dmg: 0
-    atkSpeed: 0
-    range: 0
-    projectileSpeed: 0
   unitStat:
     unitName: 
     unitType: 0
     tier: 0
-    attribute: 0
     critPercent: 0
     critDmg: 0
+    projectileSpeed: 0
     dmg: 0
     atkSpeed: 0
     range: 0
-  startTrans: {fileID: 0}
   target: {fileID: 0}
+  startTrans: {fileID: 0}
   remainTime: 2

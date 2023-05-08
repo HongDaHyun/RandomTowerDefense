@@ -14452,7 +14452,7 @@ GameObject:
   - component: {fileID: 1142780361566609626}
   - component: {fileID: 2331849560771512575}
   - component: {fileID: -8904582654592673153}
-  - component: {fileID: 6112597688786950807}
+  - component: {fileID: 4367979940162987705}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -19356,7 +19356,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6112597688786950807
+--- !u!114 &4367979940162987705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19365,28 +19365,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142780361547603376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df4cfdbaf212998409ebd5ab03bf0420, type: 3}
+  m_Script: {fileID: 11500000, guid: e44647a9b96fb0845b86b03c8b272ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileStat:
-    projectileName: 
-    projectileType: 0
-    critPercent: 0
-    critDmg: 0
-    dmg: 0
-    atkSpeed: 0
-    range: 0
-    projectileSpeed: 0
   unitStat:
     unitName: 
     unitType: 0
     tier: 0
-    attribute: 0
     critPercent: 0
     critDmg: 0
+    projectileSpeed: 0
     dmg: 0
     atkSpeed: 0
     range: 0
-  startTrans: {fileID: 0}
   target: {fileID: 0}
+  startTrans: {fileID: 0}
   remainTime: 2
