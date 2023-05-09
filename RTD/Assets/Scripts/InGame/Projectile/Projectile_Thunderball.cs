@@ -12,6 +12,6 @@ public class Projectile_Thunderball : Projectile
             return;
         SpawnManager.Instance.DeSpawnProjectile(this);
         Enemy enemy = collision.GetComponent<Enemy>();
-        enemy.StartCoroutine(enemy.TakeThunder(unitStat.dmg + unitStat.dmg));
+        enemy.Hit(unitStat.dmg, Attribute.Stun);
     }
 }

@@ -11,7 +11,7 @@ public class Projectile_SwordCup : Projectile
     {
         if (!collision.CompareTag("Enemy"))
             return;
-        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg, Color.red, 0.05f);
+        collision.GetComponent<Enemy>().Hit(unitStat.dmg, Attribute.None);
     }
 
     protected override void Update()

@@ -32,10 +32,11 @@ public class Projectile : MonoBehaviour, IPoolObject
                     break;
                 case UnitType.Fighter:
                     if (unitStat.range < Vector2.Distance(transform.position, startTrans.position))
-                    {
                         SpawnManager.Instance.DeSpawnProjectile(this);
-                    }
+                    
                     ShootStraight();
+                    break;
+                case UnitType.Fire:
                     break;
             }
         }
@@ -46,9 +47,23 @@ public class Projectile : MonoBehaviour, IPoolObject
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Enemy"))     return;
-        if (collision.transform != target)      return;
-        SpawnManager.Instance.DeSpawnProjectile(this);
-        collision.GetComponent<Enemy>().TakeDmg(unitStat.dmg, Color.red, 0.05f);
+
+        Enemy enemy = collision.GetComponent<Enemy>();
+        switch(unitStat.unitType)
+        {
+            case UnitType.Bow:
+            case UnitType.Gun:
+                if (collision.transform != target)      return;
+                SpawnManager.Instance.DeSpawnProjectile(this);
+                enemy.Hit(unitStat.dmg, Attribute.None);
+                break;
+            case UnitType.Fighter:
+                enemy.Hit(unitStat.dmg, Attribute.None);
+                break;
+            case UnitType.Fire:
+                enemy.Hit((float)System.Math.Round(unitStat.dmg / 10, 1), Attribute.Fire);
+                break;
+        }
     }
 
     public virtual void SetUp(Transform _start, Transform _target, UnitStat _unitStat)

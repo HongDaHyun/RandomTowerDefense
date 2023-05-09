@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 using UnityEngine.UI;
+using System;
 
 public abstract class Enemy : MonoBehaviour, IPoolObject
 {
     protected SpriteRenderer spriteRenderer;
     public EnemyStat enemyStat;
-    public bool isFire, isGerm, isIce, isThunder;
+    private Dictionary<Attribute, bool> debuffState = new Dictionary<Attribute, bool>()
+    {
+        {Attribute.Fire, false },
+        {Attribute.Germ, false },
+        {Attribute.Ice, false },
+        {Attribute.Stun, false }
+    };
+    const int MAX_STRENGTH = 20;
+
     #region Movement
     protected Vector3 moveDirection;
     protected Transform[] wayPoints;
@@ -56,7 +65,9 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpSlider = GetComponentInChildren<Slider>();
         curHp = enemyStat.hp;
-        isDie = false; isFire = false; isGerm = false; isIce = false; isThunder = false;
+
+        debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Stun] = false;
+
         spriteRenderer.color = Color.white;
 
 
@@ -122,75 +133,80 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
     #endregion
 
     #region Damaged
-    public void TakeDmg(float dmg, Color _color, float time)
+    private void TakeDmg(float dmg, Color _color, float time)
     {
         if (isDie || !gameObject.activeSelf)
             return;
         curHp -= dmg;
 
-        StopCoroutine(HitColorAnimation(_color, time));
         StartCoroutine(HitColorAnimation(_color, time));
 
         if(curHp <= 0)
             Die();
     }
 
-    public IEnumerator TakeFire(float dmg)
+    private IEnumerator Hitted(float dmg, Attribute attribute)
     {
-        if (isFire)
-            yield break;
-        isFire = true;
-        for(int i = 0; i < enemyStat.strength; i++)
+        if(attribute == Attribute.None) // 일반 공격
         {
             TakeDmg(dmg, Color.red, 0.05f);
-            yield return new WaitForSeconds(CSVReader.Instance.DebuffExport("Fire").ticTime);
         }
-        isFire = false;
-    }
-
-    public IEnumerator TakeGerm(float dmg)
-    {
-        if (isGerm)
-            yield break;
-        isGerm = true;
-        for (int i = 0; i < enemyStat.strength; i++)
+        else // 디버프 공격
         {
-            TakeDmg(dmg, Color.black, 0.05f);
-            yield return new WaitForSeconds(CSVReader.Instance.DebuffExport("Germ").ticTime);
+            DebuffStat debuff;
+            switch (attribute)
+            {
+                case Attribute.Fire:
+                case Attribute.Germ:
+                    if (debuffState[attribute])
+                        yield break;
+                    debuffState[attribute] = true;
+
+                    int limitStrength = Mathf.Clamp(enemyStat.strength, 0, 17); // 강인함 17로 제한
+                    debuff = CSVReader.Instance.DebuffExport(attribute.ToString());
+
+                    for (int i = 0; i < MAX_STRENGTH - limitStrength; i++)
+                    {
+                        TakeDmg(dmg, attribute == Attribute.Fire ? Color.red : Color.black, 0.05f); // Fire -> red, Germ -> black
+                        yield return new WaitForSeconds(debuff.ticTime);
+                    }
+                    break;
+
+                case Attribute.Ice:
+                    debuff = CSVReader.Instance.DebuffExport(attribute.ToString());
+                    TakeDmg(dmg, Color.cyan, debuff.ticTime);
+
+                    if (debuffState[attribute]) // 슬로우
+                        yield break;
+                    debuffState[attribute] = true;
+
+                    float originalMoveSpeed = enemyStat.moveSpeed;
+                    enemyStat.moveSpeed *= 0.7f; // 나중에 변수 넣어서 개선 (지금은 default 0.7f)
+                    yield return new WaitForSeconds(debuff.ticTime);
+                    enemyStat.moveSpeed = originalMoveSpeed;
+                    break;
+
+                case Attribute.Stun:
+                    debuff = CSVReader.Instance.DebuffExport("Thunder");
+                    TakeDmg(dmg, Color.blue, debuff.ticTime);
+
+                    if (debuffState[attribute]) //스턴
+                        yield break;
+                    debuffState[attribute] = true;
+
+                    originalMoveSpeed = enemyStat.moveSpeed;
+                    enemyStat.moveSpeed = 0;
+                    yield return new WaitForSeconds(debuff.ticTime);
+                    enemyStat.moveSpeed = originalMoveSpeed;
+                    break;
+            }
+            debuffState[attribute] = false;
         }
-        isGerm = false;
     }
 
-    public IEnumerator TakeIce(float dmg)
+    public void Hit(float dmg, Attribute attribute)
     {
-        DebuffStat ice = CSVReader.Instance.DebuffExport("Ice");
-        TakeDmg(dmg, Color.cyan, ice.ticTime);
-
-        if (isIce) //슬로우
-            yield break;
-        isIce = true;
-        float temp = enemyStat.moveSpeed;
-        enemyStat.moveSpeed *= 0.7f;
-        yield return new WaitForSeconds(ice.ticTime);
-        enemyStat.moveSpeed = temp;
-
-        isIce = false;
-    }
-
-    public IEnumerator TakeThunder(float dmg)
-    {
-        DebuffStat thunder = CSVReader.Instance.DebuffExport("Thunder");
-        TakeDmg(dmg, Color.blue, thunder.ticTime);
-
-        if (isThunder)
-            yield break;
-        isThunder = true;
-        float temp = enemyStat.moveSpeed;
-        enemyStat.moveSpeed = 0;
-        yield return new WaitForSeconds(thunder.ticTime);
-        enemyStat.moveSpeed = temp;
-
-        isThunder = false;
+        StartCoroutine(Hitted(dmg, attribute));
     }
 
     private IEnumerator HitColorAnimation(Color _color, float time)

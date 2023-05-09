@@ -107,8 +107,9 @@ public class Unit : MonoBehaviour, IPoolObject
         }
         else
         {
-            Projectile projectile = Shoot();
             isAtkCool = true;
+
+            Projectile projectile = Shoot();
 
             if (unitStat.unitType == UnitType.Fire) // 불일때 remainTime도 계산해야함
             {
@@ -131,6 +132,9 @@ public class Unit : MonoBehaviour, IPoolObject
 
     Projectile Shoot()
     {
+        if (attackTarget == null || !attackTarget.gameObject.activeSelf)
+            return null;
+
         Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, unitStat.unitType.ToString());
 
         return projectile;

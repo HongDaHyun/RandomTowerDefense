@@ -25,7 +25,7 @@ public class Explosion_Death : MonoBehaviour, IPoolObject
         if (!collision.CompareTag("Enemy"))
             return;
         Enemy enemy = collision.GetComponent<Enemy>();
-        enemy.StartCoroutine(enemy.TakeGerm(dmg));
+        enemy.Hit(dmg, Attribute.Germ);
     }
 
     IEnumerator ActiveTime()

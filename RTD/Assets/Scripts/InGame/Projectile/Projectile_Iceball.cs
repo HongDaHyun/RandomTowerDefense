@@ -12,6 +12,6 @@ public class Projectile_Iceball : Projectile
             return;
         SpawnManager.Instance.DeSpawnProjectile(this);
         Enemy enemy = collision.GetComponent<Enemy>();
-        enemy.StartCoroutine(enemy.TakeIce(unitStat.dmg));
+        enemy.Hit(unitStat.dmg, Attribute.Ice);
     }
 }
