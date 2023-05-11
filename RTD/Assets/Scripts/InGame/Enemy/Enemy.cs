@@ -5,7 +5,7 @@ using Redcode.Pools;
 using UnityEngine.UI;
 using System;
 
-public abstract class Enemy : MonoBehaviour, IPoolObject
+public class Enemy : MonoBehaviour, IPoolObject
 {
     protected SpriteRenderer spriteRenderer;
     public EnemyStat enemyStat;
@@ -39,37 +39,37 @@ public abstract class Enemy : MonoBehaviour, IPoolObject
         SetUp();
     }
 
-    protected virtual void FixedUpdate()
+    private void FixedUpdate()
     {
         Movement();
     }
 
-    protected virtual void Update()
+    private void Update()
     {
         HpSliderUpdate();
     }
 
-    protected virtual void Die()
+    private void Die()
     {
         isDie = true;
         SpawnManager.Instance.DeSpawnEnemy(this);
     }
-    protected virtual void Movement()
+    private void Movement()
     {
         transform.position = Vector2.MoveTowards(transform.position, moveDirection, enemyStat.moveSpeed);
     }
-    protected virtual void SetUp()
+    private void SetUp()
     {
         name = name.Replace("(Clone)", "");
         enemyStat = CSVReader.Instance.EnemyExport(name);
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpSlider = GetComponentInChildren<Slider>();
         curHp = enemyStat.hp;
+        isDie = false;
 
         debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Stun] = false;
 
         spriteRenderer.color = Color.white;
-
 
         SetWayPoint();
         ResetWayPoint();

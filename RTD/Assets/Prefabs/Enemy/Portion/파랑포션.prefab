@@ -123,15 +123,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6635571574041197299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cec6aee75534d24c87be4bfb5cca839, type: 3}
+  m_Script: {fileID: 11500000, guid: 9332a4a21da661045a212dbb3715a8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: "\uD30C\uB791\uD3EC\uC158"
   enemyStat:
     enemyName: 
     enemyType: 0
-    hp: 0
     strength: 0
+    hp: 0
     defense: 0
     moveSpeed: 0
 --- !u!95 &2474718571586095226

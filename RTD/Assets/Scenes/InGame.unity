@@ -8455,7 +8455,7 @@ MonoBehaviour:
       projectileSpeed: 10
       dmg: 5
       atkSpeed: 20
-      range: 1
+      range: 2.5
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
       tier: 2
@@ -8464,7 +8464,7 @@ MonoBehaviour:
       projectileSpeed: 10
       dmg: 7
       atkSpeed: 10
-      range: 1.5
+      range: 2.8
     - unitName: "\uAC80\uC0AC"
       unitType: 6
       tier: 0
@@ -8473,7 +8473,7 @@ MonoBehaviour:
       projectileSpeed: 10
       dmg: 3
       atkSpeed: 20
-      range: 1
+      range: 2
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
       tier: 3
@@ -8482,7 +8482,7 @@ MonoBehaviour:
       projectileSpeed: 10
       dmg: 8
       atkSpeed: 30
-      range: 1.8
+      range: 2.8
     - unitName: "\uC804\uAD6C"
       unitType: 7
       tier: 1
@@ -15236,7 +15236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pools:
   - _name: "\uC7BC\uBBFC\uC774"
-    _component: {fileID: 6635571574041197296, guid: cea8cbfa2e0be9b4bacf4c962c3f9b5a, type: 3}
+    _component: {fileID: 0}
     _count: 0
     _container: {fileID: 1917533221}
     _nonLazy: 0
@@ -15246,7 +15246,7 @@ MonoBehaviour:
     _container: {fileID: 1917533221}
     _nonLazy: 0
   - _name: "\uD2B8\uB808\uC774\uB108"
-    _component: {fileID: 6635571574041197296, guid: c9c6def12f96e574eb4ad0314ccc9a72, type: 3}
+    _component: {fileID: 0}
     _count: 0
     _container: {fileID: 1917533221}
     _nonLazy: 0
@@ -15561,7 +15561,7 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Germ
-    _component: {fileID: 6675815604142605122, guid: f66ec1e0d4bdc774b86e048c9cac7015, type: 3}
+    _component: {fileID: 4846232039636219545, guid: f66ec1e0d4bdc774b86e048c9cac7015, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
@@ -15576,7 +15576,7 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Sword
-    _component: {fileID: 4367979940162987705, guid: 1ff945ca18840744bb0ffb338b6e96c5, type: 3}
+    _component: {fileID: 6105448551752674635, guid: 1ff945ca18840744bb0ffb338b6e96c5, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0
@@ -15586,7 +15586,7 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: DeathExplosion
-    _component: {fileID: 3028198837046200209, guid: 8c71cf29e0143cc4d9cc2523de29c7ad, type: 3}
+    _component: {fileID: 7347358028346850316, guid: 8c71cf29e0143cc4d9cc2523de29c7ad, type: 3}
     _count: 0
     _container: {fileID: 1226476187}
     _nonLazy: 0

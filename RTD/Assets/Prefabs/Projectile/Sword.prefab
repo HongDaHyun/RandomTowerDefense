@@ -14452,7 +14452,7 @@ GameObject:
   - component: {fileID: 1142780361566609626}
   - component: {fileID: 2331849560771512575}
   - component: {fileID: -8904582654592673153}
-  - component: {fileID: 4367979940162987705}
+  - component: {fileID: 6105448551752674635}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -14486,7 +14486,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142780361547603376}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
@@ -19356,7 +19356,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4367979940162987705
+--- !u!114 &6105448551752674635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19365,7 +19365,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142780361547603376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e44647a9b96fb0845b86b03c8b272ec6, type: 3}
+  m_Script: {fileID: 11500000, guid: ca2caf3c78afbce4a8d3679b79051d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitStat:
@@ -19380,4 +19380,4 @@ MonoBehaviour:
     range: 0
   target: {fileID: 0}
   startTrans: {fileID: 0}
-  remainTime: 2
+  remainTime: 0.5

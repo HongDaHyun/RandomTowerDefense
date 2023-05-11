@@ -15,7 +15,8 @@ public class UnitRange : MonoBehaviour
 
         float diameter = range * 2.0f;
         transform.localScale = Vector3.one * diameter;
-        transform.position = position;
+        Vector2 pos = position;
+        transform.position = pos + new Vector2(0, 0.2f);
     }
 
     public void OffAtkRange()

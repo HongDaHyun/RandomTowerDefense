@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6635571574041197297}
   - component: {fileID: 6635571574041197298}
-  - component: {fileID: 6635571574041197296}
   - component: {fileID: 2604054667756183949}
   - component: {fileID: -8896920702115279614}
+  - component: {fileID: 3766877794633016059}
   m_Layer: 0
   m_Name: "\uC7BC\uBBFC\uC774"
   m_TagString: Enemy
@@ -88,26 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6635571574041197296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6635571574041197299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a72cfb4bcf837e4ca9fea4a7bac99c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idName: "\uC7BC\uBBFC\uC774"
-  enemyStat:
-    enemyName: 
-    enemyType: 0
-    hp: 0
-    strength: 0
-    defense: 0
-    moveSpeed: 0
 --- !u!61 &2604054667756183949
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,6 +134,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3766877794633016059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635571574041197299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9332a4a21da661045a212dbb3715a8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStat:
+    enemyName: 
+    enemyType: 0
+    strength: 0
+    hp: 0
+    defense: 0
+    moveSpeed: 0
 --- !u!1001 &7826454837956698956
 PrefabInstance:
   m_ObjectHideFlags: 0
