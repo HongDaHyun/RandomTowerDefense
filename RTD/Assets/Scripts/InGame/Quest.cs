@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestUI : MonoBehaviour
+public class Quest : MonoBehaviour
 {
-    public Quest quest;
+    public QuestStat questStat;
     public int curCondition;
     private Tier tier;
     private float reward;
@@ -22,15 +22,15 @@ public class QuestUI : MonoBehaviour
     public void SetQuest(int id)
     {
         curCondition = 0;
-        quest = CSVReader.Instance.QuestExport(id);
-        texts[0].text = quest.questName; //퀘스트 이름
-        texts[1].text = string.Format(quest.explanation, curCondition, quest.condition);
+        questStat = CSVReader.Instance.QuestExport(id);
+        texts[0].text = questStat.questName; //퀘스트 이름
+        texts[1].text = string.Format(questStat.explanation, curCondition, questStat.condition);
 
         int ranNum = Random.Range(0, System.Enum.GetValues(typeof(Tier)).Length);
         tier = (Tier)ranNum; //리워드 티어
-        reward = 1 + 1 * (int)tier;
+        reward = 1 + 1 * (int)tier; // 티어에 따른 보상 증가
 
-        switch(tier)
+        switch(tier) // 티어 색상
         {
             case Tier.Common:
                 texts[0].color = Color.green;
@@ -46,15 +46,12 @@ public class QuestUI : MonoBehaviour
                 break;
         }
 
-        texts[2].text = string.Format("키 {0} 증가", reward);
-
-        StopAllCoroutines();
-        StartCoroutine(QuestManager.Instance.DoQuest(quest));
+        texts[2].text = string.Format("키 {0} 증가", reward); //rewardText 설정
     }
 
     private void Update()
     {
-        if (curCondition < quest.condition)
+        if (curCondition < questStat.condition)
         {
             button.interactable = false;
             return;

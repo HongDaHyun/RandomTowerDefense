@@ -82,17 +82,17 @@ public class CSVReader : Singleton<CSVReader>
         int order = 3; int size = 4;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
-        csvList.quest = new Quest[tableSize];
+        csvList.questStat = new QuestStat[tableSize];
 
         for (int i = 0; i < tableSize; i++)
         {
             int k = i + 1;
-            csvList.quest[i] = new Quest();
-            csvList.quest[i].questName = data[size * k];
-            csvList.quest[i].explanation = data[size * k + 1];
-            csvList.quest[i].condition = int.Parse(data[size * k + 2]);
-            csvList.quest[i].conditionWidth = int.Parse(data[size * k + 3]);
-            csvList.quest[i].ID = i;
+            csvList.questStat[i] = new QuestStat();
+            csvList.questStat[i].questName = data[size * k];
+            csvList.questStat[i].explanation = data[size * k + 1];
+            csvList.questStat[i].condition = int.Parse(data[size * k + 2]);
+            csvList.questStat[i].conditionWidth = int.Parse(data[size * k + 3]);
+            csvList.questStat[i].ID = i;
         }
     }
     #endregion
@@ -164,14 +164,14 @@ public class CSVReader : Singleton<CSVReader>
         }
     }
 
-    public Quest QuestExport(int id)
+    public QuestStat QuestExport(int id)
     {
-        for (int i = 0; i < csvList.quest.Length; i++)
+        for (int i = 0; i < csvList.questStat.Length; i++)
         {
-            if (id == csvList.quest[i].ID)
-                return csvList.quest[i];
+            if (id == csvList.questStat[i].ID)
+                return csvList.questStat[i];
         }
-        return csvList.quest[0];
+        return csvList.questStat[0];
     }
     #endregion
 

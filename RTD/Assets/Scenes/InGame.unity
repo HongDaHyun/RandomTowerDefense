@@ -8709,7 +8709,7 @@ MonoBehaviour:
       ticTime: 3
     - debuffName: Thunder
       ticTime: 0.5
-    quest:
+    questStat:
     - questName: "\uC874\uBC84"
       explanation: "{0} / {1} \uC6E8\uC774\uBE0C \uB3D9\uC548 \uBC84\uD2F0\uC138\uC694."
       condition: 2
@@ -10027,8 +10027,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1805092492}
-        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+      - m_Target: {fileID: 1060610722}
+        m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
         m_MethodName: InitQuest
         m_Mode: 1
         m_Arguments:

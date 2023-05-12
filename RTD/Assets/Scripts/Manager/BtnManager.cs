@@ -160,4 +160,21 @@ public class BtnManager : Singleton<BtnManager>
             }
         }
     }
+
+    public void InitQuest()
+    {
+        int ranID;
+        List<int> IDs = new List<int>(); //중복 방지 리스트
+        for (int i = 0; i < UIManager.Instance.quests.Length; i++)
+        {
+            ranID = UnityEngine.Random.Range(0, CSVReader.Instance.csvList.questStat.Length);
+            if (IDs.Contains(ranID)) // 중복이면 다시
+                i--;
+            else
+            {
+                IDs.Add(ranID);
+                UIManager.Instance.quests[i].SetQuest(ranID); //퀘스트 생성
+            }
+        }
+    }
 }

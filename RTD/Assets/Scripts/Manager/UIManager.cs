@@ -20,7 +20,7 @@ public class UIManager : Singleton<UIManager>
     public UnitInfo unitInfoContents;
     public UpPannel upPannel;
     public GatchaPannel gatchaPannel;
-    public QuestUI[] quests;
+    public Quest[] quests;
     public GameObject slotObj;
     public Text gameSpeedTxt;
 

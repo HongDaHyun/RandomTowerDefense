@@ -27,7 +27,7 @@ public struct DebuffStat
 }
 
 [Serializable]
-public struct Quest
+public struct QuestStat
 {
     public string questName, explanation;
     public int condition, conditionWidth;
@@ -40,5 +40,5 @@ public class CSVList
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
     public DebuffStat[] debuffStat;
-    public Quest[] quest;
+    public QuestStat[] questStat;
 }
