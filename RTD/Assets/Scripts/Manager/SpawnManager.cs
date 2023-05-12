@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
+using TMPro;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
@@ -113,6 +114,22 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnExplosion(Explosion_Death explosion)
     {
         PoolManager.Instance.TakeToPool<Explosion_Death>(explosion.name, explosion);
+    }
+    #endregion
+
+    #region SpawnUI
+    public TextMeshPro SpawnDmgText(float dmg)
+    {
+        TextMeshPro dmgText = PoolManager.Instance.GetFromPool<TextMeshPro>("DmgText");
+        dmgText.alpha = 1f;
+        dmgText.SetText(dmg.ToString());
+        //dmgText.color = color
+        return dmgText;
+    }
+
+    public void DeSpawnDmgText(TextMeshPro tmpro)
+    {
+        PoolManager.Instance.TakeToPool<TextMeshPro>("DmgText", tmpro);
     }
     #endregion
 }

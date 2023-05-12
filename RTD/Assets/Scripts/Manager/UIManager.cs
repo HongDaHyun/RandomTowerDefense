@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using DG.Tweening;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -82,6 +83,20 @@ public class UIManager : Singleton<UIManager>
                 SpawnManager.Instance.SpawnEnemy();
             }
         }
+    }
+
+    public void DmgPopUp(float dmg, Vector3 startTrans)
+    {
+        TMPro.TextMeshPro dmgText = SpawnManager.Instance.SpawnDmgText(dmg);
+        dmgText.transform.position = startTrans;
+        dmgText.transform.DOMove(startTrans + new Vector3(0f, 1f, 0f), 0.5f).SetEase(Ease.OutQuad).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
+        {
+            dmgText.DOFade(0f, 0.5f) //0.5f -> moveDuration
+            .OnComplete(() =>
+            {
+                SpawnManager.Instance.DeSpawnDmgText(dmgText);
+            });
+        });
     }
 }
 

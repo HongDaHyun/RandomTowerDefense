@@ -15236,7 +15236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pools:
   - _name: "\uC7BC\uBBFC\uC774"
-    _component: {fileID: 0}
+    _component: {fileID: 3766877794633016059, guid: cea8cbfa2e0be9b4bacf4c962c3f9b5a, type: 3}
     _count: 0
     _container: {fileID: 1917533221}
     _nonLazy: 0
@@ -15607,6 +15607,11 @@ MonoBehaviour:
     _nonLazy: 0
   - _name: Legend
     _component: {fileID: 2886222644574685298, guid: 451f5facf36588740b4eecd66e582c9f, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: DmgText
+    _component: {fileID: 8880602827468229899, guid: d3251381b4bc0334fb5cf48a9e2ae9c6, type: 3}
     _count: 0
     _container: {fileID: 0}
     _nonLazy: 0

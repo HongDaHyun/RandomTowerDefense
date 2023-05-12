@@ -138,6 +138,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         if (isDie || !gameObject.activeSelf)
             return;
         curHp -= dmg;
+        UIManager.Instance.DmgPopUp(dmg, transform.position);
 
         StartCoroutine(HitColorAnimation(_color, time));
 
