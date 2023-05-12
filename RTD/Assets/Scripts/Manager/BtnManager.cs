@@ -14,18 +14,14 @@ public class BtnManager : Singleton<BtnManager>
             obj.SetActive(false);
     }
 
-    public void PauseTab(GameObject pausePannel)
+    public void Pause() // 멈춤
     {
-        if(!pausePannel.activeSelf)
-        {
-            Time.timeScale = 0;
-            pausePannel.SetActive(true);
-        }
-        else
-        {
-            Time.timeScale = (int)GameManager.Instance.gameTime / 10f;
-            pausePannel.SetActive(false);
-        }
+        Time.timeScale = 0;
+    }
+
+    public void Play() // 재생
+    {
+        Time.timeScale = (int)GameManager.Instance.gameTime / 10f;
     }
 
     public void GameStart(string _level)
@@ -63,15 +59,15 @@ public class BtnManager : Singleton<BtnManager>
                 gm.curHealth = gm.maxHealth;
                 break;
         }
-        GameManager.Instance.gameTime = CurTime.Slow;
+        GameManager.Instance.gameTime = GameTime.Slow; // 속도 초기화
         AdMobManager.Instance.ToggleBannerAd(false);
         SceneManager.LoadScene(1);
-    }
+    } // 레벨 설정에 따라
 
     public void Title()
     {
         GameManager.Instance.isStart = false;
-        GameManager.Instance.gameTime = CurTime.Slow;
+        GameManager.Instance.gameTime = GameTime.Slow; // 속도 초기화
         SceneManager.LoadScene(0);
     }
 
@@ -125,14 +121,14 @@ public class BtnManager : Singleton<BtnManager>
     {
         switch(GameManager.Instance.gameTime)
         {
-            case CurTime.Slow:
-                GameManager.Instance.gameTime = CurTime.Commonly;
+            case GameTime.Slow:
+                GameManager.Instance.gameTime = GameTime.Commonly;
                 break;
-            case CurTime.Commonly:
-                GameManager.Instance.gameTime = CurTime.Fast;
+            case GameTime.Commonly:
+                GameManager.Instance.gameTime = GameTime.Fast;
                 break;
-            case CurTime.Fast:
-                GameManager.Instance.gameTime = CurTime.Slow;
+            case GameTime.Fast:
+                GameManager.Instance.gameTime = GameTime.Slow;
                 break;
         }
         float curTime = (int)GameManager.Instance.gameTime / 10f;
@@ -176,5 +172,6 @@ public class BtnManager : Singleton<BtnManager>
                 UIManager.Instance.quests[i].SetQuest(ranID); //퀘스트 생성
             }
         }
+        UIManager.Instance.quests[0].SetQuest(0); //퀘스트 생성
     }
 }

@@ -314,19 +314,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3509192937588246187}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6080723466922285799}
-        m_TargetAssemblyTypeName: QuestUI, Assembly-CSharp
-        m_MethodName: GetReward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6080723466922285799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,13 +327,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c9854c4bd7cae44a1f7bb5c5256db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quest:
+  questStat:
     questName: 
     explanation: 
     condition: 0
     conditionWidth: 0
     ID: 0
   curCondition: 0
+  readyCondition: 0
 --- !u!1 &3509192937653098359
 GameObject:
   m_ObjectHideFlags: 0

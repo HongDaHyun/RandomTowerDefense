@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Quest : MonoBehaviour
 {
     public QuestStat questStat;
-    public int curCondition;
+    public int curCondition, readyCondition;
     private Tier tier;
-    private float reward;
+    private int reward;
 
     private Text[] texts;
     private Button button;
@@ -19,12 +19,20 @@ public class Quest : MonoBehaviour
         button = GetComponent<Button>();
     }
 
+    private void OnEnable()
+    {
+        UpdateQuest();
+        DoQuest();
+        CheckSuccess();
+    }
+
     public void SetQuest(int id)
     {
         curCondition = 0;
+        button.interactable = false; // Reset
         questStat = CSVReader.Instance.QuestExport(id);
         texts[0].text = questStat.questName; //퀘스트 이름
-        texts[1].text = string.Format(questStat.explanation, curCondition, questStat.condition);
+        UpdateQuest();
 
         int ranNum = Random.Range(0, System.Enum.GetValues(typeof(Tier)).Length);
         tier = (Tier)ranNum; //리워드 티어
@@ -47,16 +55,43 @@ public class Quest : MonoBehaviour
         }
 
         texts[2].text = string.Format("키 {0} 증가", reward); //rewardText 설정
+
+        ReadyQuest();
     }
 
-    private void Update()
+    private void ReadyQuest()
     {
-        if (curCondition < questStat.condition)
+        switch(questStat.ID)
         {
-            button.interactable = false;
+            case 0:
+                readyCondition = WaveManager.Instance.curWave;
+                break;
+        }
+    }
+
+    private void DoQuest()
+    {
+        switch(questStat.ID)
+        {
+            case 0:
+                if(!WaveManager.Instance.isWave)
+                    curCondition = WaveManager.Instance.curWave - readyCondition;
+                break;
+        }
+    }
+
+    private void UpdateQuest()
+    {
+        texts[1].text = string.Format(questStat.explanation, curCondition, questStat.condition);
+    }
+
+    private void CheckSuccess()
+    {
+        if (curCondition >= questStat.condition)
+        {
+            button.interactable = true;
             return;
         }
-        else
-            button.interactable = true; //최적화 필요
+        button.interactable = false;
     }
 }

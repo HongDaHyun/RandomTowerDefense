@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Level level;
-    public CurTime gameTime = CurTime.Slow;
+    public GameTime gameTime = GameTime.Slow;
     public bool isStart;
     public int gatchaKey, maxHealth, curHealth, maxWave, maxExp, curExp; //curWave는 waveManager에 존재
 
