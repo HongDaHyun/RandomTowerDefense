@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     private void Die()
     {
         isDie = true;
+        QuestManager.Instance.killEnemyNum++; // Äù½ºÆ® 5
         SpawnManager.Instance.DeSpawnEnemy(this);
     }
     private void Movement()

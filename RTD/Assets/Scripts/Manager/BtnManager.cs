@@ -108,6 +108,8 @@ public class BtnManager : Singleton<BtnManager>
         UIManager.Instance.gatchaPannel.gatchaTab.interactable = true;
         GameManager.Instance.gatchaKey--;
         SpawnManager.Instance.SpawnUnit((UnitType)ranType, (Tier)ranTier);
+
+        QuestManager.Instance.gatchaNum++; // Äù½ºÆ® 9
     }
 
     public void SlotMachineBtn()
@@ -172,6 +174,6 @@ public class BtnManager : Singleton<BtnManager>
                 UIManager.Instance.quests[i].SetQuest(ranID); //Äù½ºÆ® »ý¼º
             }
         }
-        UIManager.Instance.quests[0].SetQuest(0); //Äù½ºÆ® »ý¼º
+        UIManager.Instance.quests[0].SetQuest(10); //Äù½ºÆ® »ý¼º
     }
 }

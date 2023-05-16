@@ -67,6 +67,9 @@ public class SpawnManager : Singleton<SpawnManager>
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.UnitExport_forSpawn(type, tier));
+        if (!QuestManager.Instance.unitTypesList.Contains(type))
+            QuestManager.Instance.unitTypesList.Add(type); // Äù½ºÆ® 6
+        QuestManager.Instance.tierNum[(int)tier]++; // Äù½ºÆ® 10,11,12,13
         unitList.Add(newUnit);
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         tileGround.SetTile(newUnit);

@@ -8739,8 +8739,7 @@ MonoBehaviour:
       conditionWidth: 2
       ID: 2
     - questName: "\uB4F1\uAC00\uAD50\uD658"
-      explanation: "\uD55C \uC6E8\uC774\uBE0C\uC5D0 \uCCB4\uB825 {0} / {1} \uC774\uC0C1\uC744
-        \uC783\uACE0 \uC0DD\uC874\uD558\uC138\uC694."
+      explanation: "\uCCB4\uB825\uC744 {0} / {1}\uB9CC\uD07C \uC783\uC73C\uC138\uC694."
       condition: 3
       conditionWidth: 2
       ID: 3
@@ -8760,122 +8759,117 @@ MonoBehaviour:
       condition: 4
       conditionWidth: 1
       ID: 6
-    - questName: "\uC624\uD0C0\uCFE0"
-      explanation: "\uD55C \uC885\uB958\uC758 \uBAA8\uB4E0 \uC720\uB2DB\uC744 \uBAA8\uC73C\uC138\uC694."
-      condition: 0
-      conditionWidth: 0
-      ID: 7
     - questName: "\uD018\uC2A4\uD2B8\uC655"
       explanation: "\uC81C\uACF5\uB41C \uD018\uC2A4\uD2B8\uB97C \uBAA8\uB450 \uD074\uB9AC\uC5B4\uD558\uC138\uC694."
-      condition: 0
+      condition: 2
       conditionWidth: 0
-      ID: 8
+      ID: 7
     - questName: "\uC2EC\uAE30\uC77C\uC804"
       explanation: "\uCCB4\uB825\uC744 {0} / {1}\uB9CC\uD07C \uD68C\uBCF5\uD558\uC138\uC694."
       condition: 3
       conditionWidth: 2
-      ID: 9
+      ID: 8
     - questName: "\uB3C4\uBC15\uC911\uB3C5"
       explanation: "\uAC00\uCC60\uB97C {0} / {1}\uBC88 \uD558\uC138\uC694."
       condition: 8
       conditionWidth: 2
-      ID: 10
+      ID: 9
     - questName: "\uC77C\uBC18"
       explanation: "\uC77C\uBC18 \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
         \uBF51\uC73C\uC138\uC694."
       condition: 6
       conditionWidth: 2
-      ID: 11
+      ID: 10
     - questName: "\uB808\uC5B4"
       explanation: "\uB808\uC5B4 \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
         \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 12
+      ID: 11
     - questName: "\uC5D0\uD53D"
       explanation: "\uC5D0\uD53D \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
         \uBF51\uC73C\uC138\uC694."
       condition: 2
       conditionWidth: 2
-      ID: 13
+      ID: 12
     - questName: "\uB808\uC804\uB4DC"
       explanation: "\uB808\uC804\uB4DC \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
         \uBF51\uC73C\uC138\uC694."
       condition: 1
       conditionWidth: 2
-      ID: 14
+      ID: 13
     - questName: "\uAF5D"
       explanation: '!!?'
       condition: 0
       conditionWidth: 0
-      ID: 15
+      ID: 14
     - questName: "\uAC70\uBD81\uC774"
       explanation: "\uD55C \uC6E8\uC774\uBE0C\uB97C {0} / {1}\uCD08 \uB118\uAC8C
         \uAC78\uB824 \uD074\uB9AC\uC5B4\uD558\uC138\uC694."
       condition: 10
       conditionWidth: 5
-      ID: 16
+      ID: 15
     - questName: "\uD5C8\uB9AC\uAC00.."
       explanation: "\uD65C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 17
+      ID: 16
     - questName: "\uC2A4\uD134\uAC74"
       explanation: "\uD30C\uC774\uD130 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 18
+      ID: 17
     - questName: "\uD654\uB975\uD654\uB975"
       explanation: "\uBD88 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 19
+      ID: 18
     - questName: "\uC804\uC5FC\uBCD1"
       explanation: "\uBCD1\uADE0 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 20
+      ID: 19
     - questName: "\uC9C4\uC9DC\uCD1D"
       explanation: "\uCD1D \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 21
+      ID: 20
     - questName: "\uACA8\uC6B8\uC655\uAD6D"
       explanation: "\uC5BC\uC74C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 22
+      ID: 21
     - questName: "\uCF5C\uB85C\uC138\uC6C0"
       explanation: "\uAC80 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 23
+      ID: 22
     - questName: "\uCC0C\uB9AC\uB9BF"
       explanation: "\uC804\uAE30 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 24
+      ID: 23
     - questName: "\uC0C8\uC639\uC9C0\uB9C8"
       explanation: "\uC77C\uBC18 \uB4F1\uAE09 \uC720\uB2DB\uC744 \uC5F0\uC18D\uC73C\uB85C
         {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 5
       conditionWidth: 2
-      ID: 25
+      ID: 24
     - questName: "\uD2B8\uB808\uC774\uB108"
       explanation: "{0} / {1}\uAC1C\uC758 \uC9C4\uD654\uB97C \uB9C8\uCE58\uC138\uC694."
       condition: 7
       conditionWidth: 2
-      ID: 26
+      ID: 25
     - questName: "\uBC8C\uD06C\uC5C5"
       explanation: "\uCD5C\uB300 \uCCB4\uB825\uC744 {0} / {1}\uB9CC\uD07C \uB298\uB9AC\uC138\uC694."
       condition: 3
       conditionWidth: 2
-      ID: 27
+      ID: 26
     - questName: "\uBCF4\uC2A4!"
       explanation: "\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB97C \uCC98\uCE58\uD558\uC138\uC694."
       condition: 0
       conditionWidth: 0
-      ID: 28
+      ID: 27
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9758,6 +9752,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
+--- !u!1 &647776587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647776588}
+  - component: {fileID: 647776589}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &647776588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647776587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1680714404}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647776589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647776587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0deb4ae9e6846b645ac159b96e0ff3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killEnemyNum: 0
+  questNum: 0
+  gatchaNum: 0
+  unitTypesList: 
+  tierNum: 00000000000000000000000000000000
 --- !u!4 &650085641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871277118076770286, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
@@ -16323,7 +16366,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1030427895
 PrefabInstance:
@@ -23711,8 +23754,8 @@ Transform:
   - {fileID: 253012259}
   - {fileID: 1060610723}
   - {fileID: 7270511}
-  - {fileID: 1805092491}
   - {fileID: 1029086215}
+  - {fileID: 647776588}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25218,50 +25261,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5720371020968932641, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
   m_PrefabInstance: {fileID: 1478105582}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1805092490
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1805092491}
-  - component: {fileID: 1805092492}
-  m_Layer: 0
-  m_Name: QuestManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1805092491
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805092490}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1680714404}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1805092492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805092490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd8e3e8c8ad5464f9e665cc02c20b00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1817018520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5774718841028126598, guid: d51fea1e14b2f5c478f47023d3dbb5e2, type: 3}

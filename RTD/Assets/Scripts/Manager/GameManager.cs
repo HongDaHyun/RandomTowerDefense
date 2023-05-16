@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
     public Level level;
     public GameTime gameTime = GameTime.Slow;
     public bool isStart;
-    public int gatchaKey, maxHealth, curHealth, maxWave, maxExp, curExp; //curWave는 waveManager에 존재
+    public int gatchaKey, maxHealth, curHealth, maxWave, maxExp, curExp;
 
     protected override void Awake()
     {
