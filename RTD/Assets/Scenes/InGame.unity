@@ -8800,76 +8800,64 @@ MonoBehaviour:
       ID: 13
     - questName: "\uAF5D"
       explanation: '!!?'
-      condition: 0
+      condition: 100
       conditionWidth: 0
       ID: 14
-    - questName: "\uAC70\uBD81\uC774"
-      explanation: "\uD55C \uC6E8\uC774\uBE0C\uB97C {0} / {1}\uCD08 \uB118\uAC8C
-        \uAC78\uB824 \uD074\uB9AC\uC5B4\uD558\uC138\uC694."
-      condition: 10
-      conditionWidth: 5
-      ID: 15
     - questName: "\uD5C8\uB9AC\uAC00.."
       explanation: "\uD65C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 16
+      ID: 15
     - questName: "\uC2A4\uD134\uAC74"
       explanation: "\uD30C\uC774\uD130 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 17
+      ID: 16
     - questName: "\uD654\uB975\uD654\uB975"
       explanation: "\uBD88 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 18
+      ID: 17
     - questName: "\uC804\uC5FC\uBCD1"
       explanation: "\uBCD1\uADE0 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 19
+      ID: 18
     - questName: "\uC9C4\uC9DC\uCD1D"
       explanation: "\uCD1D \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 20
+      ID: 19
     - questName: "\uACA8\uC6B8\uC655\uAD6D"
       explanation: "\uC5BC\uC74C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 21
+      ID: 20
     - questName: "\uCF5C\uB85C\uC138\uC6C0"
       explanation: "\uAC80 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 22
+      ID: 21
     - questName: "\uCC0C\uB9AC\uB9BF"
       explanation: "\uC804\uAE30 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
       condition: 4
       conditionWidth: 2
-      ID: 23
-    - questName: "\uC0C8\uC639\uC9C0\uB9C8"
-      explanation: "\uC77C\uBC18 \uB4F1\uAE09 \uC720\uB2DB\uC744 \uC5F0\uC18D\uC73C\uB85C
-        {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
-      condition: 5
-      conditionWidth: 2
-      ID: 24
+      ID: 22
     - questName: "\uD2B8\uB808\uC774\uB108"
       explanation: "{0} / {1}\uAC1C\uC758 \uC9C4\uD654\uB97C \uB9C8\uCE58\uC138\uC694."
       condition: 7
       conditionWidth: 2
-      ID: 25
+      ID: 23
     - questName: "\uBC8C\uD06C\uC5C5"
       explanation: "\uCD5C\uB300 \uCCB4\uB825\uC744 {0} / {1}\uB9CC\uD07C \uB298\uB9AC\uC138\uC694."
       condition: 3
       conditionWidth: 2
-      ID: 26
+      ID: 24
     - questName: "\uBCF4\uC2A4!"
       explanation: "\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB97C \uCC98\uCE58\uD558\uC138\uC694."
       condition: 0
       conditionWidth: 0
-      ID: 27
+      ID: 25
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9799,8 +9787,10 @@ MonoBehaviour:
   killEnemyNum: 0
   questNum: 0
   gatchaNum: 0
+  evolNum: 0
   unitTypesList: 
   tierNum: 00000000000000000000000000000000
+  unitNum: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &650085641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871277118076770286, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
