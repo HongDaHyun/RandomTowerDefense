@@ -15,6 +15,7 @@ public struct EnemyStat
 {
     public string enemyName;
     public EnemyType enemyType;
+    public Tier tier;
     public int strength;
     public float hp, defense, moveSpeed;
 }
@@ -35,10 +36,19 @@ public struct QuestStat
 }
 
 [Serializable]
+public struct CharacteristicStat
+{
+    public string charateristicName, explanation;
+    public int condition, conditionWidth;
+    public int level;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
     public DebuffStat[] debuffStat;
     public QuestStat[] questStat;
+    public CharacteristicStat[] characteristicStat;
 }

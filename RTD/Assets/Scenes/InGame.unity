@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3478808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3478809}
+  - component: {fileID: 3478810}
+  m_Layer: 5
+  m_Name: Contents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3478809
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 352930662}
+  - {fileID: 2139490953}
+  - {fileID: 279008224}
+  m_Father: {fileID: 345640894}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1000, y: 1300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3478810
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478808}
+  m_CullTransparentMesh: 1
 --- !u!1001 &3670614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229,7 +277,7 @@ MonoBehaviour:
   waves:
   - spawnTime: 1
     enemy:
-    - name: "\uD65C\uC2A4\uCEEC"
+    - name: "\uAC80\uC2A4\uCEEC"
       maxCount: 1
   - spawnTime: 1
     enemy:
@@ -2006,7 +2054,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 0}
+  m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &96547344
 MonoBehaviour:
@@ -2041,7 +2089,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'EXP:'
+  m_Text: '1Lv:'
 --- !u!222 &96547345
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3491,7 +3539,8 @@ MonoBehaviour:
   maxHealth: 20
   curHealth: 20
   maxWave: 20
-  maxExp: 3
+  expLevel: 1
+  maxExp: 10
   curExp: 0
 --- !u!1 &199933289
 GameObject:
@@ -3973,7 +4022,6 @@ MonoBehaviour:
   - {fileID: 0}
   levelWaveTxt: []
   inGamePannel:
-  - {fileID: 0}
   - {fileID: 1352732951}
   - {fileID: 273825764623961686}
   - {fileID: 459346292}
@@ -3983,6 +4031,11 @@ MonoBehaviour:
   unitRange: {fileID: 304038008}
   unitInfoPannel: {fileID: 1902797590}
   enemyInfoPannel: {fileID: 156966625}
+  gatchaPannel:
+    gatchaPannel: {fileID: 771374519}
+    gatchaBtn: {fileID: 1057437465}
+    gatchaTab: {fileID: 71285651}
+  characteristicPannel: {fileID: 345640893}
   unitInfoContents:
     img: {fileID: 1592687069}
     texts:
@@ -3997,11 +4050,8 @@ MonoBehaviour:
     healthTxt: {fileID: 74955528}
     waveTxt: {fileID: 1402952552}
     timerTxt: {fileID: 1778999980}
+    levelTxt: {fileID: 96547344}
     expSlider: {fileID: 1460899994}
-  gatchaPannel:
-    gatchaPannel: {fileID: 771374519}
-    gatchaBtn: {fileID: 1057437465}
-    gatchaTab: {fileID: 71285651}
   quests:
   - {fileID: 848965775}
   - {fileID: 550724275}
@@ -4080,6 +4130,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
+--- !u!1001 &260103251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3478809}
+    m_Modifications:
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277490, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Name
+      value: Card (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
 --- !u!1 &261391917
 GameObject:
   m_ObjectHideFlags: 0
@@ -4452,6 +4599,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275043042}
   m_CullTransparentMesh: 1
+--- !u!224 &279008224 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+  m_PrefabInstance: {fileID: 340862087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &280807297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5099,6 +5251,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
+--- !u!1001 &340862087
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3478809}
+    m_Modifications:
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277490, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Name
+      value: Card (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
 --- !u!1 &341866743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5268,6 +5517,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51fea1e14b2f5c478f47023d3dbb5e2, type: 3}
+--- !u!1 &345640893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345640894}
+  - component: {fileID: 345640896}
+  - component: {fileID: 345640895}
+  m_Layer: 5
+  m_Name: CharcteristicPannel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &345640894
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345640893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3478809}
+  m_Father: {fileID: 1106824237}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &345640895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345640893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &345640896
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345640893}
+  m_CullTransparentMesh: 1
 --- !u!1001 &352834549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5325,6 +5651,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
+--- !u!224 &352930662 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+  m_PrefabInstance: {fileID: 8769057265371126743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &358750198
 GameObject:
   m_ObjectHideFlags: 0
@@ -8241,11 +8572,12 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 08fd09b9276ddab459a2e02626fb096f, type: 3}
   - {fileID: 4900000, guid: d78e4cfb6a40aca41ab6357c76c8ad01, type: 3}
   - {fileID: 4900000, guid: 909420c994ef3024bb6a82210c36f3ea, type: 3}
+  - {fileID: 4900000, guid: 2a50c159e1275844689f888b053a2c92, type: 3}
   csvList:
     unitStat:
     - unitName: "\uAD81\uC218"
       unitType: 0
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8254,7 +8586,7 @@ MonoBehaviour:
       range: 3.5
     - unitName: "\uBC1C\uB9AC\uC2A4\uD0C0"
       unitType: 0
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8263,7 +8595,7 @@ MonoBehaviour:
       range: 5
     - unitName: "\uBBF8\uB77C"
       unitType: 0
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8272,7 +8604,7 @@ MonoBehaviour:
       range: 3
     - unitName: "\uAC10\uC2DC\uD0D1"
       unitType: 0
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8281,7 +8613,7 @@ MonoBehaviour:
       range: 4
     - unitName: "\uBCF5\uC11C"
       unitType: 1
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8290,7 +8622,7 @@ MonoBehaviour:
       range: 2
     - unitName: "\uACE0\uB9B4\uB77C"
       unitType: 1
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8299,7 +8631,7 @@ MonoBehaviour:
       range: 2.5
     - unitName: "\uD3F0"
       unitType: 1
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8308,7 +8640,7 @@ MonoBehaviour:
       range: 2
     - unitName: "\uC2DC\uBC14\uACAC"
       unitType: 1
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8317,7 +8649,7 @@ MonoBehaviour:
       range: 1.5
     - unitName: "\uBD90\uBC14\uB9E8"
       unitType: 2
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8326,7 +8658,7 @@ MonoBehaviour:
       range: 3.8
     - unitName: "\uCE98\uB85D\uC2DC\uD37C"
       unitType: 2
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8335,7 +8667,7 @@ MonoBehaviour:
       range: 3.2
     - unitName: "\uBD88\uB9C8\uBC95\uC0AC"
       unitType: 2
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8344,7 +8676,7 @@ MonoBehaviour:
       range: 3.2
     - unitName: "\uC194\uB77C"
       unitType: 2
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8353,7 +8685,7 @@ MonoBehaviour:
       range: 3.5
     - unitName: "\uB9C8\uC2A4\uD06C\uB9E8"
       unitType: 3
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8362,7 +8694,7 @@ MonoBehaviour:
       range: 2.7
     - unitName: "\uADE0\uB3CC\uC774"
       unitType: 3
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8371,7 +8703,7 @@ MonoBehaviour:
       range: 2.5
     - unitName: "\uADE0\uBCA0\uC774\uBE44"
       unitType: 3
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8380,7 +8712,7 @@ MonoBehaviour:
       range: 2.3
     - unitName: "\uC5ED\uBCD1\uC758\uC0AC"
       unitType: 3
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8389,7 +8721,7 @@ MonoBehaviour:
       range: 3
     - unitName: "\uC13C\uD2B8\uB9AC\uAC74"
       unitType: 4
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8398,7 +8730,7 @@ MonoBehaviour:
       range: 4
     - unitName: F-35
       unitType: 4
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8407,7 +8739,7 @@ MonoBehaviour:
       range: 5
     - unitName: "\uAD70\uC778"
       unitType: 4
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8416,7 +8748,7 @@ MonoBehaviour:
       range: 2.5
     - unitName: "\uD0F1\uD06C"
       unitType: 4
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8425,7 +8757,7 @@ MonoBehaviour:
       range: 3.5
     - unitName: "\uC5BC\uC74C\uC6A9"
       unitType: 5
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8434,7 +8766,7 @@ MonoBehaviour:
       range: 3
     - unitName: "\uC5BC\uC74C\uC815\uB839"
       unitType: 5
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8443,7 +8775,7 @@ MonoBehaviour:
       range: 2.5
     - unitName: "\uB0C9\uC7A5\uACE0"
       unitType: 5
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8452,7 +8784,7 @@ MonoBehaviour:
       range: 2
     - unitName: "\uB208\uC0AC\uB78C"
       unitType: 5
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8461,7 +8793,7 @@ MonoBehaviour:
       range: 2.3
     - unitName: "\uB300\uAC80\uC0AC"
       unitType: 6
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8470,7 +8802,7 @@ MonoBehaviour:
       range: 2.5
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8479,7 +8811,7 @@ MonoBehaviour:
       range: 2.8
     - unitName: "\uAC80\uC0AC"
       unitType: 6
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8488,7 +8820,7 @@ MonoBehaviour:
       range: 2
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8497,7 +8829,7 @@ MonoBehaviour:
       range: 2.8
     - unitName: "\uC804\uAD6C"
       unitType: 7
-      tier: 1
+      tier: 2
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8506,7 +8838,7 @@ MonoBehaviour:
       range: 3.5
     - unitName: "\uB85C\uBD07"
       unitType: 7
-      tier: 0
+      tier: 1
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8515,7 +8847,7 @@ MonoBehaviour:
       range: 3.3
     - unitName: "\uC2A4\uBC14\uD034"
       unitType: 7
-      tier: 2
+      tier: 3
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8524,7 +8856,7 @@ MonoBehaviour:
       range: 4
     - unitName: "\uC36C\uB77C\uC784"
       unitType: 7
-      tier: 3
+      tier: 4
       critPercent: 0
       critDmg: 100
       projectileSpeed: 10
@@ -8534,180 +8866,210 @@ MonoBehaviour:
     enemyStat:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
+      tier: 1
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2DC\uAD11\uACE8\uB818"
       enemyType: 0
+      tier: 2
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC11D\uD0C4\uACE8\uB818"
       enemyType: 0
+      tier: 3
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC790\uC218\uC815\uACE8\uB818"
       enemyType: 0
+      tier: 4
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD615\uC11D\uACE8\uB818"
       enemyType: 0
+      tier: 5
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC7BC\uBBFC\uC774"
       enemyType: 1
+      tier: 1
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uACFC\uD559\uC790"
       enemyType: 1
+      tier: 2
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD2B8\uB808\uC774\uB108"
       enemyType: 1
+      tier: 3
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD3B8\uC758\uC810\uC54C\uBC14"
       enemyType: 1
+      tier: 4
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD560\uC544\uBC84\uC9C0"
       enemyType: 1
+      tier: 5
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBE68\uAC15\uD3EC\uC158"
       enemyType: 2
+      tier: 1
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB178\uB791\uD3EC\uC158"
       enemyType: 2
+      tier: 2
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uCD08\uB85D\uD3EC\uC158"
       enemyType: 2
+      tier: 3
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD30C\uB791\uD3EC\uC158"
       enemyType: 2
+      tier: 4
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uD669\uD3EC\uC158"
       enemyType: 2
+      tier: 5
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCEEC"
       enemyType: 3
+      tier: 1
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC2A4\uCEEC"
       enemyType: 3
+      tier: 2
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD65C\uC2A4\uCEEC"
       enemyType: 3
+      tier: 3
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uBA39\uC2A4\uCEEC"
       enemyType: 3
+      tier: 4
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB9C8\uBC95\uC2A4\uCEEC"
       enemyType: 3
+      tier: 5
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBB3C\uB77C\uC784"
       enemyType: 4
+      tier: 1
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD480\uB77C\uC784"
       enemyType: 4
+      tier: 2
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD478\uB529\uB77C\uC784"
       enemyType: 4
+      tier: 3
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD88\uB77C\uC784"
       enemyType: 4
+      tier: 4
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC5BC\uB77C\uC784"
       enemyType: 4
+      tier: 5
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB179\uC2A8\uACE8\uB818"
       enemyType: 0
+      tier: 1
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC778\uD615\uD0C8"
       enemyType: 1
+      tier: 2
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC815\uD3EC\uC158"
       enemyType: 2
+      tier: 3
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCE74\uC2A4\uCE74"
       enemyType: 3
+      tier: 4
       strength: 6
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD80\uC6B8\uB77C\uC784"
       enemyType: 4
+      tier: 5
       strength: 6
       hp: 3
       defense: 0
@@ -8855,9 +9217,249 @@ MonoBehaviour:
       ID: 24
     - questName: "\uBCF4\uC2A4!"
       explanation: "\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB97C \uCC98\uCE58\uD558\uC138\uC694."
-      condition: 0
+      condition: 1
       conditionWidth: 0
       ID: 25
+    characteristicStat:
+    - charateristicName: "\uBB34\uB9BF\uB300"
+      explanation: "\uC801 \uCCB4\uB825\uC5D0 \uBE44\uB840\uD574 {0}% \uB370\uBBF8\uC9C0\uB97C
+        \uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uD53C\uC2A4\uB79C\uB4DC"
+      explanation: "\uC77C\uBC18 \uB808\uC5B4 \uB4F1\uAE09 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uACFC
+        \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uB514\uBC84\uD504\uBC84\uD504"
+      explanation: "\uB514\uBC84\uD504 \uD6A8\uACFC\uC640 \uC9C0\uC18D\uC2DC\uAC04\uC774
+        {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "3\uB300\uC6B4\uB3D9"
+      explanation: "\uACF5\uACA9\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC720\uC0B0\uC18C\uC6B4\uB3D9"
+      explanation: "\uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uBE48\uD2C8\uCC0C\uB974\uAE30"
+      explanation: "\uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: CQC
+      explanation: "\uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960\uC774 {0%} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uB7ED\uD0A4\uB9E8"
+      explanation: "\uC5D0\uD53D\uACFC \uB808\uC804\uB4DC \uB4F1\uAE09\uC758 \uC720\uB2DB\uC774
+        \uB4F1\uC7A5\uD560 \uD655\uB960\uC774 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC0AC\uB2E4\uB9AC\uAC8C\uC784"
+      explanation: "\uB9E4 \uC9DD\uC218 \uB77C\uC6B4\uB4DC\uB9C8\uB2E4 \uAC00\uCC60
+        \uD0A4\uB97C {0}\uAC1C \uB354 \uBC1B\uC2B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uAC70\uC778\uD654"
+      explanation: "\uCD5C\uB300 \uCCB4\uB825\uACFC \uD604\uC7AC \uCCB4\uB825\uC744
+        {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uB450\uAEBC\uC6B4 \uD53C\uBD80"
+      explanation: "\uB9E4 \uB77C\uC6B4\uB4DC \uC885\uB8CC \uC2DC \uD604\uC7AC \uCCB4\uB825\uC744
+        {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC6A9\uC0AC\uC758 \uAC80"
+      explanation: "\uBCF4\uC2A4\uC5D0\uAC8C {0}% \uCD94\uAC00 \uB370\uBBF8\uC9C0\uB97C
+        \uC785\uD799\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "4\uB2EC\uB77C"
+      explanation: "\uD018\uC2A4\uD2B8 \uBCF4\uC0C1\uC774 {0%} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uACBD\uB825"
+      explanation: "\uD604\uC7AC \uC6E8\uC774\uBE0C \uC22B\uC790\uC5D0 \uBE44\uB840\uD574
+        \uACF5\uACA9\uB825\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uBBF8\uCE5C \uBD88"
+      explanation: "\uD654\uC0C1 \uB370\uBBF8\uC9C0\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "4\uB3C4 \uD654\uC0C1"
+      explanation: "\uD654\uC0C1 \uC0C1\uD0DC\uC758 \uC801\uC5D0\uAC8C \uBD88\uACC4\uC5F4
+        \uB370\uBBF8\uC9C0\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC18C\uB4DC\uB9C8\uC2A4\uD130"
+      explanation: "\uAC80 \uACC4\uC5F4 \uACF5\uACA9\uB825\uACFC \uC0AC\uAC70\uB9AC\uAC00
+        {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uAD11\uC804\uC0AC"
+      explanation: "\uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC774 {0}\uCD08 \uC8FC\uAE30\uB85C
+        \uAD11\uBD84 \uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC18D\uC0AC"
+      explanation: "\uD65C \uACC4\uC5F4 \uACF5\uC18D\uACFC \uD06C\uB9AC\uD2F0\uCEEC
+        \uB370\uBBF8\uC9C0\uAC00 {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uD654\uAD81"
+      explanation: "\uD65C \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uD654\uC0C1\uD6A8\uACFC\uB97C
+        \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC2A4\uD134\uAC74"
+      explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uB300\uC0C1\uC744
+        {0}% \uD655\uB960\uB85C \uAE30\uC808\uC2DC\uD0A4\uACE0 \uB109\uBC31\uC2DC\uD0B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC544\uC6C3\uBCF5\uC11C"
+      explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uC640 \uD22C\uC0AC\uCCB4
+        \uD06C\uAE30\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC131\uC778\uBCD1"
+      explanation: "\uADE0 \uC2A4\uD0DD\uB9C8\uB2E4 \uBAAC\uC2A4\uD130 \uBC1B\uB294
+        \uB370\uBBF8\uC9C0\uB97C {0}% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC804\uC5FC\uBCD1"
+      explanation: "\uADE0\uC5D0 \uAC78\uB9B0 \uBAAC\uC2A4\uD130\uAC00 \uC8FC\uBCC0
+        \uC801\uB4E4\uC744 {0}\uCD08\uB9C8\uB2E4 \uAC10\uC5FC\uC2DC\uD0B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC9EC\uBC25"
+      explanation: "\uCD1D \uACC4\uC5F4 \uD604\uC7AC \uC6E8\uC774\uBE0C \uC218\uC5D0
+        \uBE44\uB840\uD574 {0}\uB9CC\uD07C \uACF5\uACA9\uB825\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uB77D\uC628"
+      explanation: "\uCD1D \uACC4\uC5F4\uC5D0\uAC8C \uB370\uBBF8\uC9C0\uB97C \uC785\uC740
+        \uBAAC\uC2A4\uD130\uB294 {0}%\uB9CC\uD07C \uD06C\uB9AC\uD2F0\uCEEC \uACF5\uACA9\uC744
+        \uB2F9\uD560 \uD655\uB960\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uAF41\uAF41"
+      explanation: "\uBE59\uACB0 \uD6A8\uACFC\uC5D0 \uC2A4\uD0DD\uC774 \uCD94\uAC00\uB429\uB2C8\uB2E4.
+        \uCD5C\uB300 \uC2A4\uD0DD\uC5D0 \uB3C4\uB2EC\uD558\uBA74 \uC644\uC804 \uBE59\uACB0\uB418\uC5B4
+        \uC2A4\uD134\uC5D0 \uAC78\uB9AC\uACE0 \uD6C4\uC5D0 \uB370\uBBF8\uC9C0\uB97C
+        \uC785\uC73C\uBA74 \uC2A4\uD134\uC774 \uD480\uB9AC\uBA70 \uD604\uC7AC \uCCB4\uB825\uC5D0
+        \uBE44\uB840\uD55C \uB370\uBBF8\uC9C0\uB97C \uC785\uC2B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uD06C\uB9AC\uC2A4\uB9C8\uC2A4"
+      explanation: "\uC5BC\uC74C \uACC4\uC5F4 \uC720\uB2DB \uC218\uC758 {0}\uC73C\uB85C
+        \uB098\uB208 \uB9CC\uD07C \uAC00\uCC60 \uD0A4\uB97C \uC989\uC2DC \uC5BB\uC2B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uACFC\uBD80\uD558"
+      explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC8FC\uBCC0 \uC720\uB2DB \uACF5\uACA9\uB825\uACFC
+        \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC624\uBC84\uD074\uB7ED"
+      explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00
+        {0}\uB9CC\uD07C \uC99D\uAC00\uD558\uC9C0\uB9CC \uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0\uAC00
+        {1}\uB9CC\uD07C \uAC10\uC18C\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uCC98\uD615"
+      explanation: "\uCCB4\uB825\uC774 {0}% \uBBF8\uB9CC\uC778 \uBAAC\uC2A4\uD130\uB97C
+        \uC989\uC0AC\uC2DC\uD0B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uB9DD\uC6D0\uACBD"
+      explanation: "\uC0AC\uAC70\uB9AC\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uD655\uB300"
+      explanation: "\uD22C\uC0AC\uCCB4 \uD06C\uAE30\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uAD70\uB2E8"
+      explanation: "\uC720\uB2DB \uC218\uC5D0 \uBE44\uB840\uD574 \uACF5\uACA9\uB825\uC774
+        {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uCCAD\uC57D"
+      explanation: "5\uC6E8\uC774\uBE0C \uD6C4 \uAC00\uCC60 \uD0A4\uB97C {0}\uB9CC\uD07C
+        \uC5BB\uC2B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uB3C4\uBC15"
+      explanation: "\uC720\uB2DB \uBF51\uAE30 \uC2DC \uC77C\uBC18 \uB4F1\uAE09\uC774
+        \uB098\uC624\uBA74 {0}% \uD655\uB960\uB85C \uAC00\uCC60 \uD0A4\uB97C {1}\uAC1C
+        \uBC1B\uC2B5\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uBD80\uB450\uC220"
+      explanation: "\uBAAC\uC2A4\uD130\uAC00 \uC0AC\uB9DD\uC2DC \uD3ED\uBC1C\uD558\uBA70
+        \uC8FC\uBCC0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C {0}\uB9CC\uD07C \uB370\uBBF8\uC9C0\uB97C
+        \uC785\uD799\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uAD11\uBD84"
+      explanation: "\uC783\uC740 \uCCB4\uB825\uC5D0 \uBE44\uB840\uD574 \uB370\uBBF8\uC9C0\uC640
+        \uACF5\uACA9\uC18D\uB3C4\uAC00 {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uC5D8\uB9AC\uD2B8"
+      explanation: "\uC5D0\uD53D\uACFC \uB808\uC804\uB4DC \uB4F1\uAE09\uC758 \uC720\uB2DB\uC758
+        \uACF5\uACA9\uB825\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
+    - charateristicName: "\uD0C0\uC784\uC2A4\uD1B1"
+      explanation: "{0}\uCD08 \uC8FC\uAE30\uB85C \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C
+        \uC2AC\uB85C\uC6B0\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+      condition: 10
+      conditionWidth: 10
+      level: 0
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14463,6 +15065,18 @@ MonoBehaviour:
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 345640893}
+    Ordinal: 19
+    Priority: 0
+    IconType: 0
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 3000
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
 --- !u!4 &857644894
 Transform:
   m_ObjectHideFlags: 0
@@ -17354,6 +17968,7 @@ RectTransform:
   - {fileID: 1902797591}
   - {fileID: 156966626}
   - {fileID: 2116753106}
+  - {fileID: 345640894}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20880,8 +21495,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -3.5}
-  m_SizeDelta: {x: 170, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3.5}
+  m_SizeDelta: {x: 190, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1460899994
 MonoBehaviour:
@@ -27299,8 +27914,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30, y: 30}
-  m_SizeDelta: {x: 250, y: 40}
+  m_AnchoredPosition: {x: 20, y: 30}
+  m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1976594115
 CanvasRenderer:
@@ -28899,6 +29514,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137633077}
   m_CullTransparentMesh: 1
+--- !u!224 &2139490953 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+  m_PrefabInstance: {fileID: 260103251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2146964441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871277118076770286, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
@@ -29085,3 +29705,100 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8769057265371126743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3478809}
+    m_Modifications:
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769057265019277490, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+      propertyPath: m_Name
+      value: Card
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}

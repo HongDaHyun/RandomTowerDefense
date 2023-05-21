@@ -16,6 +16,7 @@ public class CSVReader : Singleton<CSVReader>
         EnemyCSVReader();
         DebuffCSVReader();
         QuestCSVReader();
+        CharacterisitcReader();
     }
 
     public void UnitCSVReader()
@@ -43,7 +44,7 @@ public class CSVReader : Singleton<CSVReader>
 
     public void EnemyCSVReader()
     {
-        int order = 1; int size = 6;
+        int order = 1; int size = 7;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.enemyStat = new EnemyStat[tableSize];
@@ -54,10 +55,11 @@ public class CSVReader : Singleton<CSVReader>
             csvList.enemyStat[i] = new EnemyStat();
             csvList.enemyStat[i].enemyName = data[size * k];
             csvList.enemyStat[i].enemyType = (EnemyType)Enum.Parse(typeof(EnemyType), (data[size * k + 1]));
-            csvList.enemyStat[i].hp = float.Parse(data[size * k + 2]);
-            csvList.enemyStat[i].strength = int.Parse(data[size * k + 3]);
-            csvList.enemyStat[i].defense = float.Parse(data[size * k + 4]);
-            csvList.enemyStat[i].moveSpeed = float.Parse(data[size * k + 5]);
+            csvList.enemyStat[i].tier = (Tier)Enum.Parse(typeof(Tier), (data[size * k + 2]));
+            csvList.enemyStat[i].hp = float.Parse(data[size * k + 3]);
+            csvList.enemyStat[i].strength = int.Parse(data[size * k + 4]);
+            csvList.enemyStat[i].defense = float.Parse(data[size * k + 5]);
+            csvList.enemyStat[i].moveSpeed = float.Parse(data[size * k + 6]);
         }
     }
 
@@ -93,6 +95,25 @@ public class CSVReader : Singleton<CSVReader>
             csvList.questStat[i].condition = int.Parse(data[size * k + 2]);
             csvList.questStat[i].conditionWidth = int.Parse(data[size * k + 3]);
             csvList.questStat[i].ID = i;
+        }
+    }
+
+    public void CharacterisitcReader()
+    {
+        int order = 4; int size = 4;
+        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / size - 1;
+        csvList.characteristicStat = new CharacteristicStat[tableSize];
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            int k = i + 1;
+            csvList.characteristicStat[i] = new CharacteristicStat();
+            csvList.characteristicStat[i].charateristicName = data[size * k];
+            csvList.characteristicStat[i].explanation = data[size * k + 1];
+            csvList.characteristicStat[i].condition = int.Parse(data[size * k + 2]);
+            csvList.characteristicStat[i].conditionWidth = int.Parse(data[size * k + 3]);
+            csvList.characteristicStat[i].level = 0;
         }
     }
     #endregion

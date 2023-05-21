@@ -53,6 +53,9 @@ public class Enemy : MonoBehaviour, IPoolObject
     {
         isDie = true;
         QuestManager.Instance.killEnemyNum++; // 퀘스트 5
+
+        GameManager.Instance.curExp += (int)enemyStat.tier; // 경험치 증가
+
         SpawnManager.Instance.DeSpawnEnemy(this);
     }
     private void Movement()

@@ -86,15 +86,15 @@ public class BtnManager : Singleton<BtnManager>
         int ranType = UnityEngine.Random.Range(0, 7); // 0: Bow, 1: Fighter ...
         int ranTier = UnityEngine.Random.Range(0, 100); // 0: Common, 1: Rare, 2: Epic, 3: Legend
         if (ranTier >= 99)
-            ranTier = 3;
+            ranTier = 4;
         else if (ranTier >= 95)
-            ranTier = 2;
+            ranTier = 3;
         else if (ranTier >= 85)
-            ranTier = 1;
+            ranTier = 2;
         else
-            ranTier = 0;
+            ranTier = 1;
 
-        for (int i = 0; i < (4 * 6 + ranTier) * 2; i++) //슬롯 돌리기
+        for (int i = 0; i < (4 * 6 + (ranTier - 1)) * 2; i++) //슬롯 돌리기
         {
             UIManager.Instance.slotObj.transform.localPosition += new Vector3(0, 100f, 0);
             if (UIManager.Instance.slotObj.transform.localPosition.y > 800f)
@@ -175,6 +175,5 @@ public class BtnManager : Singleton<BtnManager>
                 UIManager.Instance.quests[i].SetQuest(ranID); //퀘스트 생성
             }
         }
-        UIManager.Instance.quests[0].SetQuest(10); //퀘스트 생성
     }
 }

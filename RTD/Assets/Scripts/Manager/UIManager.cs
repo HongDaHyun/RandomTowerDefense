@@ -17,9 +17,10 @@ public class UIManager : Singleton<UIManager>
     public UnitRange unitRange;
     public GameObject unitInfoPannel;
     public GameObject enemyInfoPannel;
+    public GatchaPannel gatchaPannel;
+    public GameObject characteristicPannel;
     public UnitInfo unitInfoContents;
     public UpPannel upPannel;
-    public GatchaPannel gatchaPannel;
     public Quest[] quests;
     public GameObject slotObj;
     public Text gameSpeedTxt;
@@ -59,6 +60,8 @@ public class UIManager : Singleton<UIManager>
     {
         float imsi = (float)GameManager.Instance.curExp / GameManager.Instance.maxExp;
         upPannel.expSlider.value = Mathf.Lerp(upPannel.expSlider.value, imsi, Time.deltaTime * 10);
+
+        LevelUp();
     }
 
     private void LevelUp()
@@ -66,7 +69,11 @@ public class UIManager : Singleton<UIManager>
         if (GameManager.Instance.curExp >= GameManager.Instance.maxExp)
         {
             GameManager.Instance.curExp = 0;
-            GameManager.Instance.level++;
+            GameManager.Instance.expLevel++;
+            upPannel.levelTxt.text = $"{GameManager.Instance.expLevel}Lv:";
+
+            characteristicPannel.SetActive(true);
+            BtnManager.Instance.Pause();
         }
     }
 
@@ -112,7 +119,7 @@ public struct UnitInfo
 [Serializable]
 public struct UpPannel
 {
-    public Text gatchaKeyTxt, healthTxt, waveTxt, timerTxt;
+    public Text gatchaKeyTxt, healthTxt, waveTxt, timerTxt, levelTxt;
     public Slider expSlider;
 }
 
@@ -122,4 +129,12 @@ public struct GatchaPannel
     public GameObject gatchaPannel;
     public Button gatchaBtn;
     public Button gatchaTab;
+}
+
+[Serializable]
+public struct CardPannel
+{
+    public Text cardNameTxt, explanationTxt;
+    public Image cardIconImg;
+    public Image[] starImg;
 }
