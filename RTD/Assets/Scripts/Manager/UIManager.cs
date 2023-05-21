@@ -59,12 +59,14 @@ public class UIManager : Singleton<UIManager>
     {
         float imsi = (float)GameManager.Instance.curExp / GameManager.Instance.maxExp;
         upPannel.expSlider.value = Mathf.Lerp(upPannel.expSlider.value, imsi, Time.deltaTime * 10);
+    }
 
+    private void LevelUp()
+    {
         if (GameManager.Instance.curExp >= GameManager.Instance.maxExp)
         {
             GameManager.Instance.curExp = 0;
             GameManager.Instance.level++;
-            //Level Up!!
         }
     }
 

@@ -102,6 +102,28 @@ public class Quest : MonoBehaviour
                 QuestManager.Instance.tierNum = new int[] { 0, 0, 0, 0 };
                 break;
 
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+                QuestManager.Instance.unitNum = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
+
+            case 23:
+                QuestManager.Instance.evolNum = 0;
+                break;
+
+            case 24:
+                readyCondition_1 = GameManager.Instance.maxHealth;
+                break;
+
+            case 25:
+                // 보스 제작중
+
             default:
                 // 2, 3, 14(꽝)
                 break;
@@ -167,6 +189,28 @@ public class Quest : MonoBehaviour
             case 13:
                 curCondition = QuestManager.Instance.tierNum[questStat.ID - 10];
                 break;
+
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+                curCondition = QuestManager.Instance.unitNum[questStat.ID - 15];
+                break;
+
+            case 23:
+                curCondition = QuestManager.Instance.evolNum;
+                break;
+
+            case 24:
+                curCondition = GameManager.Instance.maxHealth - readyCondition_1;
+                break;
+
+            case 25:
+                //보스 제작중
 
             default: // 14(꽝)
                 break;

@@ -154,6 +154,7 @@ public class BtnManager : Singleton<BtnManager>
                 SpawnManager.Instance.DeSpawnUnit(unitList[i]); //순서 중요 (리스트 Remove때문)
                 SpawnManager.Instance.DeSpawnUnit(thisUnit); //순서 바꾸지 말 것
                 SpawnManager.Instance.SpawnUnit(thisUnit.unitStat.unitType, thisUnit.unitStat.tier + 1);
+                QuestManager.Instance.evolNum++; // 퀘스트 23
                 return;
             }
         }
