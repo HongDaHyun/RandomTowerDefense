@@ -137,9 +137,29 @@ public class Unit : MonoBehaviour, IPoolObject
         if (attackTarget == null || !attackTarget.gameObject.activeSelf)
             return null;
 
-        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat, unitStat.unitType.ToString());
+        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat.unitType.ToString());
+        projectile.dmg = DmgCalculator(projectile);
+        projectile.range = unitStat.range;
 
         return projectile;
+    }
+
+
+    private float DmgCalculator(Projectile projectile)
+    {
+        float totalDmg = unitStat.dmg;
+
+        // 크리티컬 계산
+        int critRan = Random.Range(0, 100);
+        if (critRan < unitStat.critPercent)
+        {
+            totalDmg *= unitStat.critDmg / 100;
+            projectile.isCrit = true;
+        }
+        else
+            projectile.isCrit = false;
+
+        return totalDmg;
     }
     #endregion
 }

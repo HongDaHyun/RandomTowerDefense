@@ -69,7 +69,7 @@ public class SpawnManager : Singleton<SpawnManager>
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.UnitExport_forSpawn(type, tier));
         if (!QuestManager.Instance.unitTypesList.Contains(type))
             QuestManager.Instance.unitTypesList.Add(type); // Äù½ºÆ® 6
-        QuestManager.Instance.tierNum[(int)tier]++; // Äù½ºÆ® 10,11,12,13
+        QuestManager.Instance.tierNum[(int)(tier - 1)]++; // Äù½ºÆ® 10,11,12,13
         unitList.Add(newUnit);
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         tileGround.SetTile(newUnit);
@@ -94,10 +94,10 @@ public class SpawnManager : Singleton<SpawnManager>
     #endregion
 
     #region SpawnProjectile
-    public Projectile SpawnProjectile(Transform start, Transform target, UnitStat unitStat, string _name)
+    public Projectile SpawnProjectile(Transform start, Transform target, string _name)
     {
         Projectile newProjectile = PoolManager.Instance.GetFromPool<Projectile>(_name);
-        newProjectile.SetUp(start, target, unitStat);
+        newProjectile.SetUp(start, target);
         return newProjectile;
     }
 
@@ -126,7 +126,6 @@ public class SpawnManager : Singleton<SpawnManager>
         TextMeshPro dmgText = PoolManager.Instance.GetFromPool<TextMeshPro>("DmgText");
         dmgText.alpha = 1f;
         dmgText.SetText(dmg.ToString());
-        //dmgText.color = color
         return dmgText;
     }
 

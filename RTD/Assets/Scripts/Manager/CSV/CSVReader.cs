@@ -21,7 +21,7 @@ public class CSVReader : Singleton<CSVReader>
 
     public void UnitCSVReader()
     {
-        int order = 0; int size = 9;
+        int order = 0; int size = 8;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.unitStat = new UnitStat[tableSize];
@@ -38,7 +38,6 @@ public class CSVReader : Singleton<CSVReader>
             csvList.unitStat[i].critDmg = int.Parse(data[size * k + 5]);
             csvList.unitStat[i].atkSpeed = float.Parse(data[size * k + 6]);
             csvList.unitStat[i].range = float.Parse(data[size * k + 7]);
-            csvList.unitStat[i].projectileSpeed = int.Parse(data[size * k + 8]);
         }
     }
 
@@ -114,6 +113,7 @@ public class CSVReader : Singleton<CSVReader>
             csvList.characteristicStat[i].condition = int.Parse(data[size * k + 2]);
             csvList.characteristicStat[i].conditionWidth = int.Parse(data[size * k + 3]);
             csvList.characteristicStat[i].level = 0;
+            csvList.characteristicStat[i].ID = i;
         }
     }
     #endregion
@@ -187,12 +187,12 @@ public class CSVReader : Singleton<CSVReader>
 
     public QuestStat QuestExport(int id)
     {
-        for (int i = 0; i < csvList.questStat.Length; i++)
-        {
-            if (id == csvList.questStat[i].ID)
-                return csvList.questStat[i];
-        }
-        return csvList.questStat[0];
+        return csvList.questStat[id];
+    }
+
+    public CharacteristicStat characteristicExport(int id)
+    {
+        return csvList.characteristicStat[id];
     }
     #endregion
 

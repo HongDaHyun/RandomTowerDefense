@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Projectile_Sword : Projectile
 {
-    public override void SetUp(Transform _start, Transform _target, UnitStat _unitStat)
+    public override void SetUp(Transform _start, Transform _target)
     {
-        startTrans = _start; target = _target; unitStat = _unitStat;
+        startTrans = _start;    target = _target;
 
         SetRotation(90);
         transform.position = target.position;

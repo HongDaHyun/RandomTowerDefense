@@ -5,7 +5,9 @@ using Redcode.Pools;
 
 public class Projectile : MonoBehaviour, IPoolObject
 {
-    public UnitStat unitStat;
+    public UnitType type;
+    public bool isCrit;
+    public float dmg, range, speed;
     public Transform target, startTrans;
     public float remainTime = 2f;
 
@@ -21,7 +23,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 
     private void Update()
     {
-        switch (unitStat.unitType)
+        switch (type)
         {
             case UnitType.Bow:
             case UnitType.Gun:
@@ -32,7 +34,7 @@ public class Projectile : MonoBehaviour, IPoolObject
                 ShootFollow();
                 break;
             case UnitType.Fighter:
-                if (unitStat.range < Vector2.Distance(transform.position, startTrans.position))
+                if (range < Vector2.Distance(transform.position, startTrans.position))
                     SpawnManager.Instance.DeSpawnProjectile(this);
 
                 ShootStraight();
@@ -50,34 +52,34 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (!collision.CompareTag("Enemy"))     return;
 
         Enemy enemy = collision.GetComponent<Enemy>();
-        switch(unitStat.unitType)
+        switch(type)
         {
             case UnitType.Bow:
             case UnitType.Gun:
                 if (collision.transform != target)  return;
                 SpawnManager.Instance.DeSpawnProjectile(this);
-                enemy.Hit(unitStat.dmg, Attribute.None);
+                enemy.Hit(dmg, Attribute.None, isCrit);
                 break;
 
             case UnitType.Fighter:
             case UnitType.Sword:
-                enemy.Hit(unitStat.dmg, Attribute.None);
+                enemy.Hit(dmg, Attribute.None, isCrit);
                 break;
 
             case UnitType.Fire:
-                enemy.Hit((float)System.Math.Round(unitStat.dmg / 10, 1), Attribute.Fire);
+                enemy.Hit((float)System.Math.Round(dmg / 10, 1), Attribute.Fire, false); // 불 크리티컬 x
                 break;
 
             case UnitType.Ice:
                 if (collision.transform != target)  return;
                 SpawnManager.Instance.DeSpawnProjectile(this);
-                enemy.Hit(unitStat.dmg, Attribute.Ice);
+                enemy.Hit(dmg, Attribute.Ice, isCrit);
                 break;
 
             case UnitType.Thunder:
                 if (collision.transform != target) return;
                 SpawnManager.Instance.DeSpawnProjectile(this);
-                enemy.Hit(unitStat.dmg, Attribute.Stun);
+                enemy.Hit(dmg, Attribute.Thunder, isCrit);
                 break;
 
             default:
@@ -86,9 +88,9 @@ public class Projectile : MonoBehaviour, IPoolObject
         }
     }
 
-    public virtual void SetUp(Transform _start, Transform _target, UnitStat _unitStat) //SpawnManager에서 사용
+    public virtual void SetUp(Transform _start, Transform _target) //SpawnManager에서 사용
     {
-        startTrans = _start;    target = _target;   unitStat = _unitStat;
+        startTrans = _start;    target = _target;
         transform.position = startTrans.position;
         SetRotation(0);
     }
@@ -96,7 +98,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     #region ShootType
     private void ShootStraight()
     {
-        transform.Translate(Vector2.right * unitStat.projectileSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
     private void ShootFollow()

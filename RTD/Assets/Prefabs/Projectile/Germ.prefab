@@ -119,16 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2a4198c5934a74ab9b635c9f23737e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStat:
-    unitName: 
-    unitType: 0
-    tier: 0
-    critPercent: 0
-    critDmg: 0
-    projectileSpeed: 0
-    dmg: 0
-    atkSpeed: 0
-    range: 0
+  type: 3
+  dmg: 0
+  range: 0
+  speed: 10
   target: {fileID: 0}
   startTrans: {fileID: 0}
   remainTime: 2

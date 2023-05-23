@@ -4056,6 +4056,10 @@ MonoBehaviour:
   - {fileID: 848965775}
   - {fileID: 550724275}
   - {fileID: 1298913311}
+  cards:
+  - {fileID: 1507819876}
+  - {fileID: 2139490954}
+  - {fileID: 1430267330}
   slotObj: {fileID: 1841786110}
   gameSpeedTxt: {fileID: 624295626}
 --- !u!4 &253012259
@@ -4878,7 +4882,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &304038008
 MonoBehaviour:
@@ -6648,7 +6652,7 @@ RectTransform:
   - {fileID: 741772792}
   - {fileID: 681473874}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8579,8 +8583,7 @@ MonoBehaviour:
       unitType: 0
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 1
       atkSpeed: 10
       range: 3.5
@@ -8588,8 +8591,7 @@ MonoBehaviour:
       unitType: 0
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 5
       atkSpeed: 5
       range: 5
@@ -8597,8 +8599,7 @@ MonoBehaviour:
       unitType: 0
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 7
       atkSpeed: 15
       range: 3
@@ -8606,8 +8607,7 @@ MonoBehaviour:
       unitType: 0
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 3
       atkSpeed: 10
       range: 4
@@ -8615,8 +8615,7 @@ MonoBehaviour:
       unitType: 1
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 1
       atkSpeed: 15
       range: 2
@@ -8624,8 +8623,7 @@ MonoBehaviour:
       unitType: 1
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 15
       range: 2.5
@@ -8633,8 +8631,7 @@ MonoBehaviour:
       unitType: 1
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 4
       atkSpeed: 20
       range: 2
@@ -8642,8 +8639,7 @@ MonoBehaviour:
       unitType: 1
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 6
       atkSpeed: 30
       range: 1.5
@@ -8651,8 +8647,7 @@ MonoBehaviour:
       unitType: 2
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 5
       atkSpeed: 20
       range: 3.8
@@ -8660,8 +8655,7 @@ MonoBehaviour:
       unitType: 2
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 3
       atkSpeed: 10
       range: 3.2
@@ -8669,8 +8663,7 @@ MonoBehaviour:
       unitType: 2
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 1
       atkSpeed: 5
       range: 3.2
@@ -8678,8 +8671,7 @@ MonoBehaviour:
       unitType: 2
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 4
       atkSpeed: 15
       range: 3.5
@@ -8687,8 +8679,7 @@ MonoBehaviour:
       unitType: 3
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 5
       atkSpeed: 10
       range: 2.7
@@ -8696,8 +8687,7 @@ MonoBehaviour:
       unitType: 3
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 3
       atkSpeed: 10
       range: 2.5
@@ -8705,8 +8695,7 @@ MonoBehaviour:
       unitType: 3
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 10
       range: 2.3
@@ -8714,8 +8703,7 @@ MonoBehaviour:
       unitType: 3
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 4
       atkSpeed: 10
       range: 3
@@ -8723,8 +8711,7 @@ MonoBehaviour:
       unitType: 4
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 1
       atkSpeed: 20
       range: 4
@@ -8732,8 +8719,7 @@ MonoBehaviour:
       unitType: 4
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 30
       range: 5
@@ -8741,8 +8727,7 @@ MonoBehaviour:
       unitType: 4
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 1
       atkSpeed: 15
       range: 2.5
@@ -8750,8 +8735,7 @@ MonoBehaviour:
       unitType: 4
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 25
       range: 3.5
@@ -8759,8 +8743,7 @@ MonoBehaviour:
       unitType: 5
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 4
       atkSpeed: 10
       range: 3
@@ -8768,8 +8751,7 @@ MonoBehaviour:
       unitType: 5
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 1
       atkSpeed: 5
       range: 2.5
@@ -8777,8 +8759,7 @@ MonoBehaviour:
       unitType: 5
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 1
       atkSpeed: 5
       range: 2
@@ -8786,8 +8767,7 @@ MonoBehaviour:
       unitType: 5
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 10
       range: 2.3
@@ -8795,8 +8775,7 @@ MonoBehaviour:
       unitType: 6
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 5
       atkSpeed: 20
       range: 2.5
@@ -8804,8 +8783,7 @@ MonoBehaviour:
       unitType: 6
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 7
       atkSpeed: 10
       range: 2.8
@@ -8813,8 +8791,7 @@ MonoBehaviour:
       unitType: 6
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 3
       atkSpeed: 20
       range: 2
@@ -8822,8 +8799,7 @@ MonoBehaviour:
       unitType: 6
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 8
       atkSpeed: 30
       range: 2.8
@@ -8831,8 +8807,7 @@ MonoBehaviour:
       unitType: 7
       tier: 2
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 15
       range: 3.5
@@ -8840,8 +8815,7 @@ MonoBehaviour:
       unitType: 7
       tier: 1
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 15
       range: 3.3
@@ -8849,8 +8823,7 @@ MonoBehaviour:
       unitType: 7
       tier: 3
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 2
       atkSpeed: 15
       range: 4
@@ -8858,8 +8831,7 @@ MonoBehaviour:
       unitType: 7
       tier: 4
       critPercent: 0
-      critDmg: 100
-      projectileSpeed: 10
+      critDmg: 200
       dmg: 3
       atkSpeed: 10
       range: 3.1
@@ -9227,144 +9199,172 @@ MonoBehaviour:
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 0
     - charateristicName: "\uD53C\uC2A4\uB79C\uB4DC"
       explanation: "\uC77C\uBC18 \uB808\uC5B4 \uB4F1\uAE09 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uACFC
         \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 1
     - charateristicName: "\uB514\uBC84\uD504\uBC84\uD504"
-      explanation: "\uB514\uBC84\uD504 \uD6A8\uACFC\uC640 \uC9C0\uC18D\uC2DC\uAC04\uC774
-        {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uB514\uBC84\uD504 \uC9C0\uC18D\uC2DC\uAC04\uC774 {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 2
     - charateristicName: "3\uB300\uC6B4\uB3D9"
-      explanation: "\uACF5\uACA9\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uC774 {0}
+        \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 3
     - charateristicName: "\uC720\uC0B0\uC18C\uC6B4\uB3D9"
-      explanation: "\uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00
+        {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 4
     - charateristicName: "\uBE48\uD2C8\uCC0C\uB974\uAE30"
-      explanation: "\uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uAC00
+        {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 5
     - charateristicName: CQC
-      explanation: "\uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960\uC774 {0%} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960\uC774
+        {0%} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 6
     - charateristicName: "\uB7ED\uD0A4\uB9E8"
       explanation: "\uC5D0\uD53D\uACFC \uB808\uC804\uB4DC \uB4F1\uAE09\uC758 \uC720\uB2DB\uC774
         \uB4F1\uC7A5\uD560 \uD655\uB960\uC774 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 7
     - charateristicName: "\uC0AC\uB2E4\uB9AC\uAC8C\uC784"
       explanation: "\uB9E4 \uC9DD\uC218 \uB77C\uC6B4\uB4DC\uB9C8\uB2E4 \uAC00\uCC60
         \uD0A4\uB97C {0}\uAC1C \uB354 \uBC1B\uC2B5\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 8
     - charateristicName: "\uAC70\uC778\uD654"
       explanation: "\uCD5C\uB300 \uCCB4\uB825\uACFC \uD604\uC7AC \uCCB4\uB825\uC744
         {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 9
     - charateristicName: "\uB450\uAEBC\uC6B4 \uD53C\uBD80"
       explanation: "\uB9E4 \uB77C\uC6B4\uB4DC \uC885\uB8CC \uC2DC \uD604\uC7AC \uCCB4\uB825\uC744
         {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 10
     - charateristicName: "\uC6A9\uC0AC\uC758 \uAC80"
       explanation: "\uBCF4\uC2A4\uC5D0\uAC8C {0}% \uCD94\uAC00 \uB370\uBBF8\uC9C0\uB97C
         \uC785\uD799\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 11
     - charateristicName: "4\uB2EC\uB77C"
       explanation: "\uD018\uC2A4\uD2B8 \uBCF4\uC0C1\uC774 {0%} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 12
     - charateristicName: "\uACBD\uB825"
       explanation: "\uD604\uC7AC \uC6E8\uC774\uBE0C \uC22B\uC790\uC5D0 \uBE44\uB840\uD574
         \uACF5\uACA9\uB825\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 13
     - charateristicName: "\uBBF8\uCE5C \uBD88"
       explanation: "\uD654\uC0C1 \uB370\uBBF8\uC9C0\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 14
     - charateristicName: "4\uB3C4 \uD654\uC0C1"
       explanation: "\uD654\uC0C1 \uC0C1\uD0DC\uC758 \uC801\uC5D0\uAC8C \uBD88\uACC4\uC5F4
         \uB370\uBBF8\uC9C0\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 15
     - charateristicName: "\uC18C\uB4DC\uB9C8\uC2A4\uD130"
       explanation: "\uAC80 \uACC4\uC5F4 \uACF5\uACA9\uB825\uACFC \uC0AC\uAC70\uB9AC\uAC00
         {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 16
     - charateristicName: "\uAD11\uC804\uC0AC"
       explanation: "\uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC774 {0}\uCD08 \uC8FC\uAE30\uB85C
         \uAD11\uBD84 \uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 17
     - charateristicName: "\uC18D\uC0AC"
       explanation: "\uD65C \uACC4\uC5F4 \uACF5\uC18D\uACFC \uD06C\uB9AC\uD2F0\uCEEC
         \uB370\uBBF8\uC9C0\uAC00 {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 18
     - charateristicName: "\uD654\uAD81"
       explanation: "\uD65C \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uD654\uC0C1\uD6A8\uACFC\uB97C
         \uBD80\uC5EC\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 19
     - charateristicName: "\uC2A4\uD134\uAC74"
       explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uB300\uC0C1\uC744
         {0}% \uD655\uB960\uB85C \uAE30\uC808\uC2DC\uD0A4\uACE0 \uB109\uBC31\uC2DC\uD0B5\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 20
     - charateristicName: "\uC544\uC6C3\uBCF5\uC11C"
       explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uC640 \uD22C\uC0AC\uCCB4
         \uD06C\uAE30\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 21
     - charateristicName: "\uC131\uC778\uBCD1"
       explanation: "\uADE0 \uC2A4\uD0DD\uB9C8\uB2E4 \uBAAC\uC2A4\uD130 \uBC1B\uB294
         \uB370\uBBF8\uC9C0\uB97C {0}% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 22
     - charateristicName: "\uC804\uC5FC\uBCD1"
       explanation: "\uADE0\uC5D0 \uAC78\uB9B0 \uBAAC\uC2A4\uD130\uAC00 \uC8FC\uBCC0
         \uC801\uB4E4\uC744 {0}\uCD08\uB9C8\uB2E4 \uAC10\uC5FC\uC2DC\uD0B5\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 23
     - charateristicName: "\uC9EC\uBC25"
       explanation: "\uCD1D \uACC4\uC5F4 \uD604\uC7AC \uC6E8\uC774\uBE0C \uC218\uC5D0
         \uBE44\uB840\uD574 {0}\uB9CC\uD07C \uACF5\uACA9\uB825\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 24
     - charateristicName: "\uB77D\uC628"
       explanation: "\uCD1D \uACC4\uC5F4\uC5D0\uAC8C \uB370\uBBF8\uC9C0\uB97C \uC785\uC740
         \uBAAC\uC2A4\uD130\uB294 {0}%\uB9CC\uD07C \uD06C\uB9AC\uD2F0\uCEEC \uACF5\uACA9\uC744
@@ -9372,6 +9372,7 @@ MonoBehaviour:
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 25
     - charateristicName: "\uAF41\uAF41"
       explanation: "\uBE59\uACB0 \uD6A8\uACFC\uC5D0 \uC2A4\uD0DD\uC774 \uCD94\uAC00\uB429\uB2C8\uB2E4.
         \uCD5C\uB300 \uC2A4\uD0DD\uC5D0 \uB3C4\uB2EC\uD558\uBA74 \uC644\uC804 \uBE59\uACB0\uB418\uC5B4
@@ -9381,18 +9382,21 @@ MonoBehaviour:
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 26
     - charateristicName: "\uD06C\uB9AC\uC2A4\uB9C8\uC2A4"
       explanation: "\uC5BC\uC74C \uACC4\uC5F4 \uC720\uB2DB \uC218\uC758 {0}\uC73C\uB85C
         \uB098\uB208 \uB9CC\uD07C \uAC00\uCC60 \uD0A4\uB97C \uC989\uC2DC \uC5BB\uC2B5\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 27
     - charateristicName: "\uACFC\uBD80\uD558"
       explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC8FC\uBCC0 \uC720\uB2DB \uACF5\uACA9\uB825\uACFC
         \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 28
     - charateristicName: "\uC624\uBC84\uD074\uB7ED"
       explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00
         {0}\uB9CC\uD07C \uC99D\uAC00\uD558\uC9C0\uB9CC \uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0\uAC00
@@ -9400,34 +9404,40 @@ MonoBehaviour:
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 29
     - charateristicName: "\uCC98\uD615"
       explanation: "\uCCB4\uB825\uC774 {0}% \uBBF8\uB9CC\uC778 \uBAAC\uC2A4\uD130\uB97C
         \uC989\uC0AC\uC2DC\uD0B5\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 30
     - charateristicName: "\uB9DD\uC6D0\uACBD"
       explanation: "\uC0AC\uAC70\uB9AC\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 31
     - charateristicName: "\uD655\uB300"
       explanation: "\uD22C\uC0AC\uCCB4 \uD06C\uAE30\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 32
     - charateristicName: "\uAD70\uB2E8"
       explanation: "\uC720\uB2DB \uC218\uC5D0 \uBE44\uB840\uD574 \uACF5\uACA9\uB825\uC774
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 33
     - charateristicName: "\uCCAD\uC57D"
       explanation: "5\uC6E8\uC774\uBE0C \uD6C4 \uAC00\uCC60 \uD0A4\uB97C {0}\uB9CC\uD07C
         \uC5BB\uC2B5\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 34
     - charateristicName: "\uB3C4\uBC15"
       explanation: "\uC720\uB2DB \uBF51\uAE30 \uC2DC \uC77C\uBC18 \uB4F1\uAE09\uC774
         \uB098\uC624\uBA74 {0}% \uD655\uB960\uB85C \uAC00\uCC60 \uD0A4\uB97C {1}\uAC1C
@@ -9435,6 +9445,7 @@ MonoBehaviour:
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 35
     - charateristicName: "\uBD80\uB450\uC220"
       explanation: "\uBAAC\uC2A4\uD130\uAC00 \uC0AC\uB9DD\uC2DC \uD3ED\uBC1C\uD558\uBA70
         \uC8FC\uBCC0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C {0}\uB9CC\uD07C \uB370\uBBF8\uC9C0\uB97C
@@ -9442,24 +9453,28 @@ MonoBehaviour:
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 36
     - charateristicName: "\uAD11\uBD84"
       explanation: "\uC783\uC740 \uCCB4\uB825\uC5D0 \uBE44\uB840\uD574 \uB370\uBBF8\uC9C0\uC640
         \uACF5\uACA9\uC18D\uB3C4\uAC00 {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 37
     - charateristicName: "\uC5D8\uB9AC\uD2B8"
       explanation: "\uC5D0\uD53D\uACFC \uB808\uC804\uB4DC \uB4F1\uAE09\uC758 \uC720\uB2DB\uC758
         \uACF5\uACA9\uB825\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 38
     - charateristicName: "\uD0C0\uC784\uC2A4\uD1B1"
       explanation: "{0}\uCD08 \uC8FC\uAE30\uB85C \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C
         \uC2AC\uB85C\uC6B0\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
+      ID: 39
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15090,7 +15105,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &857972057 stripped
 Transform:
@@ -17106,6 +17121,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045214192}
   m_CullTransparentMesh: 1
+--- !u!1 &1047950159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1047950161}
+  - component: {fileID: 1047950160}
+  m_Layer: 0
+  m_Name: SpriteData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1047950160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047950159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1449e9f89de00b2418b559e7532b774e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stars:
+  - {fileID: 2136177369, guid: ec16a571f0478f0449216226fb3befde, type: 3}
+  - {fileID: -1499952916, guid: ec16a571f0478f0449216226fb3befde, type: 3}
+  - {fileID: -1451911874, guid: ec16a571f0478f0449216226fb3befde, type: 3}
+  CharacIcon:
+  - {fileID: -2034270871, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1016779273, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1668320288, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 122995276, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 2027590357, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -243841709, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1541553702, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 988559811, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1408245557, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1585464416, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1037840531, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1231122410, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 258288416, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1808813519, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 506189800, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1930898158, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1874107461, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -982270642, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -2113405983, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1485641350, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -2033929526, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -398761323, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -98164435, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1631233485, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 73806647, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1063102009, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1268579230, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -1442119769, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1392731690, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 715255749, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1341219406, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1617890548, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1182662323, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 2012800507, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 2025986631, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1934091057, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 1846367003, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 360058583, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: 871993636, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+  - {fileID: -2138609173, guid: 583ebd0ea33b4c84886fc4a6ea371ac1, type: 3}
+--- !u!4 &1047950161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047950159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1057437462
 GameObject:
   m_ObjectHideFlags: 0
@@ -17970,7 +18074,7 @@ RectTransform:
   - {fileID: 2116753106}
   - {fileID: 345640894}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -19178,7 +19282,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1261024089 stripped
 Transform:
@@ -21000,6 +21104,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5720371020968932641, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
   m_PrefabInstance: {fileID: 1201087710}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1430267330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3405796163299491696, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+  m_PrefabInstance: {fileID: 340862087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6fc466b208e45e4682ae672e2d6ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1430911344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22038,6 +22153,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
+--- !u!114 &1507819876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3405796163299491696, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+  m_PrefabInstance: {fileID: 8769057265371126743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6fc466b208e45e4682ae672e2d6ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1508264331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871277118076770286, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
@@ -26039,7 +26165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1844967599
 PrefabInstance:
@@ -27027,7 +27153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922100512
 GameObject:
@@ -27094,7 +27220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1942298289
 GameObject:
@@ -29519,6 +29645,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8769057265019277489, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
   m_PrefabInstance: {fileID: 260103251}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139490954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3405796163299491696, guid: 2d9d219a9856f34478fd8902f0ee56d2, type: 3}
+  m_PrefabInstance: {fileID: 260103251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6fc466b208e45e4682ae672e2d6ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2146964441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871277118076770286, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
@@ -29703,7 +29840,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8769057265371126743
 PrefabInstance:

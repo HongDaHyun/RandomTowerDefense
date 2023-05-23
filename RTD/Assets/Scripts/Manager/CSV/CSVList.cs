@@ -6,7 +6,7 @@ public struct UnitStat
     public string unitName;
     public UnitType unitType;
     public Tier tier;
-    public int critPercent, critDmg, projectileSpeed;
+    public int critPercent, critDmg;
     public float dmg ,atkSpeed, range;
 }
 
@@ -39,8 +39,8 @@ public struct QuestStat
 public struct CharacteristicStat
 {
     public string charateristicName, explanation;
-    public int condition, conditionWidth;
-    public int level;
+    public int condition, conditionWidth, level;
+    public int ID;
 }
 
 [Serializable]

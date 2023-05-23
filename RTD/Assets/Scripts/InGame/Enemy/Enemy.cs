@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         {Attribute.Fire, false },
         {Attribute.Germ, false },
         {Attribute.Ice, false },
-        {Attribute.Stun, false }
+        {Attribute.Thunder, false }
     };
     const int MAX_STRENGTH = 20;
 
@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         curHp = enemyStat.hp;
         isDie = false;
 
-        debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Stun] = false;
+        debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Thunder] = false;
 
         spriteRenderer.color = Color.white;
 
@@ -137,12 +137,13 @@ public class Enemy : MonoBehaviour, IPoolObject
     #endregion
 
     #region Damaged
-    private void TakeDmg(float dmg, Color _color, float time)
+    private void TakeDmg(float dmg, Color _color, float time, bool isCrit)
     {
         if (isDie || !gameObject.activeSelf)
             return;
+
         curHp -= dmg;
-        UIManager.Instance.DmgPopUp(dmg, transform.position);
+        UIManager.Instance.DmgPopUp(dmg, transform.position, isCrit);
 
         StartCoroutine(HitColorAnimation(_color, time));
 
@@ -150,15 +151,16 @@ public class Enemy : MonoBehaviour, IPoolObject
             Die();
     }
 
-    private IEnumerator Hitted(float dmg, Attribute attribute)
+    private IEnumerator Hitted(float dmg, Attribute attribute, bool isCrit)
     {
         if(attribute == Attribute.None) // 일반 공격
         {
-            TakeDmg(dmg, Color.red, 0.05f);
+            TakeDmg(dmg, Color.red, 0.05f, isCrit);
         }
         else // 디버프 공격
         {
-            DebuffStat debuff;
+            DebuffStat debuff = CSVReader.Instance.DebuffExport(attribute.ToString());
+
             switch (attribute)
             {
                 case Attribute.Fire:
@@ -168,18 +170,16 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     int limitStrength = Mathf.Clamp(enemyStat.strength, 0, 17); // 강인함 17로 제한
-                    debuff = CSVReader.Instance.DebuffExport(attribute.ToString());
 
                     for (int i = 0; i < MAX_STRENGTH - limitStrength; i++)
                     {
-                        TakeDmg(dmg, attribute == Attribute.Fire ? Color.red : Color.black, 0.05f); // Fire -> red, Germ -> black
+                        TakeDmg(dmg, attribute == Attribute.Fire ? Color.red : Color.black, 0.05f, isCrit); // Fire -> red, Germ -> black
                         yield return new WaitForSeconds(debuff.ticTime);
                     }
                     break;
 
                 case Attribute.Ice:
-                    debuff = CSVReader.Instance.DebuffExport(attribute.ToString());
-                    TakeDmg(dmg, Color.cyan, debuff.ticTime);
+                    TakeDmg(dmg, Color.cyan, debuff.ticTime, isCrit);
 
                     if (debuffState[attribute]) // 슬로우
                         yield break;
@@ -191,9 +191,8 @@ public class Enemy : MonoBehaviour, IPoolObject
                     enemyStat.moveSpeed = originalMoveSpeed;
                     break;
 
-                case Attribute.Stun:
-                    debuff = CSVReader.Instance.DebuffExport("Thunder");
-                    TakeDmg(dmg, Color.blue, debuff.ticTime);
+                case Attribute.Thunder:
+                    TakeDmg(dmg, Color.blue, debuff.ticTime, isCrit);
 
                     if (debuffState[attribute]) //스턴
                         yield break;
@@ -209,9 +208,12 @@ public class Enemy : MonoBehaviour, IPoolObject
         }
     }
 
-    public void Hit(float dmg, Attribute attribute)
+    public void Hit(float dmg, Attribute attribute, bool isCrit)
     {
-        StartCoroutine(Hitted(dmg, attribute));
+        if (!gameObject.activeSelf)
+            return;
+
+        StartCoroutine(Hitted(dmg, attribute, isCrit));
     }
 
     private IEnumerator HitColorAnimation(Color _color, float time)

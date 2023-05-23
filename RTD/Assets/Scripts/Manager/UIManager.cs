@@ -22,6 +22,7 @@ public class UIManager : Singleton<UIManager>
     public UnitInfo unitInfoContents;
     public UpPannel upPannel;
     public Quest[] quests;
+    public CharacteristicCard[] cards;
     public GameObject slotObj;
     public Text gameSpeedTxt;
 
@@ -70,10 +71,12 @@ public class UIManager : Singleton<UIManager>
         {
             GameManager.Instance.curExp = 0;
             GameManager.Instance.expLevel++;
-            upPannel.levelTxt.text = $"{GameManager.Instance.expLevel}Lv:";
+            upPannel.levelTxt.text = $"{GameManager.Instance.expLevel}Lv:"; // 레벨UI
 
-            characteristicPannel.SetActive(true);
-            BtnManager.Instance.Pause();
+            characteristicPannel.SetActive(true); // 특성 패널 활성화
+            InitCard(); // 카드 생성
+
+            BtnManager.Instance.Pause(); //정지
         }
     }
 
@@ -94,9 +97,15 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void DmgPopUp(float dmg, Vector3 startTrans)
+    public void DmgPopUp(float dmg, Vector3 startTrans, bool isCrit)
     {
         TMPro.TextMeshPro dmgText = SpawnManager.Instance.SpawnDmgText(dmg);
+
+        if (isCrit) // 크리티컬 색
+            dmgText.color = Color.yellow;
+        else
+            dmgText.color = Color.white;
+
         dmgText.transform.position = startTrans;
         dmgText.transform.DOMove(startTrans + new Vector3(0f, 1f, 0f), 0.5f).SetEase(Ease.OutQuad).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
         {
@@ -106,6 +115,23 @@ public class UIManager : Singleton<UIManager>
                 SpawnManager.Instance.DeSpawnDmgText(dmgText);
             });
         });
+    }
+
+    public void InitCard()
+    {
+        int ranID;
+        List<int> IDs = new List<int>(); //중복 방지 리스트
+        for (int i = 0; i < cards.Length; i++)
+        {
+            ranID = UnityEngine.Random.Range(0, CSVReader.Instance.csvList.characteristicStat.Length);
+            if (IDs.Contains(ranID)) // 중복이면 다시
+                i--;
+            else
+            {
+                IDs.Add(ranID);
+                cards[i].SetCard(ranID); //퀘스트 생성
+            }
+        }
     }
 }
 
