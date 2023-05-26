@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour, IPoolObject
         {Attribute.Ice, false },
         {Attribute.Thunder, false }
     };
-    const int MAX_STRENGTH = 20;
 
     #region Movement
     protected Vector3 moveDirection;
@@ -145,6 +144,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         curHp -= dmg;
         UIManager.Instance.DmgPopUp(dmg, transform.position, isCrit);
 
+        StopCoroutine(HitColorAnimation(_color, time));
         StartCoroutine(HitColorAnimation(_color, time));
 
         if(curHp <= 0)
@@ -159,53 +159,61 @@ public class Enemy : MonoBehaviour, IPoolObject
         }
         else // 디버프 공격
         {
-            DebuffStat debuff = CSVReader.Instance.DebuffExport(attribute.ToString());
-
             switch (attribute)
             {
-                case Attribute.Fire:
-                case Attribute.Germ:
+                case Attribute.Fire: // 불 공격
+                case Attribute.Germ: // 독 공격
                     if (debuffState[attribute])
                         yield break;
                     debuffState[attribute] = true;
 
-                    int limitStrength = Mathf.Clamp(enemyStat.strength, 0, 17); // 강인함 17로 제한
+                    float delayDmg = 0.5f; // 딜레이
+                    int dmgCount = Mathf.RoundToInt(CSVReader.Instance.AttributeExport(attribute) / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
-                    for (int i = 0; i < MAX_STRENGTH - limitStrength; i++)
+                    for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(dmg, attribute == Attribute.Fire ? Color.red : Color.black, 0.05f, isCrit); // Fire -> red, Germ -> black
-                        yield return new WaitForSeconds(debuff.ticTime);
+                        TakeDmg(dmg, attribute == Attribute.Fire ? Color.red : Color.black, 0.5f, isCrit); // Fire -> red, Germ -> black
+                        yield return new WaitForSeconds(delayDmg); // 0.5초당 데미지
                     }
                     break;
 
-                case Attribute.Ice:
-                    TakeDmg(dmg, Color.cyan, debuff.ticTime, isCrit);
+                case Attribute.Ice: // 얼음 공격
+                    TakeDmg(dmg, Color.cyan, CSVReader.Instance.AttributeExport(attribute), isCrit);
 
-                    if (debuffState[attribute]) // 슬로우
+                    if (debuffState[attribute])
                         yield break;
                     debuffState[attribute] = true;
 
-                    float originalMoveSpeed = enemyStat.moveSpeed;
-                    enemyStat.moveSpeed *= 0.7f; // 나중에 변수 넣어서 개선 (지금은 default 0.7f)
-                    yield return new WaitForSeconds(debuff.ticTime);
+                    //슬로우
+                    float slowDuration = CSVReader.Instance.AttributeExport(attribute) - GetStrengthModifier(); // 지속 시간
+                    float originalMoveSpeed = enemyStat.moveSpeed; // 원래 속도
+                    enemyStat.moveSpeed -= CSVReader.Instance.AttributeExport(attribute) / (10 + enemyStat.strength); // 느려진 속도
+                    yield return new WaitForSeconds(slowDuration);
                     enemyStat.moveSpeed = originalMoveSpeed;
                     break;
 
-                case Attribute.Thunder:
-                    TakeDmg(dmg, Color.blue, debuff.ticTime, isCrit);
+                case Attribute.Thunder: // 번개 공격
+                    TakeDmg(dmg, Color.blue, 1f, isCrit);
 
-                    if (debuffState[attribute]) //스턴
+                    if (debuffState[attribute])
                         yield break;
                     debuffState[attribute] = true;
 
-                    originalMoveSpeed = enemyStat.moveSpeed;
+                    //스턴
+                    float stunDuration = CSVReader.Instance.AttributeExport(attribute) - GetStrengthModifier(); // 지속 시간
+                    originalMoveSpeed = enemyStat.moveSpeed; // 원래 속도
                     enemyStat.moveSpeed = 0;
-                    yield return new WaitForSeconds(debuff.ticTime);
+                    yield return new WaitForSeconds(stunDuration); //지속 시간
                     enemyStat.moveSpeed = originalMoveSpeed;
                     break;
             }
             debuffState[attribute] = false;
         }
+    }
+
+    private float GetStrengthModifier()
+    {
+        return enemyStat.strength / 10;
     }
 
     public void Hit(float dmg, Attribute attribute, bool isCrit)

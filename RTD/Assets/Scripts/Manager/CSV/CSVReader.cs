@@ -14,7 +14,6 @@ public class CSVReader : Singleton<CSVReader>
     {
         UnitCSVReader();
         EnemyCSVReader();
-        DebuffCSVReader();
         QuestCSVReader();
         CharacterisitcReader();
     }
@@ -62,25 +61,9 @@ public class CSVReader : Singleton<CSVReader>
         }
     }
 
-    public void DebuffCSVReader()
-    {
-        int order = 2; int size = 2;
-        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-        int tableSize = data.Length / size - 1;
-        csvList.debuffStat = new DebuffStat[tableSize];
-
-        for (int i = 0; i < tableSize; i++)
-        {
-            int k = i + 1;
-            csvList.debuffStat[i] = new DebuffStat();
-            csvList.debuffStat[i].debuffName = data[size * k];
-            csvList.debuffStat[i].ticTime = float.Parse(data[size * k + 1]);
-        }
-    }
-
     public void QuestCSVReader()
     {
-        int order = 3; int size = 4;
+        int order = 2; int size = 4;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.questStat = new QuestStat[tableSize];
@@ -99,7 +82,7 @@ public class CSVReader : Singleton<CSVReader>
 
     public void CharacterisitcReader()
     {
-        int order = 4; int size = 4;
+        int order = 3; int size = 4;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.characteristicStat = new CharacteristicStat[tableSize];
@@ -167,32 +150,24 @@ public class CSVReader : Singleton<CSVReader>
         return csvList.enemyStat[0];
     }
 
-    public DebuffStat DebuffExport(string name)
-    {
-        for(int i = 0; i < csvList.debuffStat.Length; i++)
-        {
-            if (name == csvList.debuffStat[i].debuffName.ToString())
-                return csvList.debuffStat[i];
-        }
-        return csvList.debuffStat[0];
-    }
-    
-    public void DebuffUp(int count)
-    {
-        for(int i = 0; i < csvList.debuffStat.Length; i++)
-        {
-            csvList.debuffStat[i].ticTime += count;
-        }
-    }
-
     public QuestStat QuestExport(int id)
     {
         return csvList.questStat[id];
     }
 
-    public CharacteristicStat characteristicExport(int id)
+    public CharacteristicStat CharacteristicExport(int id)
     {
         return csvList.characteristicStat[id];
+    }
+
+    public float AttributeExport(Attribute attribute)
+    {
+        for(int i = 0; i < csvList.attributeStat.Length; i++)
+        {
+            if (attribute == csvList.attributeStat[i].attribute)
+                return csvList.attributeStat[i].attributePower;
+        }
+        return 0;
     }
     #endregion
 

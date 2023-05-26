@@ -21,13 +21,6 @@ public struct EnemyStat
 }
 
 [Serializable]
-public struct DebuffStat
-{
-    public string debuffName;
-    public float ticTime;
-}
-
-[Serializable]
 public struct QuestStat
 {
     public string questName, explanation;
@@ -44,11 +37,18 @@ public struct CharacteristicStat
 }
 
 [Serializable]
+public struct AttributeStat
+{
+    public Attribute attribute;
+    public float attributePower;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
     public EnemyStat[] enemyStat;
-    public DebuffStat[] debuffStat;
     public QuestStat[] questStat;
     public CharacteristicStat[] characteristicStat;
+    public AttributeStat[] attributeStat; 
 }

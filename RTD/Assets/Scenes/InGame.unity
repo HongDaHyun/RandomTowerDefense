@@ -8574,7 +8574,6 @@ MonoBehaviour:
   textAssets:
   - {fileID: 4900000, guid: 115b8e1c3cee1d543a4e97b24e067cf9, type: 3}
   - {fileID: 4900000, guid: 08fd09b9276ddab459a2e02626fb096f, type: 3}
-  - {fileID: 4900000, guid: d78e4cfb6a40aca41ab6357c76c8ad01, type: 3}
   - {fileID: 4900000, guid: 909420c994ef3024bb6a82210c36f3ea, type: 3}
   - {fileID: 4900000, guid: 2a50c159e1275844689f888b053a2c92, type: 3}
   csvList:
@@ -9046,15 +9045,6 @@ MonoBehaviour:
       hp: 3
       defense: 0
       moveSpeed: 0.03
-    debuffStat:
-    - debuffName: Fire
-      ticTime: 0.5
-    - debuffName: Germ
-      ticTime: 0.1
-    - debuffName: Ice
-      ticTime: 3
-    - debuffName: Thunder
-      ticTime: 0.5
     questStat:
     - questName: "\uC874\uBC84"
       explanation: "{0} / {1} \uC6E8\uC774\uBE0C \uB3D9\uC548 \uBC84\uD2F0\uC138\uC694."
