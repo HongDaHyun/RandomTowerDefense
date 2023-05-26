@@ -8838,210 +8838,210 @@ MonoBehaviour:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
       tier: 1
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2DC\uAD11\uACE8\uB818"
       enemyType: 0
       tier: 2
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC11D\uD0C4\uACE8\uB818"
       enemyType: 0
       tier: 3
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC790\uC218\uC815\uACE8\uB818"
       enemyType: 0
       tier: 4
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD615\uC11D\uACE8\uB818"
       enemyType: 0
       tier: 5
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC7BC\uBBFC\uC774"
       enemyType: 1
       tier: 1
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uACFC\uD559\uC790"
       enemyType: 1
       tier: 2
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD2B8\uB808\uC774\uB108"
       enemyType: 1
       tier: 3
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD3B8\uC758\uC810\uC54C\uBC14"
       enemyType: 1
       tier: 4
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD560\uC544\uBC84\uC9C0"
       enemyType: 1
       tier: 5
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBE68\uAC15\uD3EC\uC158"
       enemyType: 2
       tier: 1
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB178\uB791\uD3EC\uC158"
       enemyType: 2
       tier: 2
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uCD08\uB85D\uD3EC\uC158"
       enemyType: 2
       tier: 3
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD30C\uB791\uD3EC\uC158"
       enemyType: 2
       tier: 4
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uD669\uD3EC\uC158"
       enemyType: 2
       tier: 5
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCEEC"
       enemyType: 3
       tier: 1
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC2A4\uCEEC"
       enemyType: 3
       tier: 2
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD65C\uC2A4\uCEEC"
       enemyType: 3
       tier: 3
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC8FC\uBA39\uC2A4\uCEEC"
       enemyType: 3
       tier: 4
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB9C8\uBC95\uC2A4\uCEEC"
       enemyType: 3
       tier: 5
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBB3C\uB77C\uC784"
       enemyType: 4
       tier: 1
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD480\uB77C\uC784"
       enemyType: 4
       tier: 2
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uD478\uB529\uB77C\uC784"
       enemyType: 4
       tier: 3
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD88\uB77C\uC784"
       enemyType: 4
       tier: 4
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC5BC\uB77C\uC784"
       enemyType: 4
       tier: 5
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uB179\uC2A8\uACE8\uB818"
       enemyType: 0
       tier: 1
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC778\uD615\uD0C8"
       enemyType: 1
       tier: 2
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uAC80\uC815\uD3EC\uC158"
       enemyType: 2
       tier: 3
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uC2A4\uCE74\uC2A4\uCE74"
       enemyType: 3
       tier: 4
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
     - enemyName: "\uBD80\uC6B8\uB77C\uC784"
       enemyType: 4
       tier: 5
-      strength: 6
+      strength: 0
       hp: 3
       defense: 0
       moveSpeed: 0.03
@@ -9465,6 +9465,17 @@ MonoBehaviour:
       conditionWidth: 10
       level: 0
       ID: 39
+    attributeStat:
+    - attribute: 0
+      attributePower: 0
+    - attribute: 1
+      attributePower: 5
+    - attribute: 2
+      attributePower: 5
+    - attribute: 3
+      attributePower: 2
+    - attribute: 4
+      attributePower: 1
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0

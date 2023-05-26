@@ -129,6 +129,7 @@ MonoBehaviour:
   enemyStat:
     enemyName: 
     enemyType: 0
+    tier: 0
     strength: 0
     hp: 0
     defense: 0
@@ -143,7 +144,7 @@ Animator:
   m_GameObject: {fileID: 6635571574041197299}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a37ea5856dc43f74c90c9ee446e8680e, type: 2}
+  m_Controller: {fileID: 9100000, guid: c21bdb749b12d974891cb6fa969ddfe0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
