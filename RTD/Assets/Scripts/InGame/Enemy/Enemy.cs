@@ -141,8 +141,10 @@ public class Enemy : MonoBehaviour, IPoolObject
         if (isDie || !gameObject.activeSelf)
             return;
 
-        curHp -= dmg;
-        UIManager.Instance.DmgPopUp(dmg, transform.position, isCrit);
+        float totalDmg = MathF.Round(dmg / (dmg + enemyStat.defense), 1); // ÃÑ µ¥¹ÌÁö °è»ê
+
+        curHp -= totalDmg;
+        UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);
 
         StopCoroutine(HitColorAnimation(_color, time));
         StartCoroutine(HitColorAnimation(_color, time));
@@ -167,7 +169,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                         yield break;
                     debuffState[attribute] = true;
 
-                    float delayDmg = 0.5f; // µô·¹ÀÌ
+                    float delayDmg = 0.3f; // µô·¹ÀÌ
                     int dmgCount = Mathf.RoundToInt(CSVReader.Instance.AttributeExport(attribute) / 1 + GetStrengthModifier()); // ¹Ýº¹ È½¼ö(¿Ã¸²)
 
                     for (int i = 0; i < dmgCount; i++)
