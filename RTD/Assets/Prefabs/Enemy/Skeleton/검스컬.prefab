@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &483911573681126344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,10 +103,12 @@ MonoBehaviour:
   enemyStat:
     enemyName: 
     enemyType: 0
+    tier: 0
     strength: 0
     hp: 0
     defense: 0
     moveSpeed: 0
+  maxLife: 1
 --- !u!61 &2604054667756183949
 BoxCollider2D:
   m_ObjectHideFlags: 0

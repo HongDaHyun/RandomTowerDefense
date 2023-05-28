@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &2604054667756183949
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,6 +134,7 @@ MonoBehaviour:
     hp: 0
     defense: 0
     moveSpeed: 0
+  maxLife: 0
 --- !u!95 &2474718571586095226
 Animator:
   serializedVersion: 4

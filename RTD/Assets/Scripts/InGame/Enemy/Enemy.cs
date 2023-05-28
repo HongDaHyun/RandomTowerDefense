@@ -7,7 +7,8 @@ using System;
 
 public class Enemy : MonoBehaviour, IPoolObject
 {
-    protected SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
+    private Animator anim;
     public EnemyStat enemyStat;
     private Dictionary<Attribute, bool> debuffState = new Dictionary<Attribute, bool>()
     {
@@ -23,14 +24,18 @@ public class Enemy : MonoBehaviour, IPoolObject
     protected int curWayPoint;
     #endregion
     #region HP
-    protected float curHp;
-    protected bool isDie = false;
-    protected Slider hpSlider;
+    private int curLife;
+    public int maxLife;
+    private float curHp;
+    private bool isDie = false, isStop = false;
+    private Slider hpSlider;
     #endregion
 
     public void OnCreatedInPool() //최초
     {
         name = name.Replace("(Clone)", "");
+
+        SetWayPoint();
     }
 
     public void OnGettingFromPool() //재사용
@@ -48,37 +53,36 @@ public class Enemy : MonoBehaviour, IPoolObject
         HpSliderUpdate();
     }
 
-    private void Die()
-    {
-        isDie = true;
-        QuestManager.Instance.killEnemyNum++; // 퀘스트 5
-
-        GameManager.Instance.curExp += (int)enemyStat.tier; // 경험치 증가
-
-        SpawnManager.Instance.DeSpawnEnemy(this);
-    }
-    private void Movement()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, moveDirection, enemyStat.moveSpeed);
-    }
     private void SetUp()
     {
         name = name.Replace("(Clone)", "");
-        enemyStat = CSVReader.Instance.EnemyExport(name);
+        enemyStat = CSVReader.Instance.EnemyExport(name); //스탯 가져오기
+
+        //컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         hpSlider = GetComponentInChildren<Slider>();
+
+        //변수 초기화
         curHp = enemyStat.hp;
+        curLife = maxLife;
         isDie = false;
-
+        isStop = false;
         debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Thunder] = false;
-
         spriteRenderer.color = Color.white;
 
-        SetWayPoint();
+        //위치 설정
         ResetWayPoint();
     }
 
     #region Movement Code
+    private void Movement()
+    {
+        if (isStop)
+            return;
+        transform.position = Vector2.MoveTowards(transform.position, moveDirection, enemyStat.moveSpeed);
+    }
+
     private void SetWayPoint()
     {
         if (wayPoints != null)
@@ -136,12 +140,14 @@ public class Enemy : MonoBehaviour, IPoolObject
     #endregion
 
     #region Damaged
+    //Damage
     private void TakeDmg(float dmg, Color _color, float time, bool isCrit)
     {
         if (isDie || !gameObject.activeSelf)
             return;
-
-        float totalDmg = MathF.Round(dmg / (dmg + enemyStat.defense), 1); // 총 데미지 계산
+        
+        float defenseRatio = MathF.Round(100 / (100 + enemyStat.defense), 1);
+        float totalDmg = dmg * defenseRatio; // 총 데미지 계산
 
         curHp -= totalDmg;
         UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);
@@ -149,8 +155,8 @@ public class Enemy : MonoBehaviour, IPoolObject
         StopCoroutine(HitColorAnimation(_color, time));
         StartCoroutine(HitColorAnimation(_color, time));
 
-        if(curHp <= 0)
-            Die();
+        if (curHp <= 0)
+            SpecificDie();
     }
 
     private IEnumerator Hitted(float dmg, Attribute attribute, bool isCrit)
@@ -161,6 +167,8 @@ public class Enemy : MonoBehaviour, IPoolObject
         }
         else // 디버프 공격
         {
+            float attributePower = CSVReader.Instance.AttributeExport(attribute);
+
             switch (attribute)
             {
                 case Attribute.Fire: // 불 공격
@@ -170,7 +178,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     float delayDmg = 0.3f; // 딜레이
-                    int dmgCount = Mathf.RoundToInt(CSVReader.Instance.AttributeExport(attribute) / 1 + GetStrengthModifier()); // 반복 횟수(올림)
+                    int dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
                     for (int i = 0; i < dmgCount; i++)
                     {
@@ -180,16 +188,17 @@ public class Enemy : MonoBehaviour, IPoolObject
                     break;
 
                 case Attribute.Ice: // 얼음 공격
-                    TakeDmg(dmg, Color.cyan, CSVReader.Instance.AttributeExport(attribute), isCrit);
+                    TakeDmg(dmg, Color.cyan, attributePower, isCrit);
 
                     if (debuffState[attribute])
                         yield break;
                     debuffState[attribute] = true;
 
                     //슬로우
-                    float slowDuration = CSVReader.Instance.AttributeExport(attribute) - GetStrengthModifier(); // 지속 시간
+                    float slowDuration = attributePower - GetStrengthModifier(); // 지속 시간
+                    float slowPercent = (attributePower / (10 + enemyStat.strength));
                     float originalMoveSpeed = enemyStat.moveSpeed; // 원래 속도
-                    enemyStat.moveSpeed -= CSVReader.Instance.AttributeExport(attribute) / (10 + enemyStat.strength); // 느려진 속도
+                    enemyStat.moveSpeed *= 1 - slowPercent; // 느려진 속도
                     yield return new WaitForSeconds(slowDuration);
                     enemyStat.moveSpeed = originalMoveSpeed;
                     break;
@@ -202,11 +211,10 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     //스턴
-                    float stunDuration = CSVReader.Instance.AttributeExport(attribute) - GetStrengthModifier(); // 지속 시간
-                    originalMoveSpeed = enemyStat.moveSpeed; // 원래 속도
-                    enemyStat.moveSpeed = 0;
+                    float stunDuration = attributePower - GetStrengthModifier(); // 지속 시간
+                    isStop = true;
                     yield return new WaitForSeconds(stunDuration); //지속 시간
-                    enemyStat.moveSpeed = originalMoveSpeed;
+                    isStop = false;
                     break;
             }
             debuffState[attribute] = false;
@@ -240,6 +248,54 @@ public class Enemy : MonoBehaviour, IPoolObject
         float imsi = curHp / enemyStat.hp;
 
         hpSlider.value = Mathf.Lerp(hpSlider.value, imsi, Time.deltaTime * 10);
+    }
+
+    //Die
+    private void SpecificDie()
+    {
+        switch (enemyStat.enemyType)
+        {
+            case EnemyType.Portion:
+                isStop = true;
+                anim.SetTrigger("Die");
+                break;
+            case EnemyType.Skeleton:
+                isStop = true;
+                if (curLife > 0)
+                    anim.SetTrigger("Reborn");
+                else
+                    Die();
+                break;
+            case EnemyType.Slime:
+                isStop = true;
+                if (curLife > 0)
+                    anim.SetTrigger("Split");
+                else
+                    Die();
+                break;
+            default: // 사람, 골렘
+                Die();
+                break;
+        }
+    }
+
+    private void Die()
+    {
+        isDie = true;
+        QuestManager.Instance.killEnemyNum++; // 퀘스트 5
+
+        GameManager.Instance.curExp += (int)enemyStat.tier; // 경험치 증가
+
+        SpawnManager.Instance.DeSpawnEnemy(this);
+    }
+    #endregion
+
+    #region Specific
+    public void Reborn()
+    {
+        isStop = false;
+        curLife--;
+        curHp = enemyStat.hp;
     }
     #endregion
 }

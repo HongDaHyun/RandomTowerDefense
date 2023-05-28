@@ -30,12 +30,14 @@ public class GameManager : Singleton<GameManager>
         #endregion
     }
 
-    private void Update()
+    public void GainHealth(int a)
     {
+        curHealth += a;
+
         LimitHealth();
     }
 
-    public void LimitHealth()
+    private void LimitHealth()
     {
         if (curHealth >= maxHealth)
         {
