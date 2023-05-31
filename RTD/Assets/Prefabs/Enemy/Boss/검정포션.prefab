@@ -164,6 +164,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6635571574041197297}
     m_Modifications:
+    - target: {fileID: 1686947199350465235, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5269653243860874454, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -246,10 +250,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5269653243860874454, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6227214389501482212, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
-      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7550353572259730692, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
