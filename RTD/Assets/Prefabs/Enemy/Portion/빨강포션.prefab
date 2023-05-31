@@ -134,7 +134,9 @@ MonoBehaviour:
     hp: 0
     defense: 0
     moveSpeed: 0
-  maxLife: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  curWayPoint: 0
+  curHp: 0
 --- !u!95 &7093759390570068670
 Animator:
   serializedVersion: 4
@@ -244,6 +246,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5269653243860874454, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227214389501482212, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7550353572259730692, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}

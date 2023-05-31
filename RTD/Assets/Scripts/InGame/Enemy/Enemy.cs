@@ -19,14 +19,14 @@ public class Enemy : MonoBehaviour, IPoolObject
     };
 
     #region Movement
-    protected Vector3 moveDirection;
-    protected Transform[] wayPoints;
-    protected int curWayPoint;
+    [HideInInspector] public Vector3 moveDirection;
+    private Transform[] wayPoints;
+    [HideInInspector] public int curWayPoint;
     #endregion
     #region HP
     private int curLife;
-    public int maxLife;
-    private float curHp;
+    private int maxLife;
+    [HideInInspector] public float curHp;
     private bool isDie = false, isStop = false;
     private Slider hpSlider;
     #endregion
@@ -53,9 +53,8 @@ public class Enemy : MonoBehaviour, IPoolObject
         HpSliderUpdate();
     }
 
-    private void SetUp()
+    protected void SetUp()
     {
-        name = name.Replace("(Clone)", "");
         enemyStat = CSVReader.Instance.EnemyExport(name); //½ºÅÈ °¡Á®¿À±â
 
         //ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
@@ -152,7 +151,6 @@ public class Enemy : MonoBehaviour, IPoolObject
         curHp -= totalDmg;
         UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);
 
-        StopCoroutine(HitColorAnimation(_color, time));
         StartCoroutine(HitColorAnimation(_color, time));
 
         if (curHp <= 0)
@@ -174,7 +172,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                 case Attribute.Fire: // ºÒ °ø°Ý
                 case Attribute.Germ: // µ¶ °ø°Ý
                     if (debuffState[attribute])
-                        yield break;
+                        dmg *= 2;
                     debuffState[attribute] = true;
 
                     float delayDmg = 0.3f; // µô·¹ÀÌ
@@ -253,6 +251,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     //Die
     private void SpecificDie()
     {
+        StopAllCoroutines();
         switch (enemyStat.enemyType)
         {
             case EnemyType.Portion:
@@ -268,12 +267,9 @@ public class Enemy : MonoBehaviour, IPoolObject
                 break;
             case EnemyType.Slime:
                 isStop = true;
-                if (curLife > 0)
-                    anim.SetTrigger("Split");
-                else
-                    Die();
+                anim.SetTrigger("Split");
                 break;
-            default: // »ç¶÷, °ñ·½
+            default: // »ç¶÷, °ñ·½, ÀÛ¶óÀÓ
                 Die();
                 break;
         }
@@ -296,6 +292,14 @@ public class Enemy : MonoBehaviour, IPoolObject
         isStop = false;
         curLife--;
         curHp = enemyStat.hp;
+    }
+
+    public void Split()
+    {
+        SpawnManager.Instance.SpawnBabySlime(this);
+        SpawnManager.Instance.SpawnBabySlime(this);
+
+        Die();
     }
     #endregion
 }

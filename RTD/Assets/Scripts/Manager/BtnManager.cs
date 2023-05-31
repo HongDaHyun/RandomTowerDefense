@@ -119,6 +119,11 @@ public class BtnManager : Singleton<BtnManager>
         StartCoroutine(SlotMachine());
     }
 
+    public void ExitInfo()
+    {
+        UIManager.Instance.info.CloseInfo();
+    }
+
     public void SpeedBtn()
     {
         switch(GameManager.Instance.gameTime)

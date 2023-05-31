@@ -10,11 +10,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -25816516192821598}
-    m_Position: {x: 383.02576, y: 166.86353, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 2541425608450034184}
-    m_Position: {x: 638.5632, y: 180.67297, z: 0}
+    m_State: {fileID: -3390823433121331397}
+    m_Position: {x: 370, y: 130, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -24,8 +21,8 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -25816516192821598}
---- !u!1102 &-25816516192821598
+  m_DefaultState: {fileID: -3390823433121331397}
+--- !u!1102 &-3390823433121331397
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -45,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 410228556888dcd4ba9999453d5ecd53, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9d823cc5e8452b54885fe381c650c896, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -57,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "\uBD80\uC6B8\uB77C\uC784"
+  m_Name: "\uC791\uBB3C\uB77C\uC784"
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -73,29 +70,3 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &2541425608450034184
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: "Split_\uBD80\uC6B8\uB77C\uC784"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0b4420e9c594fdb479eb0df2165198af, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 

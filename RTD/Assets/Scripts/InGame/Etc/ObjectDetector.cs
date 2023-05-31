@@ -7,56 +7,78 @@ using UnityEngine.EventSystems;
 public class ObjectDetector : MonoBehaviour
 {
     private RaycastHit2D hit;
-    private Camera mainCam;
+    private ProCamera2DPanAndZoom proCam;
+    private UIManager uiManager;
 
     private void Awake()
     {
-        mainCam = Camera.main;
+        proCam = Camera.main.GetComponent<ProCamera2DPanAndZoom>();
+        uiManager = UIManager.Instance;
     }
 
     private void Update()
     {
-        if(Input.GetMouseButtonUp(0) && !mainCam.GetComponent<ProCamera2DPanAndZoom>().IsPanning && !UIManager.Instance.gatchaPannel.gatchaPannel.activeSelf)
+        if(Input.GetMouseButtonUp(0) && !proCam.IsPanning)
         {
+            // 마우스가 UI요소 위에 있을 시
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            // RayCast 설정
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
-            if (hit.collider != null && !EventSystem.current.IsPointerOverGameObject())
-            {
-                if (hit.collider.CompareTag("TileGround")) //타워 설치 가능 땅
-                {
-                    if (!UIManager.Instance.clickTile.activeSelf) //클릭 타일 없으면 생성
-                        UIManager.Instance.clickTile.SetActive(true);
 
-                    else if (UIManager.Instance.clickTile.transform.parent == hit.transform) //동일한 클릭타일 있을 시 제거
+            // RayCast 충돌 설정
+            if (hit.collider != null)
+            {
+                // 땅 타일
+                if (hit.collider.CompareTag("TileGround"))
+                {
+                    // 클릭 타일 없으면 생성
+                    if (!uiManager.clickTile.activeSelf)
+                        uiManager.clickTile.SetActive(true);
+
+                    // 동일한 클릭타일 클릭 시 제거
+                    else if (uiManager.clickTile.transform.parent == hit.transform)
                     {
-                        UIManager.Instance.clickTile.SetActive(false);
+                        uiManager.clickTile.SetActive(false);
                         return;
                     }
 
                     TileGround tileGround = hit.transform.GetComponent<TileGround>();
-                    if (tileGround.isBuild) //클릭타일에 유닛있을 시 정보창 생성
-                        UIManager.Instance.SetUnitInfo(tileGround);
-                    else //클릭타일에 유닛 없는 빈 타일일 때 정보창 제거
-                        if (UIManager.Instance.unitInfoPannel.activeSelf)
-                            CloseUnitInfo();
+                    // 클릭 타일에 유닛 존재
+                    if (tileGround.isBuild)
+                        uiManager.info.SetUnitInfo(tileGround);
 
-                    UIManager.Instance.clickTile.transform.SetParent(hit.transform);
-                    UIManager.Instance.clickTile.transform.localPosition = new Vector3(0, 0, 0);
+                    // 빈 클릭 타일
+                    else if(uiManager.info.unitInfo.pannel.activeSelf)
+                        uiManager.info.CloseInfo();
+
+                    // 클릭 타일 포지션 설정
+                    uiManager.clickTile.transform.SetParent(hit.transform);
+                    uiManager.clickTile.transform.localPosition = new Vector3(0, 0, 0);
                 }
-                else if (hit.collider.CompareTag("TileRoad")) //타워 설치 불가능 길
-                    if (UIManager.Instance.clickTile.activeSelf)
-                        UIManager.Instance.clickTile.SetActive(false);
-            }
-            else
-                return;
-        }
-        if (!UIManager.Instance.clickTile.activeSelf) //클릭타일 없을 때 유닛정보패널 비활성화
-            CloseUnitInfo();
-    }
 
-    private void CloseUnitInfo()
-    {
-        UIManager.Instance.unitInfoPannel.SetActive(false);
-        UIManager.Instance.unitRange.OffAtkRange();
+                // 길 타일
+                else if (hit.collider.CompareTag("TileRoad"))
+                {
+                    if (uiManager.clickTile.activeSelf)
+                        uiManager.clickTile.SetActive(false);
+                }
+
+                // 적
+                else if (hit.collider.CompareTag("Enemy"))
+                {
+                    if (uiManager.clickTile.activeSelf)
+                        uiManager.clickTile.SetActive(false);
+
+                    uiManager.info.SetEnemyInfo(hit.collider.GetComponent<Enemy>());
+                }
+            }
+        }
+
+        // 클릭타일 없고, 적 상태창 아닐 때 클릭 타일 비활성화
+        if (!uiManager.clickTile.activeSelf && !uiManager.info.enemyInfo.pannel.activeSelf)
+            uiManager.info.CloseInfo();
     }
 }

@@ -1,31 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-8908341226083768220
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: "Split_\uD478\uB529\uB77C\uC784"
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 81855e700482b2f4ca2a2b78dbb84f35, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1107 &-4310741941408872067
 AnimatorStateMachine:
   serializedVersion: 6
@@ -38,9 +12,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -3266376862075070511}
     m_Position: {x: 425.0923, y: 191.40234, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8908341226083768220}
-    m_Position: {x: 698.62067, y: 198.40222, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -71,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a666319a67168b640873dd6e8e402ab7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4cd320a1bfcc44e478b8195460490f84, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "\uD478\uB529\uB77C\uC784Baby"
+  m_Name: "\uC791\uD478\uB529\uB77C\uC784"
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:

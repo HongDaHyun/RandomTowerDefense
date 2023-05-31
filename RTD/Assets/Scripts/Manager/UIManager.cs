@@ -14,12 +14,9 @@ public class UIManager : Singleton<UIManager>
     [Header("InGame")]
     public GameObject[] inGamePannel;
     public GameObject clickTile;
-    public UnitRange unitRange;
-    public GameObject unitInfoPannel;
-    public GameObject enemyInfoPannel;
     public GatchaPannel gatchaPannel;
     public GameObject characteristicPannel;
-    public UnitInfo unitInfoContents;
+    public Info info;
     public UpPannel upPannel;
     public Quest[] quests;
     public CharacteristicCard[] cards;
@@ -29,21 +26,6 @@ public class UIManager : Singleton<UIManager>
     private void Update()
     {
         UpdateUpPannel();
-    }
-
-    public void SetUnitInfo(TileGround tile)
-    {
-        if (!unitInfoPannel.activeSelf)
-            unitInfoPannel.SetActive(true);
-        Unit unit = tile.GetComponentInChildren<Unit>();
-        unitInfoContents.img.sprite = unit.GetComponent<SpriteRenderer>().sprite;
-        unitInfoContents.texts[0].text = unit.unitStat.unitName;
-        unitInfoContents.texts[1].text = unit.unitStat.dmg.ToString();
-        unitInfoContents.texts[2].text = $"{unit.unitStat.atkSpeed}%";
-        unitInfoContents.texts[3].text = unit.unitStat.range.ToString();
-        unitInfoContents.texts[4].text = $"{unit.unitStat.critPercent}%";
-        unitInfoContents.texts[5].text = $"{unit.unitStat.critDmg}%";
-        unitRange.OnAtkRange(unit.transform.position, unit.unitStat.range);
     }
 
     public void UpdateUpPannel()
@@ -136,10 +118,71 @@ public class UIManager : Singleton<UIManager>
 }
 
 [Serializable]
+public class Info
+{
+    public GameObject pannel;
+    public UnitInfo unitInfo;
+    public EnemyInfo enemyInfo;
+
+    public void SetUnitInfo(TileGround tile)
+    {
+        // 패널 활성화
+        pannel.SetActive(true);
+        enemyInfo.pannel.SetActive(false);
+        unitInfo.pannel.SetActive(true);
+
+        // 텍스트 동기화
+        Unit unit = tile.GetComponentInChildren<Unit>();
+
+        unitInfo.img.sprite = unit.GetComponent<SpriteRenderer>().sprite;
+        unitInfo.nameTxt.text = unit.unitStat.unitName;
+        unitInfo.dmgTxt.text = unit.unitStat.dmg.ToString();
+        unitInfo.atkSpeedTxt.text = $"{unit.unitStat.atkSpeed}%";
+        unitInfo.rangeTxt.text = unit.unitStat.range.ToString();
+        unitInfo.critPercentTxt.text = $"{unit.unitStat.critPercent}%";
+        unitInfo.critDmgTxt.text = $"{unit.unitStat.critDmg}%";
+        unitInfo.unitRange.OnAtkRange(unit.transform.position, unit.unitStat.range);
+    }
+
+    public void SetEnemyInfo(Enemy enemy)
+    {
+        // 패널 활성화
+        pannel.SetActive(true);
+        unitInfo.unitRange.OffAtkRange();
+        unitInfo.pannel.SetActive(false);
+        enemyInfo.pannel.SetActive(true);
+
+        // 텍스트 동기화
+        enemyInfo.img.sprite = enemy.GetComponent<SpriteRenderer>().sprite;
+        enemyInfo.nameTxt.text = enemy.enemyStat.enemyName;
+        enemyInfo.hpTxt.text = enemy.enemyStat.hp.ToString();
+        enemyInfo.moveSpeedTxt.text = (enemy.enemyStat.moveSpeed * 100).ToString();
+        enemyInfo.defenseTxt.text = enemy.enemyStat.defense.ToString();
+        enemyInfo.strengthTxt.text = enemy.enemyStat.strength.ToString();
+    }
+
+    public void CloseInfo()
+    {
+        pannel.SetActive(false);
+        unitInfo.unitRange.OffAtkRange();
+    }
+}
+
+[Serializable]
 public struct UnitInfo
 {
+    public GameObject pannel;
     public Image img;
-    public Text[] texts;
+    public UnitRange unitRange;
+    public Text nameTxt, dmgTxt, atkSpeedTxt, rangeTxt, critPercentTxt, critDmgTxt;
+}
+
+[Serializable]
+public struct EnemyInfo
+{
+    public GameObject pannel;
+    public Image img;
+    public Text nameTxt, hpTxt, moveSpeedTxt, defenseTxt, strengthTxt;
 }
 
 [Serializable]

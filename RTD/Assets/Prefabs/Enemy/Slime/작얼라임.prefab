@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6635571574041197297}
   - component: {fileID: 6635571574041197298}
-  - component: {fileID: 465639096248565126}
+  - component: {fileID: 760651313792985581}
   - component: {fileID: 2604054667756183949}
-  - component: {fileID: -6380539567366597418}
+  - component: {fileID: -9129735795272809306}
   m_Layer: 0
-  m_Name: "\uBD88\uB77C\uC784"
+  m_Name: "\uC791\uC5BC\uB77C\uC784"
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6635571574041197299}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2719248944130693018}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1893062786, guid: 6db01d7cc12fbe14eabc20efb6a5d885, type: 3}
+  m_Sprite: {fileID: 140304571, guid: 00ffc6d1f5c2d8f4c839c221a6f5a28b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &465639096248565126
+--- !u!114 &760651313792985581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,9 @@ MonoBehaviour:
     hp: 0
     defense: 0
     moveSpeed: 0
-  maxLife: 1
+  moveDirection: {x: 0, y: 0, z: 0}
+  curWayPoint: 0
+  curHp: 0
 --- !u!61 &2604054667756183949
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
+  m_Offset: {x: 0, y: 0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.08}
@@ -133,9 +135,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.5}
+  m_Size: {x: 0.5, y: 0.4}
   m_EdgeRadius: 0
---- !u!95 &-6380539567366597418
+--- !u!95 &-9129735795272809306
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 6635571574041197299}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4275b39ce6681a847a7516053ff14e5f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 446139c5f044eda49bb51e2978cdeac4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -244,6 +246,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5269653243860874454, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227214389501482212, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7550353572259730692, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class UnitRange : MonoBehaviour
 {
-    private void Awake()
-    {
-        
-    }
-
     public void OnAtkRange(Vector3 position, float range)
     {
         gameObject.SetActive(true);

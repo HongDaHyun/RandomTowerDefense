@@ -61,15 +61,40 @@ public class SpawnManager : Singleton<SpawnManager>
         }
         //모든 적 소환 완료
     }
+
+    public Enemy SpawnBabySlime(Enemy bigSlime)
+    {
+        //작라임 생성
+        Enemy babySlime = PoolManager.Instance.GetFromPool<Enemy>($"작{bigSlime.enemyStat.enemyName}");
+        enemyList.Add(babySlime);
+
+        //위치 조정
+        float ranPos = Random.Range(-5, 5) / 10f;
+        babySlime.transform.position = new Vector2(bigSlime.transform.position.x + ranPos, bigSlime.transform.position.y + ranPos);
+        babySlime.curWayPoint = bigSlime.curWayPoint;
+        babySlime.moveDirection = bigSlime.moveDirection;
+
+        //스탯 조정
+        babySlime.enemyStat = bigSlime.enemyStat;
+        babySlime.enemyStat.enemyName = babySlime.name; // 이름
+        babySlime.enemyStat.tier = Tier.Common; // 티어(경험치)
+        babySlime.enemyStat.enemyType = EnemyType.SlimeBaby; // 타입
+        babySlime.enemyStat.hp /= 2; // 체력
+        babySlime.curHp = babySlime.enemyStat.hp;
+
+        return babySlime;
+    }
     #endregion
 
     #region SpawnUnit
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.UnitExport_forSpawn(type, tier));
+
         if (!QuestManager.Instance.unitTypesList.Contains(type))
             QuestManager.Instance.unitTypesList.Add(type); // 퀘스트 6
         QuestManager.Instance.tierNum[(int)(tier - 1)]++; // 퀘스트 10,11,12,13
+
         unitList.Add(newUnit);
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         tileGround.SetTile(newUnit);

@@ -22,8 +22,8 @@ Name,Type,Tier,Hp,Strength,Defense,MoveSpeed
 물라임,Slime,Common,3,0,0,0.03
 풀라임,Slime,Rare,3,0,0,0.03
 푸딩라임,Slime,Epic,3,0,0,0.03
-불라임,Slime,Legend,3,0,0,0.03
-얼라임,Slime,Boss,3,0,0,0.03
+얼라임,Slime,Legend,3,0,0,0.03
+불라임,Slime,Boss,3,0,0,0.03
 녹슨골렘,Golem,Common,3,0,0,0.03
 인형탈,Human,Rare,3,0,0,0.03
 검정포션,Portion,Epic,3,0,0,0.03
