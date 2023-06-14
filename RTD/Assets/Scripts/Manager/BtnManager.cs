@@ -177,6 +177,8 @@ public class BtnManager : Singleton<BtnManager>
             else
             {
                 IDs.Add(ranID);
+
+                UIManager.Instance.quests[i].gameObject.SetActive(true);
                 UIManager.Instance.quests[i].SetQuest(ranID); //Äù½ºÆ® »ý¼º
             }
         }

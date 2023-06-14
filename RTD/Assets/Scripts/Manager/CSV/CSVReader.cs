@@ -7,6 +7,7 @@ public class CSVReader : Singleton<CSVReader>
 {
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
+    public Projectile[] projectiles;
 
     #region Read
     [ContextMenu("CSV불러오기")]
@@ -172,21 +173,60 @@ public class CSVReader : Singleton<CSVReader>
     #endregion
 
     #region Stat
-    public void SetUnitStat(string kind, float value) // 구현 중
+    public void SetUnitStat(UnitType type, string kind, float value) // 구현 중
+    {
+        // CSV 유닛 스탯
+        int length = csvList.unitStat.Length;
+        for (int i = 0; i < length; i++)
+        {
+            if (type == csvList.unitStat[i].unitType)
+            {
+                UpdateUnitStat(csvList.unitStat[i], kind, value);
+            }
+        }
+
+        // 기존 소환된 유닛
+        int unitListCount = SpawnManager.Instance.unitList.Count;
+        for (int i = 0; i < unitListCount; i++)
+        {
+            if (type == SpawnManager.Instance.unitList[i].unitStat.unitType)
+            {
+                UpdateUnitStat(SpawnManager.Instance.unitList[i].unitStat, kind, value);
+            }
+        }
+    }
+
+    private void UpdateUnitStat(UnitStat unitStat, string kind, float value)
+    {
+        switch (kind)
+        {
+            case "Dmg":
+                unitStat.dmg += value;
+                break;
+            case "CritPercent":
+                unitStat.critPercent += (int)value;
+                break;
+            case "CritDmg":
+                unitStat.critDmg += (int)value;
+                break;
+            case "AtkSpeed":
+                unitStat.atkSpeed += value;
+                break;
+            case "Range":
+                unitStat.range += value;
+                break;
+        }
+    }
+
+    public void SetProjectileStat(UnitType type, string kind, float value)
     {
         switch(kind)
         {
-            case "Dmg":
+            case "Size":
+                projectiles[(int)type].transform.localScale += new Vector3(value, value);
                 break;
-            case "CritPercent":
-                break;
-            case "CritDmg":
-                break;
-            case "AtkSpeed":
-                break;
-            case "Range":
-                break;
-            case "ProjectileSpeed":
+            case "Speed":
+                projectiles[(int)type].speed += value;
                 break;
         }
     }

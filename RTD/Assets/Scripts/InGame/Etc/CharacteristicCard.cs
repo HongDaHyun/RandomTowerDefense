@@ -44,9 +44,15 @@ public class CharacteristicCard : MonoBehaviour
 
     public void ClickCard()
     {
-        CSVReader.Instance.csvList.characteristicStat[characStat.ID].level++; // ·¹º§ ¾÷
+        CharacLevelUp(ref CSVReader.Instance.csvList.characteristicStat[characStat.ID]);
 
         UIManager.Instance.characteristicPannel.SetActive(false);
         BtnManager.Instance.Play();
+    }
+
+    public void CharacLevelUp(ref CharacteristicStat stat)
+    {
+        stat.level++;
+        stat.condition += stat.conditionWidth;
     }
 }

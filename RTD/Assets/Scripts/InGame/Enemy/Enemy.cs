@@ -146,7 +146,7 @@ public class Enemy : MonoBehaviour, IPoolObject
             return;
         
         float defenseRatio = MathF.Round(100 / (100 + enemyStat.defense), 1);
-        float totalDmg = dmg * defenseRatio; // 총 데미지 계산
+        float totalDmg = dmg * defenseRatio + enemyStat.hp * (CharacManager.Instance.proportionHP / 100); // 총 데미지 계산 (데미지 * 디펜스 + 체력비례 데미지)
 
         curHp -= totalDmg;
         UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);
