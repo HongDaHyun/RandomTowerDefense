@@ -9,6 +9,7 @@ public class CSVReader : Singleton<CSVReader>
     public CSVList csvList = new CSVList();
     public Projectile[] projectiles;
 
+
     #region Read
     [ContextMenu("CSV불러오기")]
     public void CSVReading()
@@ -102,121 +103,7 @@ public class CSVReader : Singleton<CSVReader>
     }
     #endregion
 
-    #region Export
-    public UnitStat UnitExport(string name) // 이름으로 유닛 정보
-    {
-        for (int i = 0; i < csvList.unitStat.Length; i++)
-        {
-            if (name == csvList.unitStat[i].unitName.ToString())
-            {
-                return csvList.unitStat[i];
-            }
-        }
-        return csvList.unitStat[0];
-    }
-
-    public List<UnitStat> UnitExport_Type(UnitType type) // 타입으로 유닛 정보
-    {
-        List<UnitStat> unitStats = new List<UnitStat>();
-        for (int i = 0; i < csvList.unitStat.Length; i++)
-        {
-            if (type == csvList.unitStat[i].unitType)
-                unitStats.Add(csvList.unitStat[i]);
-        }
-        return unitStats;
-    }
-
-    public string UnitExport_forSpawn(UnitType type, Tier tier) // 타입과 티어로 유닛 정보
-    {
-        List<UnitStat> unitStats = UnitExport_Type(type);
-        for(int i = 0; i < unitStats.Count; i++)
-        {
-            if(tier == unitStats[i].tier)
-            {
-                return unitStats[i].unitName;
-            }
-        }
-        return unitStats[0].unitName;
-    }    
-
-    public EnemyStat EnemyExport(string name)
-    {
-        for (int i = 0; i < csvList.enemyStat.Length; i++)
-        {
-            if (name == csvList.enemyStat[i].enemyName.ToString())
-            {
-                return csvList.enemyStat[i];
-            }
-        }
-        return csvList.enemyStat[0];
-    }
-
-    public QuestStat QuestExport(int id)
-    {
-        return csvList.questStat[id];
-    }
-
-    public CharacteristicStat CharacteristicExport(int id)
-    {
-        return csvList.characteristicStat[id];
-    }
-
-    public float AttributeExport(Attribute attribute)
-    {
-        for(int i = 0; i < csvList.attributeStat.Length; i++)
-        {
-            if (attribute == csvList.attributeStat[i].attribute)
-                return csvList.attributeStat[i].attributePower;
-        }
-        return 0;
-    }
-    #endregion
-
     #region Stat
-    public void SetUnitStat(UnitType type, string kind, float value) // 구현 중
-    {
-        // CSV 유닛 스탯
-        int length = csvList.unitStat.Length;
-        for (int i = 0; i < length; i++)
-        {
-            if (type == csvList.unitStat[i].unitType)
-            {
-                UpdateUnitStat(csvList.unitStat[i], kind, value);
-            }
-        }
-
-        // 기존 소환된 유닛
-        int unitListCount = SpawnManager.Instance.unitList.Count;
-        for (int i = 0; i < unitListCount; i++)
-        {
-            if (type == SpawnManager.Instance.unitList[i].unitStat.unitType)
-            {
-                UpdateUnitStat(SpawnManager.Instance.unitList[i].unitStat, kind, value);
-            }
-        }
-    }
-
-    private void UpdateUnitStat(UnitStat unitStat, string kind, float value)
-    {
-        switch (kind)
-        {
-            case "Dmg":
-                unitStat.dmg += value;
-                break;
-            case "CritPercent":
-                unitStat.critPercent += (int)value;
-                break;
-            case "CritDmg":
-                unitStat.critDmg += (int)value;
-                break;
-            case "AtkSpeed":
-                unitStat.atkSpeed += value;
-                break;
-            case "Range":
-                unitStat.range += value;
-                break;
-        }
-    }
 
     public void SetProjectileStat(UnitType type, string kind, float value)
     {

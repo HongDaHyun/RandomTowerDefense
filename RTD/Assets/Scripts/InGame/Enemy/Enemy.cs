@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     protected void SetUp()
     {
-        enemyStat = CSVReader.Instance.EnemyExport(name); //스탯 가져오기
+        enemyStat = CSVReader.Instance.csvList.FindEnemy(name); //스탯 가져오기
 
         //컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -165,7 +165,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         }
         else // 디버프 공격
         {
-            float attributePower = CSVReader.Instance.AttributeExport(attribute);
+            float attributePower = CSVReader.Instance.csvList.FindAttribute(attribute);
 
             switch (attribute)
             {

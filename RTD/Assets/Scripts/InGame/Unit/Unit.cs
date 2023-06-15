@@ -32,19 +32,19 @@ public class Unit : MonoBehaviour, IPoolObject
     void IPoolObject.OnGettingFromPool()
     {
         SetUp();
+        ChangeState(UnitState.SearchTarget);
     }
 
-    protected virtual void Update()
+    void Update()
     {
         if (attackTarget != null)
             RotateToTarget();
     }
 
-    protected virtual void SetUp()
+    public void SetUp()
     {
-        unitStat = CSVReader.Instance.UnitExport(name);
+        unitStat = CSVReader.Instance.csvList.FindUnit(name);
         atkSpeedCount = 3 / (1 + (unitStat.atkSpeed / 100)); // 초당 공격 속도 계산 공식
-        ChangeState(UnitState.SearchTarget);
     }
 
     #region Attack

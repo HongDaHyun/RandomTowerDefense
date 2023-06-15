@@ -4,3 +4,4 @@ public enum EnemyType { Golem, Human, Portion, Skeleton, Slime, SlimeBaby }
 public enum Attribute { None, Fire, Germ, Ice, Thunder }
 public enum Tier { Common = 1, Rare, Epic, Legend, Boss }
 public enum GameTime { Slow = 10, Commonly = 15, Fast = 20 }
+public enum UpUnit { Dmg, CritPercent, CritDmg, AtkSpeed, Range }

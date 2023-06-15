@@ -89,7 +89,7 @@ public class SpawnManager : Singleton<SpawnManager>
     #region SpawnUnit
     public void SpawnUnit(UnitType type, Tier tier)
     {
-        Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.UnitExport_forSpawn(type, tier));
+        Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.csvList.FindUnit(type, tier));
 
         if (!QuestManager.Instance.unitTypesList.Contains(type))
             QuestManager.Instance.unitTypesList.Add(type); // Äù½ºÆ® 6

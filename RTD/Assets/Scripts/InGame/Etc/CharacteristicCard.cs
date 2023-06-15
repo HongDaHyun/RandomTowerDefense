@@ -9,7 +9,7 @@ public class CharacteristicCard : MonoBehaviour
 
     public void SetCard(int id)
     {
-        characStat = CSVReader.Instance.CharacteristicExport(id);
+        characStat = CSVReader.Instance.csvList.FindCharac(id);
 
         cardPannel.cardNameTxt.text = characStat.charateristicName;
         cardPannel.explanationTxt.text = string.Format(characStat.explanation, characStat.condition);

@@ -30,7 +30,7 @@ public class Quest : MonoBehaviour
         // Reset
         curCondition = 0;
         button.interactable = false;
-        questStat = CSVReader.Instance.QuestExport(id);
+        questStat = CSVReader.Instance.csvList.FindQuest(id);
         texts[0].text = questStat.questName; //퀘스트 이름
 
         int ranNum = Random.Range(0, System.Enum.GetValues(typeof(Tier)).Length);
