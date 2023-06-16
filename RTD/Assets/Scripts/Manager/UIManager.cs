@@ -103,10 +103,12 @@ public class UIManager : Singleton<UIManager>
     {
         int ranID;
         List<int> IDs = new List<int>(); //중복 방지 리스트
-        for (int i = 0; i < cards.Length; i++)
+        int length = cards.Length;
+        CharacteristicStat[] stats = CSVReader.Instance.csvList.characteristicStat;
+        for (int i = 0; i < length; i++)
         {
-            ranID = UnityEngine.Random.Range(0, CSVReader.Instance.csvList.characteristicStat.Length);
-            if (IDs.Contains(ranID)) // 중복이면 다시
+            ranID = UnityEngine.Random.Range(0, stats.Length);
+            if (IDs.Contains(ranID) || stats[ranID].level >= 8) // 중복이거나 만렙이면 다시
                 i--;
             else
             {

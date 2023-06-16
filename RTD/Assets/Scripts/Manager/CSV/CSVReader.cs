@@ -9,7 +9,6 @@ public class CSVReader : Singleton<CSVReader>
     public CSVList csvList = new CSVList();
     public Projectile[] projectiles;
 
-
     #region Read
     [ContextMenu("CSV불러오기")]
     public void CSVReading()
@@ -95,8 +94,8 @@ public class CSVReader : Singleton<CSVReader>
             csvList.characteristicStat[i] = new CharacteristicStat();
             csvList.characteristicStat[i].charateristicName = data[size * k];
             csvList.characteristicStat[i].explanation = data[size * k + 1];
-            csvList.characteristicStat[i].condition = int.Parse(data[size * k + 2]);
-            csvList.characteristicStat[i].conditionWidth = int.Parse(data[size * k + 3]);
+            csvList.characteristicStat[i].condition = float.Parse(data[size * k + 2]);
+            csvList.characteristicStat[i].conditionWidth = float.Parse(data[size * k + 3]);
             csvList.characteristicStat[i].level = 0;
             csvList.characteristicStat[i].ID = i;
         }

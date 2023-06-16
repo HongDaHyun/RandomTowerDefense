@@ -33,8 +33,8 @@ public struct QuestStat
 public struct CharacteristicStat
 {
     public string charateristicName, explanation;
-    public int condition, conditionWidth, level;
-    public int ID;
+    public float condition, conditionWidth;
+    public int level, ID;
 }
 
 [Serializable]
@@ -83,6 +83,16 @@ public class CSVList
         }
         return unitStats;
     }
+    public List<UnitStat> FindUnit(Tier tier)
+    {
+        List<UnitStat> unitStats = new List<UnitStat>();
+        foreach (UnitStat stat in unitStat)
+        {
+            if (tier == stat.tier)
+                unitStats.Add(stat);
+        }
+        return unitStats;
+    }
     public string FindUnit(UnitType type, Tier tier)
     {
         List<UnitStat> unitStats = FindUnit(type);
@@ -110,7 +120,48 @@ public class CSVList
     //Upgrade
     public void UpgradeUnit(string unitName, UpUnit kind, float value)
     {
-        int ID = IndexOfUnit(unitName);
+        // CSV
+        CSVUp_Unit(IndexOfUnit(unitName), kind, value);
+
+        // Spawn
+        SpawnUp_Unit(unitName);
+    }
+    public void UpgradeUnit(List<string> unitName, UpUnit kind, float value)
+    {
+        for(int i = 0; i < unitName.Count; i++)
+        {
+            // CSV
+            CSVUp_Unit(IndexOfUnit(unitName[i]), kind, value);
+
+            // Spawn
+            SpawnUp_Unit(unitName[i]);
+        }
+    }
+    public void UpgradeUnit(List<UnitStat> stats, UpUnit kind, float value)
+    {
+        for (int i = 0; i < stats.Count; i++)
+        {
+            // CSV
+            CSVUp_Unit(IndexOfUnit(stats[i].unitName), kind, value);
+
+            // Spawn
+            SpawnUp_Unit(stats[i].unitName);
+        }
+    }
+    public void UpgradeAllUnit(UpUnit kind, float value)
+    {
+        for(int i = 0; i < unitStat.Length; i++)
+        {
+            // CSV
+            CSVUp_Unit(i, kind, value);
+
+            // Spawn
+            SpawnUp_Unit();
+        }
+    }
+
+    private void CSVUp_Unit(int ID, UpUnit kind, float value)
+    {
         switch (kind)
         {
             case UpUnit.Dmg:
@@ -129,65 +180,16 @@ public class CSVList
                 unitStat[ID].range += value;
                 break;
         }
-        UnitStat targetUnitStat = unitStat[ID];
-        SpawnManager.Instance.unitList.FindAll(unit => unit.name == targetUnitStat.unitName).ForEach(unit => unit.SetUp());
     }
-    public void UpgradeUnit(List<string> unitName, UpUnit kind, float value)
+    private void SpawnUp_Unit(string unitName)
     {
-        for(int i = 0; i < unitName.Count; i++)
-        {
-            int ID = IndexOfUnit(unitName[i]);
-
-            switch (kind)
-            {
-                case UpUnit.Dmg:
-                    unitStat[ID].dmg += value;
-                    break;
-                case UpUnit.CritPercent:
-                    unitStat[ID].critPercent += (int)value;
-                    break;
-                case UpUnit.CritDmg:
-                    unitStat[ID].critDmg += (int)value;
-                    break;
-                case UpUnit.AtkSpeed:
-                    unitStat[ID].atkSpeed += value;
-                    break;
-                case UpUnit.Range:
-                    unitStat[ID].range += value;
-                    break;
-            }
-
-            UnitStat targetUnitStat = unitStat[ID];
-            SpawnManager.Instance.unitList.FindAll(unit => unit.name == targetUnitStat.unitName).ForEach(unit => unit.SetUp());
-        }
+        SpawnManager.Instance.unitList.FindAll(unit => unit.name == unitName).ForEach(unit => unit.SetUp());
     }
-    public void UpgradeUnit(List<UnitStat> stats, UpUnit kind, float value)
+    private void SpawnUp_Unit() // All
     {
-        for (int i = 0; i < stats.Count; i++)
+        for(int i = 0; i < SpawnManager.Instance.unitList.Count; i++)
         {
-            int ID = IndexOfUnit(stats[i].unitName);
-
-            switch (kind)
-            {
-                case UpUnit.Dmg:
-                    unitStat[ID].dmg += value;
-                    break;
-                case UpUnit.CritPercent:
-                    unitStat[ID].critPercent += (int)value;
-                    break;
-                case UpUnit.CritDmg:
-                    unitStat[ID].critDmg += (int)value;
-                    break;
-                case UpUnit.AtkSpeed:
-                    unitStat[ID].atkSpeed += value;
-                    break;
-                case UpUnit.Range:
-                    unitStat[ID].range += value;
-                    break;
-            }
-
-            UnitStat targetUnitStat = unitStat[ID];
-            SpawnManager.Instance.unitList.FindAll(unit => unit.name == targetUnitStat.unitName).ForEach(unit => unit.SetUp());
+            SpawnManager.Instance.unitList[i].SetUp();
         }
     }
     #endregion
@@ -248,9 +250,18 @@ public class CSVList
     {
         return characteristicStat[id];
     }
+
+    public void ResizeCharac(int id)
+    {
+        for(int i = id - 1; i < characteristicStat.Length - 1; i++)
+        {
+            characteristicStat[i] = characteristicStat[i + 1];
+        }
+    }
     #endregion
 
     #region Attribute
+    // Find
     public float FindAttribute(Attribute attribute)
     {
         foreach (AttributeStat stat in attributeStat)
@@ -259,6 +270,15 @@ public class CSVList
                 return stat.attributePower;
         }
         return 0;
+    }
+
+    // Upgrade
+    public void UpgradeAllAttribute(float value)
+    {
+        for(int i = 0; i < attributeStat.Length; i++)
+        {
+            attributeStat[i].attributePower += value;
+        }
     }
     #endregion
 }

@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     #endregion
     #region HP
     private int curLife;
-    private int maxLife;
+    public int maxLife;
     [HideInInspector] public float curHp;
     private bool isDie = false, isStop = false;
     private Slider hpSlider;

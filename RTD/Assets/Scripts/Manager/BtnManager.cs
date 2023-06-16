@@ -81,32 +81,39 @@ public class BtnManager : Singleton<BtnManager>
 
     IEnumerator SlotMachine()
     {
-        UIManager.Instance.gatchaPannel.gatchaBtn.interactable = false;
-        UIManager.Instance.gatchaPannel.gatchaTab.interactable = false;
-        int ranType = 0; // 0: Bow, 1: Fighter ...
-        int ranTier = 99; // 0: Common, 1: Rare, 2: Epic, 3: Legend
-        if (ranTier >= 99)
-            ranTier = 4;
-        else if (ranTier >= 95)
-            ranTier = 3;
-        else if (ranTier >= 85)
-            ranTier = 2;
-        else
+        UIManager ui = UIManager.Instance;
+        GameManager gm = GameManager.Instance;
+
+        ui.gatchaPannel.gatchaBtn.interactable = false;
+        ui.gatchaPannel.gatchaTab.interactable = false;
+
+        // 0: Bow, 1: Fighter, 2: Fire, 3: Germ, 4: Gun, 5: Ice, 6: Sword, 7: Thunder 
+        int ranType = UnityEngine.Random.Range(0, 7);
+
+        // 0: Common, 1: Rare, 2: Epic, 3: Legend
+        int ranTier = UnityEngine.Random.Range(0, gm.probability[0] + gm.probability[1] + gm.probability[2] + gm.probability[3]);
+        if (ranTier < gm.probability[0])
             ranTier = 1;
+        else if (ranTier < gm.probability[0] + gm.probability[1])
+            ranTier = 2;
+        else if (ranTier < gm.probability[0] + gm.probability[1] + gm.probability[2])
+            ranTier = 3;
+        else
+            ranTier = 4;
 
         for (int i = 0; i < (4 * 6 + (ranTier - 1)) * 2; i++) //½½·Ô µ¹¸®±â
         {
-            UIManager.Instance.slotObj.transform.localPosition += new Vector3(0, 100f, 0);
-            if (UIManager.Instance.slotObj.transform.localPosition.y > 800f)
-                UIManager.Instance.slotObj.transform.localPosition -= new Vector3(0, 800f, 0);
+            ui.slotObj.transform.localPosition += new Vector3(0, 100f, 0);
+            if (ui.slotObj.transform.localPosition.y > 800f)
+                ui.slotObj.transform.localPosition -= new Vector3(0, 800f, 0);
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
         }
         yield return new WaitForSeconds(1f);
-        UIManager.Instance.slotObj.transform.localPosition = new Vector3(0, 0, 0);
-        UIManager.Instance.gatchaPannel.gatchaPannel.SetActive(false);
-        UIManager.Instance.gatchaPannel.gatchaBtn.interactable = true;
-        UIManager.Instance.gatchaPannel.gatchaTab.interactable = true;
-        GameManager.Instance.gatchaKey--;
+        ui.slotObj.transform.localPosition = new Vector3(0, 0, 0);
+        ui.gatchaPannel.gatchaPannel.SetActive(false);
+        ui.gatchaPannel.gatchaBtn.interactable = true;
+        ui.gatchaPannel.gatchaTab.interactable = true;
+        gm.gatchaKey--;
         SpawnManager.Instance.SpawnUnit((UnitType)ranType, (Tier)ranTier);
 
         QuestManager.Instance.gatchaNum++; // Äù½ºÆ® 9

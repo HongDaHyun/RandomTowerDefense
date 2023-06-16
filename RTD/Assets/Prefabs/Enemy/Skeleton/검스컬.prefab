@@ -110,6 +110,7 @@ MonoBehaviour:
     moveSpeed: 0
   moveDirection: {x: 0, y: 0, z: 0}
   curWayPoint: 0
+  maxLife: 1
   curHp: 0
 --- !u!61 &2604054667756183949
 BoxCollider2D:

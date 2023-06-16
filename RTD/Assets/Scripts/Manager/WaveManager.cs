@@ -17,8 +17,16 @@ public class WaveManager : Singleton<WaveManager>
     {
         if (isWave == false || SpawnManager.Instance.enemyList.Count > 0)
             return;
+        GameManager gm = GameManager.Instance;
+        CharacManager cm = CharacManager.Instance;
+
         isWave = false;
-        GameManager.Instance.gatchaKey += 2;
+        gm.gatchaKey += 2;
+
+        gm.GainHealth(cm.healthWave); // Charac 10
+        if (curWave % 2 == 0) // Charac 8
+            gm.gatchaKey += cm.doubleWave;
+
         StartCoroutine(UIManager.Instance.WaveTimer());
     }
 }

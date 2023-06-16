@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     public GameTime gameTime = GameTime.Slow;
     public bool isStart;
     public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp, curExp;
+    public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
 
     protected override void Awake()
     {
