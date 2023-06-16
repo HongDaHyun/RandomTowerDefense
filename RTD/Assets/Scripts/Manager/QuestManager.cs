@@ -110,15 +110,15 @@ public class QuestManager : Singleton<QuestManager>
                 break;
 
             case 5:
-                curCondition = QuestManager.Instance.killEnemyNum;
+                curCondition = killEnemyNum;
                 break;
 
             case 6:
-                curCondition = QuestManager.Instance.unitTypesList.Count;
+                curCondition = unitTypesList.Count;
                 break;
 
             case 7:
-                curCondition = QuestManager.Instance.questNum;
+                curCondition = questNum;
                 break;
 
             case 8:
@@ -131,14 +131,14 @@ public class QuestManager : Singleton<QuestManager>
                 break;
 
             case 9:
-                curCondition = QuestManager.Instance.gatchaNum;
+                curCondition = gatchaNum;
                 break;
 
             case 10:
             case 11:
             case 12:
             case 13:
-                curCondition = QuestManager.Instance.tierNum[questStat.ID - 10];
+                curCondition = tierNum[questStat.ID - 10];
                 break;
 
             case 15:
@@ -149,11 +149,11 @@ public class QuestManager : Singleton<QuestManager>
             case 20:
             case 21:
             case 22:
-                curCondition = QuestManager.Instance.unitNum[questStat.ID - 15];
+                curCondition = unitNum[questStat.ID - 15];
                 break;
 
             case 23:
-                curCondition = QuestManager.Instance.evolNum;
+                curCondition = evolNum;
                 break;
 
             case 24:

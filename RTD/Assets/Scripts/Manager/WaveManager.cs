@@ -7,6 +7,7 @@ public class WaveManager : Singleton<WaveManager>
     public int curWave;
     public bool isWave;
     public Wave[] waves;
+    public float dmgPerWave;
 
     private void Update()
     {
@@ -23,9 +24,12 @@ public class WaveManager : Singleton<WaveManager>
         isWave = false;
         gm.gatchaKey += 2;
 
-        gm.GainHealth(cm.healthWave); // Charac 10
-        if (curWave % 2 == 0) // Charac 8
+        // Charac
+        gm.GainHealth(cm.healthWave); // 10
+        if (curWave % 2 == 0) // 8
             gm.gatchaKey += cm.doubleWave;
+        if (cm.dmgWave >= 0) // 13
+            dmgPerWave = curWave * cm.dmgWave;
 
         StartCoroutine(UIManager.Instance.WaveTimer());
     }

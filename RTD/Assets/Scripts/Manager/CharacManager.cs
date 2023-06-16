@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacManager : Singleton<CharacManager>
 {
-    [HideInInspector] public int proportionHP; // 0
-    [HideInInspector] public int doubleWave, healthWave; // 8, 10
+    [HideInInspector] public int doubleWave, healthWave, plusReward; // 8, 10, 12
+    [HideInInspector] public float proportionHP, dmgWave, dmgFire, dmgSword; // 0, 13, 15, 17
     public void DoCharac(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;
@@ -14,7 +14,7 @@ public class CharacManager : Singleton<CharacManager>
         switch (characStat.ID)
         {
             case 0:
-                proportionHP += (int)value;
+                proportionHP += value;
                 break;
             case 1:
                 list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, value);
@@ -52,10 +52,38 @@ public class CharacManager : Singleton<CharacManager>
             case 11:
                 break;
             case 12:
+                plusReward += (int)value;
                 break;
             case 13:
+                dmgWave = value;
                 break;
-
+            case 14:
+                list.UpgradeUnit(list.FindUnit(UnitType.Fire), UpUnit.Dmg, value);
+                break;
+            case 15:
+                dmgFire += value;
+                break;
+            case 16:
+                list.UpgradeUnit(list.FindUnit(UnitType.Sword), UpUnit.Range, value);
+                break;
+            case 17:
+                dmgSword = value;
+                break;
+            case 18:
+                list.UpgradeUnit(list.FindUnit(UnitType.Bow), UpUnit.AtkSpeed, value);
+                list.UpgradeUnit(list.FindUnit(UnitType.Bow), UpUnit.CritDmg, value);
+                break;
+            case 19:
+                list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Bow), Attribute.Fire);
+                break;
+            case 20:
+                list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Fighter), Attribute.Thunder);
+                list.UpgradeAttribute(Attribute.Thunder, value);
+                break;
+            case 21:
+                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Fighter), "Size", value);
+                list.UpgradeUnit(list.FindUnit(UnitType.Fighter), UpUnit.Range, value);
+                break;
         }
     }
 }

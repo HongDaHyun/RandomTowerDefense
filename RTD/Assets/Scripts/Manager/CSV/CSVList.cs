@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public struct UnitStat
@@ -45,6 +46,14 @@ public struct AttributeStat
 }
 
 [Serializable]
+public struct ProjectileStat
+{
+    public UnitType projectileName;
+    public Attribute attribute;
+    public float size, speed;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
@@ -52,6 +61,7 @@ public class CSVList
     public QuestStat[] questStat;
     public CharacteristicStat[] characteristicStat;
     public AttributeStat[] attributeStat;
+    public ProjectileStat[] projectileStat;
 
     #region Unit
     //Find
@@ -109,7 +119,7 @@ public class CSVList
     public int IndexOfUnit(string name)
     {
         int length = unitStat.Length;
-        for(int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++)
         {
             if (unitStat[i].unitName == name)
                 return i;
@@ -128,7 +138,7 @@ public class CSVList
     }
     public void UpgradeUnit(List<string> unitName, UpUnit kind, float value)
     {
-        for(int i = 0; i < unitName.Count; i++)
+        for (int i = 0; i < unitName.Count; i++)
         {
             // CSV
             CSVUp_Unit(IndexOfUnit(unitName[i]), kind, value);
@@ -150,7 +160,7 @@ public class CSVList
     }
     public void UpgradeAllUnit(UpUnit kind, float value)
     {
-        for(int i = 0; i < unitStat.Length; i++)
+        for (int i = 0; i < unitStat.Length; i++)
         {
             // CSV
             CSVUp_Unit(i, kind, value);
@@ -187,7 +197,7 @@ public class CSVList
     }
     private void SpawnUp_Unit() // All
     {
-        for(int i = 0; i < SpawnManager.Instance.unitList.Count; i++)
+        for (int i = 0; i < SpawnManager.Instance.unitList.Count; i++)
         {
             SpawnManager.Instance.unitList[i].SetUp();
         }
@@ -253,7 +263,7 @@ public class CSVList
 
     public void ResizeCharac(int id)
     {
-        for(int i = id - 1; i < characteristicStat.Length - 1; i++)
+        for (int i = id - 1; i < characteristicStat.Length - 1; i++)
         {
             characteristicStat[i] = characteristicStat[i + 1];
         }
@@ -273,12 +283,57 @@ public class CSVList
     }
 
     // Upgrade
+    public void UpgradeAttribute(Attribute attribute, float value)
+    {
+        attributeStat[(int)attribute].attributePower += value;
+    }
     public void UpgradeAllAttribute(float value)
     {
         for(int i = 0; i < attributeStat.Length; i++)
         {
             attributeStat[i].attributePower += value;
         }
+    }
+    #endregion
+
+    #region Projectile
+    public ProjectileStat FindProjectile(string name)
+    {
+        foreach (ProjectileStat stat in projectileStat)
+        {
+            if (stat.projectileName.ToString() == name)
+                return stat;
+        }
+
+        return default(ProjectileStat);
+    }
+
+    public ref ProjectileStat FindProjectile_Ref(UnitType type)
+    {
+        int length = projectileStat.Length;
+        for(int i = 0; i < length; i++)
+        {
+            if (projectileStat[i].projectileName == type)
+                return ref projectileStat[i];
+        }
+        return ref projectileStat[0];
+    }
+    public void UpgradeProjectile(ref ProjectileStat stat, string kind, float value)
+    {
+        switch (kind)
+        {
+            case "Size":
+                stat.size += value;
+                break;
+            case "Speed":
+                stat.speed += value;
+                break;
+        }
+    }
+
+    public void ChangeProjectileAttribute(ref ProjectileStat stat, Attribute _attribute)
+    {
+        stat.attribute = _attribute;
     }
     #endregion
 }

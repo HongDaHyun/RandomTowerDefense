@@ -135,6 +135,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         Explosion_Death newProjectile = PoolManager.Instance.GetFromPool<Explosion_Death>(name);
         newProjectile.transform.position = start.position;
+        newProjectile.transform.localScale = start.localScale;
         newProjectile.SetDmg(damage);
         return newProjectile;
     }

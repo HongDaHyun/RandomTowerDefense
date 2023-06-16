@@ -46,4 +46,16 @@ public class GameManager : Singleton<GameManager>
             return;
         }
     }
+
+    public void LoseHealth()
+    {
+        curHealth--;
+
+        CSVReader.Instance.csvList.UpgradeUnit(CSVReader.Instance.csvList.FindUnit(UnitType.Sword), UpUnit.Dmg, CharacManager.Instance.dmgSword); // Charac 17
+
+        // GameOver
+        if (curHealth <= 0)
+        {
+        }
+    }
 }

@@ -154,3 +154,4 @@ MonoBehaviour:
   target: {fileID: 0}
   startTrans: {fileID: 0}
   remainTime: 2
+  attribute: 0

@@ -7,7 +7,6 @@ public class CSVReader : Singleton<CSVReader>
 {
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
-    public Projectile[] projectiles;
 
     #region Read
     [ContextMenu("CSV불러오기")]
@@ -17,6 +16,7 @@ public class CSVReader : Singleton<CSVReader>
         EnemyCSVReader();
         QuestCSVReader();
         CharacterisitcReader();
+        ProjectileCSVReader();
     }
 
     public void UnitCSVReader()
@@ -31,8 +31,8 @@ public class CSVReader : Singleton<CSVReader>
             int k = i + 1;
             csvList.unitStat[i] = new UnitStat();
             csvList.unitStat[i].unitName = data[size * k];
-            csvList.unitStat[i].unitType = (UnitType)Enum.Parse(typeof(UnitType), (data[size * k + 1]));
-            csvList.unitStat[i].tier = (Tier)Enum.Parse(typeof(Tier), (data[size * k + 2]));
+            csvList.unitStat[i].unitType = (UnitType)Enum.Parse(typeof(UnitType), data[size * k + 1]);
+            csvList.unitStat[i].tier = (Tier)Enum.Parse(typeof(Tier), data[size * k + 2]);
             csvList.unitStat[i].dmg = float.Parse(data[size * k + 3]);
             csvList.unitStat[i].critPercent = int.Parse(data[size * k + 4]);
             csvList.unitStat[i].critDmg = int.Parse(data[size * k + 5]);
@@ -53,8 +53,8 @@ public class CSVReader : Singleton<CSVReader>
             int k = i + 1;
             csvList.enemyStat[i] = new EnemyStat();
             csvList.enemyStat[i].enemyName = data[size * k];
-            csvList.enemyStat[i].enemyType = (EnemyType)Enum.Parse(typeof(EnemyType), (data[size * k + 1]));
-            csvList.enemyStat[i].tier = (Tier)Enum.Parse(typeof(Tier), (data[size * k + 2]));
+            csvList.enemyStat[i].enemyType = (EnemyType)Enum.Parse(typeof(EnemyType), data[size * k + 1]);
+            csvList.enemyStat[i].tier = (Tier)Enum.Parse(typeof(Tier), data[size * k + 2]);
             csvList.enemyStat[i].hp = float.Parse(data[size * k + 3]);
             csvList.enemyStat[i].strength = int.Parse(data[size * k + 4]);
             csvList.enemyStat[i].defense = float.Parse(data[size * k + 5]);
@@ -100,20 +100,22 @@ public class CSVReader : Singleton<CSVReader>
             csvList.characteristicStat[i].ID = i;
         }
     }
-    #endregion
 
-    #region Stat
-
-    public void SetProjectileStat(UnitType type, string kind, float value)
+    public void ProjectileCSVReader()
     {
-        switch(kind)
+        int order = 4; int size = 4;
+        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / size - 1;
+        csvList.projectileStat = new ProjectileStat[tableSize];
+
+        for (int i = 0; i < tableSize; i++)
         {
-            case "Size":
-                projectiles[(int)type].transform.localScale += new Vector3(value, value);
-                break;
-            case "Speed":
-                projectiles[(int)type].speed += value;
-                break;
+            int k = i + 1;
+            csvList.projectileStat[i] = new ProjectileStat();
+            csvList.projectileStat[i].projectileName = (UnitType)Enum.Parse(typeof(UnitType), data[size * k]);
+            csvList.projectileStat[i].attribute = (Attribute)Enum.Parse(typeof(Attribute), data[size * k + 1]);
+            csvList.projectileStat[i].size = float.Parse(data[size * k + 2]);
+            csvList.projectileStat[i].speed = float.Parse(data[size * k + 3]);
         }
     }
     #endregion

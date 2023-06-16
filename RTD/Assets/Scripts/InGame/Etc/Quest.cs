@@ -35,7 +35,9 @@ public class Quest : MonoBehaviour
 
         int ranNum = Random.Range(0, System.Enum.GetValues(typeof(Tier)).Length);
         tier = (Tier)ranNum; //리워드 티어
-        reward = 1 + 1 * (int)tier; // 티어에 따른 보상 증가
+        int plus = CharacManager.Instance.plusReward; // Charac 12
+
+        reward = 1 + 1 * (int)tier + plus; // 티어에 따른 보상 증가
         questStat.condition += questStat.conditionWidth * (int)tier; // 티어에 따른 조건 증가
 
         switch(tier) // 티어 색상
@@ -54,7 +56,11 @@ public class Quest : MonoBehaviour
                 break;
         }
 
-        texts[2].text = string.Format("키 {0} 증가", reward); //rewardText 설정
+        // rewardText 설정
+        if (plus == 0)
+            texts[2].text = string.Format("키 {0} 증가", reward);
+        else
+            texts[2].text = string.Format("키 {0} + {1} 증가", reward - plus, plus);
 
         QuestManager.Instance.ReadyQuest(questStat, ref readyCondition_1, ref readyCondition_2);
         UpdateQuest();

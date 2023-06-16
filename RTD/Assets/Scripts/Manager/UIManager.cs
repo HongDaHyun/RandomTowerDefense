@@ -30,7 +30,7 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateUpPannel()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0) //씬이 0이면 함수 실행 x
+        if (SceneManager.GetActiveScene().buildIndex == 0) // 씬이 0이면 함수 실행 x
             return;
         upPannel.gatchaKeyTxt.text = GameManager.Instance.gatchaKey.ToString();
         upPannel.healthTxt.text = $"{GameManager.Instance.curHealth}/{GameManager.Instance.maxHealth}";

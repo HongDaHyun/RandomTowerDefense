@@ -281,7 +281,7 @@ MonoBehaviour:
       maxCount: 1
   - spawnTime: 1
     enemy:
-    - name: "\uC5BC\uB77C\uC784"
+    - name: "\uB178\uB791\uD3EC\uC158"
       maxCount: 10
   - spawnTime: 1
     enemy:
@@ -313,6 +313,7 @@ MonoBehaviour:
     enemy:
     - name: "\uB179\uC2A8\uACE8\uB818"
       maxCount: 1
+  dmgPerWave: 0
 --- !u!1001 &23379358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3343,6 +3344,7 @@ MonoBehaviour:
   expLevel: 1
   maxExp: 10
   curExp: 0
+  probability: 520000000a0000000500000003000000
 --- !u!1 &199933289
 GameObject:
   m_ObjectHideFlags: 0
@@ -8442,6 +8444,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 08fd09b9276ddab459a2e02626fb096f, type: 3}
   - {fileID: 4900000, guid: 909420c994ef3024bb6a82210c36f3ea, type: 3}
   - {fileID: 4900000, guid: 2a50c159e1275844689f888b053a2c92, type: 3}
+  - {fileID: 4900000, guid: 8fa5298e50b9ac845a92ea093acb0f39, type: 3}
   csvList:
     unitStat:
     - unitName: "\uAD81\uC218"
@@ -9058,15 +9061,15 @@ MonoBehaviour:
       ID: 0
     - charateristicName: "\uD53C\uC2A4\uB79C\uB4DC"
       explanation: "\uC77C\uBC18 \uB808\uC5B4 \uB4F1\uAE09 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uACFC
-        \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+        \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
       ID: 1
     - charateristicName: "\uB514\uBC84\uD504\uBC84\uD504"
       explanation: "\uB514\uBC84\uD504 \uC9C0\uC18D\uC2DC\uAC04\uC774 {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 2
     - charateristicName: "3\uB300\uC6B4\uB3D9"
@@ -9133,7 +9136,7 @@ MonoBehaviour:
       level: 0
       ID: 11
     - charateristicName: "4\uB2EC\uB77C"
-      explanation: "\uD018\uC2A4\uD2B8 \uBCF4\uC0C1\uC774 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uD018\uC2A4\uD2B8 \uBCF4\uC0C1\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
@@ -9154,20 +9157,19 @@ MonoBehaviour:
     - charateristicName: "4\uB3C4 \uD654\uC0C1"
       explanation: "\uD654\uC0C1 \uC0C1\uD0DC\uC758 \uC801\uC5D0\uAC8C \uBD88\uACC4\uC5F4
         \uB370\uBBF8\uC9C0\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 15
     - charateristicName: "\uC18C\uB4DC\uB9C8\uC2A4\uD130"
-      explanation: "\uAC80 \uACC4\uC5F4 \uACF5\uACA9\uB825\uACFC \uC0AC\uAC70\uB9AC\uAC00
-        {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      explanation: "\uAC80 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 16
     - charateristicName: "\uAD11\uC804\uC0AC"
-      explanation: "\uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC774 {0}\uCD08 \uC8FC\uAE30\uB85C
-        \uAD11\uBD84 \uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4."
+      explanation: "\uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC774 \uB370\uBBF8\uC9C0\uB97C
+        \uC785\uC744 \uB54C\uB9C8\uB2E4 \uACF5\uACA9\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
@@ -9188,16 +9190,17 @@ MonoBehaviour:
       ID: 19
     - charateristicName: "\uC2A4\uD134\uAC74"
       explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uB300\uC0C1\uC744
-        {0}% \uD655\uB960\uB85C \uAE30\uC808\uC2DC\uD0A4\uACE0 \uB109\uBC31\uC2DC\uD0B5\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+        \uAE30\uC808\uC2DC\uD0A4\uACE0 \uAE30\uC808 \uC9C0\uC18D\uC2DC\uAC04\uC774
+        {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 20
     - charateristicName: "\uC544\uC6C3\uBCF5\uC11C"
       explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uC640 \uD22C\uC0AC\uCCB4
         \uD06C\uAE30\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 21
     - charateristicName: "\uC131\uC778\uBCD1"
@@ -9342,8 +9345,39 @@ MonoBehaviour:
       attributePower: 2
     - attribute: 4
       attributePower: 1
-  projectiles:
-  - {fileID: -4190706733542816097, guid: 687a092410122ca4e961ea84342cbbe2, type: 3}
+    projectileStat:
+    - projectileName: 0
+      attribute: 0
+      size: 1
+      speed: 10
+    - projectileName: 1
+      attribute: 0
+      size: 0.8
+      speed: 10
+    - projectileName: 2
+      attribute: 1
+      size: 0.8
+      speed: 10
+    - projectileName: 3
+      attribute: 2
+      size: 0.4
+      speed: 10
+    - projectileName: 4
+      attribute: 0
+      size: 1.2
+      speed: 10
+    - projectileName: 5
+      attribute: 3
+      size: 0.6
+      speed: 10
+    - projectileName: 6
+      attribute: 0
+      size: 0.4
+      speed: 0
+    - projectileName: 7
+      attribute: 4
+      size: 0.6
+      speed: 10
 --- !u!1001 &574632726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27902,7 +27936,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802192d1282d7524d806bb042d2223ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doubleWave: 0
+  healthWave: 0
+  plusReward: 0
   proportionHP: 0
+  dmgWave: 0
+  dmgFire: 0
+  dmgSword: 0
 --- !u!1001 &1999877104
 PrefabInstance:
   m_ObjectHideFlags: 0

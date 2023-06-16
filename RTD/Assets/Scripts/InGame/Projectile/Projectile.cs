@@ -5,25 +5,32 @@ using Redcode.Pools;
 
 public class Projectile : MonoBehaviour, IPoolObject
 {
-    public UnitType type;
     public bool isCrit;
-    public float dmg, range, speed;
+    public float dmg, range;
     public Transform target, startTrans;
     public float remainTime = 2f;
+
+    public ProjectileStat projectileStat;
 
     void IPoolObject.OnCreatedInPool()
     {
         name = name.Replace("(Clone)", "");
+
+        projectileStat = CSVReader.Instance.csvList.FindProjectile(name); // 스탯
     }
 
     void IPoolObject.OnGettingFromPool()
     {
+        // 크기
+        float size = projectileStat.size;
+        transform.localScale = new Vector3(size, size, size);
+
         StartCoroutine(Remain());
     }
 
     private void Update()
     {
-        switch (type)
+        switch (projectileStat.projectileName)
         {
             case UnitType.Bow:
             case UnitType.Gun:
@@ -52,43 +59,26 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (!collision.CompareTag("Enemy"))     return;
 
         Enemy enemy = collision.GetComponent<Enemy>();
-        switch(type)
+        switch(projectileStat.projectileName)
         {
             case UnitType.Bow:
             case UnitType.Gun:
+            case UnitType.Ice:
+            case UnitType.Thunder:
                 if (collision.transform != target)  return;
                 SpawnManager.Instance.DeSpawnProjectile(this);
-                enemy.Hit(dmg, Attribute.None, isCrit);
-                break;
-
-            case UnitType.Fighter:
-            case UnitType.Sword:
-                enemy.Hit(dmg, Attribute.None, isCrit);
                 break;
 
             case UnitType.Fire:
-                enemy.Hit((float)System.Math.Round(dmg / 10, 1), Attribute.Fire, false); // 불 크리티컬 x
+                isCrit = false;
+                dmg = (float)System.Math.Round(dmg / 10, 1);
                 break;
-
-            case UnitType.Ice:
-                if (collision.transform != target)  return;
-                SpawnManager.Instance.DeSpawnProjectile(this);
-                enemy.Hit(dmg, Attribute.Ice, isCrit);
-                break;
-
-            case UnitType.Thunder:
-                if (collision.transform != target) return;
-                SpawnManager.Instance.DeSpawnProjectile(this);
-                enemy.Hit(dmg, Attribute.Thunder, isCrit);
-                break;
-
-            default:
-                break;
-
         }
+
+        enemy.Hit(dmg, projectileStat.attribute, isCrit);
     }
 
-    public virtual void SetUp(Transform _start, Transform _target) //SpawnManager에서 사용
+    public virtual void SetUp(Transform _start, Transform _target) // SpawnManager에서 사용
     {
         startTrans = _start;    target = _target;
         transform.position = startTrans.position;
@@ -98,7 +88,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     #region ShootType
     private void ShootStraight()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * projectileStat.speed * Time.deltaTime);
     }
 
     private void ShootFollow()

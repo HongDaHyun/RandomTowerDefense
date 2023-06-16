@@ -10,8 +10,8 @@ public class Projectile_Germ : Projectile
     public override void SetUp(Transform _start, Transform _target)
     {
         base.SetUp(_start, _target);
-        float dur = 5f / speed; //throw speed
-        transform.DOScale(0.8f, dur).SetEase(animCurve).OnComplete(() => { Explosion(); });
+        float dur = 5f / projectileStat.speed; //throw speed
+        transform.DOScale(projectileStat.size * 2, dur).SetEase(animCurve).OnComplete(() => { Explosion(); });
         transform.DOMove(target.position, dur); //¿Ãµø
     }
 

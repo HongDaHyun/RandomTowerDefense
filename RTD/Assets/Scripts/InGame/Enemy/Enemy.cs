@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         else //끝 도달
         {
             SpawnManager.Instance.DeSpawnEnemy(this);
-            GameManager.Instance.curHealth--;
+            GameManager.Instance.LoseHealth();
         }
     }
 
@@ -146,7 +146,8 @@ public class Enemy : MonoBehaviour, IPoolObject
             return;
         
         float defenseRatio = MathF.Round(100 / (100 + enemyStat.defense), 1);
-        float totalDmg = dmg * defenseRatio + enemyStat.hp * (CharacManager.Instance.proportionHP / 100); // 총 데미지 계산 (데미지 * 디펜스 + 체력비례 데미지)
+        float totalDmg = (dmg + (enemyStat.hp * (CharacManager.Instance.proportionHP / 100)) + WaveManager.Instance.dmgPerWave)
+            * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지 + 웨이브 당 데미지) * 디펜스
 
         curHp -= totalDmg;
         UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);
@@ -157,6 +158,7 @@ public class Enemy : MonoBehaviour, IPoolObject
             SpecificDie();
     }
 
+    // 일반 공격과 데미지 공격 구분
     private IEnumerator Hitted(float dmg, Attribute attribute, bool isCrit)
     {
         if(attribute == Attribute.None) // 일반 공격
@@ -170,9 +172,8 @@ public class Enemy : MonoBehaviour, IPoolObject
             switch (attribute)
             {
                 case Attribute.Fire: // 불 공격
-                case Attribute.Germ: // 독 공격
                     if (debuffState[attribute])
-                        dmg *= 2;
+                        dmg *= 2 + CharacManager.Instance.dmgFire; // Charac 15
                     debuffState[attribute] = true;
 
                     float delayDmg = 0.3f; // 딜레이
@@ -180,8 +181,22 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                     for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(dmg, attribute == Attribute.Fire ? Color.red : Color.black, 0.5f, isCrit); // Fire -> red, Germ -> black
-                        yield return new WaitForSeconds(delayDmg); // 0.5초당 데미지
+                        TakeDmg(dmg, Color.red, 0.5f, isCrit);
+                        yield return new WaitForSeconds(delayDmg);
+                    }
+                    break;
+                case Attribute.Germ: // 독 공격
+                    if (debuffState[attribute])
+                        dmg *= 2;
+                    debuffState[attribute] = true;
+
+                    delayDmg = 0.3f; // 딜레이
+                    dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
+
+                    for (int i = 0; i < dmgCount; i++)
+                    {
+                        TakeDmg(dmg, Color.black, 0.5f, isCrit);
+                        yield return new WaitForSeconds(delayDmg);
                     }
                     break;
 
