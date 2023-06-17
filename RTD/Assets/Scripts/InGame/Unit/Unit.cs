@@ -111,7 +111,7 @@ public class Unit : MonoBehaviour, IPoolObject
         {
             isAtkCool = true;
 
-            Projectile projectile = Shoot();
+            Shoot();
 
             if (unitStat.unitType == UnitType.Fire) // 불일때 remainTime도 계산해야함
             {
@@ -151,7 +151,8 @@ public class Unit : MonoBehaviour, IPoolObject
 
         // 크리티컬 계산
         int critRan = Random.Range(0, 100);
-        if (critRan < unitStat.critPercent)
+
+        if (critRan < unitStat.critPercent || unitStat.critPercent >= 100)
         {
             totalDmg *= unitStat.critDmg / 100;
             projectile.isCrit = true;

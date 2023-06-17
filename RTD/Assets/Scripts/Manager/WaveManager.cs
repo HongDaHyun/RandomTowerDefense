@@ -9,6 +9,17 @@ public class WaveManager : Singleton<WaveManager>
     public Wave[] waves;
     public float dmgPerWave;
 
+    GameManager gm;
+    CharacManager cm;
+    CSVList cl;
+
+    private void Start()
+    {
+        gm = GameManager.Instance;
+        cm = CharacManager.Instance;
+        cl = CSVReader.Instance.csvList;
+    }
+
     private void Update()
     {
         EndWaveSet();
@@ -18,8 +29,6 @@ public class WaveManager : Singleton<WaveManager>
     {
         if (isWave == false || SpawnManager.Instance.enemyList.Count > 0)
             return;
-        GameManager gm = GameManager.Instance;
-        CharacManager cm = CharacManager.Instance;
 
         isWave = false;
         gm.gatchaKey += 2;
@@ -28,8 +37,11 @@ public class WaveManager : Singleton<WaveManager>
         gm.GainHealth(cm.healthWave); // 10
         if (curWave % 2 == 0) // 8
             gm.gatchaKey += cm.doubleWave;
-        if (cm.dmgWave >= 0) // 13
+
+        if(cm.dmgWave > 0) // 13
             dmgPerWave = curWave * cm.dmgWave;
+        if (cm.dmgWaveGun > 0) // 24
+            cl.UpgradeUnit(cl.FindUnit(UnitType.Fighter), UpUnit.All, cm.dmgWaveGun);
 
         StartCoroutine(UIManager.Instance.WaveTimer());
     }

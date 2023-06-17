@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -67,64 +68,35 @@ public class CSVList
     //Find
     public UnitStat FindUnit(UnitStat unit)
     {
-        foreach (UnitStat stat in unitStat)
-        {
-            if (EqualityComparer<UnitStat>.Default.Equals(stat, unit))
-                return stat;
-        }
-        return default(UnitStat);
+        UnitStat foundStat = Array.Find(unitStat, stat => EqualityComparer<UnitStat>.Default.Equals(stat, unit));
+        return foundStat;
     }
     public UnitStat FindUnit(string name)
     {
-        foreach (UnitStat stat in unitStat)
-        {
-            if (stat.unitName == name)
-                return stat;
-        }
-        return default(UnitStat);
+        UnitStat foundStat = Array.Find(unitStat, stat => stat.unitName == name);
+        return foundStat;
     }
     public List<UnitStat> FindUnit(UnitType type)
     {
-        List<UnitStat> unitStats = new List<UnitStat>();
-        foreach (UnitStat stat in unitStat)
-        {
-            if (type == stat.unitType)
-                unitStats.Add(stat);
-        }
-        return unitStats;
+        List<UnitStat> foundStats = unitStat.Where(stat => stat.unitType == type).ToList();
+        return foundStats;
     }
     public List<UnitStat> FindUnit(Tier tier)
     {
-        List<UnitStat> unitStats = new List<UnitStat>();
-        foreach (UnitStat stat in unitStat)
-        {
-            if (tier == stat.tier)
-                unitStats.Add(stat);
-        }
-        return unitStats;
+        List<UnitStat> foundStats = unitStat.Where(stat => stat.tier == tier).ToList();
+        return foundStats;
     }
     public string FindUnit(UnitType type, Tier tier)
     {
-        List<UnitStat> unitStats = FindUnit(type);
-        foreach (UnitStat stat in unitStats)
-        {
-            if (tier == stat.tier)
-            {
-                return stat.unitName;
-            }
-        }
-        return null;
+        List<UnitStat> typeStats = FindUnit(type);
+        UnitStat foundStat = typeStats.Find(stat => stat.tier == tier);
+        return foundStat.unitName;
     }
 
     public int IndexOfUnit(string name)
     {
-        int length = unitStat.Length;
-        for (int i = 0; i < length; i++)
-        {
-            if (unitStat[i].unitName == name)
-                return i;
-        }
-        return 0;
+        UnitStat target = FindUnit(name);
+        return Array.IndexOf(unitStat, target);
     }
 
     //Upgrade
@@ -189,6 +161,13 @@ public class CSVList
             case UpUnit.Range:
                 unitStat[ID].range += value;
                 break;
+            case UpUnit.All:
+                unitStat[ID].dmg += value;
+                unitStat[ID].critPercent += (int)value;
+                unitStat[ID].critDmg += (int)value;
+                unitStat[ID].atkSpeed += value;
+                unitStat[ID].range += value;
+                break;
         }
     }
     private void SpawnUp_Unit(string unitName)
@@ -208,23 +187,13 @@ public class CSVList
     //Find
     public EnemyStat FindEnemy(EnemyStat enemy)
     {
-        foreach (EnemyStat stat in enemyStat)
-        {
-            if (EqualityComparer<EnemyStat>.Default.Equals(stat, enemy))
-                return stat;
-        }
-        return default(EnemyStat);
+        EnemyStat foundStat = Array.Find(enemyStat, stat => EqualityComparer<EnemyStat>.Default.Equals(stat, enemy));
+        return foundStat;
     }
     public EnemyStat FindEnemy(string name)
     {
-        foreach (EnemyStat stat in enemyStat)
-        {
-            if (name == stat.enemyName)
-            {
-                return stat;
-            }
-        }
-        return default(EnemyStat);
+        EnemyStat foundStat = Array.Find(enemyStat, stat => stat.enemyName == name);
+        return foundStat;
     }
     #endregion
 
@@ -232,12 +201,8 @@ public class CSVList
     //Find
     public QuestStat FindQuest(QuestStat quest)
     {
-        foreach (QuestStat stat in questStat)
-        {
-            if (EqualityComparer<QuestStat>.Default.Equals(stat, quest))
-                return stat;
-        }
-        return default(QuestStat);
+        QuestStat foundStat = Array.Find(questStat, stat => EqualityComparer<QuestStat>.Default.Equals(stat, quest));
+        return foundStat;
     }
     public QuestStat FindQuest(int id)
     {
@@ -249,12 +214,8 @@ public class CSVList
     //Find
     public CharacteristicStat FindCharac(CharacteristicStat charac)
     {
-        foreach (CharacteristicStat stat in characteristicStat)
-        {
-            if (EqualityComparer<CharacteristicStat>.Default.Equals(stat, charac))
-                return stat;
-        }
-        return default(CharacteristicStat);
+        CharacteristicStat foundStat = Array.Find(characteristicStat, stat => EqualityComparer<CharacteristicStat>.Default.Equals(stat, charac));
+        return foundStat;
     }
     public CharacteristicStat FindCharac(int id)
     {
@@ -274,12 +235,8 @@ public class CSVList
     // Find
     public float FindAttribute(Attribute attribute)
     {
-        foreach (AttributeStat stat in attributeStat)
-        {
-            if (attribute == stat.attribute)
-                return stat.attributePower;
-        }
-        return 0;
+        AttributeStat foundStat = Array.Find(attributeStat, stat => stat.attribute == attribute);
+        return foundStat.attributePower;
     }
 
     // Upgrade
@@ -299,13 +256,8 @@ public class CSVList
     #region Projectile
     public ProjectileStat FindProjectile(string name)
     {
-        foreach (ProjectileStat stat in projectileStat)
-        {
-            if (stat.projectileName.ToString() == name)
-                return stat;
-        }
-
-        return default(ProjectileStat);
+        ProjectileStat foundStat = Array.Find(projectileStat, stat => stat.projectileName.ToString() == name);
+        return foundStat;
     }
 
     public ref ProjectileStat FindProjectile_Ref(UnitType type)

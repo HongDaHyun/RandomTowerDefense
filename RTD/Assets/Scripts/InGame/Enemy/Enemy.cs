@@ -178,6 +178,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                     float delayDmg = 0.3f; // 딜레이
                     int dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
+                    enemyStat.defense -= CharacManager.Instance.defenseGerm;
 
                     for (int i = 0; i < dmgCount; i++)
                     {
@@ -187,7 +188,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                     break;
                 case Attribute.Germ: // 독 공격
                     if (debuffState[attribute])
-                        dmg *= 2;
+                        dmg *= 2 + CharacManager.Instance.dmgGerm; // Charac 22
                     debuffState[attribute] = true;
 
                     delayDmg = 0.3f; // 딜레이
@@ -198,6 +199,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                         TakeDmg(dmg, Color.black, 0.5f, isCrit);
                         yield return new WaitForSeconds(delayDmg);
                     }
+                    enemyStat.defense += CharacManager.Instance.defenseGerm;
                     break;
 
                 case Attribute.Ice: // 얼음 공격
@@ -208,8 +210,15 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     //슬로우
-                    float slowDuration = attributePower - GetStrengthModifier(); // 지속 시간
-                    float slowPercent = (attributePower / (10 + enemyStat.strength));
+                    float slowDuration = (attributePower - GetStrengthModifier()); // 지속 시간
+                    float slowPercent = attributePower / (10 + enemyStat.strength); // 슬로우 %
+                    // Charac 26
+                    int plusSlow = CharacManager.Instance.plusIce;
+                    if (plusSlow > 1)
+                    {
+                        slowDuration *= plusSlow;
+                        slowPercent *= plusSlow;
+                    }
                     float originalMoveSpeed = enemyStat.moveSpeed; // 원래 속도
                     enemyStat.moveSpeed *= 1 - slowPercent; // 느려진 속도
                     yield return new WaitForSeconds(slowDuration);

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacManager : Singleton<CharacManager>
 {
-    [HideInInspector] public int doubleWave, healthWave, plusReward; // 8, 10, 12
-    [HideInInspector] public float proportionHP, dmgWave, dmgFire, dmgSword; // 0, 13, 15, 17
+    [HideInInspector] public int doubleWave, healthWave, plusReward, plusIce = 1; // 8, 10, 12, 26
+    [HideInInspector] public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, defenseGerm, dmgWaveGun, iceGatcha;// 0, 13, 15, 17, 22, 23, 24, 27
     public void DoCharac(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;
@@ -83,6 +83,45 @@ public class CharacManager : Singleton<CharacManager>
             case 21:
                 list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Fighter), "Size", value);
                 list.UpgradeUnit(list.FindUnit(UnitType.Fighter), UpUnit.Range, value);
+                break;
+            case 22:
+                dmgGerm += value;
+                break;
+            case 23:
+                defenseGerm += value;
+                break;
+            case 24:
+                dmgWaveGun = value;
+                break;
+            case 25:
+                List<UnitStat> stats = list.FindUnit(UnitType.Gun);
+                list.UpgradeUnit(stats, UpUnit.CritPercent, value);
+                list.UpgradeUnit(stats, UpUnit.CritDmg, value);
+                break;
+            case 26:
+                plusIce = (int)value;
+                break;
+            case 27:
+                iceGatcha = value;
+                GameManager.Instance.gatchaKey += Mathf.RoundToInt(SpawnManager.Instance.NumUnit(UnitType.Ice) * iceGatcha);
+                break;
+            case 28:
+                stats = list.FindUnit(UnitType.Thunder);
+                list.UpgradeUnit(stats, UpUnit.CritPercent, value);
+
+                // 크리 확률 초과 분 크리 데미지로 치환
+                foreach (UnitStat stat in stats)
+                {
+                    if (stat.critPercent > 100)
+                        list.UpgradeUnit(stat.unitName, UpUnit.CritDmg, stat.critPercent - 100);
+                }
+                break;
+            case 29:
+                stats = list.FindUnit(UnitType.Thunder);
+                list.UpgradeUnit(stats, UpUnit.AtkSpeed, value);
+                list.UpgradeUnit(stats, UpUnit.CritDmg, -value);
+                break;
+            case 30:
                 break;
         }
     }

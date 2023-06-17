@@ -160,4 +160,12 @@ public class SpawnManager : Singleton<SpawnManager>
         PoolManager.Instance.TakeToPool<TextMeshPro>("DmgText", tmpro);
     }
     #endregion
+
+    #region Find
+    public int NumUnit(UnitType type)
+    {
+        List<Unit> units = unitList.FindAll(unit => unit.unitStat.unitType == type);
+        return units.Count;
+    }
+    #endregion
 }
