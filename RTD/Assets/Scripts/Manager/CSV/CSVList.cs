@@ -68,35 +68,29 @@ public class CSVList
     //Find
     public UnitStat FindUnit(UnitStat unit)
     {
-        UnitStat foundStat = Array.Find(unitStat, stat => EqualityComparer<UnitStat>.Default.Equals(stat, unit));
-        return foundStat;
+        return Array.Find(unitStat, stat => EqualityComparer<UnitStat>.Default.Equals(stat, unit));
     }
     public UnitStat FindUnit(string name)
     {
-        UnitStat foundStat = Array.Find(unitStat, stat => stat.unitName == name);
-        return foundStat;
+        return Array.Find(unitStat, stat => stat.unitName == name);
     }
     public List<UnitStat> FindUnit(UnitType type)
     {
-        List<UnitStat> foundStats = unitStat.Where(stat => stat.unitType == type).ToList();
-        return foundStats;
+        return unitStat.Where(stat => stat.unitType == type).ToList();
     }
     public List<UnitStat> FindUnit(Tier tier)
     {
-        List<UnitStat> foundStats = unitStat.Where(stat => stat.tier == tier).ToList();
-        return foundStats;
+        return unitStat.Where(stat => stat.tier == tier).ToList();
     }
     public string FindUnit(UnitType type, Tier tier)
     {
         List<UnitStat> typeStats = FindUnit(type);
-        UnitStat foundStat = typeStats.Find(stat => stat.tier == tier);
-        return foundStat.unitName;
+        return typeStats.Find(stat => stat.tier == tier).unitName;
     }
 
     public int IndexOfUnit(string name)
     {
-        UnitStat target = FindUnit(name);
-        return Array.IndexOf(unitStat, target);
+        return Array.IndexOf(unitStat, FindUnit(name));
     }
 
     //Upgrade
@@ -132,7 +126,8 @@ public class CSVList
     }
     public void UpgradeAllUnit(UpUnit kind, float value)
     {
-        for (int i = 0; i < unitStat.Length; i++)
+        int lenght = unitStat.Length;
+        for (int i = 0; i < lenght; i++)
         {
             // CSV
             CSVUp_Unit(i, kind, value);
@@ -187,13 +182,53 @@ public class CSVList
     //Find
     public EnemyStat FindEnemy(EnemyStat enemy)
     {
-        EnemyStat foundStat = Array.Find(enemyStat, stat => EqualityComparer<EnemyStat>.Default.Equals(stat, enemy));
-        return foundStat;
+        return Array.Find(enemyStat, stat => EqualityComparer<EnemyStat>.Default.Equals(stat, enemy));
     }
     public EnemyStat FindEnemy(string name)
     {
-        EnemyStat foundStat = Array.Find(enemyStat, stat => stat.enemyName == name);
-        return foundStat;
+        return Array.Find(enemyStat, stat => stat.enemyName == name);
+    }
+
+    public int IndexOfEnemy(string name)
+    {
+        return Array.IndexOf(enemyStat, FindEnemy(name));
+    }
+
+    public void UpgradeEnemy(string enemyName, UpEnemy kind, float value)
+    {
+        CSVUp_Enemy(IndexOfEnemy(enemyName), kind, value);
+    }
+
+    public void UpgradeAllEnemy(UpEnemy kind, float value)
+    {
+        int length = enemyStat.Length;
+        for (int i = 0; i < length; i++)
+            CSVUp_Enemy(i, kind, value);
+    }
+
+    private void CSVUp_Enemy(int ID, UpEnemy kind, float value)
+    {
+        switch (kind)
+        {
+            case UpEnemy.Strength:
+                enemyStat[ID].strength += (int)value;
+                break;
+            case UpEnemy.Hp:
+                enemyStat[ID].hp += value;
+                break;
+            case UpEnemy.Defense:
+                enemyStat[ID].defense += value;
+                break;
+            case UpEnemy.MoveSpeed:
+                enemyStat[ID].moveSpeed += value;
+                break;
+            case UpEnemy.All:
+                enemyStat[ID].strength += (int)value;
+                enemyStat[ID].hp += value;
+                enemyStat[ID].defense += value;
+                enemyStat[ID].moveSpeed += value;
+                break;
+        }
     }
     #endregion
 
@@ -279,6 +314,24 @@ public class CSVList
                 break;
             case "Speed":
                 stat.speed += value;
+                break;
+        }
+    }
+
+    public void UpgradeAllProjectile(string kind, float value)
+    {
+        int length = projectileStat.Length;
+
+        switch (kind)
+        {
+            case "Size":
+                for (int i = 0; i < length; i++)
+                    projectileStat[i].size += value;
+                break;
+
+            case "Speed":
+                for (int i = 0; i < length; i++)
+                    projectileStat[i].speed += value;
                 break;
         }
     }

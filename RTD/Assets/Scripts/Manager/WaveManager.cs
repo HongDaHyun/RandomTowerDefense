@@ -13,8 +13,10 @@ public class WaveManager : Singleton<WaveManager>
     CharacManager cm;
     CSVList cl;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         gm = GameManager.Instance;
         cm = CharacManager.Instance;
         cl = CSVReader.Instance.csvList;
@@ -37,6 +39,8 @@ public class WaveManager : Singleton<WaveManager>
         gm.GainHealth(cm.healthWave); // 10
         if (curWave % 2 == 0) // 8
             gm.gatchaKey += cm.doubleWave;
+        if (curWave % 5 == 0) // 34
+            gm.gatchaKey += cm.wave5;
 
         if(cm.dmgWave > 0) // 13
             dmgPerWave = curWave * cm.dmgWave;

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CharacManager : Singleton<CharacManager>
 {
-    [HideInInspector] public int doubleWave, healthWave, plusReward, plusIce = 1; // 8, 10, 12, 26
-    [HideInInspector] public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, defenseGerm, dmgWaveGun, iceGatcha;// 0, 13, 15, 17, 22, 23, 24, 27
+    [HideInInspector] public int doubleWave, healthWave, plusReward, plusIce = 1, spawnDmg, wave5, commonGatcha, madDmg; // 8, 10, 12, 26, 33, 34, 36
+    [HideInInspector]
+    public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, defenseGerm, dmgWaveGun, iceGatcha,
+        execution, plusExp; // 0, 13, 15, 17, 22, 23, 24, 27, 30, 35
     public void DoCharac(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;
@@ -122,6 +124,35 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeUnit(stats, UpUnit.CritDmg, -value);
                 break;
             case 30:
+                execution = value;
+                break;
+            case 31:
+                list.UpgradeAllUnit(UpUnit.Range, value);
+                break;
+            case 32:
+                list.UpgradeAllProjectile("size", value);
+                break;
+            case 33:
+                spawnDmg = (int)value;
+                break;
+            case 34:
+                wave5 = (int)value;
+                break;
+            case 35:
+                commonGatcha = (int)value;
+                break;
+            case 36:
+                plusExp = value / 100;
+                break;
+            case 37:
+                madDmg = (int)value;
+                break;
+            case 38:
+                list.UpgradeUnit(list.FindUnit(Tier.Epic), UpUnit.Dmg, value);
+                list.UpgradeUnit(list.FindUnit(Tier.Legend), UpUnit.Dmg, value);
+                break;
+            case 39:
+                list.UpgradeAllEnemy(UpEnemy.MoveSpeed, -value);
                 break;
         }
     }

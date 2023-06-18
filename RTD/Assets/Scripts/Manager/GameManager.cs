@@ -7,8 +7,12 @@ public class GameManager : Singleton<GameManager>
     public Level level;
     public GameTime gameTime = GameTime.Slow;
     public bool isStart;
-    public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp, curExp;
+    public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp;
+    public float curExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
+
+    CSVList cl;
+    CharacManager cm;
 
     protected override void Awake()
     {
@@ -29,6 +33,9 @@ public class GameManager : Singleton<GameManager>
         //GPGSBinder.Inst.LoadEvent(GPGSIds.event_testevent); 이벤트 불러오기
         //GPGSBinder.Inst.LoadAllEvent(); 이벤트 모두 불러오기
         #endregion
+
+        cl = CSVReader.Instance.csvList;
+        cm = CharacManager.Instance;
     }
 
     public void GainHealth(int a)
@@ -51,7 +58,8 @@ public class GameManager : Singleton<GameManager>
     {
         curHealth--;
 
-        CSVReader.Instance.csvList.UpgradeUnit(CSVReader.Instance.csvList.FindUnit(UnitType.Sword), UpUnit.Dmg, CharacManager.Instance.dmgSword); // Charac 17
+        cl.UpgradeUnit(cl.FindUnit(UnitType.Sword), UpUnit.Dmg, cm.dmgSword); // Charac 17
+        cl.UpgradeAllUnit(UpUnit.AtkSpeed, cm.madDmg); // Charac 37
 
         // GameOver
         if (curHealth <= 0)

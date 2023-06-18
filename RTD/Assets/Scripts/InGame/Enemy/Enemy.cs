@@ -154,7 +154,8 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         StartCoroutine(HitColorAnimation(_color, time));
 
-        if (curHp <= 0)
+        // 처형
+        if (curHp <= CharacManager.Instance.execution * enemyStat.hp) // Charac 30
             SpecificDie();
     }
 
@@ -304,7 +305,9 @@ public class Enemy : MonoBehaviour, IPoolObject
         isDie = true;
         QuestManager.Instance.killEnemyNum++; // 퀘스트 5
 
-        GameManager.Instance.curExp += (int)enemyStat.tier; // 경험치 증가
+        // 경험치 증가
+        int exp = (int)enemyStat.tier;
+        GameManager.Instance.curExp += exp + (exp * CharacManager.Instance.plusExp);
 
         SpawnManager.Instance.DeSpawnEnemy(this);
     }

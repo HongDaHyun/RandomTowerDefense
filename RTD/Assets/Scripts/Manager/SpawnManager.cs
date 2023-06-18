@@ -95,6 +95,21 @@ public class SpawnManager : Singleton<SpawnManager>
             QuestManager.Instance.unitTypesList.Add(type); // Äù½ºÆ® 6
         QuestManager.Instance.tierNum[(int)(tier - 1)]++; // Äù½ºÆ® 10,11,12,13
 
+        // Charac
+        CharacManager cm = CharacManager.Instance;
+        CSVReader.Instance.csvList.UpgradeAllUnit(UpUnit.Dmg, cm.spawnDmg); // 33
+
+        // 35
+        if(tier == Tier.Common)
+        {
+            int pro = Random.Range(0, 100);
+            if(pro < cm.commonGatcha)
+            {
+                pro = Random.Range(1, 4);
+                GameManager.Instance.gatchaKey += pro;
+            }
+        }
+
         unitList.Add(newUnit);
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         tileGround.SetTile(newUnit);

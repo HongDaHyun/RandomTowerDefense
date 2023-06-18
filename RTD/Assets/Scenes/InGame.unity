@@ -9168,8 +9168,9 @@ MonoBehaviour:
       level: 0
       ID: 16
     - charateristicName: "\uAD11\uC804\uC0AC"
-      explanation: "\uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC774 \uB370\uBBF8\uC9C0\uB97C
-        \uC785\uC744 \uB54C\uB9C8\uB2E4 \uACF5\uACA9\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uD50C\uB808\uC774\uC5B4\uAC00 \uB370\uBBF8\uC9C0\uB97C \uC785\uC744
+        \uB54C\uB9C8\uB2E4 \uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uC774
+        {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
@@ -9265,34 +9266,34 @@ MonoBehaviour:
     - charateristicName: "\uCC98\uD615"
       explanation: "\uCCB4\uB825\uC774 {0}% \uBBF8\uB9CC\uC778 \uBAAC\uC2A4\uD130\uB97C
         \uC989\uC0AC\uC2DC\uD0B5\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 30
     - charateristicName: "\uB9DD\uC6D0\uACBD"
       explanation: "\uC0AC\uAC70\uB9AC\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 31
     - charateristicName: "\uD655\uB300"
       explanation: "\uD22C\uC0AC\uCCB4 \uD06C\uAE30\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 32
     - charateristicName: "\uAD70\uB2E8"
-      explanation: "\uC720\uB2DB \uC218\uC5D0 \uBE44\uB840\uD574 \uACF5\uACA9\uB825\uC774
-        {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      explanation: "\uC720\uB2DB\uC744 \uC18C\uD658\uD560 \uB54C\uB9C8\uB2E4 \uBAA8\uB4E0
+        \uC720\uB2DB\uB4E4\uC758 \uACF5\uACA9\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 1
+      conditionWidth: 1
       level: 0
       ID: 33
     - charateristicName: "\uCCAD\uC57D"
-      explanation: "5\uC6E8\uC774\uBE0C \uD6C4 \uAC00\uCC60 \uD0A4\uB97C {0}\uB9CC\uD07C
-        \uC5BB\uC2B5\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      explanation: "5 \uBC30\uC218 \uC6E8\uC774\uBE0C\uB9C8\uB2E4 \uAC00\uCC60 \uD0A4\uB97C
+        {0}\uB9CC\uD07C \uB354 \uC5BB\uC2B5\uB2C8\uB2E4."
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 34
     - charateristicName: "\uB3C4\uBC15"
@@ -9304,16 +9305,15 @@ MonoBehaviour:
       level: 0
       ID: 35
     - charateristicName: "\uBD80\uB450\uC220"
-      explanation: "\uBAAC\uC2A4\uD130\uAC00 \uC0AC\uB9DD\uC2DC \uD3ED\uBC1C\uD558\uBA70
-        \uC8FC\uBCC0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C {0}\uB9CC\uD07C \uB370\uBBF8\uC9C0\uB97C
-        \uC785\uD799\uB2C8\uB2E4."
+      explanation: "\uACBD\uD5D8\uCE58 \uC99D\uAC00\uB7C9\uC774 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
       ID: 36
     - charateristicName: "\uAD11\uBD84"
-      explanation: "\uC783\uC740 \uCCB4\uB825\uC5D0 \uBE44\uB840\uD574 \uB370\uBBF8\uC9C0\uC640
-        \uACF5\uACA9\uC18D\uB3C4\uAC00 {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uD50C\uB808\uC774\uC5B4\uAC00 \uB370\uBBF8\uC9C0\uB97C \uC785\uC744
+        \uB54C\uB9C8\uB2E4 \uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9\uC18D\uB3C4\uAC00
+        {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 10
       conditionWidth: 10
       level: 0
@@ -9326,10 +9326,10 @@ MonoBehaviour:
       level: 0
       ID: 38
     - charateristicName: "\uD0C0\uC784\uC2A4\uD1B1"
-      explanation: "{0}\uCD08 \uC8FC\uAE30\uB85C \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C
-        \uC2AC\uB85C\uC6B0\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      explanation: "\uBAA8\uB4E0 \uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C {0}
+        \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      condition: 0.1
+      conditionWidth: 0.1
       level: 0
       ID: 39
     attributeStat:
@@ -27938,6 +27938,10 @@ MonoBehaviour:
   healthWave: 0
   plusReward: 0
   plusIce: 1
+  spawnDmg: 0
+  wave5: 0
+  commonGatcha: 0
+  madDmg: 0
   proportionHP: 0
   dmgWave: 0
   dmgFire: 0
@@ -27946,6 +27950,8 @@ MonoBehaviour:
   defenseGerm: 0
   dmgWaveGun: 0
   iceGatcha: 0
+  execution: 0
+  plusExp: 0
 --- !u!1001 &1999877104
 PrefabInstance:
   m_ObjectHideFlags: 0
