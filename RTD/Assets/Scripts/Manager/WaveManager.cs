@@ -13,10 +13,8 @@ public class WaveManager : Singleton<WaveManager>
     CharacManager cm;
     CSVList cl;
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-
         gm = GameManager.Instance;
         cm = CharacManager.Instance;
         cl = CSVReader.Instance.csvList;
@@ -31,8 +29,13 @@ public class WaveManager : Singleton<WaveManager>
     {
         if (isWave == false || SpawnManager.Instance.enemyList.Count > 0)
             return;
-
         isWave = false;
+
+        if(curWave == gm.levelNum[(int)gm.level])
+        {
+            // Clear
+        }
+
         gm.gatchaKey += 2;
 
         // Charac

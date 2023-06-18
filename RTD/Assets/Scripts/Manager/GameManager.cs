@@ -8,8 +8,9 @@ public class GameManager : Singleton<GameManager>
     public GameTime gameTime = GameTime.Slow;
     public bool isStart;
     public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp;
-    public float curExp;
+    public float curExp, increaseExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
+    public int[] levelNum;
 
     CSVList cl;
     CharacManager cm;
@@ -33,7 +34,10 @@ public class GameManager : Singleton<GameManager>
         //GPGSBinder.Inst.LoadEvent(GPGSIds.event_testevent); 이벤트 불러오기
         //GPGSBinder.Inst.LoadAllEvent(); 이벤트 모두 불러오기
         #endregion
+    }
 
+    private void Start()
+    {
         cl = CSVReader.Instance.csvList;
         cm = CharacManager.Instance;
     }
@@ -64,6 +68,8 @@ public class GameManager : Singleton<GameManager>
         // GameOver
         if (curHealth <= 0)
         {
+            BtnManager.Instance.Pause();
+            UIManager.Instance.gameOverPannel.SetActive(true);
         }
     }
 }

@@ -44,19 +44,23 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private IEnumerator SpawnEnemyCoroutine()
     {
-        WaveManager.Instance.isWave = true;
-        WaveManager.Instance.curWave++; //웨이브 시작 시 curWave 증가
-        Wave realCurWave = WaveManager.Instance.waves[WaveManager.Instance.curWave - 1]; //증가된 상태이므로 1 감소시킨 웨이브 등장
+        WaveManager wm = WaveManager.Instance;
 
-        for(int i = 0; i < realCurWave.enemy.Length; i++)
+        wm.isWave = true;
+        int waveNum = wm.curWave;
+        Wave wave = wm.waves[waveNum];
+
+        wm.curWave++; //웨이브 시작 시 curWave 증가
+
+        foreach (WaveEnemy enemyData in wave.enemy)
         {
             int spawnEnemyCount = 0;
-            while (spawnEnemyCount < realCurWave.enemy[i].maxCount)
+            while (spawnEnemyCount < enemyData.maxCount)
             {
-                Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(realCurWave.enemy[i].name);
+                Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(enemyData.name);
                 enemyList.Add(newEnemy);
                 spawnEnemyCount++;
-                yield return new WaitForSeconds(realCurWave.spawnTime);
+                yield return new WaitForSeconds(wave.spawnTime);
             }
         }
         //모든 적 소환 완료

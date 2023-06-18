@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     public EnemyStat enemyStat;
+    private float speed;
     private Dictionary<Attribute, bool> debuffState = new Dictionary<Attribute, bool>()
     {
         {Attribute.Fire, false },
@@ -69,6 +70,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         isStop = false;
         debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Thunder] = false;
         spriteRenderer.color = Color.white;
+        speed = enemyStat.moveSpeed / 100;
 
         //위치 설정
         ResetWayPoint();
@@ -79,7 +81,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     {
         if (isStop)
             return;
-        transform.position = Vector2.MoveTowards(transform.position, moveDirection, enemyStat.moveSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, moveDirection, speed);
     }
 
     private void SetWayPoint()
@@ -220,10 +222,9 @@ public class Enemy : MonoBehaviour, IPoolObject
                         slowDuration *= plusSlow;
                         slowPercent *= plusSlow;
                     }
-                    float originalMoveSpeed = enemyStat.moveSpeed; // 원래 속도
-                    enemyStat.moveSpeed *= 1 - slowPercent; // 느려진 속도
+                    speed *= 1 - slowPercent; // 느려진 속도
                     yield return new WaitForSeconds(slowDuration);
-                    enemyStat.moveSpeed = originalMoveSpeed;
+                    speed = enemyStat.moveSpeed / 100; // 원래 속도
                     break;
 
                 case Attribute.Thunder: // 번개 공격

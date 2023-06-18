@@ -29,45 +29,65 @@ public class BtnManager : Singleton<BtnManager>
         GameManager gm = GameManager.Instance;
         gm.isStart = true;
         gm.level = (Level)Enum.Parse(typeof(Level), _level);
-        switch(gm.level)
-        {
-            case Level.Easy:
-                gm.gatchaKey = 3;
-                gm.maxHealth = 30;
-                gm.maxExp = 3;
-                gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[0].text);
-                gm.curHealth = gm.maxHealth;
-                break;
-            case Level.Normal:
-                gm.gatchaKey = 2;
-                gm.maxHealth = 25;
-                gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[1].text);
-                gm.curHealth = gm.maxHealth;
-                break;
-            case Level.Hard:
-                gm.gatchaKey = 1;
-                gm.maxHealth = 20;
-                gm.maxExp = 3;
-                gm.maxWave = int.Parse(UIManager.Instance.levelWaveTxt[2].text);
-                gm.curHealth = gm.maxHealth;
-                break;
-            case Level.Infinite:
-                gm.gatchaKey = 2;
-                gm.maxHealth = 25;
-                gm.maxExp = 3;
-                gm.maxWave = 40;
-                gm.curHealth = gm.maxHealth;
-                break;
-        }
-        GameManager.Instance.gameTime = GameTime.Slow; // 속도 초기화
+
+        LevelDifficult(gm.level);
+
         AdMobManager.Instance.ToggleBannerAd(false);
         SceneManager.LoadScene(1);
     } // 레벨 설정에 따라
+
+    public void AgainStart()
+    {
+        LevelDifficult(GameManager.Instance.level);
+    }
+
+    private void LevelDifficult(Level level)
+    {
+        GameManager gm = GameManager.Instance;
+
+        switch (level)
+        {
+            case Level.Easy: // 쉬움
+                gm.gatchaKey = 3;
+                gm.maxHealth = 30;
+                gm.maxExp = 5;
+                gm.increaseExp = 0.2f;
+                gm.maxWave = gm.levelNum[0];
+                gm.curHealth = gm.maxHealth;
+                break;
+            case Level.Normal: // 보통
+                gm.gatchaKey = 2;
+                gm.maxHealth = 25;
+                gm.maxExp = 5;
+                gm.increaseExp = 0.3f;
+                gm.maxWave = gm.levelNum[1];
+                gm.curHealth = gm.maxHealth;
+                break;
+            case Level.Hard: // 어려움
+                gm.gatchaKey = 1;
+                gm.maxHealth = 20;
+                gm.maxExp = 10;
+                gm.increaseExp = 0.4f;
+                gm.maxWave = gm.levelNum[2];
+                gm.curHealth = gm.maxHealth;
+                break;
+            case Level.Infinite: // 무한
+                gm.gatchaKey = 2;
+                gm.maxHealth = 25;
+                gm.maxExp = 10;
+                gm.increaseExp = 0.4f;
+                gm.maxWave = gm.levelNum[3];
+                gm.curHealth = gm.maxHealth;
+                break;
+        }
+        gm.gameTime = GameTime.Slow; // 속도 초기화
+    }
 
     public void Title()
     {
         GameManager.Instance.isStart = false;
         GameManager.Instance.gameTime = GameTime.Slow; // 속도 초기화
+        AdMobManager.Instance.ToggleBannerAd(true);
         SceneManager.LoadScene(0);
     }
 

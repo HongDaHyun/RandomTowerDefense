@@ -22,6 +22,7 @@ public class UIManager : Singleton<UIManager>
     public CharacteristicCard[] cards;
     public GameObject slotObj;
     public Text gameSpeedTxt;
+    public GameObject gameOverPannel;
 
     private void Update()
     {
@@ -34,7 +35,10 @@ public class UIManager : Singleton<UIManager>
             return;
         upPannel.gatchaKeyTxt.text = GameManager.Instance.gatchaKey.ToString();
         upPannel.healthTxt.text = $"{GameManager.Instance.curHealth}/{GameManager.Instance.maxHealth}";
-        upPannel.waveTxt.text = $"{WaveManager.Instance.curWave}/{GameManager.Instance.maxWave}";
+        if(GameManager.Instance.level == Level.Infinite)
+            upPannel.waveTxt.text = WaveManager.Instance.curWave.ToString();
+        else
+            upPannel.waveTxt.text = $"{WaveManager.Instance.curWave}/{GameManager.Instance.maxWave}";
 
         ExpSlider();
     }
@@ -49,10 +53,12 @@ public class UIManager : Singleton<UIManager>
 
     private void LevelUp()
     {
-        if (GameManager.Instance.curExp >= GameManager.Instance.maxExp)
+        GameManager gm = GameManager.Instance;
+        if (gm.curExp >= gm.maxExp)
         {
-            GameManager.Instance.curExp = 0;
-            GameManager.Instance.expLevel++;
+            gm.curExp = 0;
+            gm.expLevel++;
+            gm.maxExp += Mathf.RoundToInt(gm.increaseExp * gm.maxExp);
             upPannel.levelTxt.text = $"{GameManager.Instance.expLevel}Lv:"; // 레벨UI
 
             characteristicPannel.SetActive(true); // 특성 패널 활성화
@@ -158,7 +164,7 @@ public class Info
         enemyInfo.img.sprite = enemy.GetComponent<SpriteRenderer>().sprite;
         enemyInfo.nameTxt.text = enemy.enemyStat.enemyName;
         enemyInfo.hpTxt.text = enemy.enemyStat.hp.ToString();
-        enemyInfo.moveSpeedTxt.text = (enemy.enemyStat.moveSpeed * 100).ToString();
+        enemyInfo.moveSpeedTxt.text = enemy.enemyStat.moveSpeed.ToString();
         enemyInfo.defenseTxt.text = enemy.enemyStat.defense.ToString();
         enemyInfo.strengthTxt.text = enemy.enemyStat.strength.ToString();
     }

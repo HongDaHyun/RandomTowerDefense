@@ -1053,8 +1053,12 @@ MonoBehaviour:
   maxHealth: 0
   curHealth: 0
   maxWave: 0
+  expLevel: 0
   maxExp: 0
   curExp: 0
+  increaseExp: 0
+  probability: 520000000a0000000500000003000000
+  levelNum: 140000001e00000028000000ffffffff
 --- !u!1 &200118006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,31 +1263,43 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   clickTile: {fileID: 0}
-  unitRange: {fileID: 0}
-  unitInfoPannel: {fileID: 0}
-  enemyInfoPannel: {fileID: 0}
-  unitInfoContents:
-    img: {fileID: 0}
-    texts:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+  gatchaPannel:
+    gatchaPannel: {fileID: 0}
+    gatchaBtn: {fileID: 0}
+    gatchaTab: {fileID: 0}
+  characteristicPannel: {fileID: 0}
+  info:
+    pannel: {fileID: 0}
+    unitInfo:
+      pannel: {fileID: 0}
+      img: {fileID: 0}
+      unitRange: {fileID: 0}
+      nameTxt: {fileID: 0}
+      dmgTxt: {fileID: 0}
+      atkSpeedTxt: {fileID: 0}
+      rangeTxt: {fileID: 0}
+      critPercentTxt: {fileID: 0}
+      critDmgTxt: {fileID: 0}
+    enemyInfo:
+      pannel: {fileID: 0}
+      img: {fileID: 0}
+      nameTxt: {fileID: 0}
+      hpTxt: {fileID: 0}
+      moveSpeedTxt: {fileID: 0}
+      defenseTxt: {fileID: 0}
+      strengthTxt: {fileID: 0}
   upPannel:
     gatchaKeyTxt: {fileID: 0}
     healthTxt: {fileID: 0}
     waveTxt: {fileID: 0}
     timerTxt: {fileID: 0}
+    levelTxt: {fileID: 0}
     expSlider: {fileID: 0}
-  gatchaPannel:
-    gatchaPannel: {fileID: 0}
-    gatchaBtn: {fileID: 0}
-    gatchaTab: {fileID: 0}
   quests: []
+  cards: []
   slotObj: {fileID: 0}
   gameSpeedTxt: {fileID: 0}
+  gameOverPannel: {fileID: 0}
 --- !u!4 &253012259
 Transform:
   m_ObjectHideFlags: 0

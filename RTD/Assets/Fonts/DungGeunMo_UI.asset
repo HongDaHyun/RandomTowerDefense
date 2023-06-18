@@ -163,9 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: DungGeunMo_UI
   m_EditorClassIdentifier: 
-  hashCode: 1169755263
+  hashCode: -52780672
   material: {fileID: -7123457951816856407}
-  materialHashCode: 756304767
+  materialHashCode: -848724704
   m_Version: 1.1.0
   m_SourceFontFileGUID: 058f5a9eb1a4a744c96ede51f5fe7d05
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 058f5a9eb1a4a744c96ede51f5fe7d05, type: 3}
