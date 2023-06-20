@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Sound
@@ -20,13 +21,22 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Start()
     {
-        PlayBGM("Lobby");
+        AwakeBGM();
     }
 
     public void PlayBGM(string p_bgmName)
     {
         bgmPlayer.clip = Array.Find(bgm, bgm => bgm.name == p_bgmName).clip;
         bgmPlayer.Play();
+    }
+
+    public void AwakeBGM()
+    {
+        GameManager gm = GameManager.Instance;
+        if (!gm.isStart && SceneManager.GetActiveScene().buildIndex == 0)
+            PlayBGM("Lobby");
+        else if(gm.isStart && SceneManager.GetActiveScene().buildIndex == 1)
+            PlayBGM(gm.level.ToString());
     }
 
     public void StopBGM()

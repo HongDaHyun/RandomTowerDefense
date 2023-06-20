@@ -176,7 +176,7 @@ public class BtnManager : Singleton<BtnManager>
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         Unit thisUnit = tileGround.GetComponentInChildren<Unit>();
 
-        if (thisUnit.unitStat.tier == Tier.Legend) // 티어가 레전드면 리턴
+        if (thisUnit.unitStat.tier == Tier.Hidden) // 티어가 레전드면 리턴
             return;
 
         for (int i = 0; i < unitList.Count; i++)

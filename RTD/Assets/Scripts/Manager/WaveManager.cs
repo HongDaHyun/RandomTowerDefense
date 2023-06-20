@@ -50,6 +50,9 @@ public class WaveManager : Singleton<WaveManager>
         if (cm.dmgWaveGun > 0) // 24
             cl.UpgradeUnit(cl.FindUnit(UnitType.Fighter), UpUnit.All, cm.dmgWaveGun);
 
+        // Àû HP Áõ°¡
+        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level + 1);
+
         StartCoroutine(UIManager.Instance.WaveTimer());
     }
 }

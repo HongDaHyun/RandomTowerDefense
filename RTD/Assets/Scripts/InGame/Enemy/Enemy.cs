@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     public EnemyStat enemyStat;
-    private float speed;
+    [HideInInspector] public float speed;
     private Dictionary<Attribute, bool> debuffState = new Dictionary<Attribute, bool>()
     {
         {Attribute.Fire, false },
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     private int curLife;
     public int maxLife;
     [HideInInspector] public float curHp;
-    private bool isDie = false, isStop = false;
+    private bool isDie = false; public bool isStop = false;
     private Slider hpSlider;
     #endregion
 
@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         StartCoroutine(OnMove());
     }
-    private IEnumerator OnMove()
+    public IEnumerator OnMove()
     {
         NextMoveTo();
 
@@ -277,6 +277,8 @@ public class Enemy : MonoBehaviour, IPoolObject
     //Die
     private void SpecificDie()
     {
+        if (isDie)
+            return;
         StopAllCoroutines();
         switch (enemyStat.enemyType)
         {
@@ -299,11 +301,11 @@ public class Enemy : MonoBehaviour, IPoolObject
                 Die();
                 break;
         }
+        isDie = true;
     }
 
     private void Die()
     {
-        isDie = true;
         QuestManager.Instance.killEnemyNum++; // 퀘스트 5
 
         // 경험치 증가

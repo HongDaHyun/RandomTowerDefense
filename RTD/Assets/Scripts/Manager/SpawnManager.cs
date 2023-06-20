@@ -85,6 +85,7 @@ public class SpawnManager : Singleton<SpawnManager>
         babySlime.enemyStat.enemyType = EnemyType.SlimeBaby; // 타입
         babySlime.enemyStat.hp /= 2; // 체력
         babySlime.curHp = babySlime.enemyStat.hp;
+        babySlime.speed = babySlime.enemyStat.moveSpeed / 100;
 
         return babySlime;
     }
