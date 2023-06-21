@@ -34,6 +34,7 @@ public class ObjectDetector : MonoBehaviour
                 // 땅 타일
                 if (hit.collider.CompareTag("TileGround"))
                 {
+                    SoundManager.Instance.PlaySFX("ClickGrass");
                     // 클릭 타일 없으면 생성
                     if (!uiManager.clickTile.activeSelf)
                         uiManager.clickTile.SetActive(true);

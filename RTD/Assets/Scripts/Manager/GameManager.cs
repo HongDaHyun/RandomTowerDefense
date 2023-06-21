@@ -36,6 +36,12 @@ public class GameManager : Singleton<GameManager>
         #endregion
     }
 
+    private void Update()
+    {
+        if (curExp >= maxExp)
+            LevelUp();
+    }
+
     private void Start()
     {
         cl = CSVReader.Instance.csvList;
@@ -60,6 +66,8 @@ public class GameManager : Singleton<GameManager>
 
     public void LoseHealth()
     {
+        SoundManager.Instance.PlaySFX("Hurt");
+
         curHealth--;
 
         cl.UpgradeUnit(cl.FindUnit(UnitType.Sword), UpUnit.Dmg, cm.dmgSword); // Charac 17
@@ -68,8 +76,29 @@ public class GameManager : Singleton<GameManager>
         // GameOver
         if (curHealth <= 0)
         {
-            BtnManager.Instance.Pause();
-            UIManager.Instance.gameOverPannel.SetActive(true);
+            GameOver();
         }
+    }
+
+    public void GameOver()
+    {
+        BtnManager.Instance.Pause();
+        UIManager.Instance.gameOverPannel.SetActive(true);
+    }
+
+    public void LevelUp()
+    {
+        // 로비GM의 MaxExp를 1000으로 조정함으로 로비에서는 실행 X
+        SoundManager.Instance.PlaySFX("LevelUp");
+
+        curExp = 0;
+        expLevel++;
+        maxExp += Mathf.RoundToInt(increaseExp * maxExp);
+        // 레벨UI
+
+        UIManager.Instance.characteristicPannel.SetActive(true); // 특성 패널 활성화
+        UIManager.Instance.InitCard(); // 카드 생성
+
+        BtnManager.Instance.Pause(); //정지
     }
 }

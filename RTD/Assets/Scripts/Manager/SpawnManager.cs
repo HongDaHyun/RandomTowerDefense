@@ -19,7 +19,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void Start()
     {
-        StartCoroutine(UIManager.Instance.WaveTimer());
+        StartCoroutine(WaveManager.Instance.StartWave());
     }
 
     #region SpawnEnemy
@@ -27,12 +27,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         if (enemyList.Count != 0)
             return;
-        if (WaveManager.Instance.curWave >= GameManager.Instance.maxWave)
-        {
-            if(GameManager.Instance.level != Level.Infinite) //무한모드일 때 웨이브 초기화 (적 스탯 모두 증가)
-                return;
-            WaveManager.Instance.curWave = 0;
-        }
+
         StartCoroutine(SpawnEnemyCoroutine());
     }
 
@@ -60,6 +55,9 @@ public class SpawnManager : Singleton<SpawnManager>
                 Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(enemyData.name);
                 enemyList.Add(newEnemy);
                 spawnEnemyCount++;
+
+                SoundManager.Instance.PlaySFX("SpawnEnemy");
+
                 yield return new WaitForSeconds(wave.spawnTime);
             }
         }
@@ -95,6 +93,8 @@ public class SpawnManager : Singleton<SpawnManager>
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.csvList.FindUnit(type, tier));
+
+        SoundManager.Instance.PlaySFX("SpawnUnit");
 
         if (!QuestManager.Instance.unitTypesList.Contains(type))
             QuestManager.Instance.unitTypesList.Add(type); // 퀘스트 6

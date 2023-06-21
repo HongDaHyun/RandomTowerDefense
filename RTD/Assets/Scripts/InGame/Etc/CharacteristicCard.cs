@@ -50,6 +50,7 @@ public class CharacteristicCard : MonoBehaviour
         //UI
         UIManager.Instance.characteristicPannel.SetActive(false);
         BtnManager.Instance.Play();
+        BtnManager.Instance.ClickSound();
     }
 
     public void CharacLevelUp(ref CharacteristicStat stat)

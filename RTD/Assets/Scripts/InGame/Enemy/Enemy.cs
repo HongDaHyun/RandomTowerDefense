@@ -322,10 +322,14 @@ public class Enemy : MonoBehaviour, IPoolObject
         isStop = false;
         curLife--;
         curHp = enemyStat.hp;
+
+        SoundManager.Instance.PlaySFX("Reborn");
     }
 
     public void Split()
     {
+        SoundManager.Instance.PlaySFX("Split");
+
         SpawnManager.Instance.SpawnBabySlime(this);
         SpawnManager.Instance.SpawnBabySlime(this);
 

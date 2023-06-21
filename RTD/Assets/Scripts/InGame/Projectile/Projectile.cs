@@ -25,6 +25,9 @@ public class Projectile : MonoBehaviour, IPoolObject
         float size = projectileStat.size;
         transform.localScale = new Vector3(size, size, size);
 
+        if(projectileStat.projectileName == UnitType.Fire)
+            dmg = (float)System.Math.Round(dmg / 10, 1);
+
         StartCoroutine(Remain());
     }
 
@@ -71,7 +74,6 @@ public class Projectile : MonoBehaviour, IPoolObject
 
             case UnitType.Fire:
                 isCrit = false;
-                dmg = (float)System.Math.Round(dmg / 10, 1);
                 break;
         }
 

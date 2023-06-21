@@ -8,6 +8,7 @@ using DG.Tweening;
 
 public class UIManager : Singleton<UIManager>
 {
+    GameManager gm;
     [Header("MainMenu")]
     public GameObject[] mainPannel;
     public Text[] levelWaveTxt;
@@ -24,6 +25,11 @@ public class UIManager : Singleton<UIManager>
     public Text gameSpeedTxt;
     public GameObject gameOverPannel;
 
+    private void Start()
+    {
+        gm = GameManager.Instance;
+    }
+
     private void Update()
     {
         UpdateUpPannel();
@@ -33,56 +39,22 @@ public class UIManager : Singleton<UIManager>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) // 씬이 0이면 함수 실행 x
             return;
-        upPannel.gatchaKeyTxt.text = GameManager.Instance.gatchaKey.ToString();
-        upPannel.healthTxt.text = $"{GameManager.Instance.curHealth}/{GameManager.Instance.maxHealth}";
-        if(GameManager.Instance.level == Level.Infinite)
-            upPannel.waveTxt.text = WaveManager.Instance.curWave.ToString();
+        upPannel.gatchaKeyTxt.text = gm.gatchaKey.ToString(); // 가챠 키
+        upPannel.healthTxt.text = $"{gm.curHealth}/{gm.maxHealth}"; // 체력
+        upPannel.timerTxt.text = WaveManager.Instance.readyTime.ToString("00.0"); // 타이머
+        upPannel.levelTxt.text = $"{gm.expLevel}Lv:"; // 레벨
+        if (gm.level == Level.Infinite)
+            upPannel.waveTxt.text = WaveManager.Instance.curWave.ToString(); // 웨이브
         else
-            upPannel.waveTxt.text = $"{WaveManager.Instance.curWave}/{GameManager.Instance.maxWave}";
+            upPannel.waveTxt.text = $"{WaveManager.Instance.curWave}/{gm.maxWave}"; // 웨이브
 
         ExpSlider();
     }
 
     public void ExpSlider()
     {
-        float imsi = GameManager.Instance.curExp / GameManager.Instance.maxExp;
+        float imsi = gm.curExp / gm.maxExp;
         upPannel.expSlider.value = Mathf.Lerp(upPannel.expSlider.value, imsi, Time.deltaTime * 10);
-
-        LevelUp();
-    }
-
-    private void LevelUp()
-    {
-        GameManager gm = GameManager.Instance;
-        if (gm.curExp >= gm.maxExp)
-        {
-            gm.curExp = 0;
-            gm.expLevel++;
-            gm.maxExp += Mathf.RoundToInt(gm.increaseExp * gm.maxExp);
-            upPannel.levelTxt.text = $"{GameManager.Instance.expLevel}Lv:"; // 레벨UI
-
-            characteristicPannel.SetActive(true); // 특성 패널 활성화
-            InitCard(); // 카드 생성
-
-            BtnManager.Instance.Pause(); //정지
-        }
-    }
-
-    public IEnumerator WaveTimer()
-    {
-        float readyTime = 10f;
-
-        while (readyTime > 0) // 타이머 시작
-        {
-            readyTime -= Time.deltaTime;
-            upPannel.timerTxt.text = readyTime.ToString("00.0");
-            yield return null;
-
-            if (readyTime <= 0) //웨이브 시작(타이머 0)
-            {
-                SpawnManager.Instance.SpawnEnemy();
-            }
-        }
     }
 
     public void DmgPopUp(float dmg, Vector3 startTrans, bool isCrit)

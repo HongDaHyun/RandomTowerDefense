@@ -46,14 +46,6 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlaySFX(string p_sfxName)
     {
-        int length = sfxPlayer.Length;
-        for (int i = 0; i < length; i++)
-        {
-            if(!sfxPlayer[i].isPlaying)
-            {
-                sfxPlayer[i].clip = Array.Find(sfx, sfx => sfx.name == p_sfxName).clip;
-                sfxPlayer[i].Play();
-            }    
-        }
+        Array.Find(sfxPlayer, sfx => !sfx.isPlaying).PlayOneShot(Array.Find(sfx, sfx => sfx.name == p_sfxName).clip);
     }
 }

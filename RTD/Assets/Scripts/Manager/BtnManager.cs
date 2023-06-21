@@ -14,6 +14,11 @@ public class BtnManager : Singleton<BtnManager>
             obj.SetActive(false);
     }
 
+    public void ClickSound()
+    {
+        SoundManager.Instance.PlaySFX("ClickBtn");
+    }
+
     public void Pause() // 멈춤
     {
         Time.timeScale = 0;
@@ -85,9 +90,16 @@ public class BtnManager : Singleton<BtnManager>
 
     public void Title()
     {
-        GameManager.Instance.isStart = false;
-        GameManager.Instance.gameTime = GameTime.Slow; // 속도 초기화
-        AdMobManager.Instance.ToggleBannerAd(true);
+        //초기화
+        GameManager gm = GameManager.Instance;
+        gm.isStart = false;
+        gm.gameTime = GameTime.Slow; // 속도
+        //경험치
+        gm.expLevel = 0;
+        gm.maxExp = 1000;
+        gm.curExp = 0;
+
+        Play();
         SceneManager.LoadScene(0);
     }
 

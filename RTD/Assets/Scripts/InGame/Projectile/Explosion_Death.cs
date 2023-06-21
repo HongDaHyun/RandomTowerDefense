@@ -17,6 +17,7 @@ public class Explosion_Death : MonoBehaviour, IPoolObject
 
     void IPoolObject.OnGettingFromPool()
     {
+        SoundManager.Instance.PlaySFX("ExplosionGerm");
         StartCoroutine(ActiveTime());
     }
 

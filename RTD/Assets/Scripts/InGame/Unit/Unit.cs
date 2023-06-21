@@ -141,6 +141,8 @@ public class Unit : MonoBehaviour, IPoolObject
         projectile.dmg = DmgCalculator(projectile);
         projectile.range = unitStat.range;
 
+        SoundManager.Instance.PlaySFX($"Shoot{projectile.projectileStat.projectileName}");
+
         return projectile;
     }
 

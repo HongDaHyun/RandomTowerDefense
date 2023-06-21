@@ -7,7 +7,7 @@ public class WaveManager : Singleton<WaveManager>
     public int curWave;
     public bool isWave;
     public Wave[] waves;
-    public float dmgPerWave;
+    public float dmgPerWave, readyTime;
 
     GameManager gm;
     CharacManager cm;
@@ -31,9 +31,11 @@ public class WaveManager : Singleton<WaveManager>
             return;
         isWave = false;
 
+        SoundManager.Instance.PlaySFX("EndWave");
+
         if(curWave == gm.levelNum[(int)gm.level])
         {
-            // Clear
+            // GameClear
         }
 
         gm.gatchaKey += 2;
@@ -53,7 +55,24 @@ public class WaveManager : Singleton<WaveManager>
         // 적 HP 증가
         cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level + 1);
 
-        StartCoroutine(UIManager.Instance.WaveTimer());
+        StartCoroutine(StartWave());
+    }
+
+    public IEnumerator StartWave()
+    {
+        readyTime = 10f;
+
+        while (readyTime > 0) // 타이머 시작
+        {
+            readyTime -= Time.deltaTime;
+            yield return null;
+
+            if (readyTime <= 0) //웨이브 시작(타이머 0)
+            {
+                SoundManager.Instance.PlaySFX("StartWave");
+                SpawnManager.Instance.SpawnEnemy();
+            }
+        }
     }
 }
 
