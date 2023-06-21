@@ -155,6 +155,7 @@ public class BtnManager : Singleton<BtnManager>
     {
         if (GameManager.Instance.gatchaKey < 1)
             return;
+        SoundManager.Instance.PlaySFX("SlotMachine");
         StartCoroutine(SlotMachine());
     }
 
@@ -184,23 +185,21 @@ public class BtnManager : Singleton<BtnManager>
 
     public void UpgradeUnit()
     {
-        List<Unit> unitList = SpawnManager.Instance.unitList;
+        SpawnManager sm = SpawnManager.Instance;
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         Unit thisUnit = tileGround.GetComponentInChildren<Unit>();
 
-        if (thisUnit.unitStat.tier == Tier.Hidden) // 티어가 레전드면 리턴
+        if (thisUnit.unitStat.tier == Tier.Hidden) // 티어가 히든이면 리턴
             return;
 
-        for (int i = 0; i < unitList.Count; i++)
+        Unit otherUnit = sm.FindUnit(thisUnit);
+        
+        if(otherUnit != null)
         {
-            if(unitList[i].unitStat.unitName == thisUnit.unitStat.unitName && unitList[i] != thisUnit)
-            {
-                SpawnManager.Instance.DeSpawnUnit(unitList[i]); //순서 중요 (리스트 Remove때문)
-                SpawnManager.Instance.DeSpawnUnit(thisUnit); //순서 바꾸지 말 것
-                SpawnManager.Instance.SpawnUnit(thisUnit.unitStat.unitType, thisUnit.unitStat.tier + 1);
-                QuestManager.Instance.evolNum++; // 퀘스트 23
-                return;
-            }
+            sm.DeSpawnUnit(otherUnit); // 순서 중요
+            sm.DeSpawnUnit(thisUnit); // 순서 바꾸지 마셈
+            sm.SpawnUnit(thisUnit.unitStat.unitType, thisUnit.unitStat.tier + 1); // 업그레이드
+            QuestManager.Instance.evolNum++; // 퀘스트 23
         }
     }
 

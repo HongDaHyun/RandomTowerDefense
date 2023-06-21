@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3333181173557417467}
   - component: {fileID: 6984194680931831941}
   - component: {fileID: 4405807905537318816}
-  - component: {fileID: 6224470623211341720}
+  - component: {fileID: -2966460338774561568}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -82,7 +82,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6224470623211341720
+--- !u!114 &-2966460338774561568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,16 +91,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 515752179090386938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e44647a9b96fb0845b86b03c8b272ec6, type: 3}
+  m_Script: {fileID: 11500000, guid: cb0c6f8f5134d8e4f8f808979187e78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  isCrit: 0
   dmg: 0
   range: 0
-  speed: 10
   target: {fileID: 0}
   startTrans: {fileID: 0}
   remainTime: 2
+  projectileStat:
+    projectileName: 0
+    attribute: 0
+    size: 0
+    speed: 0
 --- !u!1001 &4061177993847791212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,6 +119,10 @@ PrefabInstance:
     - target: {fileID: 430788, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430788, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 430788, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
       propertyPath: m_LocalPosition.x

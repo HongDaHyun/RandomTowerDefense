@@ -68,12 +68,17 @@ public class Enemy : MonoBehaviour, IPoolObject
         curLife = maxLife;
         isDie = false;
         isStop = false;
-        debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Thunder] = false;
+        ResetDebuffStat();
         spriteRenderer.color = Color.white;
         speed = enemyStat.moveSpeed / 100;
 
         //위치 설정
         ResetWayPoint();
+    }
+
+    public void ResetDebuffStat()
+    {
+        debuffState[Attribute.Fire] = false; debuffState[Attribute.Germ] = false; debuffState[Attribute.Ice] = false; debuffState[Attribute.Thunder] = false;
     }
 
     #region Movement Code
@@ -252,7 +257,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     public void Hit(float dmg, Attribute attribute, bool isCrit)
     {
-        if (!gameObject.activeSelf)
+        if (!gameObject.activeSelf || isDie)
             return;
 
         StartCoroutine(Hitted(dmg, attribute, isCrit));
@@ -322,6 +327,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         isStop = false;
         curLife--;
         curHp = enemyStat.hp;
+        ResetDebuffStat();
 
         SoundManager.Instance.PlaySFX("Reborn");
     }

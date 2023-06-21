@@ -7,17 +7,24 @@ public class Projectile_Germ : Projectile
 {
     public AnimationCurve animCurve;
 
-    public override void SetUp(Transform _start, Transform _target)
+    public override void SetPos(Transform _start, Transform _target)
     {
-        base.SetUp(_start, _target);
+        base.SetPos(_start, _target);
         float dur = 5f / projectileStat.speed; //throw speed
         transform.DOScale(projectileStat.size * 2, dur).SetEase(animCurve).OnComplete(() => { Explosion(); });
         transform.DOMove(target.position, dur); //¿Ãµø
     }
 
+    public override void SetStat(UnitStat unit)
+    {
+        base.SetStat(unit);
+
+        dmg = (float)System.Math.Round(dmg / 10, 1);
+    }
+
     public void Explosion()
     {
         SpawnManager.Instance.DeSpawnProjectile(this);
-        SpawnManager.Instance.SpawnExplosion(transform, (float)System.Math.Round(dmg / 10, 1), "DeathExplosion");
+        SpawnManager.Instance.SpawnExplosion(transform, dmg, "DeathExplosion");
     }
 }

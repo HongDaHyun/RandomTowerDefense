@@ -25,7 +25,7 @@ public class Unit : MonoBehaviour, IPoolObject
         anim = GetComponent<Animator>();
         if (anim != null)
             isAnim = true;
-        SetUp();
+        unitStat = CSVReader.Instance.csvList.FindUnit(name);
         SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
     }
 
@@ -138,10 +138,10 @@ public class Unit : MonoBehaviour, IPoolObject
             return null;
 
         Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat.unitType.ToString());
-        projectile.dmg = DmgCalculator(projectile);
-        projectile.range = unitStat.range;
 
-        SoundManager.Instance.PlaySFX($"Shoot{projectile.projectileStat.projectileName}");
+        projectile.SetStat(unitStat); // 투사체 공격력, 사거리 세팅
+
+        SoundManager.Instance.PlaySFX($"Shoot{projectile.projectileStat.projectileName}"); // 효과음
 
         return projectile;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile_Sword : Projectile
 {
-    public override void SetUp(Transform _start, Transform _target)
+    public override void SetPos(Transform _start, Transform _target)
     {
         startTrans = _start;    target = _target;
 

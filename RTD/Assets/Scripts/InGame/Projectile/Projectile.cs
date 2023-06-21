@@ -15,18 +15,15 @@ public class Projectile : MonoBehaviour, IPoolObject
     void IPoolObject.OnCreatedInPool()
     {
         name = name.Replace("(Clone)", "");
-
-        projectileStat = CSVReader.Instance.csvList.FindProjectile(name); // 스탯
     }
 
     void IPoolObject.OnGettingFromPool()
     {
+        projectileStat = CSVReader.Instance.csvList.FindProjectile(name); // 스탯
+
         // 크기
         float size = projectileStat.size;
         transform.localScale = new Vector3(size, size, size);
-
-        if(projectileStat.projectileName == UnitType.Fire)
-            dmg = (float)System.Math.Round(dmg / 10, 1);
 
         StartCoroutine(Remain());
     }
@@ -71,20 +68,33 @@ public class Projectile : MonoBehaviour, IPoolObject
                 if (collision.transform != target)  return;
                 SpawnManager.Instance.DeSpawnProjectile(this);
                 break;
-
-            case UnitType.Fire:
-                isCrit = false;
-                break;
         }
 
         enemy.Hit(dmg, projectileStat.attribute, isCrit);
     }
 
-    public virtual void SetUp(Transform _start, Transform _target) // SpawnManager에서 사용
+    public virtual void SetPos(Transform _start, Transform _target) // SpawnManager에서 사용
     {
         startTrans = _start;    target = _target;
         transform.position = startTrans.position;
         SetRotation(0);
+    }
+
+    public virtual void SetStat(UnitStat unit)
+    {
+        dmg = unit.dmg;
+        range = unit.range;
+
+        // 치명타
+        int critRan = Random.Range(0, 100);
+
+        if (critRan < unit.critPercent)
+        {
+            dmg *= unit.critDmg / 100;
+            isCrit = true;
+        }
+        else
+            isCrit = false;
     }
 
     #region ShootType

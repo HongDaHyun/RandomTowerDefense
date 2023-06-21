@@ -84,12 +84,18 @@ public class SpawnManager : Singleton<SpawnManager>
         babySlime.enemyStat.hp /= 2; // Ã¼·Â
         babySlime.curHp = babySlime.enemyStat.hp;
         babySlime.speed = babySlime.enemyStat.moveSpeed / 100;
+        babySlime.ResetDebuffStat();
 
         return babySlime;
     }
     #endregion
 
     #region SpawnUnit
+    public Unit FindUnit(Unit _unit)
+    {
+        return unitList.Find(unit => unit.unitStat.unitName == _unit.unitStat.unitName && unit != _unit);
+    }
+
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.csvList.FindUnit(type, tier));
@@ -142,7 +148,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public Projectile SpawnProjectile(Transform start, Transform target, string _name)
     {
         Projectile newProjectile = PoolManager.Instance.GetFromPool<Projectile>(_name);
-        newProjectile.SetUp(start, target);
+        newProjectile.SetPos(start, target);
         return newProjectile;
     }
 
