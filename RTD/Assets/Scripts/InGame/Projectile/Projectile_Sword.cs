@@ -19,4 +19,9 @@ public class Projectile_Sword : Projectile
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - ang, Vector3.forward);
     }
+
+    private void OnParticleSystemStopped()
+    {
+        SpawnManager.Instance.DeSpawnProjectile(this);
+    }
 }

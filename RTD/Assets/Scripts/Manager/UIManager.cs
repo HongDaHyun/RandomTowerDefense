@@ -19,7 +19,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject characteristicPannel;
     public Info info;
     public UpPannel upPannel;
-    public Quest[] quests;
+    public QuestPannel questPannel;
     public CharacteristicCard[] cards;
     public GameObject slotObj;
     public Text gameSpeedTxt;
@@ -170,6 +170,15 @@ public struct UpPannel
 {
     public Text gatchaKeyTxt, healthTxt, waveTxt, timerTxt, levelTxt;
     public Slider expSlider;
+}
+
+[Serializable]
+public struct QuestPannel
+{
+    public Quest[] quests;
+    public Button refreshBtn;
+    public Text coolTxt;
+    public int maxCool, curCool;
 }
 
 [Serializable]

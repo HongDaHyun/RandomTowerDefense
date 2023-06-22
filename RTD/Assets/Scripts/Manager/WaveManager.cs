@@ -10,12 +10,14 @@ public class WaveManager : Singleton<WaveManager>
     public float dmgPerWave, readyTime;
 
     GameManager gm;
+    UIManager um;
     CharacManager cm;
     CSVList cl;
 
     private void Start()
     {
         gm = GameManager.Instance;
+        um = UIManager.Instance;
         cm = CharacManager.Instance;
         cl = CSVReader.Instance.csvList;
     }
@@ -25,7 +27,7 @@ public class WaveManager : Singleton<WaveManager>
         EndWaveSet();
     }
 
-    private void EndWaveSet() //웨이브 끝났을 때 설정들
+    private void EndWaveSet() //웨이브 종료
     {
         if (isWave == false || SpawnManager.Instance.enemyList.Count > 0)
             return;
@@ -39,6 +41,10 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         gm.gatchaKey += 2;
+
+        // Quest Cool
+        if(um.questPannel.curCool < um.questPannel.maxCool)
+            um.questPannel.curCool++;
 
         // Charac
         gm.GainHealth(cm.healthWave); // 10
@@ -73,7 +79,7 @@ public class WaveManager : Singleton<WaveManager>
                 SpawnManager.Instance.SpawnEnemy();
             }
         }
-    }
+    } // 웨이브 시작
 }
 
 [System.Serializable]

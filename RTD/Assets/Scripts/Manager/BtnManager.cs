@@ -120,7 +120,7 @@ public class BtnManager : Singleton<BtnManager>
         ui.gatchaPannel.gatchaTab.interactable = false;
 
         // 0: Bow, 1: Fighter, 2: Fire, 3: Germ, 4: Gun, 5: Ice, 6: Sword, 7: Thunder 
-        int ranType = UnityEngine.Random.Range(0, 7);
+        int ranType = 6;
 
         // 0: Common, 1: Rare, 2: Epic, 3: Legend
         int ranTier = UnityEngine.Random.Range(0, gm.probability[0] + gm.probability[1] + gm.probability[2] + gm.probability[3]);
@@ -196,18 +196,27 @@ public class BtnManager : Singleton<BtnManager>
         
         if(otherUnit != null)
         {
+            SoundManager.Instance.PlaySFX("UpgradeUnit"); // 사운드
+
             sm.DeSpawnUnit(otherUnit); // 순서 중요
             sm.DeSpawnUnit(thisUnit); // 순서 바꾸지 마셈
+
+            sm.SpawnVFX("UpgradeVFX", thisUnit.transform);
+
             sm.SpawnUnit(thisUnit.unitStat.unitType, thisUnit.unitStat.tier + 1); // 업그레이드
             QuestManager.Instance.evolNum++; // 퀘스트 23
         }
     }
 
-    public void InitQuest()
+    public void RefreshQuestBtn()
     {
+        UIManager um = UIManager.Instance;
+
         int ranID;
         List<int> IDs = new List<int>(); //중복 방지 리스트
-        for (int i = 0; i < UIManager.Instance.quests.Length; i++)
+
+        int length = um.questPannel.quests.Length;
+        for (int i = 0; i < length; i++)
         {
             ranID = UnityEngine.Random.Range(0, CSVReader.Instance.csvList.questStat.Length);
             if (IDs.Contains(ranID)) // 중복이면 다시
@@ -216,9 +225,24 @@ public class BtnManager : Singleton<BtnManager>
             {
                 IDs.Add(ranID);
 
-                UIManager.Instance.quests[i].gameObject.SetActive(true);
-                UIManager.Instance.quests[i].SetQuest(ranID); //퀘스트 생성
+                um.questPannel.quests[i].gameObject.SetActive(true);
+                um.questPannel.quests[i].SetQuest(ranID); //퀘스트 생성
             }
         }
+
+        um.questPannel.curCool = 0;
+        QuestCool();
+    }
+
+    public void QuestCool()
+    {
+        UIManager um = UIManager.Instance;
+
+        if (um.questPannel.curCool < um.questPannel.maxCool)
+            um.questPannel.refreshBtn.interactable = false;
+        else
+            um.questPannel.refreshBtn.interactable = true;
+
+        um.questPannel.coolTxt.text = string.Format("{0}/{1}", um.questPannel.curCool, um.questPannel.maxCool);
     }
 }

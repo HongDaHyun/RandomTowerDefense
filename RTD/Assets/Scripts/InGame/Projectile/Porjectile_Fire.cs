@@ -11,7 +11,7 @@ public class Porjectile_Fire : Projectile
     private void Awake()
     {
         childTrans = transform.GetChild(0);
-        BoxCollider2D hitbox = GetComponent<BoxCollider2D>();
+        hitbox = GetComponent<BoxCollider2D>();
     }
 
     public void FireRange()

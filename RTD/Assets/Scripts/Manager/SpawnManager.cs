@@ -185,6 +185,18 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         PoolManager.Instance.TakeToPool<TextMeshPro>("DmgText", tmpro);
     }
+
+    public Particle SpawnVFX(string name, Transform trans)
+    {
+        Particle particle = PoolManager.Instance.GetFromPool<Particle>(name);
+        particle.transform.position = trans.position;
+        return particle;
+    }
+
+    public void DeSpawnVFX(string name, Particle particle)
+    {
+        PoolManager.Instance.TakeToPool<Particle>(name, particle);
+    }
     #endregion
 
     #region Find
