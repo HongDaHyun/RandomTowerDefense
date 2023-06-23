@@ -44,7 +44,7 @@ public class Unit : MonoBehaviour, IPoolObject
     public void SetUp()
     {
         unitStat = CSVReader.Instance.csvList.FindUnit(name);
-        atkSpeedCount = 3 / (1 + (unitStat.atkSpeed / 100)); // 초당 공격 속도 계산 공식
+        atkSpeedCount = Mathf.Round(3f / (1f + (unitStat.atkSpeed / 100f)) * 100f) / 100f; // 초당 공격 속도 계산 공식(소수점 셋째 자리에서 반올림)
     }
 
     #region Attack

@@ -120,7 +120,7 @@ public class BtnManager : Singleton<BtnManager>
         ui.gatchaPannel.gatchaTab.interactable = false;
 
         // 0: Bow, 1: Fighter, 2: Fire, 3: Germ, 4: Gun, 5: Ice, 6: Sword, 7: Thunder 
-        int ranType = 6;
+        int ranType = UnityEngine.Random.Range(0, 7);
 
         // 0: Common, 1: Rare, 2: Epic, 3: Legend
         int ranTier = UnityEngine.Random.Range(0, gm.probability[0] + gm.probability[1] + gm.probability[2] + gm.probability[3]);
@@ -133,6 +133,7 @@ public class BtnManager : Singleton<BtnManager>
         else
             ranTier = 4;
 
+        // UI 설정
         for (int i = 0; i < (4 * 6 + (ranTier - 1)) * 2; i++) //슬롯 돌리기
         {
             ui.slotObj.transform.localPosition += new Vector3(0, 100f, 0);
@@ -146,7 +147,14 @@ public class BtnManager : Singleton<BtnManager>
         ui.gatchaPannel.gatchaBtn.interactable = true;
         ui.gatchaPannel.gatchaTab.interactable = true;
         gm.gatchaKey--;
-        SpawnManager.Instance.SpawnUnit((UnitType)ranType, (Tier)ranTier);
+
+        Tier tier = (Tier)ranTier;
+        UnitType type = (UnitType)ranType;
+
+        if (!QuestManager.Instance.unitTypesList.Contains(type))
+            QuestManager.Instance.unitTypesList.Add(type); // 퀘스트 6
+
+        SpawnManager.Instance.SpawnUnit(type, tier);
 
         QuestManager.Instance.gatchaNum++; // 퀘스트 9
     }
@@ -189,7 +197,7 @@ public class BtnManager : Singleton<BtnManager>
         TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
         Unit thisUnit = tileGround.GetComponentInChildren<Unit>();
 
-        if (thisUnit.unitStat.tier == Tier.Hidden) // 티어가 히든이면 리턴
+        if (thisUnit.unitStat.tier == Tier.Legend) // 티어가 레전드면 리턴
             return;
 
         Unit otherUnit = sm.FindUnit(thisUnit);
@@ -203,7 +211,9 @@ public class BtnManager : Singleton<BtnManager>
 
             sm.SpawnVFX("UpgradeVFX", thisUnit.transform);
 
-            sm.SpawnUnit(thisUnit.unitStat.unitType, thisUnit.unitStat.tier + 1); // 업그레이드
+            int ranType = UnityEngine.Random.Range(0, 7);
+
+            sm.SpawnUnit((UnitType)ranType, thisUnit.unitStat.tier + 1); // 업그레이드
             QuestManager.Instance.evolNum++; // 퀘스트 23
         }
     }

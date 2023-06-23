@@ -33,11 +33,11 @@ public class Quest : MonoBehaviour
         questStat = CSVReader.Instance.csvList.FindQuest(id);
         texts[0].text = questStat.questName; //퀘스트 이름
 
-        int ranNum = Random.Range(0, System.Enum.GetValues(typeof(Tier)).Length);
+        int ranNum = Random.Range(1, 5);
         tier = (Tier)ranNum; //리워드 티어
         int plus = CharacManager.Instance.plusReward; // Charac 12
 
-        reward = 1 + 1 * (int)tier + plus; // 티어에 따른 보상 증가
+        reward = 1 * (int)tier + plus; // 티어에 따른 보상 증가
         questStat.condition += questStat.conditionWidth * (int)tier; // 티어에 따른 조건 증가
 
         switch(tier) // 티어 색상
@@ -87,7 +87,6 @@ public class Quest : MonoBehaviour
         if (curCondition >= questStat.condition)
         {
             button.interactable = true;
-            QuestManager.Instance.questNum++; // 퀘스트 7
             return;
         }
         button.interactable = false;
@@ -96,6 +95,7 @@ public class Quest : MonoBehaviour
     public void ClickQuest()
     {
         GameManager.Instance.gatchaKey += reward;
+        QuestManager.Instance.questNum++; // 퀘스트 7
 
         // 비활성화
         gameObject.SetActive(false);

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CharacManager : Singleton<CharacManager>
 {
-    [HideInInspector] public int doubleWave, healthWave, plusReward, plusIce = 1, spawnDmg, wave5, commonGatcha, madDmg; // 8, 10, 12, 26, 33, 34, 36
+    [HideInInspector] public int doubleWave, healthWave, plusReward, plusIce = 1, wave5; // 8, 10, 12, 26
     [HideInInspector]
     public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, defenseGerm, dmgWaveGun, iceGatcha,
-        execution, plusExp; // 0, 13, 15, 17, 22, 23, 24, 27, 30, 35
+        execution, spawnDmg, commonGatcha, plusExp, madDmg; // 0, 13, 15, 17, 22, 23, 24, 27, 30, 33, 34, 35, 36
     public void DoCharac(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;
@@ -51,7 +51,7 @@ public class CharacManager : Singleton<CharacManager>
             case 10:
                 healthWave += (int)value;
                 break;
-            case 11:
+            case 11: // ¡¶¿€ ¡ﬂ
                 break;
             case 12:
                 plusReward += (int)value;
@@ -63,7 +63,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeUnit(list.FindUnit(UnitType.Fire), UpUnit.Dmg, value);
                 break;
             case 15:
-                dmgFire += value;
+                dmgFire += value / 100f;
                 break;
             case 16:
                 list.UpgradeUnit(list.FindUnit(UnitType.Sword), UpUnit.Range, value);
@@ -77,6 +77,7 @@ public class CharacManager : Singleton<CharacManager>
                 break;
             case 19:
                 list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Bow), Attribute.Fire);
+                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Bow), "Speed", value);
                 break;
             case 20:
                 list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Fighter), Attribute.Thunder);
@@ -87,7 +88,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeUnit(list.FindUnit(UnitType.Fighter), UpUnit.Range, value);
                 break;
             case 22:
-                dmgGerm += value;
+                dmgGerm += value / 100;
                 break;
             case 23:
                 defenseGerm += value;
@@ -115,7 +116,9 @@ public class CharacManager : Singleton<CharacManager>
                 foreach (UnitStat stat in stats)
                 {
                     if (stat.critPercent > 100)
+                    {
                         list.UpgradeUnit(stat.unitName, UpUnit.CritDmg, stat.critPercent - 100);
+                    }
                 }
                 break;
             case 29:
@@ -124,7 +127,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeUnit(stats, UpUnit.CritDmg, -value);
                 break;
             case 30:
-                execution = value;
+                execution = value / 100f;
                 break;
             case 31:
                 list.UpgradeAllUnit(UpUnit.Range, value);
@@ -133,19 +136,19 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllProjectile("size", value);
                 break;
             case 33:
-                spawnDmg = (int)value;
+                spawnDmg = value;
                 break;
             case 34:
                 wave5 = (int)value;
                 break;
             case 35:
-                commonGatcha = (int)value;
+                commonGatcha = value;
                 break;
             case 36:
                 plusExp = value / 100;
                 break;
             case 37:
-                madDmg = (int)value;
+                madDmg = value;
                 break;
             case 38:
                 list.UpgradeUnit(list.FindUnit(Tier.Epic), UpUnit.Dmg, value);

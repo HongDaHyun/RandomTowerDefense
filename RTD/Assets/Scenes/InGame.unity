@@ -277,12 +277,8 @@ MonoBehaviour:
   waves:
   - spawnTime: 1
     enemy:
-    - name: "\uBB3C\uB77C\uC784"
-      maxCount: 1
-  - spawnTime: 1
-    enemy:
-    - name: "\uB178\uB791\uD3EC\uC158"
-      maxCount: 10
+    - name: "\uC7BC\uBBFC\uC774"
+      maxCount: 5
   - spawnTime: 1
     enemy:
     - name: "\uC7BC\uBBFC\uC774"
@@ -292,11 +288,19 @@ MonoBehaviour:
   - spawnTime: 1
     enemy:
     - name: "\uBE68\uAC15\uD3EC\uC158"
-      maxCount: 30
-  - spawnTime: 1.5
+      maxCount: 10
+    - name: "\uB178\uB791\uD3EC\uC158"
+      maxCount: 5
+  - spawnTime: 1.2
     enemy:
+    - name: "\uB178\uB791\uD3EC\uC158"
+      maxCount: 10
+  - spawnTime: 1.2
+    enemy:
+    - name: "\uC2A4\uCEEC"
+      maxCount: 15
     - name: "\uAC80\uC2A4\uCEEC"
-      maxCount: 20
+      maxCount: 5
   - spawnTime: 1.2
     enemy:
     - name: "\uC5BC\uB77C\uC784"
@@ -9368,107 +9372,107 @@ MonoBehaviour:
     - unitName: "\uBC1C\uB9AC\uC2A4\uD0C0"
       unitType: 0
       tier: 3
-      critPercent: 0
+      critPercent: 20
       critDmg: 200
-      dmg: 5
+      dmg: 15
       atkSpeed: 5
-      range: 5
+      range: 6
     - unitName: "\uBBF8\uB77C"
       unitType: 0
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 7
-      atkSpeed: 15
-      range: 3
+      dmg: 15
+      atkSpeed: 50
+      range: 4
     - unitName: "\uAC10\uC2DC\uD0D1"
       unitType: 0
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 3
-      atkSpeed: 10
-      range: 4
+      dmg: 5
+      atkSpeed: 20
+      range: 4.5
     - unitName: "\uBCF5\uC11C"
       unitType: 1
       tier: 1
       critPercent: 0
       critDmg: 200
       dmg: 1
-      atkSpeed: 15
+      atkSpeed: 5
       range: 2
     - unitName: "\uACE0\uB9B4\uB77C"
       unitType: 1
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 2
-      atkSpeed: 15
+      dmg: 5
+      atkSpeed: 20
       range: 2.5
     - unitName: "\uD3F0"
       unitType: 1
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 4
+      dmg: 10
       atkSpeed: 20
-      range: 2
+      range: 2.5
     - unitName: "\uC2DC\uBC14\uACAC"
       unitType: 1
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 6
-      atkSpeed: 30
-      range: 1.5
+      dmg: 13
+      atkSpeed: 40
+      range: 3
     - unitName: "\uBD90\uBC14\uB9E8"
       unitType: 2
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 5
-      atkSpeed: 20
-      range: 3.8
+      dmg: 30
+      atkSpeed: 35
+      range: 4.5
     - unitName: "\uCE98\uB85D\uC2DC\uD37C"
       unitType: 2
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 3
-      atkSpeed: 10
-      range: 3.2
+      dmg: 8
+      atkSpeed: 25
+      range: 3.7
     - unitName: "\uBD88\uB9C8\uBC95\uC0AC"
       unitType: 2
       tier: 1
       critPercent: 0
       critDmg: 200
-      dmg: 1
-      atkSpeed: 5
-      range: 3.2
+      dmg: 2
+      atkSpeed: 10
+      range: 3.5
     - unitName: "\uC194\uB77C"
       unitType: 2
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 4
-      atkSpeed: 15
-      range: 3.5
+      dmg: 20
+      atkSpeed: 30
+      range: 4
     - unitName: "\uB9C8\uC2A4\uD06C\uB9E8"
       unitType: 3
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 5
-      atkSpeed: 10
-      range: 2.7
+      dmg: 30
+      atkSpeed: 35
+      range: 4.5
     - unitName: "\uADE0\uB3CC\uC774"
       unitType: 3
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 3
-      atkSpeed: 10
-      range: 2.5
+      dmg: 8
+      atkSpeed: 25
+      range: 3.7
     - unitName: "\uADE0\uBCA0\uC774\uBE44"
       unitType: 3
       tier: 1
@@ -9476,31 +9480,31 @@ MonoBehaviour:
       critDmg: 200
       dmg: 2
       atkSpeed: 10
-      range: 2.3
+      range: 3.5
     - unitName: "\uC5ED\uBCD1\uC758\uC0AC"
       unitType: 3
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 4
-      atkSpeed: 10
-      range: 3
+      dmg: 20
+      atkSpeed: 30
+      range: 4
     - unitName: "\uC13C\uD2B8\uB9AC\uAC74"
       unitType: 4
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 1
-      atkSpeed: 20
-      range: 4
+      dmg: 2.5
+      atkSpeed: 50
+      range: 3.3
     - unitName: F-35
       unitType: 4
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 2
-      atkSpeed: 30
-      range: 5
+      dmg: 3.5
+      atkSpeed: 25
+      range: 8
     - unitName: "\uAD70\uC778"
       unitType: 4
       tier: 1
@@ -9508,117 +9512,117 @@ MonoBehaviour:
       critDmg: 200
       dmg: 1
       atkSpeed: 15
-      range: 2.5
+      range: 3
     - unitName: "\uD0F1\uD06C"
       unitType: 4
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 2
-      atkSpeed: 25
-      range: 3.5
+      dmg: 15
+      atkSpeed: 5
+      range: 5.2
     - unitName: "\uC5BC\uC74C\uC6A9"
       unitType: 5
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 4
-      atkSpeed: 10
-      range: 3
+      dmg: 20
+      atkSpeed: 35
+      range: 4
     - unitName: "\uC5BC\uC74C\uC815\uB839"
       unitType: 5
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 1
-      atkSpeed: 5
-      range: 2.5
+      dmg: 5
+      atkSpeed: 15
+      range: 4
     - unitName: "\uB0C9\uC7A5\uACE0"
       unitType: 5
       tier: 1
       critPercent: 0
       critDmg: 200
       dmg: 1
-      atkSpeed: 5
-      range: 2
+      atkSpeed: 10
+      range: 3
     - unitName: "\uB208\uC0AC\uB78C"
       unitType: 5
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 2
-      atkSpeed: 10
-      range: 2.3
+      dmg: 12
+      atkSpeed: 20
+      range: 4
     - unitName: "\uB300\uAC80\uC0AC"
       unitType: 6
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 5
-      atkSpeed: 20
+      dmg: 6
+      atkSpeed: 15
       range: 2.5
     - unitName: "\uACE0\uAE38\uB625"
       unitType: 6
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 7
-      atkSpeed: 10
-      range: 2.8
+      dmg: 8
+      atkSpeed: 30
+      range: 2.3
     - unitName: "\uAC80\uC0AC"
       unitType: 6
       tier: 1
       critPercent: 0
       critDmg: 200
-      dmg: 3
-      atkSpeed: 20
+      dmg: 1
+      atkSpeed: 15
       range: 2
     - unitName: "\uC57C\uC2A4\uC721"
       unitType: 6
       tier: 4
       critPercent: 0
-      critDmg: 200
-      dmg: 8
-      atkSpeed: 30
-      range: 2.8
+      critDmg: 300
+      dmg: 10
+      atkSpeed: 40
+      range: 3
     - unitName: "\uC804\uAD6C"
       unitType: 7
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 2
+      dmg: 4.5
       atkSpeed: 15
-      range: 3.5
+      range: 4
     - unitName: "\uB85C\uBD07"
       unitType: 7
       tier: 1
       critPercent: 0
       critDmg: 200
-      dmg: 2
-      atkSpeed: 15
-      range: 3.3
+      dmg: 1
+      atkSpeed: 10
+      range: 2.8
     - unitName: "\uC2A4\uBC14\uD034"
       unitType: 7
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 2
+      dmg: 11
       atkSpeed: 15
-      range: 4
+      range: 5.5
     - unitName: "\uC36C\uB77C\uC784"
       unitType: 7
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 3
-      atkSpeed: 10
-      range: 3.1
+      dmg: 20
+      atkSpeed: 30
+      range: 4
     enemyStat:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
       tier: 1
       strength: 1
-      hp: 3
+      hp: 2.5
       defense: 5
       moveSpeed: 2.7
     - enemyName: "\uC2DC\uAD11\uACE8\uB818"
@@ -9653,7 +9657,7 @@ MonoBehaviour:
       enemyType: 1
       tier: 1
       strength: 0
-      hp: 5
+      hp: 3
       defense: 0
       moveSpeed: 3
     - enemyName: "\uACFC\uD559\uC790"
@@ -9669,7 +9673,7 @@ MonoBehaviour:
       strength: 0
       hp: 30
       defense: 3
-      moveSpeed: 4.5
+      moveSpeed: 4
     - enemyName: "\uD3B8\uC758\uC810\uC54C\uBC14"
       enemyType: 1
       tier: 4
@@ -9688,7 +9692,7 @@ MonoBehaviour:
       enemyType: 2
       tier: 1
       strength: 0
-      hp: 3
+      hp: 2
       defense: 0
       moveSpeed: 3.2
     - enemyName: "\uB178\uB791\uD3EC\uC158"
@@ -9723,7 +9727,7 @@ MonoBehaviour:
       enemyType: 3
       tier: 1
       strength: 0
-      hp: 4
+      hp: 2
       defense: 0
       moveSpeed: 2.6
     - enemyName: "\uAC80\uC2A4\uCEEC"
@@ -9758,7 +9762,7 @@ MonoBehaviour:
       enemyType: 4
       tier: 1
       strength: 0
-      hp: 6
+      hp: 2
       defense: 2
       moveSpeed: 3
     - enemyName: "\uD480\uB77C\uC784"
@@ -9792,38 +9796,38 @@ MonoBehaviour:
     - enemyName: "\uB179\uC2A8\uACE8\uB818"
       enemyType: 0
       tier: 6
-      strength: 0
-      hp: 3
-      defense: 0
-      moveSpeed: 3
+      strength: 20
+      hp: 200
+      defense: 80
+      moveSpeed: 1.7
     - enemyName: "\uC778\uD615\uD0C8"
       enemyType: 1
       tier: 6
-      strength: 0
-      hp: 3
-      defense: 0
-      moveSpeed: 3
+      strength: 5
+      hp: 350
+      defense: 10
+      moveSpeed: 3.5
     - enemyName: "\uAC80\uC815\uD3EC\uC158"
       enemyType: 2
       tier: 6
       strength: 0
-      hp: 3
-      defense: 0
-      moveSpeed: 3
+      hp: 200
+      defense: 5
+      moveSpeed: 4.5
     - enemyName: "\uC2A4\uCE74\uC2A4\uCE74"
       enemyType: 3
       tier: 6
       strength: 0
-      hp: 3
+      hp: 120
       defense: 0
       moveSpeed: 3
     - enemyName: "\uBD80\uC6B8\uB77C\uC784"
       enemyType: 4
       tier: 6
-      strength: 0
-      hp: 3
-      defense: 0
-      moveSpeed: 3
+      strength: 10
+      hp: 180
+      defense: 5
+      moveSpeed: 3.3
     questStat:
     - questName: "\uC874\uBC84"
       explanation: "{0} / {1} \uC6E8\uC774\uBE0C \uB3D9\uC548 \uBC84\uD2F0\uC138\uC694."
@@ -9859,7 +9863,7 @@ MonoBehaviour:
     - questName: "\uCF5C\uB809\uD130"
       explanation: "{0} / {1}\uAC1C\uC758 \uB2E4\uB978 \uC885\uB958\uC758 \uC720\uB2DB\uC744
         \uBF51\uC73C\uC138\uC694."
-      condition: 4
+      condition: 3
       conditionWidth: 1
       ID: 6
     - questName: "\uD018\uC2A4\uD2B8\uC655"
@@ -9879,25 +9883,25 @@ MonoBehaviour:
       ID: 9
     - questName: "\uC77C\uBC18"
       explanation: "\uC77C\uBC18 \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
-        \uBF51\uC73C\uC138\uC694."
+        \uC18C\uD658\uD558\uC138\uC694."
       condition: 6
       conditionWidth: 2
       ID: 10
     - questName: "\uB808\uC5B4"
       explanation: "\uB808\uC5B4 \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
-        \uBF51\uC73C\uC138\uC694."
+        \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 11
     - questName: "\uC5D0\uD53D"
       explanation: "\uC5D0\uD53D \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
-        \uBF51\uC73C\uC138\uC694."
+        \uC18C\uD658\uD558\uC138\uC694."
       condition: 2
       conditionWidth: 2
       ID: 12
     - questName: "\uB808\uC804\uB4DC"
       explanation: "\uB808\uC804\uB4DC \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
-        \uBF51\uC73C\uC138\uC694."
+        \uC18C\uD658\uD558\uC138\uC694."
       condition: 1
       conditionWidth: 2
       ID: 13
@@ -9907,42 +9911,42 @@ MonoBehaviour:
       conditionWidth: 0
       ID: 14
     - questName: "\uD5C8\uB9AC\uAC00.."
-      explanation: "\uD65C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uD65C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 15
     - questName: "\uC2A4\uD134\uAC74"
-      explanation: "\uD30C\uC774\uD130 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uD30C\uC774\uD130 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 16
     - questName: "\uD654\uB975\uD654\uB975"
-      explanation: "\uBD88 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uBD88 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 17
     - questName: "\uC804\uC5FC\uBCD1"
-      explanation: "\uBCD1\uADE0 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uBCD1\uADE0 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 18
     - questName: "\uC9C4\uC9DC\uCD1D"
-      explanation: "\uCD1D \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uCD1D \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 19
     - questName: "\uACA8\uC6B8\uC655\uAD6D"
-      explanation: "\uC5BC\uC74C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uC5BC\uC74C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 20
     - questName: "\uCF5C\uB85C\uC138\uC6C0"
-      explanation: "\uAC80 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uAC80 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 21
     - questName: "\uCC0C\uB9AC\uB9BF"
-      explanation: "\uC804\uAE30 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uBF51\uC73C\uC138\uC694."
+      explanation: "\uC804\uAE30 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
       condition: 4
       conditionWidth: 2
       ID: 22
@@ -9965,115 +9969,115 @@ MonoBehaviour:
     - charateristicName: "\uBB34\uB9BF\uB300"
       explanation: "\uC801 \uCCB4\uB825\uC5D0 \uBE44\uB840\uD574 {0}% \uB370\uBBF8\uC9C0\uB97C
         \uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 2
+      conditionWidth: 0.5
       level: 0
       ID: 0
     - charateristicName: "\uD53C\uC2A4\uB79C\uB4DC"
       explanation: "\uC77C\uBC18 \uB808\uC5B4 \uB4F1\uAE09 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uACFC
         \uACF5\uACA9 \uC18D\uB3C4\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 1
       level: 0
       ID: 1
     - charateristicName: "\uB514\uBC84\uD504\uBC84\uD504"
       explanation: "\uB514\uBC84\uD504 \uC9C0\uC18D\uC2DC\uAC04\uC774 {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 1
+      conditionWidth: 0.2
       level: 0
       ID: 2
     - charateristicName: "3\uB300\uC6B4\uB3D9"
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uC774 {0}
         \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 0.2
       level: 0
       ID: 3
     - charateristicName: "\uC720\uC0B0\uC18C\uC6B4\uB3D9"
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 5
+      conditionWidth: 1
       level: 0
       ID: 4
     - charateristicName: "\uBE48\uD2C8\uCC0C\uB974\uAE30"
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uAC00
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 3
+      conditionWidth: 2
       level: 0
       ID: 5
     - charateristicName: CQC
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960\uC774
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 3
+      conditionWidth: 2
       level: 0
       ID: 6
     - charateristicName: "\uB7ED\uD0A4\uB9E8"
       explanation: "\uC5D0\uD53D\uACFC \uB808\uC804\uB4DC \uB4F1\uAE09\uC758 \uC720\uB2DB\uC774
         \uB4F1\uC7A5\uD560 \uD655\uB960\uC774 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 3
+      conditionWidth: 1
       level: 0
       ID: 7
     - charateristicName: "\uC0AC\uB2E4\uB9AC\uAC8C\uC784"
       explanation: "\uB9E4 \uC9DD\uC218 \uB77C\uC6B4\uB4DC\uB9C8\uB2E4 \uAC00\uCC60
         \uD0A4\uB97C {0}\uAC1C \uB354 \uBC1B\uC2B5\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 0
       level: 0
       ID: 8
     - charateristicName: "\uAC70\uC778\uD654"
       explanation: "\uCD5C\uB300 \uCCB4\uB825\uACFC \uD604\uC7AC \uCCB4\uB825\uC744
         {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 2
+      conditionWidth: 1
       level: 0
       ID: 9
     - charateristicName: "\uB450\uAEBC\uC6B4 \uD53C\uBD80"
-      explanation: "\uB9E4 \uB77C\uC6B4\uB4DC \uC885\uB8CC \uC2DC \uD604\uC7AC \uCCB4\uB825\uC744
+      explanation: "\uB9E4 \uC6E8\uC774\uBE0C \uC885\uB8CC \uC2DC \uD604\uC7AC \uCCB4\uB825\uC744
         {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 1
       level: 0
       ID: 10
     - charateristicName: "\uC6A9\uC0AC\uC758 \uAC80"
       explanation: "\uBCF4\uC2A4\uC5D0\uAC8C {0}% \uCD94\uAC00 \uB370\uBBF8\uC9C0\uB97C
         \uC785\uD799\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 1
       level: 0
       ID: 11
     - charateristicName: "4\uB2EC\uB77C"
       explanation: "\uD018\uC2A4\uD2B8 \uBCF4\uC0C1\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 0
       level: 0
       ID: 12
     - charateristicName: "\uACBD\uB825"
       explanation: "\uD604\uC7AC \uC6E8\uC774\uBE0C \uC22B\uC790\uC5D0 \uBE44\uB840\uD574
         \uACF5\uACA9\uB825\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.2
+      conditionWidth: 0.1
       level: 0
       ID: 13
     - charateristicName: "\uBBF8\uCE5C \uBD88"
       explanation: "\uD654\uC0C1 \uB370\uBBF8\uC9C0\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 1
       level: 0
       ID: 14
     - charateristicName: "4\uB3C4 \uD654\uC0C1"
       explanation: "\uD654\uC0C1 \uC0C1\uD0DC\uC758 \uC801\uC5D0\uAC8C \uBD88\uACC4\uC5F4
         \uB370\uBBF8\uC9C0\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 15
     - charateristicName: "\uC18C\uB4DC\uB9C8\uC2A4\uD130"
       explanation: "\uAC80 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
+      condition: 0.2
       conditionWidth: 0.1
       level: 0
       ID: 16
@@ -10081,56 +10085,56 @@ MonoBehaviour:
       explanation: "\uD50C\uB808\uC774\uC5B4\uAC00 \uB370\uBBF8\uC9C0\uB97C \uC785\uC744
         \uB54C\uB9C8\uB2E4 \uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uC774
         {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 0.2
+      conditionWidth: 0.1
       level: 0
       ID: 17
     - charateristicName: "\uC18D\uC0AC"
       explanation: "\uD65C \uACC4\uC5F4 \uACF5\uC18D\uACFC \uD06C\uB9AC\uD2F0\uCEEC
         \uB370\uBBF8\uC9C0\uAC00 {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 18
     - charateristicName: "\uD654\uAD81"
       explanation: "\uD65C \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uD654\uC0C1\uD6A8\uACFC\uB97C
-        \uBD80\uC5EC\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+        \uBD80\uC5EC\uD558\uACE0 \uD654\uC0B4\uC758 \uC18D\uB3C4\uB97C {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      condition: 1
+      conditionWidth: 0.5
       level: 0
       ID: 19
     - charateristicName: "\uC2A4\uD134\uAC74"
       explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uB300\uC0C1\uC744
         \uAE30\uC808\uC2DC\uD0A4\uACE0 \uAE30\uC808 \uC9C0\uC18D\uC2DC\uAC04\uC774
         {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
+      condition: 0.2
       conditionWidth: 0.1
       level: 0
       ID: 20
     - charateristicName: "\uC544\uC6C3\uBCF5\uC11C"
       explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uC640 \uD22C\uC0AC\uCCB4
         \uD06C\uAE30\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
+      condition: 0.2
       conditionWidth: 0.1
       level: 0
       ID: 21
     - charateristicName: "\uC131\uC778\uBCD1"
       explanation: "\uAC10\uC5FC \uC0C1\uD0DC \uC801\uC5D0\uAC8C \uADE0 \uB370\uBBF8\uC9C0\uAC00
         {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 22
     - charateristicName: "\uBA74\uC5ED\uB825"
       explanation: "\uAC10\uC5FC \uC0C1\uD0DC \uC801\uC758 \uBC29\uC5B4\uB825\uC744
         {0}\uB9CC\uD07C \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
-      condition: 0.1
+      condition: 0.3
       conditionWidth: 0.1
       level: 0
       ID: 23
     - charateristicName: "\uC9EC\uBC25"
       explanation: "\uCD1D \uACC4\uC5F4 \uC720\uB2DB\uC740 \uC6E8\uC774\uBE0C \uC885\uB8CC
-        \uC2DC \uBAA8\uB4E0 \uC2A4\uD0EF\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+        \uC2DC \uB370\uBBF8\uC9C0\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 0.1
       conditionWidth: 0.1
       level: 0
@@ -10139,8 +10143,8 @@ MonoBehaviour:
       explanation: "\uCD1D \uACC4\uC5F4 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC
         \uD655\uB960\uACFC \uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uAC00 {0}%
         \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 25
     - charateristicName: "\uAF41\uAF41"
@@ -10157,27 +10161,26 @@ MonoBehaviour:
       level: 0
       ID: 27
     - charateristicName: "\uACFC\uBD80\uD558"
-      explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC
-        \uD655\uB960\uC744 {0} \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uD06C\uB9AC\uD2F0\uCEEC
-        \uD655\uB960\uC758 \uCD08\uACFC \uBD84\uC740 \uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uB85C
-        \uCE58\uD658\uB429\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uCE58\uBA85\uD0C0
+        \uD655\uB960\uC744 {0} \uC99D\uAC00\uC2DC\uD0A4\uACE0 \uCD08\uACFC\uBD84\uC740
+        \uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0\uB85C \uCE58\uD658\uB429\uB2C8\uB2E4."
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 28
     - charateristicName: "\uC624\uBC84\uD074\uB7ED"
       explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00
         {0}\uB9CC\uD07C \uC99D\uAC00\uD558\uC9C0\uB9CC \uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0\uAC00
         {0}\uB9CC\uD07C \uAC10\uC18C\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 29
     - charateristicName: "\uCC98\uD615"
       explanation: "\uCCB4\uB825\uC774 {0}% \uBBF8\uB9CC\uC778 \uBAAC\uC2A4\uD130\uB97C
         \uC989\uC0AC\uC2DC\uD0B5\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 1
+      conditionWidth: 1.5
       level: 0
       ID: 30
     - charateristicName: "\uB9DD\uC6D0\uACBD"
@@ -10195,14 +10198,14 @@ MonoBehaviour:
     - charateristicName: "\uAD70\uB2E8"
       explanation: "\uC720\uB2DB\uC744 \uC18C\uD658\uD560 \uB54C\uB9C8\uB2E4 \uBAA8\uB4E0
         \uC720\uB2DB\uB4E4\uC758 \uACF5\uACA9\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 1
-      conditionWidth: 1
+      condition: 0.1
+      conditionWidth: 0.02
       level: 0
       ID: 33
     - charateristicName: "\uCCAD\uC57D"
       explanation: "5 \uBC30\uC218 \uC6E8\uC774\uBE0C\uB9C8\uB2E4 \uAC00\uCC60 \uD0A4\uB97C
         {0}\uB9CC\uD07C \uB354 \uC5BB\uC2B5\uB2C8\uB2E4."
-      condition: 5
+      condition: 2
       conditionWidth: 2
       level: 0
       ID: 34
@@ -10210,29 +10213,29 @@ MonoBehaviour:
       explanation: "\uC720\uB2DB \uBF51\uAE30 \uC2DC \uC77C\uBC18 \uB4F1\uAE09\uC774
         \uB098\uC624\uBA74 {0}% \uD655\uB960\uB85C \uAC00\uCC60 \uD0A4\uB97C 1~3\uAC1C
         \uBC1B\uC2B5\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 2
+      conditionWidth: 1
       level: 0
       ID: 35
     - charateristicName: "\uBD80\uB450\uC220"
       explanation: "\uACBD\uD5D8\uCE58 \uC99D\uAC00\uB7C9\uC774 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 5
+      conditionWidth: 2
       level: 0
       ID: 36
     - charateristicName: "\uAD11\uBD84"
       explanation: "\uD50C\uB808\uC774\uC5B4\uAC00 \uB370\uBBF8\uC9C0\uB97C \uC785\uC744
         \uB54C\uB9C8\uB2E4 \uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9\uC18D\uB3C4\uAC00
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 1
+      conditionWidth: 1
       level: 0
       ID: 37
     - charateristicName: "\uC5D8\uB9AC\uD2B8"
       explanation: "\uC5D0\uD53D\uACFC \uB808\uC804\uB4DC \uB4F1\uAE09\uC758 \uC720\uB2DB\uC758
         \uACF5\uACA9\uB825\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 10
-      conditionWidth: 10
+      condition: 2
+      conditionWidth: 1
       level: 0
       ID: 38
     - charateristicName: "\uD0C0\uC784\uC2A4\uD1B1"
@@ -30488,10 +30491,7 @@ MonoBehaviour:
   healthWave: 0
   plusReward: 0
   plusIce: 1
-  spawnDmg: 0
   wave5: 0
-  commonGatcha: 0
-  madDmg: 0
   proportionHP: 0
   dmgWave: 0
   dmgFire: 0
@@ -30501,7 +30501,10 @@ MonoBehaviour:
   dmgWaveGun: 0
   iceGatcha: 0
   execution: 0
+  spawnDmg: 0
+  commonGatcha: 0
   plusExp: 0
+  madDmg: 0
 --- !u!1001 &1999877104
 PrefabInstance:
   m_ObjectHideFlags: 0

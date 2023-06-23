@@ -6,7 +6,7 @@ public class Porjectile_Fire : Projectile
 {
     Transform childTrans;
     BoxCollider2D hitbox;
-    const float DEFAULT_RANGE = 3.2f; // 불마법사를 기본으로 불 크기 설정
+    float defaultRange = 3.2f; // 불마법사를 기본으로 불 크기 설정
 
     private void Awake()
     {
@@ -16,13 +16,19 @@ public class Porjectile_Fire : Projectile
 
     public void FireRange()
     {
-        float plusSize = (range - DEFAULT_RANGE) * 0.5f;
+        if (range == defaultRange)
+            return;
+
+        float plusSize = (range - defaultRange) * 0.5f;
 
         // Collider
-        hitbox.offset = new Vector2(hitbox.offset.x + plusSize, 0);
+        hitbox.offset += new Vector2(plusSize, 0);
         hitbox.size = new Vector2(hitbox.offset.x * 2, 1);
         // Scale
-        childTrans.localScale = new Vector3(childTrans.localScale.x, childTrans.localScale.y, childTrans.localScale.z + plusSize);
+        childTrans.localScale += new Vector3(0, 0, plusSize);
+
+        // 사거리 기본값 변경
+        defaultRange = range;
     }
 
     public override void SetStat(UnitStat unit)

@@ -102,9 +102,8 @@ public class SpawnManager : Singleton<SpawnManager>
 
         SoundManager.Instance.PlaySFX("SpawnUnit");
 
-        if (!QuestManager.Instance.unitTypesList.Contains(type))
-            QuestManager.Instance.unitTypesList.Add(type); // 퀘스트 6
         QuestManager.Instance.tierNum[(int)(tier - 1)]++; // 퀘스트 10,11,12,13
+        QuestManager.Instance.unitNum[(int)type]++; // 퀘스트 15 ~22
 
         // Charac
         CharacManager cm = CharacManager.Instance;
@@ -177,7 +176,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         TextMeshPro dmgText = PoolManager.Instance.GetFromPool<TextMeshPro>("DmgText");
         dmgText.alpha = 1f;
-        dmgText.SetText(dmg.ToString());
+        dmgText.SetText(dmg.ToString("F1")); // 소수점 한자리까지만 표기
         return dmgText;
     }
 

@@ -151,10 +151,11 @@ public class Enemy : MonoBehaviour, IPoolObject
     {
         if (isDie || !gameObject.activeSelf)
             return;
-        
+
+        enemyStat.defense = Mathf.Max(enemyStat.defense, 0); // 방어력 최소값 0
         float defenseRatio = MathF.Round(100 / (100 + enemyStat.defense), 1);
-        float totalDmg = (dmg + (enemyStat.hp * (CharacManager.Instance.proportionHP / 100)) + WaveManager.Instance.dmgPerWave)
-            * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지 + 웨이브 당 데미지) * 디펜스
+        float totalDmg = (dmg + (curHp * (CharacManager.Instance.proportionHP / 100)) + WaveManager.Instance.dmgPerWave)
+            * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지 + 웨이브 당 데미지) * 방어력
 
         curHp -= totalDmg;
         UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);
@@ -186,7 +187,6 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                     float delayDmg = 0.3f; // 딜레이
                     int dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
-                    enemyStat.defense -= CharacManager.Instance.defenseGerm;
 
                     for (int i = 0; i < dmgCount; i++)
                     {
@@ -202,12 +202,13 @@ public class Enemy : MonoBehaviour, IPoolObject
                     delayDmg = 0.3f; // 딜레이
                     dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
+                    enemyStat.defense -= CharacManager.Instance.defenseGerm; // Charac 23
+
                     for (int i = 0; i < dmgCount; i++)
                     {
                         TakeDmg(dmg, Color.black, 0.5f, isCrit);
                         yield return new WaitForSeconds(delayDmg);
                     }
-                    enemyStat.defense += CharacManager.Instance.defenseGerm;
                     break;
 
                 case Attribute.Ice: // 얼음 공격
@@ -218,7 +219,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     //슬로우
-                    float slowDuration = (attributePower - GetStrengthModifier()); // 지속 시간
+                    float slowDuration = Mathf.Max(attributePower - GetStrengthModifier(), 0); // 지속 시간
                     float slowPercent = attributePower / (10 + enemyStat.strength); // 슬로우 %
                     // Charac 26
                     int plusSlow = CharacManager.Instance.plusIce;
@@ -240,7 +241,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     //스턴
-                    float stunDuration = attributePower - GetStrengthModifier(); // 지속 시간
+                    float stunDuration = Mathf.Max(attributePower - GetStrengthModifier(), 0);
                     isStop = true;
                     yield return new WaitForSeconds(stunDuration); //지속 시간
                     isStop = false;
@@ -325,9 +326,12 @@ public class Enemy : MonoBehaviour, IPoolObject
     public void Reborn()
     {
         isStop = false;
+        isDie = false;
         curLife--;
         curHp = enemyStat.hp;
         ResetDebuffStat();
+
+        StartCoroutine(OnMove());
 
         SoundManager.Instance.PlaySFX("Reborn");
     }
