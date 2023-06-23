@@ -11,6 +11,8 @@ public class ObjectDetector : MonoBehaviour
     private UIManager uiManager;
     private GameManager gm;
 
+    public bool isTouchingUI;
+
     private void Awake()
     {
         proCam = Camera.main.GetComponent<ProCamera2DPanAndZoom>();
@@ -29,29 +31,41 @@ public class ObjectDetector : MonoBehaviour
 
     private void ClickTile(DEVICE device)
     {
+        if (proCam.IsPanning)
+            return;
+
         switch(device)
         {
             case DEVICE.UNITY:
-                if (Input.GetMouseButtonDown(0) && !proCam.IsPanning)
+                if (Input.GetMouseButtonDown(0))
                 {
                     // 마우스가 UI요소 위에 있을 시
                     if (EventSystem.current.IsPointerOverGameObject())
+                    {
+                        isTouchingUI = true;
                         return;
+                    }
 
-                    Tile();
+                    isTouchingUI = false;
                 }
                 break;
             case DEVICE.ANDROID:
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !proCam.IsPanning)
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                 {
-                    // 마우스가 UI요소 위에 있을 시
+                    // 터치 위에 UI요소가 있을 시
                     if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                    {
+                        isTouchingUI = true;
                         return;
+                    }
 
-                    Tile();
+                    isTouchingUI = false;
                 }
                 break;
         }
+
+        if (!isTouchingUI && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)))
+            Tile();
     }
 
     private void Tile()

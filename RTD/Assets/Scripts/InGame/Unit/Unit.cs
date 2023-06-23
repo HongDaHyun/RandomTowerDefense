@@ -25,7 +25,7 @@ public class Unit : MonoBehaviour, IPoolObject
         anim = GetComponent<Animator>();
         if (anim != null)
             isAnim = true;
-        unitStat = CSVReader.Instance.csvList.FindUnit(name);
+        SetUp();
         SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
     }
 
