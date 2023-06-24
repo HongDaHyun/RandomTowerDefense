@@ -125,6 +125,8 @@ public class SpawnManager : Singleton<SpawnManager>
         tileGround.SetTile(newUnit);
         if (UIManager.Instance.clickTile.activeSelf)
             UIManager.Instance.clickTile.SetActive(false);
+
+        newUnit.ChangeState(UnitState.SearchTarget); // 유닛 OnGettingFromPool에서 사용 시 위치를 느리게 받아와 바로 찾는 문제로 인해 스폰매니저에서 처리
     }
 
     public void DeSpawnUnit(Unit unit)
@@ -195,6 +197,16 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnVFX(string name, Particle particle)
     {
         PoolManager.Instance.TakeToPool<Particle>(name, particle);
+    }
+
+    public Transform SpawnUI(string name)
+    {
+        return PoolManager.Instance.GetFromPool<Transform>(name);
+    }
+
+    public void DeSpawnUI(string name, Transform trans)
+    {
+        PoolManager.Instance.TakeToPool<Transform>(name, trans);
     }
     #endregion
 

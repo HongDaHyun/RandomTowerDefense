@@ -142,7 +142,7 @@ public class CSVList
         switch (kind)
         {
             case UpUnit.Dmg:
-                unitStat[ID].dmg += value;
+                unitStat[ID].dmg = Mathf.Round((unitStat[ID].dmg + value) * 100f) / 100f;
                 break;
             case UpUnit.CritPercent:
                 unitStat[ID].critPercent += (int)value;
@@ -151,17 +151,17 @@ public class CSVList
                 unitStat[ID].critDmg += (int)value;
                 break;
             case UpUnit.AtkSpeed:
-                unitStat[ID].atkSpeed += value;
+                unitStat[ID].atkSpeed = Mathf.Round((unitStat[ID].atkSpeed + value) * 100f) / 100f;
                 break;
             case UpUnit.Range:
-                unitStat[ID].range += value;
+                unitStat[ID].range = Mathf.Round((unitStat[ID].range + value) * 100f) / 100f;
                 break;
             case UpUnit.All:
-                unitStat[ID].dmg += value;
+                unitStat[ID].dmg = Mathf.Round((unitStat[ID].dmg + value) * 100f) / 100f;
                 unitStat[ID].critPercent += (int)value;
                 unitStat[ID].critDmg += (int)value;
-                unitStat[ID].atkSpeed += value;
-                unitStat[ID].range += value;
+                unitStat[ID].atkSpeed = Mathf.Round((unitStat[ID].atkSpeed + value) * 100f) / 100f;
+                unitStat[ID].range = Mathf.Round((unitStat[ID].range + value) * 100f) / 100f;
                 break;
         }
     }
@@ -214,19 +214,19 @@ public class CSVList
                 enemyStat[ID].strength += (int)value;
                 break;
             case UpEnemy.Hp:
-                enemyStat[ID].hp += value;
+                enemyStat[ID].hp = Mathf.Round((enemyStat[ID].hp + value) * 100f) / 100f;
                 break;
             case UpEnemy.Defense:
-                enemyStat[ID].defense += value;
+                enemyStat[ID].defense = Mathf.Round((enemyStat[ID].defense + value) * 100f) / 100f;
                 break;
             case UpEnemy.MoveSpeed:
-                enemyStat[ID].moveSpeed += value;
+                enemyStat[ID].moveSpeed = Mathf.Round((enemyStat[ID].moveSpeed + value) * 100f) / 100f;
                 break;
             case UpEnemy.All:
                 enemyStat[ID].strength += (int)value;
-                enemyStat[ID].hp += value;
-                enemyStat[ID].defense += value;
-                enemyStat[ID].moveSpeed += value;
+                enemyStat[ID].hp = Mathf.Round((enemyStat[ID].hp + value) * 100f) / 100f;
+                enemyStat[ID].defense = Mathf.Round((enemyStat[ID].defense + value) * 100f) / 100f;
+                enemyStat[ID].moveSpeed = Mathf.Round((enemyStat[ID].moveSpeed + value) * 100f) / 100f;
                 break;
         }
     }
@@ -256,14 +256,6 @@ public class CSVList
     {
         return characteristicStat[id];
     }
-
-    public void ResizeCharac(int id)
-    {
-        for (int i = id - 1; i < characteristicStat.Length - 1; i++)
-        {
-            characteristicStat[i] = characteristicStat[i + 1];
-        }
-    }
     #endregion
 
     #region Attribute
@@ -277,13 +269,13 @@ public class CSVList
     // Upgrade
     public void UpgradeAttribute(Attribute attribute, float value)
     {
-        attributeStat[(int)attribute].attributePower += value;
+        attributeStat[(int)attribute].attributePower = Mathf.Round((attributeStat[(int)attribute].attributePower + value) * 100f) / 100f;
     }
     public void UpgradeAllAttribute(float value)
     {
         for(int i = 0; i < attributeStat.Length; i++)
         {
-            attributeStat[i].attributePower += value;
+            attributeStat[i].attributePower = Mathf.Round((attributeStat[i].attributePower + value) * 100f) / 100f;
         }
     }
     #endregion
@@ -305,15 +297,16 @@ public class CSVList
         }
         return ref projectileStat[0];
     }
+
     public void UpgradeProjectile(ref ProjectileStat stat, string kind, float value)
     {
         switch (kind)
         {
             case "Size":
-                stat.size += value;
+                stat.size = Mathf.Round((stat.size + value) * 100f) / 100f;
                 break;
             case "Speed":
-                stat.speed += value;
+                stat.speed = Mathf.Round((stat.speed + value) * 100f) / 100f;
                 break;
         }
     }
@@ -326,12 +319,12 @@ public class CSVList
         {
             case "Size":
                 for (int i = 0; i < length; i++)
-                    projectileStat[i].size += value;
+                    projectileStat[i].size = Mathf.Round((projectileStat[i].size + value) * 100f) / 100f;
                 break;
 
             case "Speed":
                 for (int i = 0; i < length; i++)
-                    projectileStat[i].speed += value;
+                    projectileStat[i].speed = Mathf.Round((projectileStat[i].speed + value) * 100f) / 100f;
                 break;
         }
     }

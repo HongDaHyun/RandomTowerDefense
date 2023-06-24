@@ -47,6 +47,8 @@ public class CharacteristicCard : MonoBehaviour
         CharacLevelUp(ref CSVReader.Instance.csvList.characteristicStat[characStat.ID]); // 레벨 업
         CharacManager.Instance.DoCharac(characStat);
 
+        UIManager.Instance.CharacInfoPannel(this); // 내 정보 업데이트
+
         //UI
         UIManager.Instance.characteristicPannel.SetActive(false);
         BtnManager.Instance.Play();

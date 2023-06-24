@@ -90,14 +90,7 @@ public class BtnManager : Singleton<BtnManager>
 
     public void Title()
     {
-        //초기화
-        GameManager gm = GameManager.Instance;
-        gm.isStart = false;
-        gm.gameTime = GameTime.Slow; // 속도
-        //경험치
-        gm.expLevel = 0;
-        gm.maxExp = 1000;
-        gm.curExp = 0;
+        GameManager.Instance.SetGM();
 
         Play();
         SceneManager.LoadScene(0);
@@ -254,5 +247,17 @@ public class BtnManager : Singleton<BtnManager>
             um.questPannel.refreshBtn.interactable = true;
 
         um.questPannel.coolTxt.text = string.Format("{0}/{1}", um.questPannel.curCool, um.questPannel.maxCool);
+    }
+
+    public void LevelUpBtn()
+    {
+        UIManager um = UIManager.Instance;
+
+        GameManager.Instance.levelPoint--;
+
+        um.characteristicPannel.SetActive(true); // 특성 패널 활성화
+        um.InitCard(); // 카드 생성
+
+        um.levelUpBtn.SetUI(); // UI 설정
     }
 }

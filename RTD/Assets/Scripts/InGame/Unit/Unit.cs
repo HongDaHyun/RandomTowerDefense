@@ -32,7 +32,6 @@ public class Unit : MonoBehaviour, IPoolObject
     void IPoolObject.OnGettingFromPool()
     {
         SetUp();
-        ChangeState(UnitState.SearchTarget);
     }
 
     void Update()

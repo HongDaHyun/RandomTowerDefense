@@ -108,9 +108,12 @@ MonoBehaviour:
     hp: 0
     defense: 0
     moveSpeed: 0
+  speed: 0
   moveDirection: {x: 0, y: 0, z: 0}
   curWayPoint: 0
+  maxLife: 0
   curHp: 0
+  isStop: 0
 --- !u!61 &2604054667756183949
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,7 +150,7 @@ Animator:
   m_GameObject: {fileID: 6635571574041197299}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c57a58bf0ca9d9d4185bc1a685d1be54, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4275b39ce6681a847a7516053ff14e5f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

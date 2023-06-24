@@ -280,38 +280,12 @@ public class Enemy : MonoBehaviour, IPoolObject
         hpSlider.value = Mathf.Lerp(hpSlider.value, imsi, Time.deltaTime * 10);
     }
 
-    //Die
-    private void SpecificDie()
-    {
-        if (isDie)
-            return;
-        StopAllCoroutines();
-        switch (enemyStat.enemyType)
-        {
-            case EnemyType.Portion:
-                isStop = true;
-                anim.SetTrigger("Die");
-                break;
-            case EnemyType.Skeleton:
-                isStop = true;
-                if (curLife > 0)
-                    anim.SetTrigger("Reborn");
-                else
-                    Die();
-                break;
-            case EnemyType.Slime:
-                isStop = true;
-                anim.SetTrigger("Split");
-                break;
-            default: // ªÁ∂˜, ∞Ò∑Ω, ¿€∂Û¿”
-                Die();
-                break;
-        }
-        isDie = true;
-    }
-
     private void Die()
     {
+        isStop = true;
+        isDie = true;
+        StopAllCoroutines();
+
         QuestManager.Instance.killEnemyNum++; // ƒ˘Ω∫∆Æ 5
 
         // ∞Ê«Ëƒ° ¡ı∞°
@@ -323,6 +297,36 @@ public class Enemy : MonoBehaviour, IPoolObject
     #endregion
 
     #region Specific
+    private void SpecificDie()
+    {
+        if (isDie)
+            return;
+        switch (enemyStat.enemyType)
+        {
+            case EnemyType.Portion:
+                isStop = true;
+                anim.SetTrigger("Die");
+                break;
+            case EnemyType.Skeleton:
+                isStop = true;
+                isDie = true;
+                if (curLife > 0)
+                    anim.SetTrigger("Reborn");
+                else
+                    Die();
+                break;
+            case EnemyType.Slime:
+                isStop = true;
+                isDie = true;
+                anim.SetTrigger("Split");
+                break;
+            default: // ªÁ∂˜, ∞Ò∑Ω, ¿€∂Û¿”
+                Die();
+                break;
+        }
+        isDie = true;
+    }
+
     public void Reborn()
     {
         isStop = false;
@@ -330,8 +334,6 @@ public class Enemy : MonoBehaviour, IPoolObject
         curLife--;
         curHp = enemyStat.hp;
         ResetDebuffStat();
-
-        StartCoroutine(OnMove());
 
         SoundManager.Instance.PlaySFX("Reborn");
     }

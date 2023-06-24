@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
     public Level level;
     public GameTime gameTime = GameTime.Slow;
     public bool isStart;
-    public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp;
+    public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp, levelPoint;
     public float curExp, increaseExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public int[] levelNum;
@@ -55,6 +55,18 @@ public class GameManager : Singleton<GameManager>
         cm = CharacManager.Instance;
     }
 
+    public void SetGM()
+    {
+        //초기화
+        isStart = false;
+        gameTime = GameTime.Slow; // 속도
+        //경험치
+        expLevel = 0;
+        maxExp = 1000;
+        curExp = 0;
+        levelPoint = 0;
+    }
+
     public void GainHealth(int a)
     {
         curHealth += a;
@@ -100,12 +112,9 @@ public class GameManager : Singleton<GameManager>
 
         curExp = 0;
         expLevel++;
+        levelPoint++;
         maxExp += Mathf.RoundToInt(increaseExp * maxExp);
-        // 레벨UI
 
-        UIManager.Instance.characteristicPannel.SetActive(true); // 특성 패널 활성화
-        UIManager.Instance.InitCard(); // 카드 생성
-
-        BtnManager.Instance.Pause(); //정지
+        UIManager.Instance.levelUpBtn.SetUI(); // UI 설정
     }
 }
