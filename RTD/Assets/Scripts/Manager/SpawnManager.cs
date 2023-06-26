@@ -10,6 +10,8 @@ public class SpawnManager : Singleton<SpawnManager>
     public List<Enemy> enemyList;
     public List<Unit> unitList;
 
+    WaveManager wm;
+
     protected override void Awake()
     {
         base.Awake();
@@ -17,9 +19,10 @@ public class SpawnManager : Singleton<SpawnManager>
         unitList = new List<Unit>();
     }
 
-    private void Start()
+    void Start()
     {
-        StartCoroutine(WaveManager.Instance.StartWave());
+        wm = WaveManager.Instance;
+        StartCoroutine(wm.StartWave());
     }
 
     #region SpawnEnemy
@@ -28,25 +31,17 @@ public class SpawnManager : Singleton<SpawnManager>
         if (enemyList.Count != 0)
             return;
 
-        StartCoroutine(SpawnEnemyCoroutine());
-    }
-
-    public void DeSpawnEnemy(Enemy enemy)
-    {
-        enemyList.Remove(enemy);
-        PoolManager.Instance.TakeToPool<Enemy>(enemy.enemyStat.enemyName, enemy);
-    }
-
-    private IEnumerator SpawnEnemyCoroutine()
-    {
-        WaveManager wm = WaveManager.Instance;
-
         wm.isWave = true;
-        int waveNum = wm.curWave;
-        Wave wave = wm.waves[waveNum];
+        int waveNum = wm.curWave - 1;
 
-        wm.curWave++; //웨이브 시작 시 curWave 증가
+        if (wm.curWave > wm.maxWave) // maxWave를 넘길 시
+            wm.RanWave(wm.waves[waveNum - 1]); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
 
+        StartCoroutine(SpawnEnemyRoutine(wm.waves[waveNum]));
+    }
+
+    private IEnumerator SpawnEnemyRoutine(Wave wave)
+    {
         foreach (WaveEnemy enemyData in wave.enemy)
         {
             int spawnEnemyCount = 0;
@@ -62,6 +57,12 @@ public class SpawnManager : Singleton<SpawnManager>
             }
         }
         //모든 적 소환 완료
+    }
+
+    public void DeSpawnEnemy(Enemy enemy)
+    {
+        enemyList.Remove(enemy);
+        PoolManager.Instance.TakeToPool<Enemy>(enemy.enemyStat.enemyName, enemy);
     }
 
     public Enemy SpawnBabySlime(Enemy bigSlime)
@@ -177,6 +178,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public TextMeshPro SpawnDmgText(float dmg)
     {
         TextMeshPro dmgText = PoolManager.Instance.GetFromPool<TextMeshPro>("DmgText");
+        dmgText.sortingOrder = 2;
         dmgText.alpha = 1f;
         dmgText.SetText(dmg.ToString("F1")); // 소수점 한자리까지만 표기
         return dmgText;

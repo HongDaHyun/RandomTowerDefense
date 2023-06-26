@@ -35,64 +35,29 @@ public class BtnManager : Singleton<BtnManager>
         gm.isStart = true;
         gm.level = (Level)Enum.Parse(typeof(Level), _level);
 
-        LevelDifficult(gm.level);
+        gm.DifficultLevel(gm.level);
 
-        AdMobManager.Instance.ToggleBannerAd(false);
         SceneManager.LoadScene(1);
+        AdMobManager.Instance.ToggleBannerAd(false);
     } // 레벨 설정에 따라
 
     public void AgainStart()
     {
-        LevelDifficult(GameManager.Instance.level);
+        GameManager.Instance.DifficultLevel(GameManager.Instance.level);
     }
 
-    private void LevelDifficult(Level level)
+    public void TitleFX()
     {
-        GameManager gm = GameManager.Instance;
-
-        switch (level)
-        {
-            case Level.Easy: // 쉬움
-                gm.gatchaKey = 3;
-                gm.maxHealth = 30;
-                gm.maxExp = 5;
-                gm.increaseExp = 0.2f;
-                gm.maxWave = gm.levelNum[0];
-                gm.curHealth = gm.maxHealth;
-                break;
-            case Level.Normal: // 보통
-                gm.gatchaKey = 2;
-                gm.maxHealth = 25;
-                gm.maxExp = 5;
-                gm.increaseExp = 0.3f;
-                gm.maxWave = gm.levelNum[1];
-                gm.curHealth = gm.maxHealth;
-                break;
-            case Level.Hard: // 어려움
-                gm.gatchaKey = 1;
-                gm.maxHealth = 20;
-                gm.maxExp = 10;
-                gm.increaseExp = 0.4f;
-                gm.maxWave = gm.levelNum[2];
-                gm.curHealth = gm.maxHealth;
-                break;
-            case Level.Infinite: // 무한
-                gm.gatchaKey = 2;
-                gm.maxHealth = 25;
-                gm.maxExp = 10;
-                gm.increaseExp = 0.4f;
-                gm.maxWave = gm.levelNum[3];
-                gm.curHealth = gm.maxHealth;
-                break;
-        }
-        gm.gameTime = GameTime.Slow; // 속도 초기화
+        UIManager.Instance.fx.TransitionExit();
+        UIManager.Instance.fx.OnTransitionExitEnded += Title;
     }
 
-    public void Title()
+    private void Title()
     {
         GameManager.Instance.SetGM();
 
         Play();
+
         SceneManager.LoadScene(0);
     }
 
@@ -113,7 +78,7 @@ public class BtnManager : Singleton<BtnManager>
         ui.gatchaPannel.gatchaTab.interactable = false;
 
         // 0: Bow, 1: Fighter, 2: Fire, 3: Germ, 4: Gun, 5: Ice, 6: Sword, 7: Thunder 
-        int ranType = UnityEngine.Random.Range(0, 7);
+        int ranType = UnityEngine.Random.Range(0, 8);
 
         // 0: Common, 1: Rare, 2: Epic, 3: Legend
         int ranTier = UnityEngine.Random.Range(0, gm.probability[0] + gm.probability[1] + gm.probability[2] + gm.probability[3]);
@@ -218,8 +183,7 @@ public class BtnManager : Singleton<BtnManager>
         int ranID;
         List<int> IDs = new List<int>(); //중복 방지 리스트
 
-        int length = um.questPannel.quests.Length;
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < 3; i++)
         {
             ranID = UnityEngine.Random.Range(0, CSVReader.Instance.csvList.questStat.Length);
             if (IDs.Contains(ranID)) // 중복이면 다시

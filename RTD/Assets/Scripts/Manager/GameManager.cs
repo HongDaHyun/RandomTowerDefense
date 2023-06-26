@@ -13,9 +13,6 @@ public class GameManager : Singleton<GameManager>
     public int[] levelNum;
     public DEVICE device;
 
-    CSVList cl;
-    CharacManager cm;
-
     protected override void Awake()
     {
         base.Awake();
@@ -49,12 +46,6 @@ public class GameManager : Singleton<GameManager>
             LevelUp();
     }
 
-    private void Start()
-    {
-        cl = CSVReader.Instance.csvList;
-        cm = CharacManager.Instance;
-    }
-
     public void SetGM()
     {
         //초기화
@@ -83,11 +74,14 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void LoseHealth()
+    public void LoseHealth(int i)
     {
+        CSVList cl = CSVReader.Instance.csvList;
+        CharacManager cm = CharacManager.Instance;
+
         SoundManager.Instance.PlaySFX("Hurt");
 
-        curHealth--;
+        curHealth -= i;
 
         cl.UpgradeUnit(cl.FindUnit(UnitType.Sword), UpUnit.Dmg, cm.dmgSword); // Charac 17
         cl.UpgradeAllUnit(UpUnit.AtkSpeed, cm.madDmg); // Charac 37
@@ -99,7 +93,53 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public void DifficultLevel(Level level)
+    {
+        switch (level)
+        {
+            case Level.Easy: // 쉬움
+                gatchaKey = 3;
+                maxHealth = 30;
+                maxExp = 10;
+                increaseExp = 0.3f;
+                maxWave = levelNum[0];
+                curHealth = maxHealth;
+                break;
+            case Level.Normal: // 보통
+                gatchaKey = 2;
+                maxHealth = 25;
+                maxExp = 10;
+                increaseExp = 0.5f;
+                maxWave = levelNum[1];
+                curHealth = maxHealth;
+                break;
+            case Level.Hard: // 어려움
+                gatchaKey = 2;
+                maxHealth = 20;
+                maxExp = 10;
+                increaseExp = 1f;
+                maxWave = levelNum[2];
+                curHealth = maxHealth;
+                break;
+            case Level.Infinite: // 무한
+                gatchaKey = 2;
+                maxHealth = 20;
+                maxExp = 10;
+                increaseExp = 1f;
+                maxWave = levelNum[3];
+                curHealth = maxHealth;
+                break;
+        }
+        gameTime = GameTime.Slow; // 속도 초기화
+    }
+
     public void GameOver()
+    {
+        BtnManager.Instance.Pause();
+        UIManager.Instance.gameOverPannel.SetActive(true);
+    }
+
+    public void GameClear() // 업데이트 필요
     {
         BtnManager.Instance.Pause();
         UIManager.Instance.gameOverPannel.SetActive(true);

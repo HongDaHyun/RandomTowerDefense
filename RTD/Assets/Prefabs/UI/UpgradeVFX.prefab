@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 440220}
   - component: {fileID: 19891824}
   - component: {fileID: 19990098}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Confetti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4682,7 +4682,7 @@ GameObject:
   - component: {fileID: 464522}
   - component: {fileID: 19884644}
   - component: {fileID: 19953536}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BigGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9546,7 +9546,7 @@ GameObject:
   - component: {fileID: 472230}
   - component: {fileID: 19811376}
   - component: {fileID: 19929142}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14276,7 +14276,7 @@ GameObject:
   - component: {fileID: 19838272}
   - component: {fileID: 19963412}
   - component: {fileID: 5071316298997077460}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpgradeVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

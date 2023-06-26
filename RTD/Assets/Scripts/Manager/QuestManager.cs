@@ -86,8 +86,7 @@ public class QuestManager : Singleton<QuestManager>
         switch (questStat.ID)
         {
             case 0:
-                if (!WaveManager.Instance.isWave)
-                    curCondition = WaveManager.Instance.curWave - readyCondition_1;
+                curCondition = WaveManager.Instance.curWave - readyCondition_1;
                 break;
 
             case 1:
@@ -97,8 +96,7 @@ public class QuestManager : Singleton<QuestManager>
                     curCondition = 0;
                     break;
                 }
-                if (!WaveManager.Instance.isWave)
-                    curCondition = WaveManager.Instance.curWave - readyCondition_1;
+                curCondition = WaveManager.Instance.curWave - readyCondition_1;
                 break;
 
             case 2:

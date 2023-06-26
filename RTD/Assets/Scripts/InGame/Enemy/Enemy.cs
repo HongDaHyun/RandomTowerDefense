@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     private int curLife;
     public int maxLife;
     [HideInInspector] public float curHp;
-    private bool isDie = false; public bool isStop = false;
+    public bool isDie = false; public bool isStop = false;
     private Slider hpSlider;
     #endregion
 
@@ -57,6 +57,9 @@ public class Enemy : MonoBehaviour, IPoolObject
     protected void SetUp()
     {
         enemyStat = CSVReader.Instance.csvList.FindEnemy(name); //스탯 가져오기
+
+        if (enemyStat.enemyType == EnemyType.Skeleton && WaveManager.Instance.curWave > 20) // 20 웨이브 이상
+            maxLife = 2;
 
         //컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -135,7 +138,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         else //끝 도달
         {
             SpawnManager.Instance.DeSpawnEnemy(this);
-            GameManager.Instance.LoseHealth();
+            GameManager.Instance.LoseHealth((int)enemyStat.tier);
         }
     }
 
@@ -154,8 +157,8 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         enemyStat.defense = Mathf.Max(enemyStat.defense, 0); // 방어력 최소값 0
         float defenseRatio = MathF.Round(100 / (100 + enemyStat.defense), 1);
-        float totalDmg = (dmg + (curHp * (CharacManager.Instance.proportionHP / 100)) + WaveManager.Instance.dmgPerWave)
-            * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지 + 웨이브 당 데미지) * 방어력
+        float totalDmg = (dmg + (curHp * (CharacManager.Instance.proportionHP / 100)))
+            * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지) * 방어력
 
         curHp -= totalDmg;
         UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);

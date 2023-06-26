@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using DG.Tweening;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 public class UIManager : Singleton<UIManager>
 {
-    GameManager gm;
+    [HideInInspector] public ProCamera2DTransitionsFX fx;
     [Header("MainMenu")]
     public GameObject[] mainPannel;
     public Text[] levelWaveTxt;
@@ -27,9 +28,22 @@ public class UIManager : Singleton<UIManager>
     public Text gameSpeedTxt;
     public GameObject gameOverPannel;
 
-    private void Start()
+    protected override void Awake()
     {
-        gm = GameManager.Instance;
+        base.Awake();
+
+        fx = Camera.main.GetComponent<ProCamera2DTransitionsFX>();
+    }
+
+    void Start()
+    {
+        fx.TransitionEnter();
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            return;
+        questPannel.pannel.SetActive(true);
+        BtnManager.Instance.RefreshQuestBtn();
+        questPannel.pannel.SetActive(false);
     }
 
     private void Update()
@@ -41,6 +55,8 @@ public class UIManager : Singleton<UIManager>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) // 씬이 0이면 함수 실행 x
             return;
+        GameManager gm = GameManager.Instance;
+
         upPannel.gatchaKeyTxt.text = gm.gatchaKey.ToString(); // 가챠 키
         upPannel.healthTxt.text = $"{gm.curHealth}/{gm.maxHealth}"; // 체력
         upPannel.timerTxt.text = WaveManager.Instance.readyTime.ToString("00.0"); // 타이머
@@ -55,6 +71,7 @@ public class UIManager : Singleton<UIManager>
 
     public void ExpSlider()
     {
+        GameManager gm = GameManager.Instance;
         float imsi = gm.curExp / gm.maxExp;
         upPannel.expSlider.value = Mathf.Lerp(upPannel.expSlider.value, imsi, Time.deltaTime * 10);
     }
@@ -194,6 +211,7 @@ public struct UpPannel
 [Serializable]
 public struct QuestPannel
 {
+    public GameObject pannel;
     public Quest[] quests;
     public Button refreshBtn;
     public Text coolTxt;

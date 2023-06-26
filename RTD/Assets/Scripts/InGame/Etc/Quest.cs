@@ -27,18 +27,28 @@ public class Quest : MonoBehaviour
 
     public void SetQuest(int id)
     {
+        GameManager gm = GameManager.Instance;
         // Reset
         curCondition = 0;
         button.interactable = false;
         questStat = CSVReader.Instance.csvList.FindQuest(id);
         texts[0].text = questStat.questName; //퀘스트 이름
 
-        int ranNum = Random.Range(1, 5);
-        tier = (Tier)ranNum; //리워드 티어
+        int ranTier = Random.Range(0, gm.probability[0] + gm.probability[1] + gm.probability[2] + gm.probability[3]);
+
+        if (ranTier < gm.probability[0])
+            tier = Tier.Common;
+        else if (ranTier < gm.probability[0] + gm.probability[1])
+            tier = Tier.Rare;
+        else if (ranTier < gm.probability[0] + gm.probability[1] + gm.probability[2])
+            tier = Tier.Epic;
+        else
+            tier = Tier.Legend;
+
         int plus = CharacManager.Instance.plusReward; // Charac 12
 
         reward = 1 * (int)tier + plus; // 티어에 따른 보상 증가
-        questStat.condition += questStat.conditionWidth * (int)tier; // 티어에 따른 조건 증가
+        questStat.condition += questStat.conditionWidth * ((int)tier - 1); // 티어에 따른 조건 증가
 
         switch(tier) // 티어 색상
         {
@@ -95,6 +105,12 @@ public class Quest : MonoBehaviour
     public void ClickQuest()
     {
         GameManager.Instance.gatchaKey += reward;
+
+        for(int i = 0; i < 3; i++)
+        {
+            UIManager.Instance.questPannel.quests[i].UpdateQuest();
+        }
+
         QuestManager.Instance.questNum++; // 퀘스트 7
 
         // 비활성화

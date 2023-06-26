@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class AdMobManager : Singleton<AdMobManager>
 {
-#pragma warning disable CS0618
     public bool isTestMode;
 
     void Start()
@@ -14,6 +13,8 @@ public class AdMobManager : Singleton<AdMobManager>
         var requestConfiguration = new RequestConfiguration.Builder().SetTestDeviceIds(new List<string>() { "DA55FBA1AEDF47FA" }).build();
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         LoadBannerAd();
         LoadFrontAd();
@@ -25,7 +26,18 @@ public class AdMobManager : Singleton<AdMobManager>
         return new AdRequest.Builder().Build();
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // ¿Ã¿¸ ±§∞Ì ªË¡¶
+        DestroyBannerAd();
+        DestroyFrontAd();
+        DestroyRewardAd();
 
+        // ±§∞Ì ∑ŒµÂ
+        LoadBannerAd();
+        LoadFrontAd();
+        LoadRewardAd();
+    }
 
     #region πË≥  ±§∞Ì
     const string bannerTestID = "ca-app-pub-3940256099942544/6300978111";
@@ -52,6 +64,15 @@ public class AdMobManager : Singleton<AdMobManager>
         if (b) bannerAd.Show();
         else bannerAd.Hide();
     }
+
+    void DestroyBannerAd()
+    {
+        if (bannerAd != null)
+        {
+            bannerAd.Destroy();
+            bannerAd = null;
+        }
+    }
     #endregion
 
 
@@ -75,6 +96,15 @@ public class AdMobManager : Singleton<AdMobManager>
     {
         frontAd.Show();
         LoadFrontAd();
+    }
+
+    void DestroyFrontAd()
+    {
+        if (frontAd != null)
+        {
+            frontAd.Destroy();
+            frontAd = null;
+        }
     }
     #endregion
 
@@ -100,6 +130,15 @@ public class AdMobManager : Singleton<AdMobManager>
     {
         rewardAd.Show();
         LoadRewardAd();
+    }
+
+    void DestroyRewardAd()
+    {
+        if (rewardAd != null)
+        {
+            rewardAd.Destroy();
+            rewardAd = null;
+        }
     }
     #endregion
 }

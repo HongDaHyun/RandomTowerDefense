@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class WaveManager : Singleton<WaveManager>
 {
-    public int curWave;
+    public int curWave = 1;
+    public int maxWave;
     public bool isWave;
-    public Wave[] waves;
-    public float dmgPerWave, readyTime;
-
-    GameManager gm;
-    UIManager um;
-    CharacManager cm;
-    CSVList cl;
+    public List<Wave> waves;
+    public float readyTime;
 
     private void Start()
     {
-        gm = GameManager.Instance;
-        um = UIManager.Instance;
-        cm = CharacManager.Instance;
-        cl = CSVReader.Instance.csvList;
+        maxWave = waves.Count;
     }
 
     private void Update()
@@ -31,19 +24,29 @@ public class WaveManager : Singleton<WaveManager>
     {
         if (isWave == false || SpawnManager.Instance.enemyList.Count > 0)
             return;
+        CSVList cl = CSVReader.Instance.csvList;
+        UIManager um = UIManager.Instance;
+        CharacManager cm = CharacManager.Instance;
+        GameManager gm = GameManager.Instance;
+
         isWave = false;
 
         SoundManager.Instance.PlaySFX("EndWave");
 
-        if(curWave == gm.levelNum[(int)gm.level])
+        if (curWave == gm.levelNum[(int)gm.level])
         {
-            // GameClear
+            gm.GameClear();
+            return;
         }
 
+        if (curWave == maxWave)
+            cl.SetAllEnemy();
+
         gm.gatchaKey += 2;
+        curWave++; //웨이브 시작 시 curWave 증가
 
         // Quest Cool
-        if(um.questPannel.curCool < um.questPannel.maxCool)
+        if (um.questPannel.curCool < um.questPannel.maxCool)
             um.questPannel.curCool++;
 
         // Charac
@@ -53,13 +56,13 @@ public class WaveManager : Singleton<WaveManager>
         if (curWave % 5 == 0) // 34
             gm.gatchaKey += cm.wave5;
 
-        if(cm.dmgWave > 0) // 13
-            dmgPerWave = curWave * cm.dmgWave;
+        if (cm.dmgWave > 0) // 13
+            cl.UpgradeAllUnit(UpUnit.Dmg, cm.dmgWave);
         if (cm.dmgWaveGun > 0) // 24
-            cl.UpgradeUnit(cl.FindUnit(UnitType.Fighter), UpUnit.All, cm.dmgWaveGun);
+            cl.UpgradeUnit(cl.FindUnit(UnitType.Gun), UpUnit.All, cm.dmgWaveGun);
 
         // 적 HP 증가
-        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level + 1);
+        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * curWave);
 
         StartCoroutine(StartWave());
     }
@@ -75,11 +78,48 @@ public class WaveManager : Singleton<WaveManager>
 
             if (readyTime <= 0) //웨이브 시작(타이머 0)
             {
+                readyTime = 0;
                 SoundManager.Instance.PlaySFX("StartWave");
                 SpawnManager.Instance.SpawnEnemy();
             }
         }
     } // 웨이브 시작
+
+    public void RanWave(Wave wave)
+    {
+        CSVList cl = CSVReader.Instance.csvList;
+        Wave newWave;
+
+        newWave.spawnTime = Mathf.Round(Random.Range(0.8f, 1.3f) * 10) / 10f; // 스폰 주기
+        // 적 종류
+        int waveEnemyKind = Random.Range(3, 10);
+        newWave.enemy = new WaveEnemy[waveEnemyKind];
+
+        // 최대 적 수
+        int maxWave = 0;
+        foreach (var enemy in wave.enemy)
+            maxWave += enemy.maxCount;
+
+        // 종류 별 적 설정
+        for (int i = 0; i < waveEnemyKind; i++)
+        {
+            newWave.enemy[i] = new WaveEnemy();
+            newWave.enemy[i].name = cl.FindEnemy(Random.Range(0, cl.enemyStat.Length)).enemyName; // 이름 설정
+
+            // 마지막 인덱스
+            if (i == waveEnemyKind - 1)
+                newWave.enemy[i].maxCount = maxWave; // 나머지
+
+            // 마지막 인덱스 X
+            else
+            {
+                int count = Random.Range(3, maxWave); // 최대 적 수 사이 랜덤 값
+                maxWave -= count;
+                newWave.enemy[i].maxCount = count;
+            }
+        }
+        waves.Add(newWave);
+    }
 }
 
 [System.Serializable]

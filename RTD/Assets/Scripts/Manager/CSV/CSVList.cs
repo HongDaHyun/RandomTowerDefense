@@ -184,9 +184,17 @@ public class CSVList
     {
         return Array.Find(enemyStat, stat => EqualityComparer<EnemyStat>.Default.Equals(stat, enemy));
     }
+    public List<EnemyStat> FindEnemy(EnemyType type)
+    {
+        return enemyStat.Where(stat => stat.enemyType == type).ToList();
+    }
     public EnemyStat FindEnemy(string name)
     {
         return Array.Find(enemyStat, stat => stat.enemyName == name);
+    }
+    public EnemyStat FindEnemy(int id)
+    {
+        return enemyStat[id];
     }
 
     public int IndexOfEnemy(string name)
@@ -197,6 +205,23 @@ public class CSVList
     public void UpgradeEnemy(string enemyName, UpEnemy kind, float value)
     {
         CSVUp_Enemy(IndexOfEnemy(enemyName), kind, value);
+    }
+
+    public void SetEnemy(List<EnemyStat> stats, EnemyStat stat)
+    {
+        for (int i = 0; i < stats.Count; i++)
+        {
+            stats[i] = stat;
+        }
+    }
+
+    public void SetAllEnemy()
+    {
+        SetEnemy(FindEnemy(EnemyType.Golem), FindEnemy("녹슨골렘"));
+        SetEnemy(FindEnemy(EnemyType.Human), FindEnemy("인형탈"));
+        SetEnemy(FindEnemy(EnemyType.Portion), FindEnemy("검정포션"));
+        SetEnemy(FindEnemy(EnemyType.Skeleton), FindEnemy("스카스카"));
+        SetEnemy(FindEnemy(EnemyType.Slime), FindEnemy("불라임"));
     }
 
     public void UpgradeAllEnemy(UpEnemy kind, float value)
@@ -221,12 +246,14 @@ public class CSVList
                 break;
             case UpEnemy.MoveSpeed:
                 enemyStat[ID].moveSpeed = Mathf.Round((enemyStat[ID].moveSpeed + value) * 100f) / 100f;
+                enemyStat[ID].moveSpeed = MathF.Max(enemyStat[ID].moveSpeed, 0.3f); // 이동 속도 최소값
                 break;
             case UpEnemy.All:
                 enemyStat[ID].strength += (int)value;
                 enemyStat[ID].hp = Mathf.Round((enemyStat[ID].hp + value) * 100f) / 100f;
                 enemyStat[ID].defense = Mathf.Round((enemyStat[ID].defense + value) * 100f) / 100f;
                 enemyStat[ID].moveSpeed = Mathf.Round((enemyStat[ID].moveSpeed + value) * 100f) / 100f;
+                enemyStat[ID].moveSpeed = MathF.Max(enemyStat[ID].moveSpeed, 0.3f); // 이동 속도 최소값
                 break;
         }
     }

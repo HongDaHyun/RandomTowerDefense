@@ -19,7 +19,7 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] AudioSource bgmPlayer = null;
     [SerializeField] AudioSource[] sfxPlayer = null;
 
-    private void Start()
+    void Start()
     {
         AwakeBGM();
     }
@@ -46,6 +46,12 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlaySFX(string p_sfxName)
     {
-        Array.Find(sfxPlayer, sfx => !sfx.isPlaying).PlayOneShot(Array.Find(sfx, sfx => sfx.name == p_sfxName).clip);
+        AudioSource findSfx = Array.Find(sfxPlayer, sfx => !sfx.isPlaying);
+
+        if (findSfx != null)
+            findSfx.PlayOneShot(Array.Find(sfx, sfx => sfx.name == p_sfxName).clip);
+        else
+            return;
+
     }
 }

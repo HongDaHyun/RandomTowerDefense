@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5778638711007949593}
   - component: {fileID: 2604054667756183949}
   - component: {fileID: 7093759390570068670}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\uC791\uBD80\uC6B8\uB77C\uC784"
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -113,6 +113,7 @@ MonoBehaviour:
   curWayPoint: 0
   maxLife: 0
   curHp: 0
+  isDie: 0
   isStop: 0
 --- !u!61 &2604054667756183949
 BoxCollider2D:
@@ -150,7 +151,7 @@ Animator:
   m_GameObject: {fileID: 6635571574041197299}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8626dfde4971340408e9d5e08a5d5dc9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 326e24d17b0f68d488b565201682d1da, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

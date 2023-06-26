@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 281389435517948598}
   - component: {fileID: 773899128764000671}
   - component: {fileID: 8880602827468229899}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DmgText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8880602827468229899
 MonoBehaviour:

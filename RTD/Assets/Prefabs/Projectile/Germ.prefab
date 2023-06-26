@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 400156789, guid: b5be906befa7316469e44a136504f65d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,15 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2a4198c5934a74ab9b635c9f23737e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
   isCrit: 0
   dmg: 0
   range: 0
-  speed: 10
   target: {fileID: 0}
   startTrans: {fileID: 0}
   remainTime: 2
-  attribute: 0
+  projectileStat:
+    projectileName: 0
+    attribute: 0
+    size: 0
+    speed: 0
   animCurve:
     serializedVersion: 2
     m_Curve:

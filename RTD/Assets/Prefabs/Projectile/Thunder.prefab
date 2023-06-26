@@ -18907,7 +18907,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 1
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -18987,10 +18987,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44647a9b96fb0845b86b03c8b272ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 7
+  isCrit: 0
   dmg: 0
   range: 0
-  speed: 10
   target: {fileID: 0}
   startTrans: {fileID: 0}
   remainTime: 2
+  projectileStat:
+    projectileName: 0
+    attribute: 0
+    size: 0
+    speed: 0

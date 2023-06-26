@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2604054667756183949}
   - component: {fileID: -3521342100427908024}
   - component: {fileID: -8896920702115279614}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\uCD08\uB85D\uD3EC\uC158"
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -134,9 +134,13 @@ MonoBehaviour:
     hp: 0
     defense: 0
     moveSpeed: 0
+  speed: 0
   moveDirection: {x: 0, y: 0, z: 0}
   curWayPoint: 0
+  maxLife: 0
   curHp: 0
+  isDie: 0
+  isStop: 0
 --- !u!95 &-8896920702115279614
 Animator:
   serializedVersion: 4

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 public class CSVReader : Singleton<CSVReader>
 {
@@ -9,16 +10,7 @@ public class CSVReader : Singleton<CSVReader>
     public CSVList csvList = new CSVList();
 
     #region Read
-    [ContextMenu("CSV불러오기")]
-    public void CSVReading()
-    {
-        UnitCSVReader();
-        EnemyCSVReader();
-        QuestCSVReader();
-        CharacterisitcReader();
-        ProjectileCSVReader();
-    }
-
+    [Button("유닛 데이터 불러오기")]
     public void UnitCSVReader()
     {
         int order = 0; int size = 8;
@@ -41,6 +33,7 @@ public class CSVReader : Singleton<CSVReader>
         }
     }
 
+    [Button("적 데이터 불러오기")]
     public void EnemyCSVReader()
     {
         int order = 1; int size = 7;
@@ -62,6 +55,7 @@ public class CSVReader : Singleton<CSVReader>
         }
     }
 
+    [Button("퀘스트 데이터 불러오기")]
     public void QuestCSVReader()
     {
         int order = 2; int size = 4;
@@ -80,6 +74,8 @@ public class CSVReader : Singleton<CSVReader>
             csvList.questStat[i].ID = i;
         }
     }
+
+    [Button("특성 데이터 불러오기")]
 
     public void CharacterisitcReader()
     {
@@ -101,6 +97,7 @@ public class CSVReader : Singleton<CSVReader>
         }
     }
 
+    [Button("투사체 데이터 불러오기")]
     public void ProjectileCSVReader()
     {
         int order = 4; int size = 4;
@@ -117,6 +114,16 @@ public class CSVReader : Singleton<CSVReader>
             csvList.projectileStat[i].size = float.Parse(data[size * k + 2]);
             csvList.projectileStat[i].speed = float.Parse(data[size * k + 3]);
         }
+    }
+
+    [Button("모든 데이터 불러오기")]
+    public void CSVReading()
+    {
+        UnitCSVReader();
+        EnemyCSVReader();
+        QuestCSVReader();
+        CharacterisitcReader();
+        ProjectileCSVReader();
     }
     #endregion
 }

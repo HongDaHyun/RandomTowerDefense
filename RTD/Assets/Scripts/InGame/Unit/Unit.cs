@@ -16,6 +16,8 @@ public class Unit : MonoBehaviour, IPoolObject
     #region Animation
     public Animator anim;
     public bool isAnim; //공격 방식 animation or default
+    private SpriteRenderer render;
+    private Sprite defSprite;
     #endregion
     public UnitStat unitStat;
 
@@ -23,6 +25,8 @@ public class Unit : MonoBehaviour, IPoolObject
     {
         name = name.Replace("(Clone)", ""); //(Clone) 삭제
         anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
+        defSprite = render.sprite;
         if (anim != null)
             isAnim = true;
         SetUp();
@@ -32,6 +36,7 @@ public class Unit : MonoBehaviour, IPoolObject
     void IPoolObject.OnGettingFromPool()
     {
         SetUp();
+        render.sprite = defSprite;
     }
 
     void Update()
@@ -79,7 +84,7 @@ public class Unit : MonoBehaviour, IPoolObject
                 }
             }
 
-            if (attackTarget != null && attackTarget.gameObject.activeSelf)
+            if (attackTarget != null && attackTarget.gameObject.activeSelf && !attackTarget.GetComponent<Enemy>().isDie)
             {
                 ChangeState(UnitState.AttackToTarget);
             }
@@ -89,10 +94,6 @@ public class Unit : MonoBehaviour, IPoolObject
 
     protected virtual IEnumerator AttackToTarget()
     {
-        // 1. target이 있는지 검사(다른 발사체에 의해 제거, Goal 지점 이동해 삭제 등)
-        if(attackTarget == null || !attackTarget.gameObject.activeSelf)
-            ChangeState(UnitState.SearchTarget);
-        
         // 2. 사거리 벗어났는지 체크
         float distance = Vector2.Distance(attackTarget.position, transform.position);
         if (distance > unitStat.range)
@@ -112,17 +113,12 @@ public class Unit : MonoBehaviour, IPoolObject
 
             Shoot();
 
-            if (unitStat.unitType == UnitType.Fire) // 불일때 remainTime도 계산해야함
-            {
-                yield return new WaitForSeconds(atkSpeedCount);
-                ChangeState(UnitState.SearchTarget);
-            }
-
             yield return new WaitForSeconds(atkSpeedCount);
             ChangeState(UnitState.SearchTarget);
         }
     }
 
+    // 애니메이션에서 작동
     IEnumerator AtkCoolAnim()
     {
         isAtkCool = true;

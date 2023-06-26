@@ -11,13 +11,16 @@ public class ObjectDetector : MonoBehaviour
     private UIManager uiManager;
     private GameManager gm;
 
-    public bool isTouchingUI;
+    private LayerMask targetLayer;
+
+    bool isTouchingUI;
 
     private void Awake()
     {
         proCam = Camera.main.GetComponent<ProCamera2DPanAndZoom>();
         uiManager = UIManager.Instance;
         gm = GameManager.Instance;
+        targetLayer = LayerMask.GetMask("Tile", "Enemy", "UI");
     }
 
     private void Update()
@@ -72,7 +75,7 @@ public class ObjectDetector : MonoBehaviour
     {
         // RayCast 설정
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
+        hit = Physics2D.Raycast(pos, Vector2.zero, 0f, targetLayer);
 
         // RayCast 충돌 설정
         if (hit.collider != null)

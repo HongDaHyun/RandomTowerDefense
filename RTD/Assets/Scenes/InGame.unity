@@ -258,7 +258,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7270512
 MonoBehaviour:
@@ -272,7 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2f0894e18f339449a7c1d98847bcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curWave: 0
+  curWave: 1
+  maxWave: 0
   isWave: 0
   waves:
   - spawnTime: 1
@@ -281,44 +282,211 @@ MonoBehaviour:
       maxCount: 5
   - spawnTime: 1
     enemy:
+    - name: "\uC8FC\uC0AC\uACE8\uB818"
+      maxCount: 5
+    - name: "\uC2A4\uCEEC"
+      maxCount: 6
+    - name: "\uBE68\uAC15\uD3EC\uC158"
+      maxCount: 10
+    - name: "\uBB3C\uB77C\uC784"
+      maxCount: 3
     - name: "\uC7BC\uBBFC\uC774"
-      maxCount: 15
+      maxCount: 5
     - name: "\uACFC\uD559\uC790"
       maxCount: 5
   - spawnTime: 1
     enemy:
-    - name: "\uBE68\uAC15\uD3EC\uC158"
-      maxCount: 10
     - name: "\uB178\uB791\uD3EC\uC158"
       maxCount: 5
+    - name: "\uC2DC\uAD11\uACE8\uB818"
+      maxCount: 5
+    - name: "\uD480\uB77C\uC784"
+      maxCount: 5
+    - name: "\uD2B8\uB808\uC774\uB108"
+      maxCount: 1
   - spawnTime: 1.2
     enemy:
-    - name: "\uB178\uB791\uD3EC\uC158"
+    - name: "\uC2DC\uAD11\uACE8\uB818"
       maxCount: 10
-  - spawnTime: 1.2
-    enemy:
-    - name: "\uC2A4\uCEEC"
-      maxCount: 15
+    - name: "\uD478\uB529\uB77C\uC784"
+      maxCount: 2
     - name: "\uAC80\uC2A4\uCEEC"
+      maxCount: 10
+  - spawnTime: 1
+    enemy:
+    - name: "\uC11D\uD0C4\uACE8\uB818"
+      maxCount: 3
+    - name: "\uCD08\uB85D\uD3EC\uC158"
+      maxCount: 5
+    - name: "\uD2B8\uB808\uC774\uB108"
+      maxCount: 2
+  - spawnTime: 1.5
+    enemy:
+    - name: "\uD65C\uC2A4\uCEEC"
+      maxCount: 5
+    - name: "\uC11D\uD0C4\uACE8\uB818"
+      maxCount: 2
+    - name: "\uCD08\uB85D\uD3EC\uC158"
+      maxCount: 5
+    - name: "\uD478\uB529\uB77C\uC784"
       maxCount: 5
   - spawnTime: 1.2
     enemy:
     - name: "\uC5BC\uB77C\uC784"
+      maxCount: 5
+    - name: "\uC8FC\uBA39\uC2A4\uCEEC"
+      maxCount: 5
+    - name: "\uC790\uC218\uC815\uACE8\uB818"
+      maxCount: 2
+  - spawnTime: 1
+    enemy:
+    - name: "\uD3B8\uC758\uC810\uC54C\uBC14"
       maxCount: 10
-    - name: "\uBD88\uB77C\uC784"
+    - name: "\uC8FC\uBA39\uC2A4\uCEEC"
+      maxCount: 5
+  - spawnTime: 0.6
+    enemy:
+    - name: "\uD30C\uB791\uD3EC\uC158"
       maxCount: 10
-    - name: "\uBB3C\uB77C\uC784"
+    - name: "\uC5BC\uB77C\uC784"
+      maxCount: 5
+    - name: "\uD2B8\uB808\uC774\uB108"
       maxCount: 10
+    - name: "\uC790\uC218\uC815\uACE8\uB818"
+      maxCount: 2
+    - name: "\uD3B8\uC758\uC810\uC54C\uBC14"
+      maxCount: 5
+    - name: "\uC8FC\uD669\uD3EC\uC158"
+      maxCount: 3
   - spawnTime: 2
+    enemy:
+    - name: "\uD560\uC544\uBC84\uC9C0"
+      maxCount: 2
+    - name: "\uB9C8\uBC95\uC2A4\uCEEC"
+      maxCount: 3
+  - spawnTime: 1.5
     enemy:
     - name: "\uC790\uC218\uC815\uACE8\uB818"
       maxCount: 5
+    - name: "\uBD80\uC6B8\uB77C\uC784"
+      maxCount: 5
+    - name: "\uD615\uC11D\uACE8\uB818"
+      maxCount: 2
+    - name: "\uAC80\uC815\uD3EC\uC158"
+      maxCount: 2
   - spawnTime: 1
     enemy:
+    - name: "\uD560\uC544\uBC84\uC9C0"
+      maxCount: 10
+    - name: "\uAC80\uC815\uD3EC\uC158"
+      maxCount: 5
+    - name: "\uB9C8\uBC95\uC2A4\uCEEC"
+      maxCount: 10
+  - spawnTime: 1
+    enemy:
+    - name: "\uD615\uC11D\uACE8\uB818"
+      maxCount: 10
+    - name: "\uAC80\uC815\uD3EC\uC158"
+      maxCount: 3
+    - name: "\uBD80\uC6B8\uB77C\uC784"
+      maxCount: 5
     - name: "\uB179\uC2A8\uACE8\uB818"
       maxCount: 1
-  dmgPerWave: 0
-  readyTime: 10
+  - spawnTime: 0.8
+    enemy:
+    - name: "\uAC80\uC815\uD3EC\uC158"
+      maxCount: 8
+    - name: "\uC778\uD615\uD0C8"
+      maxCount: 3
+    - name: "\uD65C\uC2A4\uCEEC"
+      maxCount: 5
+    - name: "\uBD88\uB77C\uC784"
+      maxCount: 2
+  - spawnTime: 2
+    enemy:
+    - name: "\uC2A4\uCE74\uC2A4\uCE74"
+      maxCount: 10
+  - spawnTime: 0.4
+    enemy:
+    - name: "\uBE68\uAC15\uD3EC\uC158"
+      maxCount: 5
+    - name: "\uB178\uB791\uD3EC\uC158"
+      maxCount: 10
+    - name: "\uCD08\uB85D\uD3EC\uC158"
+      maxCount: 20
+    - name: "\uD30C\uB791\uD3EC\uC158"
+      maxCount: 20
+    - name: "\uC8FC\uD669\uD3EC\uC158"
+      maxCount: 10
+    - name: "\uAC80\uC815\uD3EC\uC158"
+      maxCount: 5
+  - spawnTime: 0.7
+    enemy:
+    - name: "\uC7BC\uBBFC\uC774"
+      maxCount: 5
+    - name: "\uACFC\uD559\uC790"
+      maxCount: 10
+    - name: "\uD2B8\uB808\uC774\uB108"
+      maxCount: 20
+    - name: "\uD3B8\uC758\uC810\uC54C\uBC14"
+      maxCount: 20
+    - name: "\uD560\uC544\uBC84\uC9C0"
+      maxCount: 15
+    - name: "\uC778\uD615\uD0C8"
+      maxCount: 15
+  - spawnTime: 1
+    enemy:
+    - name: "\uC2A4\uCEEC"
+      maxCount: 5
+    - name: "\uAC80\uC2A4\uCEEC"
+      maxCount: 5
+    - name: "\uD65C\uC2A4\uCEEC"
+      maxCount: 5
+    - name: "\uC8FC\uBA39\uC2A4\uCEEC"
+      maxCount: 10
+    - name: "\uB9C8\uBC95\uC2A4\uCEEC"
+      maxCount: 20
+    - name: "\uC2A4\uCE74\uC2A4\uCE74"
+      maxCount: 10
+  - spawnTime: 1
+    enemy:
+    - name: "\uBB3C\uB77C\uC784"
+      maxCount: 2
+    - name: "\uC8FC\uC0AC\uACE8\uB818"
+      maxCount: 2
+    - name: "\uD480\uB77C\uC784"
+      maxCount: 2
+    - name: "\uC2DC\uAD11\uACE8\uB818"
+      maxCount: 2
+    - name: "\uD478\uB529\uB77C\uC784"
+      maxCount: 4
+    - name: "\uC11D\uD0C4\uACE8\uB818"
+      maxCount: 4
+    - name: "\uC5BC\uB77C\uC784"
+      maxCount: 8
+    - name: "\uC790\uC218\uC815\uACE8\uB818"
+      maxCount: 8
+    - name: "\uBD80\uC6B8\uB77C\uC784"
+      maxCount: 15
+    - name: "\uD615\uC11D\uACE8\uB818"
+      maxCount: 15
+    - name: "\uBD88\uB77C\uC784"
+      maxCount: 15
+    - name: "\uB179\uC2A8\uACE8\uB818"
+      maxCount: 15
+  - spawnTime: 1.4
+    enemy:
+    - name: "\uB179\uC2A8\uACE8\uB818"
+      maxCount: 10
+    - name: "\uBD88\uB77C\uC784"
+      maxCount: 12
+    - name: "\uC778\uD615\uD0C8"
+      maxCount: 20
+    - name: "\uC2A4\uCE74\uC2A4\uCE74"
+      maxCount: 12
+    - name: "\uAC80\uC815\uD3EC\uC158"
+      maxCount: 15
+  readyTime: 15
 --- !u!1001 &23379358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2716,14 +2884,14 @@ MonoBehaviour:
   gameTime: 10
   isStart: 1
   gatchaKey: 3
-  maxHealth: 20
-  curHealth: 20
+  maxHealth: 30
+  curHealth: 30
   maxWave: 20
   expLevel: 1
   maxExp: 10
   levelPoint: 0
   curExp: 0
-  increaseExp: 0.2
+  increaseExp: 0.3
   probability: 520000000a0000000500000003000000
   levelNum: 140000001e00000028000000ffffffff
   device: 0
@@ -2933,6 +3101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef243ecc3f69c9641aa0b3bacb9685cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fx: {fileID: 0}
   mainPannel:
   - {fileID: 0}
   - {fileID: 0}
@@ -2978,14 +3147,15 @@ MonoBehaviour:
     levelTxt: {fileID: 96547344}
     expSlider: {fileID: 1460899994}
   questPannel:
+    pannel: {fileID: 595425707}
     quests:
     - {fileID: 848965775}
     - {fileID: 550724275}
     - {fileID: 1298913311}
     refreshBtn: {fileID: 672292003}
     coolTxt: {fileID: 31218054}
-    maxCool: 5
-    curCool: 5
+    maxCool: 3
+    curCool: 3
   levelUpBtn:
     btn: {fileID: 1181257569}
     img: {fileID: 2098913170}
@@ -2996,7 +3166,7 @@ MonoBehaviour:
   - {fileID: 1430267330}
   slotObj: {fileID: 1841786110}
   gameSpeedTxt: {fileID: 624295626}
-  gameOverPannel: {fileID: 0}
+  gameOverPannel: {fileID: 406841065}
 --- !u!4 &253012259
 Transform:
   m_ObjectHideFlags: 0
@@ -3010,7 +3180,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &256629980
 PrefabInstance:
@@ -6751,6 +6921,7 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420036}
   - component: {fileID: 519420037}
+  - component: {fileID: 519420038}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6961,6 +7132,41 @@ MonoBehaviour:
   MinPanAmount: 0.1
   ResetPrevPanPoint: 0
   IsPanning: 0
+--- !u!114 &519420038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1eca57db7d394266ae024997acf4456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pc2D: {fileID: 519420033}
+  _serializedAxis: 0
+  TransitionShaderEnter: 2
+  DurationEnter: 1
+  DelayEnter: 0
+  EaseTypeEnter: 1
+  BackgroundColorEnter: {r: 0, g: 0, b: 0, a: 1}
+  SideEnter: 0
+  DirectionEnter: 0
+  BlindsEnter: 16
+  TextureEnter: {fileID: 0}
+  TextureSmoothingEnter: 0.2
+  TransitionShaderExit: 2
+  DurationExit: 0.5
+  DelayExit: 0
+  EaseTypeExit: 1
+  BackgroundColorExit: {r: 0, g: 0, b: 0, a: 1}
+  SideExit: 0
+  DirectionExit: 0
+  BlindsExit: 16
+  TextureExit: {fileID: 0}
+  TextureSmoothingExit: 0.2
+  StartSceneOnEnterState: 1
 --- !u!4 &521226024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5720371020968932641, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
@@ -7442,15 +7648,15 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 1
-      atkSpeed: 10
+      atkSpeed: 40
       range: 3.5
     - unitName: "\uBC1C\uB9AC\uC2A4\uD0C0"
       unitType: 0
       tier: 3
       critPercent: 20
       critDmg: 200
-      dmg: 15
-      atkSpeed: 5
+      dmg: 30
+      atkSpeed: 20
       range: 6
     - unitName: "\uBBF8\uB77C"
       unitType: 0
@@ -7458,7 +7664,7 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 15
-      atkSpeed: 50
+      atkSpeed: 160
       range: 4
     - unitName: "\uAC10\uC2DC\uD0D1"
       unitType: 0
@@ -7466,7 +7672,7 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 5
-      atkSpeed: 20
+      atkSpeed: 80
       range: 4.5
     - unitName: "\uBCF5\uC11C"
       unitType: 1
@@ -7481,7 +7687,7 @@ MonoBehaviour:
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 5
+      dmg: 3
       atkSpeed: 20
       range: 2.5
     - unitName: "\uD3F0"
@@ -7489,7 +7695,7 @@ MonoBehaviour:
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 10
+      dmg: 8
       atkSpeed: 20
       range: 2.5
     - unitName: "\uC2DC\uBC14\uACAC"
@@ -7505,7 +7711,7 @@ MonoBehaviour:
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 30
+      dmg: 20
       atkSpeed: 35
       range: 4.5
     - unitName: "\uCE98\uB85D\uC2DC\uD37C"
@@ -7529,7 +7735,7 @@ MonoBehaviour:
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 20
+      dmg: 15
       atkSpeed: 30
       range: 4
     - unitName: "\uB9C8\uC2A4\uD06C\uB9E8"
@@ -7537,7 +7743,7 @@ MonoBehaviour:
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 30
+      dmg: 20
       atkSpeed: 35
       range: 4.5
     - unitName: "\uADE0\uB3CC\uC774"
@@ -7561,7 +7767,7 @@ MonoBehaviour:
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 20
+      dmg: 15
       atkSpeed: 30
       range: 4
     - unitName: "\uC13C\uD2B8\uB9AC\uAC74"
@@ -7570,15 +7776,15 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 2.5
-      atkSpeed: 50
+      atkSpeed: 160
       range: 3.3
     - unitName: F-35
       unitType: 4
       tier: 4
       critPercent: 0
       critDmg: 200
-      dmg: 3.5
-      atkSpeed: 25
+      dmg: 5
+      atkSpeed: 80
       range: 8
     - unitName: "\uAD70\uC778"
       unitType: 4
@@ -7586,15 +7792,15 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 1
-      atkSpeed: 15
+      atkSpeed: 60
       range: 3
     - unitName: "\uD0F1\uD06C"
       unitType: 4
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 15
-      atkSpeed: 5
+      dmg: 40
+      atkSpeed: 20
       range: 5.2
     - unitName: "\uC5BC\uC74C\uC6A9"
       unitType: 5
@@ -7602,7 +7808,7 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 20
-      atkSpeed: 35
+      atkSpeed: 140
       range: 4
     - unitName: "\uC5BC\uC74C\uC815\uB839"
       unitType: 5
@@ -7610,7 +7816,7 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 5
-      atkSpeed: 15
+      atkSpeed: 60
       range: 4
     - unitName: "\uB0C9\uC7A5\uACE0"
       unitType: 5
@@ -7618,7 +7824,7 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 1
-      atkSpeed: 10
+      atkSpeed: 40
       range: 3
     - unitName: "\uB208\uC0AC\uB78C"
       unitType: 5
@@ -7626,14 +7832,14 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 12
-      atkSpeed: 20
+      atkSpeed: 80
       range: 4
     - unitName: "\uB300\uAC80\uC0AC"
       unitType: 6
       tier: 2
       critPercent: 0
       critDmg: 200
-      dmg: 6
+      dmg: 3
       atkSpeed: 15
       range: 2.5
     - unitName: "\uACE0\uAE38\uB625"
@@ -7666,7 +7872,7 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 4.5
-      atkSpeed: 15
+      atkSpeed: 60
       range: 4
     - unitName: "\uB85C\uBD07"
       unitType: 7
@@ -7674,15 +7880,15 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 1
-      atkSpeed: 10
+      atkSpeed: 40
       range: 2.8
     - unitName: "\uC2A4\uBC14\uD034"
       unitType: 7
       tier: 3
       critPercent: 0
       critDmg: 200
-      dmg: 11
-      atkSpeed: 15
+      dmg: 10
+      atkSpeed: 60
       range: 5.5
     - unitName: "\uC36C\uB77C\uC784"
       unitType: 7
@@ -7690,43 +7896,43 @@ MonoBehaviour:
       critPercent: 0
       critDmg: 200
       dmg: 20
-      atkSpeed: 30
+      atkSpeed: 120
       range: 4
     enemyStat:
     - enemyName: "\uC8FC\uC0AC\uACE8\uB818"
       enemyType: 0
       tier: 1
       strength: 1
-      hp: 2.5
-      defense: 5
+      hp: 4
+      defense: 20
       moveSpeed: 2.7
     - enemyName: "\uC2DC\uAD11\uACE8\uB818"
       enemyType: 0
       tier: 2
       strength: 2
-      hp: 7
-      defense: 10
-      moveSpeed: 2.7
+      hp: 15
+      defense: 50
+      moveSpeed: 2.6
     - enemyName: "\uC11D\uD0C4\uACE8\uB818"
       enemyType: 0
       tier: 3
       strength: 4
-      hp: 19
-      defense: 20
+      hp: 75
+      defense: 100
       moveSpeed: 2.5
     - enemyName: "\uC790\uC218\uC815\uACE8\uB818"
       enemyType: 0
       tier: 4
-      strength: 4
-      hp: 37
-      defense: 40
-      moveSpeed: 2.3
+      strength: 8
+      hp: 160
+      defense: 200
+      moveSpeed: 2.2
     - enemyName: "\uD615\uC11D\uACE8\uB818"
       enemyType: 0
       tier: 5
-      strength: 7
-      hp: 86
-      defense: 60
+      strength: 16
+      hp: 250
+      defense: 400
       moveSpeed: 2
     - enemyName: "\uC7BC\uBBFC\uC774"
       enemyType: 1
@@ -7739,28 +7945,28 @@ MonoBehaviour:
       enemyType: 1
       tier: 2
       strength: 3
-      hp: 10
+      hp: 12
       defense: 0
       moveSpeed: 3.5
     - enemyName: "\uD2B8\uB808\uC774\uB108"
       enemyType: 1
       tier: 3
       strength: 0
-      hp: 30
+      hp: 60
       defense: 3
       moveSpeed: 4
     - enemyName: "\uD3B8\uC758\uC810\uC54C\uBC14"
       enemyType: 1
       tier: 4
       strength: 2
-      hp: 74
+      hp: 250
       defense: 4
       moveSpeed: 3
     - enemyName: "\uD560\uC544\uBC84\uC9C0"
       enemyType: 1
       tier: 5
       strength: 0
-      hp: 180
+      hp: 1000
       defense: 0
       moveSpeed: 2.5
     - enemyName: "\uBE68\uAC15\uD3EC\uC158"
@@ -7781,23 +7987,23 @@ MonoBehaviour:
       enemyType: 2
       tier: 3
       strength: 0
-      hp: 20
+      hp: 30
       defense: 0
       moveSpeed: 4
     - enemyName: "\uD30C\uB791\uD3EC\uC158"
       enemyType: 2
       tier: 4
       strength: 0
-      hp: 40
+      hp: 150
       defense: 0
-      moveSpeed: 5
+      moveSpeed: 4.5
     - enemyName: "\uC8FC\uD669\uD3EC\uC158"
       enemyType: 2
       tier: 5
       strength: 0
-      hp: 100
+      hp: 300
       defense: 0
-      moveSpeed: 7
+      moveSpeed: 5
     - enemyName: "\uC2A4\uCEEC"
       enemyType: 3
       tier: 1
@@ -7816,23 +8022,23 @@ MonoBehaviour:
       enemyType: 3
       tier: 3
       strength: 0
-      hp: 15
+      hp: 40
       defense: 0
       moveSpeed: 2.8
     - enemyName: "\uC8FC\uBA39\uC2A4\uCEEC"
       enemyType: 3
       tier: 4
       strength: 0
-      hp: 27
+      hp: 120
       defense: 5
-      moveSpeed: 3.1
+      moveSpeed: 3
     - enemyName: "\uB9C8\uBC95\uC2A4\uCEEC"
       enemyType: 3
       tier: 5
       strength: 0
-      hp: 69
+      hp: 500
       defense: 0
-      moveSpeed: 3.3
+      moveSpeed: 3.2
     - enemyName: "\uBB3C\uB77C\uC784"
       enemyType: 4
       tier: 1
@@ -7844,86 +8050,86 @@ MonoBehaviour:
       enemyType: 4
       tier: 2
       strength: 0
-      hp: 12
+      hp: 8
       defense: 0
       moveSpeed: 2.9
     - enemyName: "\uD478\uB529\uB77C\uC784"
       enemyType: 4
       tier: 3
       strength: 0
-      hp: 20
+      hp: 40
       defense: 1
       moveSpeed: 3.2
     - enemyName: "\uC5BC\uB77C\uC784"
       enemyType: 4
       tier: 4
       strength: 0
-      hp: 34
+      hp: 120
       defense: 5
       moveSpeed: 3.5
     - enemyName: "\uBD80\uC6B8\uB77C\uC784"
       enemyType: 4
       tier: 5
       strength: 2
-      hp: 80
+      hp: 500
       defense: 0
       moveSpeed: 3
     - enemyName: "\uB179\uC2A8\uACE8\uB818"
       enemyType: 0
       tier: 6
-      strength: 20
-      hp: 200
-      defense: 80
+      strength: 32
+      hp: 600
+      defense: 800
       moveSpeed: 1.7
     - enemyName: "\uC778\uD615\uD0C8"
       enemyType: 1
       tier: 6
       strength: 5
-      hp: 350
-      defense: 10
-      moveSpeed: 3.5
+      hp: 2000
+      defense: 50
+      moveSpeed: 3
     - enemyName: "\uAC80\uC815\uD3EC\uC158"
       enemyType: 2
       tier: 6
-      strength: 0
-      hp: 200
+      strength: 40
+      hp: 1000
       defense: 5
-      moveSpeed: 4.5
+      moveSpeed: 5.3
     - enemyName: "\uC2A4\uCE74\uC2A4\uCE74"
       enemyType: 3
       tier: 6
       strength: 0
-      hp: 120
+      hp: 1200
       defense: 0
       moveSpeed: 3
     - enemyName: "\uBD88\uB77C\uC784"
       enemyType: 4
       tier: 6
       strength: 10
-      hp: 180
+      hp: 1200
       defense: 5
       moveSpeed: 3.3
     questStat:
     - questName: "\uC874\uBC84"
       explanation: "{0} / {1} \uC6E8\uC774\uBE0C \uB3D9\uC548 \uBC84\uD2F0\uC138\uC694."
-      condition: 2
+      condition: 4
       conditionWidth: 1
       ID: 0
     - questName: "\uC644\uBCBD\uC874\uBC84"
       explanation: "\uCCB4\uB825\uC744 \uC783\uC9C0 \uC54A\uACE0 {0} / {1} \uC6E8\uC774\uBE0C
         \uB3D9\uC548 \uBC84\uD2F0\uC138\uC694."
-      condition: 1
+      condition: 3
       conditionWidth: 1
       ID: 1
     - questName: "\uC800\uCD95"
       explanation: "\uAC00\uCC60 \uD0A4\uB97C {0} / {1}\uAC1C \uBAA8\uC73C\uC138\uC694."
-      condition: 6
-      conditionWidth: 2
+      condition: 4
+      conditionWidth: 1
       ID: 2
     - questName: "\uB4F1\uAC00\uAD50\uD658"
       explanation: "\uCCB4\uB825\uC744 {0} / {1}\uB9CC\uD07C \uC783\uC73C\uC138\uC694."
-      condition: 3
-      conditionWidth: 2
+      condition: 1
+      conditionWidth: 3
       ID: 3
     - questName: "\uB3C4\uB124\uC774\uC158"
       explanation: "\uAD11\uACE0 \uD558\uB098\uB9CC \uBD10\uC8FC\uC138\uC694."
@@ -7948,7 +8154,7 @@ MonoBehaviour:
       ID: 7
     - questName: "\uC2EC\uAE30\uC77C\uC804"
       explanation: "\uCCB4\uB825\uC744 {0} / {1}\uB9CC\uD07C \uD68C\uBCF5\uD558\uC138\uC694."
-      condition: 3
+      condition: 1
       conditionWidth: 2
       ID: 8
     - questName: "\uB3C4\uBC15\uC911\uB3C5"
@@ -7972,13 +8178,13 @@ MonoBehaviour:
       explanation: "\uC5D0\uD53D \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
         \uC18C\uD658\uD558\uC138\uC694."
       condition: 2
-      conditionWidth: 2
+      conditionWidth: 1
       ID: 12
     - questName: "\uB808\uC804\uB4DC"
       explanation: "\uB808\uC804\uB4DC \uB4F1\uAE09 \uC720\uB2DB\uC744 {0} / {1}\uAC1C
         \uC18C\uD658\uD558\uC138\uC694."
       condition: 1
-      conditionWidth: 2
+      conditionWidth: 1
       ID: 13
     - questName: "\uAF5D"
       explanation: '!!?'
@@ -7987,48 +8193,48 @@ MonoBehaviour:
       ID: 14
     - questName: "\uD5C8\uB9AC\uAC00.."
       explanation: "\uD65C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 15
     - questName: "\uC2A4\uD134\uAC74"
       explanation: "\uD30C\uC774\uD130 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 16
     - questName: "\uD654\uB975\uD654\uB975"
       explanation: "\uBD88 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 17
     - questName: "\uC804\uC5FC\uBCD1"
       explanation: "\uBCD1\uADE0 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 18
     - questName: "\uC9C4\uC9DC\uCD1D"
       explanation: "\uCD1D \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 19
     - questName: "\uACA8\uC6B8\uC655\uAD6D"
       explanation: "\uC5BC\uC74C \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 20
     - questName: "\uCF5C\uB85C\uC138\uC6C0"
       explanation: "\uAC80 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 21
     - questName: "\uCC0C\uB9AC\uB9BF"
       explanation: "\uC804\uAE30 \uC720\uB2DB\uC744 {0} / {1}\uAC1C \uC18C\uD658\uD558\uC138\uC694."
-      condition: 4
-      conditionWidth: 2
+      condition: 2
+      conditionWidth: 1
       ID: 22
     - questName: "\uD2B8\uB808\uC774\uB108"
       explanation: "{0} / {1}\uAC1C\uC758 \uC9C4\uD654\uB97C \uB9C8\uCE58\uC138\uC694."
-      condition: 7
-      conditionWidth: 2
+      condition: 3
+      conditionWidth: 1
       ID: 23
     - questName: "\uBC8C\uD06C\uC5C5"
       explanation: "\uCD5C\uB300 \uCCB4\uB825\uC744 {0} / {1}\uB9CC\uD07C \uB298\uB9AC\uC138\uC694."
@@ -8045,7 +8251,7 @@ MonoBehaviour:
       explanation: "\uC801 \uCCB4\uB825\uC5D0 \uBE44\uB840\uD574 {0}% \uB370\uBBF8\uC9C0\uB97C
         \uAC00\uD569\uB2C8\uB2E4."
       condition: 2
-      conditionWidth: 0.5
+      conditionWidth: 1
       level: 0
       ID: 0
     - charateristicName: "\uD53C\uC2A4\uB79C\uB4DC"
@@ -8058,42 +8264,42 @@ MonoBehaviour:
     - charateristicName: "\uB514\uBC84\uD504\uBC84\uD504"
       explanation: "\uB514\uBC84\uD504 \uC9C0\uC18D\uC2DC\uAC04\uC774 {0}\uCD08 \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 1
-      conditionWidth: 0.2
+      conditionWidth: 1
       level: 0
       ID: 2
     - charateristicName: "3\uB300\uC6B4\uB3D9"
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uC774 {0}
         \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 1
-      conditionWidth: 0.2
+      conditionWidth: 0.5
       level: 0
       ID: 3
     - charateristicName: "\uC720\uC0B0\uC18C\uC6B4\uB3D9"
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 5
-      conditionWidth: 1
+      condition: 10
+      conditionWidth: 5
       level: 0
       ID: 4
     - charateristicName: "\uBE48\uD2C8\uCC0C\uB974\uAE30"
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uAC00
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 3
-      conditionWidth: 2
+      condition: 10
+      conditionWidth: 5
       level: 0
       ID: 5
     - charateristicName: CQC
       explanation: "\uBAA8\uB4E0 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960\uC774
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 3
+      condition: 10
       conditionWidth: 2
       level: 0
       ID: 6
     - charateristicName: "\uB7ED\uD0A4\uB9E8"
       explanation: "\uC5D0\uD53D\uACFC \uB808\uC804\uB4DC \uB4F1\uAE09\uC758 \uC720\uB2DB\uC774
         \uB4F1\uC7A5\uD560 \uD655\uB960\uC774 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 3
-      conditionWidth: 1
+      condition: 5
+      conditionWidth: 3
       level: 0
       ID: 7
     - charateristicName: "\uC0AC\uB2E4\uB9AC\uAC8C\uC784"
@@ -8106,22 +8312,22 @@ MonoBehaviour:
     - charateristicName: "\uAC70\uC778\uD654"
       explanation: "\uCD5C\uB300 \uCCB4\uB825\uACFC \uD604\uC7AC \uCCB4\uB825\uC744
         {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
-      condition: 2
-      conditionWidth: 1
+      condition: 5
+      conditionWidth: 5
       level: 0
       ID: 9
     - charateristicName: "\uB450\uAEBC\uC6B4 \uD53C\uBD80"
       explanation: "\uB9E4 \uC6E8\uC774\uBE0C \uC885\uB8CC \uC2DC \uD604\uC7AC \uCCB4\uB825\uC744
         {0}\uB9CC\uD07C \uD68C\uBCF5\uD569\uB2C8\uB2E4."
-      condition: 1
-      conditionWidth: 1
+      condition: 2
+      conditionWidth: 2
       level: 0
       ID: 10
     - charateristicName: "\uC6A9\uC0AC\uC758 \uAC80"
       explanation: "\uBCF4\uC2A4\uC5D0\uAC8C {0}% \uCD94\uAC00 \uB370\uBBF8\uC9C0\uB97C
         \uC785\uD799\uB2C8\uB2E4."
       condition: 1
-      conditionWidth: 1
+      conditionWidth: 2
       level: 0
       ID: 11
     - charateristicName: "4\uB2EC\uB77C"
@@ -8131,51 +8337,51 @@ MonoBehaviour:
       level: 0
       ID: 12
     - charateristicName: "\uACBD\uB825"
-      explanation: "\uD604\uC7AC \uC6E8\uC774\uBE0C \uC22B\uC790\uC5D0 \uBE44\uB840\uD574
-        \uACF5\uACA9\uB825\uC774 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+      explanation: "\uC6E8\uC774\uBE0C \uC885\uB8CC \uC2DC \uACF5\uACA9\uB825\uC774
+        {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 0.2
-      conditionWidth: 0.1
+      conditionWidth: 0.2
       level: 0
       ID: 13
     - charateristicName: "\uBBF8\uCE5C \uBD88"
       explanation: "\uD654\uC0C1 \uB370\uBBF8\uC9C0\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 1
+      condition: 2
       conditionWidth: 1
       level: 0
       ID: 14
     - charateristicName: "4\uB3C4 \uD654\uC0C1"
       explanation: "\uD654\uC0C1 \uC0C1\uD0DC\uC758 \uC801\uC5D0\uAC8C \uBD88\uACC4\uC5F4
         \uB370\uBBF8\uC9C0\uAC00 {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 5
-      conditionWidth: 2
+      condition: 10
+      conditionWidth: 5
       level: 0
       ID: 15
     - charateristicName: "\uC18C\uB4DC\uB9C8\uC2A4\uD130"
       explanation: "\uAC80 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.2
-      conditionWidth: 0.1
+      condition: 0.5
+      conditionWidth: 0.2
       level: 0
       ID: 16
     - charateristicName: "\uAD11\uC804\uC0AC"
       explanation: "\uD50C\uB808\uC774\uC5B4\uAC00 \uB370\uBBF8\uC9C0\uB97C \uC785\uC744
         \uB54C\uB9C8\uB2E4 \uAC80 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uACF5\uACA9\uB825\uC774
         {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.2
-      conditionWidth: 0.1
+      condition: 1
+      conditionWidth: 1
       level: 0
       ID: 17
     - charateristicName: "\uC18D\uC0AC"
       explanation: "\uD65C \uACC4\uC5F4 \uACF5\uC18D\uACFC \uD06C\uB9AC\uD2F0\uCEEC
         \uB370\uBBF8\uC9C0\uAC00 {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 5
-      conditionWidth: 2
+      condition: 10
+      conditionWidth: 10
       level: 0
       ID: 18
     - charateristicName: "\uD654\uAD81"
       explanation: "\uD65C \uACC4\uC5F4 \uACF5\uACA9\uC2DC \uD654\uC0C1\uD6A8\uACFC\uB97C
         \uBD80\uC5EC\uD558\uACE0 \uD654\uC0B4\uC758 \uC18D\uB3C4\uB97C {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 1
-      conditionWidth: 0.5
+      conditionWidth: 1
       level: 0
       ID: 19
     - charateristicName: "\uC2A4\uD134\uAC74"
@@ -8189,37 +8395,37 @@ MonoBehaviour:
     - charateristicName: "\uC544\uC6C3\uBCF5\uC11C"
       explanation: "\uD30C\uC774\uD130 \uACC4\uC5F4 \uC0AC\uAC70\uB9AC\uC640 \uD22C\uC0AC\uCCB4
         \uD06C\uAE30\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.2
-      conditionWidth: 0.1
+      condition: 0.5
+      conditionWidth: 0.2
       level: 0
       ID: 21
     - charateristicName: "\uC131\uC778\uBCD1"
       explanation: "\uAC10\uC5FC \uC0C1\uD0DC \uC801\uC5D0\uAC8C \uADE0 \uB370\uBBF8\uC9C0\uAC00
         {0}%\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 5
-      conditionWidth: 2
+      condition: 10
+      conditionWidth: 5
       level: 0
       ID: 22
     - charateristicName: "\uBA74\uC5ED\uB825"
-      explanation: "\uAC10\uC5FC \uC0C1\uD0DC \uC801\uC758 \uBC29\uC5B4\uB825\uC744
-        {0}\uB9CC\uD07C \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
-      condition: 0.3
-      conditionWidth: 0.1
+      explanation: "\uAC10\uC5FC\uC774 \uC801\uC758 \uBC29\uC5B4\uB825\uC744 {0}\uB9CC\uD07C
+        \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      condition: 5
+      conditionWidth: 5
       level: 0
       ID: 23
     - charateristicName: "\uC9EC\uBC25"
       explanation: "\uCD1D \uACC4\uC5F4 \uC720\uB2DB\uC740 \uC6E8\uC774\uBE0C \uC885\uB8CC
         \uC2DC \uB370\uBBF8\uC9C0\uAC00 {0}\uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 0.5
+      conditionWidth: 0.2
       level: 0
       ID: 24
     - charateristicName: "\uB77D\uC628"
       explanation: "\uCD1D \uACC4\uC5F4 \uC720\uB2DB\uC758 \uD06C\uB9AC\uD2F0\uCEEC
         \uD655\uB960\uACFC \uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0\uAC00 {0}%
         \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 5
-      conditionWidth: 2
+      condition: 10
+      conditionWidth: 10
       level: 0
       ID: 25
     - charateristicName: "\uAF41\uAF41"
@@ -8231,56 +8437,56 @@ MonoBehaviour:
     - charateristicName: "\uD06C\uB9AC\uC2A4\uB9C8\uC2A4"
       explanation: "\uC5BC\uC74C \uACC4\uC5F4 \uC720\uB2DB \uC218 \xD7 {0} (\uBC18\uC62C\uB9BC)\uB9CC\uD07C
         \uAC00\uCC60 \uD0A4\uB97C \uC989\uC2DC \uC5BB\uC2B5\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 0.5
+      conditionWidth: 0.5
       level: 0
       ID: 27
     - charateristicName: "\uACFC\uBD80\uD558"
       explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uCE58\uBA85\uD0C0
         \uD655\uB960\uC744 {0} \uC99D\uAC00\uC2DC\uD0A4\uACE0 \uCD08\uACFC\uBD84\uC740
         \uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0\uB85C \uCE58\uD658\uB429\uB2C8\uB2E4."
-      condition: 5
-      conditionWidth: 2
+      condition: 10
+      conditionWidth: 10
       level: 0
       ID: 28
     - charateristicName: "\uC624\uBC84\uD074\uB7ED"
       explanation: "\uC804\uAE30 \uACC4\uC5F4 \uC720\uB2DB\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00
         {0}\uB9CC\uD07C \uC99D\uAC00\uD558\uC9C0\uB9CC \uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0\uAC00
         {0}\uB9CC\uD07C \uAC10\uC18C\uD569\uB2C8\uB2E4."
-      condition: 5
-      conditionWidth: 2
+      condition: 10
+      conditionWidth: 10
       level: 0
       ID: 29
     - charateristicName: "\uCC98\uD615"
       explanation: "\uCCB4\uB825\uC774 {0}% \uBBF8\uB9CC\uC778 \uBAAC\uC2A4\uD130\uB97C
         \uC989\uC0AC\uC2DC\uD0B5\uB2C8\uB2E4."
-      condition: 1
-      conditionWidth: 1.5
+      condition: 3
+      conditionWidth: 1
       level: 0
       ID: 30
     - charateristicName: "\uB9DD\uC6D0\uACBD"
       explanation: "\uC0AC\uAC70\uB9AC\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 0.3
+      conditionWidth: 0.2
       level: 0
       ID: 31
     - charateristicName: "\uD655\uB300"
       explanation: "\uD22C\uC0AC\uCCB4 \uD06C\uAE30\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 0.3
+      conditionWidth: 0.2
       level: 0
       ID: 32
     - charateristicName: "\uAD70\uB2E8"
       explanation: "\uC720\uB2DB\uC744 \uC18C\uD658\uD560 \uB54C\uB9C8\uB2E4 \uBAA8\uB4E0
         \uC720\uB2DB\uB4E4\uC758 \uACF5\uACA9\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
       condition: 0.1
-      conditionWidth: 0.02
+      conditionWidth: 0.1
       level: 0
       ID: 33
     - charateristicName: "\uCCAD\uC57D"
       explanation: "5 \uBC30\uC218 \uC6E8\uC774\uBE0C\uB9C8\uB2E4 \uAC00\uCC60 \uD0A4\uB97C
         {0}\uB9CC\uD07C \uB354 \uC5BB\uC2B5\uB2C8\uB2E4."
-      condition: 2
+      condition: 5
       conditionWidth: 2
       level: 0
       ID: 34
@@ -8288,8 +8494,8 @@ MonoBehaviour:
       explanation: "\uC720\uB2DB \uBF51\uAE30 \uC2DC \uC77C\uBC18 \uB4F1\uAE09\uC774
         \uB098\uC624\uBA74 {0}% \uD655\uB960\uB85C \uAC00\uCC60 \uD0A4\uB97C 1~3\uAC1C
         \uBC1B\uC2B5\uB2C8\uB2E4."
-      condition: 2
-      conditionWidth: 1
+      condition: 10
+      conditionWidth: 3
       level: 0
       ID: 35
     - charateristicName: "\uBD80\uB450\uC220"
@@ -8302,8 +8508,8 @@ MonoBehaviour:
       explanation: "\uD50C\uB808\uC774\uC5B4\uAC00 \uB370\uBBF8\uC9C0\uB97C \uC785\uC744
         \uB54C\uB9C8\uB2E4 \uBAA8\uB4E0 \uC720\uB2DB\uC758 \uACF5\uACA9\uC18D\uB3C4\uAC00
         {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-      condition: 1
-      conditionWidth: 1
+      condition: 10
+      conditionWidth: 5
       level: 0
       ID: 37
     - charateristicName: "\uC5D8\uB9AC\uD2B8"
@@ -8316,8 +8522,8 @@ MonoBehaviour:
     - charateristicName: "\uD0C0\uC784\uC2A4\uD1B1"
       explanation: "\uBAA8\uB4E0 \uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C {0}
         \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
-      condition: 0.1
-      conditionWidth: 0.1
+      condition: 0.3
+      conditionWidth: 0.2
       level: 0
       ID: 39
     attributeStat:
@@ -9107,7 +9313,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &647776589
 MonoBehaviour:
@@ -15644,51 +15850,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6871277118076770286, guid: 9cab8f1523ae0ab4484ba0259d6d5011, type: 3}
   m_PrefabInstance: {fileID: 1316920538}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1029086213
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1029086215}
-  - component: {fileID: 1029086214}
-  m_Layer: 0
-  m_Name: AdMobManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1029086214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029086213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8286452031094a9448a3cd76a6190953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTestMode: 1
---- !u!4 &1029086215
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029086213}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1680714404}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1030427895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15827,13 +15988,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047950159}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1680714404}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1057437462
 GameObject:
@@ -16044,7 +16205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1067001401
 GameObject:
@@ -17604,6 +17765,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5720371020968932641, guid: 63ba90c29591e734490df0a4bd280263, type: 3}
   m_PrefabInstance: {fileID: 256629980}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1195003738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1195003740}
+  - component: {fileID: 1195003739}
+  m_Layer: 0
+  m_Name: AdMobManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1195003739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195003738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8286452031094a9448a3cd76a6190953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTestMode: 1
+--- !u!4 &1195003740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195003738}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1201087710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18450,7 +18656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f1757abcd57c94dbc33a0ede755d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTouchingUI: 0
 --- !u!4 &1352732953
 Transform:
   m_ObjectHideFlags: 0
@@ -18464,7 +18669,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353977379
 GameObject:
@@ -18635,7 +18840,7 @@ Transform:
   - {fileID: 1416034209}
   - {fileID: 1304883745}
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1370354070
 MonoBehaviour:
@@ -22632,16 +22837,16 @@ Transform:
   m_Children:
   - {fileID: 930562935}
   - {fileID: 567353830}
+  - {fileID: 647776588}
   - {fileID: 1854687075}
   - {fileID: 253012259}
   - {fileID: 1060610723}
   - {fileID: 7270511}
-  - {fileID: 1029086215}
-  - {fileID: 647776588}
   - {fileID: 1996369534}
   - {fileID: 1370354069}
+  - {fileID: 1047950161}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1688159587
 PrefabInstance:
@@ -22874,7 +23079,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1060610722}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
-        m_MethodName: Title
+        m_MethodName: TitleFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22887,6 +23092,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1060610722}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
         m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1060610722}
+        m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24379,7 +24596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1854687076
 MonoBehaviour:
@@ -25901,7 +26118,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680714404}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1996369535
 MonoBehaviour:
@@ -27682,6 +27899,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 273591674}
     m_Modifications:
+    - target: {fileID: 3509192937588246186, guid: 345ae7d5de027d9448539af248cbb05d, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3509192937588246188, guid: 345ae7d5de027d9448539af248cbb05d, type: 3}
       propertyPath: m_Name
       value: QuestBtn

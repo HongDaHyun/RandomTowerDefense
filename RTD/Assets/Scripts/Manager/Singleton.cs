@@ -10,11 +10,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = (T)FindObjectOfType(typeof(T));
 
-                if(instance == null)
+                if (instance == null)
                 {
                     GameObject obj = new GameObject(typeof(T).Name, typeof(T));
                     instance = obj.GetComponent<T>();
@@ -26,21 +26,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (this.name != "GameManager")
+        if (transform.parent != null)
             return;
-        if (instance == null)
-        {
-            if (transform.parent != null && transform.root != null)
-                DontDestroyOnLoad(this.transform.root.gameObject);
-            else
-                DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            if (transform.parent != null && transform.root != null)
-                Destroy(this.transform.root.gameObject);
-            else
-                Destroy(this.gameObject);
-        }
+        if (instance == null)   DontDestroyOnLoad(gameObject);
+        else    Destroy(gameObject);
     }
 }
