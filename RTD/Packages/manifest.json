@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cheeseallergyhamster.ugs": "file:C:/Users/hdh36/Downloads/UGS 1.0.7b/UGS",
     "com.unity.2d.tilemap.extras": "2.2.4",
     "com.unity.ads": "3.7.5",
     "com.unity.collab-proxy": "1.15.4",

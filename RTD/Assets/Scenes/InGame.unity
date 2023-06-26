@@ -7634,6 +7634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c20e4e7851552419b1defe1a70fb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTest_Google: 1
   textAssets:
   - {fileID: 4900000, guid: 115b8e1c3cee1d543a4e97b24e067cf9, type: 3}
   - {fileID: 4900000, guid: 08fd09b9276ddab459a2e02626fb096f, type: 3}

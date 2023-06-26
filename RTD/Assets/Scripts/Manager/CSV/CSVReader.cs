@@ -3,13 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
+using UnityEngine.Networking;
+using UGS;
 
 public class CSVReader : Singleton<CSVReader>
 {
+    public bool isTest_Google;
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
 
-    #region Read
+    void Start()
+    {
+        if (!isTest_Google)
+            return;
+        UnitGoogle();
+        EnemyGoogle();
+        QuestGoogle();
+        CharacteristicGoogle();
+        ProjectileGoogle();
+    }
+
+    #region ExcelRead
     [Button("유닛 데이터 불러오기")]
     public void UnitCSVReader()
     {
@@ -21,15 +35,17 @@ public class CSVReader : Singleton<CSVReader>
         for (int i = 0; i < tableSize; i++)
         {
             int k = i + 1;
-            csvList.unitStat[i] = new UnitStat();
-            csvList.unitStat[i].unitName = data[size * k];
-            csvList.unitStat[i].unitType = (UnitType)Enum.Parse(typeof(UnitType), data[size * k + 1]);
-            csvList.unitStat[i].tier = (Tier)Enum.Parse(typeof(Tier), data[size * k + 2]);
-            csvList.unitStat[i].dmg = float.Parse(data[size * k + 3]);
-            csvList.unitStat[i].critPercent = int.Parse(data[size * k + 4]);
-            csvList.unitStat[i].critDmg = int.Parse(data[size * k + 5]);
-            csvList.unitStat[i].atkSpeed = float.Parse(data[size * k + 6]);
-            csvList.unitStat[i].range = float.Parse(data[size * k + 7]);
+            csvList.unitStat[i] = new UnitStat
+            {
+                unitName = data[size * k],
+                unitType = (UnitType)Enum.Parse(typeof(UnitType), data[size * k + 1]),
+                tier = (Tier)Enum.Parse(typeof(Tier), data[size * k + 2]),
+                dmg = float.Parse(data[size * k + 3]),
+                critPercent = int.Parse(data[size * k + 4]),
+                critDmg = int.Parse(data[size * k + 5]),
+                atkSpeed = float.Parse(data[size * k + 6]),
+                range = float.Parse(data[size * k + 7])
+            };
         }
     }
 
@@ -44,14 +60,16 @@ public class CSVReader : Singleton<CSVReader>
         for (int i = 0; i < tableSize; i++)
         {
             int k = i + 1;
-            csvList.enemyStat[i] = new EnemyStat();
-            csvList.enemyStat[i].enemyName = data[size * k];
-            csvList.enemyStat[i].enemyType = (EnemyType)Enum.Parse(typeof(EnemyType), data[size * k + 1]);
-            csvList.enemyStat[i].tier = (Tier)Enum.Parse(typeof(Tier), data[size * k + 2]);
-            csvList.enemyStat[i].hp = float.Parse(data[size * k + 3]);
-            csvList.enemyStat[i].strength = int.Parse(data[size * k + 4]);
-            csvList.enemyStat[i].defense = float.Parse(data[size * k + 5]);
-            csvList.enemyStat[i].moveSpeed = float.Parse(data[size * k + 6]);
+            csvList.enemyStat[i] = new EnemyStat
+            {
+                enemyName = data[size * k],
+                enemyType = (EnemyType)Enum.Parse(typeof(EnemyType), data[size * k + 1]),
+                tier = (Tier)Enum.Parse(typeof(Tier), data[size * k + 2]),
+                hp = float.Parse(data[size * k + 3]),
+                strength = int.Parse(data[size * k + 4]),
+                defense = float.Parse(data[size * k + 5]),
+                moveSpeed = float.Parse(data[size * k + 6])
+            };
         }
     }
 
@@ -66,18 +84,19 @@ public class CSVReader : Singleton<CSVReader>
         for (int i = 0; i < tableSize; i++)
         {
             int k = i + 1;
-            csvList.questStat[i] = new QuestStat();
-            csvList.questStat[i].questName = data[size * k];
-            csvList.questStat[i].explanation = data[size * k + 1];
-            csvList.questStat[i].condition = int.Parse(data[size * k + 2]);
-            csvList.questStat[i].conditionWidth = int.Parse(data[size * k + 3]);
-            csvList.questStat[i].ID = i;
+            csvList.questStat[i] = new QuestStat
+            {
+                questName = data[size * k],
+                explanation = data[size * k + 1],
+                condition = int.Parse(data[size * k + 2]),
+                conditionWidth = int.Parse(data[size * k + 3]),
+                ID = i
+            };
         }
     }
 
     [Button("특성 데이터 불러오기")]
-
-    public void CharacterisitcReader()
+    public void CharacterisiticReader()
     {
         int order = 3; int size = 4;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
@@ -87,13 +106,15 @@ public class CSVReader : Singleton<CSVReader>
         for (int i = 0; i < tableSize; i++)
         {
             int k = i + 1;
-            csvList.characteristicStat[i] = new CharacteristicStat();
-            csvList.characteristicStat[i].charateristicName = data[size * k];
-            csvList.characteristicStat[i].explanation = data[size * k + 1];
-            csvList.characteristicStat[i].condition = float.Parse(data[size * k + 2]);
-            csvList.characteristicStat[i].conditionWidth = float.Parse(data[size * k + 3]);
-            csvList.characteristicStat[i].level = 0;
-            csvList.characteristicStat[i].ID = i;
+            csvList.characteristicStat[i] = new CharacteristicStat
+            {
+                charateristicName = data[size * k],
+                explanation = data[size * k + 1],
+                condition = float.Parse(data[size * k + 2]),
+                conditionWidth = float.Parse(data[size * k + 3]),
+                level = 0,
+                ID = i
+            };
         }
     }
 
@@ -108,11 +129,13 @@ public class CSVReader : Singleton<CSVReader>
         for (int i = 0; i < tableSize; i++)
         {
             int k = i + 1;
-            csvList.projectileStat[i] = new ProjectileStat();
-            csvList.projectileStat[i].projectileName = (UnitType)Enum.Parse(typeof(UnitType), data[size * k]);
-            csvList.projectileStat[i].attribute = (Attribute)Enum.Parse(typeof(Attribute), data[size * k + 1]);
-            csvList.projectileStat[i].size = float.Parse(data[size * k + 2]);
-            csvList.projectileStat[i].speed = float.Parse(data[size * k + 3]);
+            csvList.projectileStat[i] = new ProjectileStat
+            {
+                projectileName = (UnitType)Enum.Parse(typeof(UnitType), data[size * k]),
+                attribute = (Attribute)Enum.Parse(typeof(Attribute), data[size * k + 1]),
+                size = float.Parse(data[size * k + 2]),
+                speed = float.Parse(data[size * k + 3])
+            };
         }
     }
 
@@ -122,8 +145,134 @@ public class CSVReader : Singleton<CSVReader>
         UnitCSVReader();
         EnemyCSVReader();
         QuestCSVReader();
-        CharacterisitcReader();
+        CharacterisiticReader();
         ProjectileCSVReader();
+    }
+    #endregion
+
+    #region GoogleRoad
+    private void UnitGoogle()
+    {
+        UnityGoogleSheet.LoadFromGoogle<string, Test.Unit>((list, map) => {
+            int length = list.Count;
+            csvList.unitStat = new UnitStat[length];
+
+            int index = 0; // 인덱스 변수 추가
+
+            foreach (var x in list) // foreach 루프로 변경
+            {
+                csvList.unitStat[index] = new UnitStat
+                {
+                    unitName = x.Name,
+                    unitType = (UnitType)Enum.Parse(typeof(UnitType), x.Type),
+                    tier = (Tier)Enum.Parse(typeof(Tier), x.Tier),
+                    dmg = x.Dmg,
+                    critPercent = x.CritPercent,
+                    critDmg = x.CritDmg,
+                    atkSpeed = x.AtkSpeed,
+                    range = x.Range
+                };
+
+                index++; // 인덱스 증가
+            }
+        }, true);
+    }
+
+    private void EnemyGoogle()
+    {
+        UnityGoogleSheet.LoadFromGoogle<string, Test.Enemy>((list, map) => {
+            int length = list.Count;
+            csvList.enemyStat = new EnemyStat[length];
+
+            int index = 0;
+
+            foreach (var x in list)
+            {
+                csvList.enemyStat[index] = new EnemyStat
+                {
+                    enemyName = x.Name,
+                    enemyType = (EnemyType)Enum.Parse(typeof(EnemyType), x.Type),
+                    tier = (Tier)Enum.Parse(typeof(Tier), x.Tier),
+                    hp = x.Hp,
+                    strength = x.Strength,
+                    defense = x.Defense,
+                    moveSpeed = x.MoveSpeed
+                };
+
+                index++;
+            }
+        }, true);
+    }
+
+    private void QuestGoogle()
+    {
+        UnityGoogleSheet.LoadFromGoogle<string, Test.Quest>((list, map) => {
+            int length = list.Count;
+            csvList.questStat = new QuestStat[length];
+
+            int index = 0;
+
+            foreach (var x in list)
+            {
+                csvList.questStat[index] = new QuestStat
+                {
+                    questName = x.Name,
+                    explanation = x.Explanation,
+                    condition = x.Condition,
+                    conditionWidth = x.ConditionWidth,
+                    ID = index
+                };
+
+                index++;
+            }
+        }, true);
+    }
+
+    private void CharacteristicGoogle()
+    {
+        UnityGoogleSheet.LoadFromGoogle<string, Test.Characterisitic>((list, map) => {
+            int length = list.Count;
+            csvList.characteristicStat = new CharacteristicStat[length];
+
+            int index = 0;
+
+            foreach (var x in list)
+            {
+                csvList.characteristicStat[index] = new CharacteristicStat
+                {
+                    charateristicName = x.Name,
+                    explanation = x.Contents,
+                    condition = x.Condition,
+                    conditionWidth = x.ConditionWidth,
+                    ID = index
+                };
+
+                index++;
+            }
+        }, true);
+    }
+
+    private void ProjectileGoogle()
+    {
+        UnityGoogleSheet.LoadFromGoogle<string, Test.Projectile>((list, map) => {
+            int length = list.Count;
+            csvList.projectileStat = new ProjectileStat[length];
+
+            int index = 0;
+
+            foreach (var x in list)
+            {
+                csvList.projectileStat[index] = new ProjectileStat
+                {
+                    projectileName = (UnitType)Enum.Parse(typeof(UnitType), x.Name),
+                    attribute = (Attribute)Enum.Parse(typeof(Attribute), x.Attribute),
+                    size = x.Size,
+                    speed = x.Speed
+                };
+
+                index++;
+            }
+        }, true);
     }
     #endregion
 }
