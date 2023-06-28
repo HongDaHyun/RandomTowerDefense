@@ -101,7 +101,7 @@ public class Unit : MonoBehaviour, IPoolObject
 
     protected virtual IEnumerator AttackToTarget()
     {
-        // 2. 사거리 벗어났는지 체크
+        // 1. 사거리 벗어났는지 체크
         float distance = Vector2.Distance(attackTarget.position, transform.position);
         if (distance > unitStat.range)
         {
@@ -109,7 +109,7 @@ public class Unit : MonoBehaviour, IPoolObject
             ChangeState(UnitState.SearchTarget);
         }
 
-        // 3. 공격
+        // 2. 공격
         if (isAnim && !isAtkCool)
         {
             anim.SetBool("IsAtk", true);

@@ -10,11 +10,11 @@ using Com.LuisPedroFonseca.ProCamera2D;
 public class UIManager : Singleton<UIManager>
 {
     [HideInInspector] public ProCamera2DTransitionsFX fx;
+    public GameObject rayCastPannel;
     [Header("MainMenu")]
     public GameObject[] mainPannel;
     public Text[] levelWaveTxt;
     [Header("InGame")]
-    public GameObject[] inGamePannel;
     public GameObject clickTile;
     public GatchaPannel gatchaPannel;
     public GameObject characteristicPannel;
@@ -106,19 +106,25 @@ public class UIManager : Singleton<UIManager>
             characSlots.Add(slot);
         }
     }
+
+    public void CloseInfoClickTile()
+    {
+        clickTile.SetActive(false); // 클릭 타일 제거
+        info.TabInfo(false); // 정보 창 닫기
+    }
 }
 
 [Serializable]
 public class Info
 {
-    public GameObject pannel;
+    public RectTransform pannelTrans;
     public UnitInfo unitInfo;
     public EnemyInfo enemyInfo;
 
     public void SetUnitInfo(TileGround tile)
     {
         // 패널 활성화
-        pannel.SetActive(true);
+        TabInfo(true);
         enemyInfo.pannel.SetActive(false);
         unitInfo.pannel.SetActive(true);
 
@@ -138,7 +144,7 @@ public class Info
     public void SetEnemyInfo(Enemy enemy)
     {
         // 패널 활성화
-        pannel.SetActive(true);
+        TabInfo(true);
         unitInfo.unitRange.OffAtkRange();
         unitInfo.pannel.SetActive(false);
         enemyInfo.pannel.SetActive(true);
@@ -152,10 +158,19 @@ public class Info
         enemyInfo.strengthTxt.text = enemy.enemyStat.strength.ToString();
     }
 
-    public void CloseInfo()
+    public void TabInfo(bool b)
     {
-        pannel.SetActive(false);
-        unitInfo.unitRange.OffAtkRange();
+        if (b)
+        {
+            pannelTrans.gameObject.SetActive(true);
+            pannelTrans.DOAnchorPosY(-140, 0.5f).SetEase(Ease.OutBounce).SetUpdate(true);
+        }
+        else
+        {
+            pannelTrans.DOAnchorPosY(-600, 0.25f).SetEase(Ease.InBack).SetUpdate(true).OnComplete(() => pannelTrans.gameObject.SetActive(false));
+            unitInfo.unitRange.OffAtkRange();
+        }
+
     }
 }
 
@@ -193,10 +208,13 @@ public class UpPannel
         healthTxt.text = $"{gm.curHealth}/{gm.maxHealth}"; // 체력
         timerTxt.text = WaveManager.Instance.readyTime.ToString("00.0"); // 타이머
         levelTxt.text = $"{gm.expLevel}Lv:"; // 레벨
+        // 웨이브
         if (gm.level == Level.Infinite)
-            waveTxt.text = WaveManager.Instance.curWave.ToString(); // 웨이브
+            waveTxt.text = WaveManager.Instance.curWave.ToString();
         else
-            waveTxt.text = $"{WaveManager.Instance.curWave}/{gm.maxWave}"; // 웨이브
+            waveTxt.text = $"{WaveManager.Instance.curWave}/{gm.maxWave}";
+        // 현재 웨이브
+        curWavePannel.text.text = $"×{WaveManager.Instance.maxWaveEnemy}";
 
         // 경험치 핸들러
         float imsi = gm.curExp / gm.maxExp;
@@ -205,22 +223,17 @@ public class UpPannel
 
     public void ToggleCurWavePannel(bool b)
     {
-        if(b)
-        {
-            
-        }
-    }
-
-    private void SetMaxCount()
-    {
-        curWavePannel.text.text = WaveManager.Instance.maxWaveEnemy.ToString();
+        if (b)
+            curWavePannel.trans.DOAnchorPosY(-200, 0.5f).SetEase(Ease.OutBounce).SetUpdate(true);
+        else
+            curWavePannel.trans.DOAnchorPosY(-50, 0.5f).SetEase(Ease.InBack).SetUpdate(true);
     }
 }
 
 [Serializable]
 public struct CurWavePannel
 {
-    public Transform trans;
+    public RectTransform trans;
     public Text text;
 }
 

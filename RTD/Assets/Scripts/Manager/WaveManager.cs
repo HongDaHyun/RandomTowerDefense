@@ -31,20 +31,24 @@ public class WaveManager : Singleton<WaveManager>
 
         isWave = false;
 
-        SoundManager.Instance.PlaySFX("EndWave");
+        SoundManager.Instance.PlaySFX("EndWave"); // 사운드
 
+        // 클리어
         if (curWave == gm.levelNum[(int)gm.level])
         {
             gm.GameClear();
             return;
         }
 
+        // 최대 웨이브 도달 시 모든 적 동기화
         if (curWave == maxWave)
             cl.SetAllEnemy();
 
+        // 웨이브 종료 시 변수 설정
         gm.gatchaKey += 2;
         curWave++; //웨이브 시작 시 curWave 증가
-
+        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * curWave); // 적 HP 증가
+        um.upPannel.ToggleCurWavePannel(false);
         // Quest Cool
         if (um.questPannel.curCool < um.questPannel.maxCool)
             um.questPannel.curCool++;
@@ -55,15 +59,12 @@ public class WaveManager : Singleton<WaveManager>
             gm.gatchaKey += cm.doubleWave;
         if (curWave % 5 == 0) // 34
             gm.gatchaKey += cm.wave5;
-
         if (cm.dmgWave > 0) // 13
             cl.UpgradeAllUnit(UpUnit.Dmg, cm.dmgWave);
         if (cm.dmgWaveGun > 0) // 24
             cl.UpgradeUnit(cl.FindUnit(UnitType.Gun), UpUnit.All, cm.dmgWaveGun);
 
-        // 적 HP 증가
-        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * curWave);
-
+        // 타이머 시작
         StartCoroutine(TimeWave());
     }
 
@@ -80,6 +81,7 @@ public class WaveManager : Singleton<WaveManager>
             {
                 readyTime = 0;
                 SoundManager.Instance.PlaySFX("StartWave");
+                UIManager.Instance.upPannel.ToggleCurWavePannel(true);
                 SpawnManager.Instance.SpawnEnemy();
             }
         }

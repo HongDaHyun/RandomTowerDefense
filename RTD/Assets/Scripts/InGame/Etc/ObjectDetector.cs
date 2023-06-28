@@ -26,10 +26,6 @@ public class ObjectDetector : MonoBehaviour
     private void Update()
     {
         ClickTile(gm.device);
-
-        // 클릭타일 없고, 적 상태창 아닐 때 클릭 타일 비활성화
-        if (!uiManager.clickTile.activeSelf && !uiManager.info.enemyInfo.pannel.activeSelf)
-            uiManager.info.CloseInfo();
     }
 
     private void ClickTile(DEVICE device)
@@ -84,27 +80,31 @@ public class ObjectDetector : MonoBehaviour
             if (hit.collider.CompareTag("TileGround"))
             {
                 SoundManager.Instance.PlaySFX("ClickGrass");
-                // 클릭 타일 없으면 생성
-                if (!uiManager.clickTile.activeSelf)
-                    uiManager.clickTile.SetActive(true);
 
-                // 동일한 클릭타일 클릭 시 제거
+                // 클릭 타일 비활성화 시
+                if (!uiManager.clickTile.activeSelf)
+                {
+                    uiManager.clickTile.SetActive(true); // 클릭 타일 생성
+                }
+
+
+                // 동일한 클릭타일 클릭 시
                 else if (uiManager.clickTile.transform.parent == hit.transform)
                 {
-                    uiManager.clickTile.SetActive(false);
+                    uiManager.CloseInfoClickTile();
                     return;
                 }
 
+                // 타일
                 TileGround tileGround = hit.transform.GetComponent<TileGround>();
                 // 클릭 타일에 유닛 존재
                 if (tileGround.isBuild)
-                    uiManager.info.SetUnitInfo(tileGround);
+                    uiManager.info.SetUnitInfo(tileGround); // 유닛 정보창 생성
 
-                // 빈 클릭 타일
+                // 빈 클릭 타일 && 유닛 정보 창 활성화되어 있다면
                 else if (uiManager.info.unitInfo.pannel.activeSelf)
-                    uiManager.info.CloseInfo();
+                    uiManager.info.TabInfo(false); // 정보 창 닫기
 
-                // 클릭 타일 포지션 설정
                 uiManager.clickTile.transform.SetParent(hit.transform);
                 uiManager.clickTile.transform.localPosition = new Vector3(0, 0, 0);
             }
@@ -113,16 +113,16 @@ public class ObjectDetector : MonoBehaviour
             else if (hit.collider.CompareTag("TileRoad"))
             {
                 if (uiManager.clickTile.activeSelf)
-                    uiManager.clickTile.SetActive(false);
+                    uiManager.CloseInfoClickTile();
             }
 
             // 적
             else if (hit.collider.CompareTag("Enemy"))
             {
                 if (uiManager.clickTile.activeSelf)
-                    uiManager.clickTile.SetActive(false);
+                    uiManager.clickTile.SetActive(false); // 클릭 타일 제거
 
-                uiManager.info.SetEnemyInfo(hit.collider.GetComponent<Enemy>());
+                uiManager.info.SetEnemyInfo(hit.collider.GetComponent<Enemy>()); // 적 정보창 생성
             }
         }
     }

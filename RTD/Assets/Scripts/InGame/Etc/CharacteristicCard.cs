@@ -50,9 +50,10 @@ public class CharacteristicCard : MonoBehaviour
         UIManager.Instance.CharacInfoPannel(this); // 내 정보 업데이트
 
         //UI
-        UIManager.Instance.characteristicPannel.SetActive(false);
-        BtnManager.Instance.Play();
-        BtnManager.Instance.ClickSound();
+        BtnManager bm = BtnManager.Instance;
+        bm.Tab(UIManager.Instance.characteristicPannel);
+        bm.Play();
+        bm.ClickSound();
     }
 
     public void CharacLevelUp(ref CharacteristicStat stat)

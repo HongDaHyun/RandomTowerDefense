@@ -3,15 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class BtnManager : Singleton<BtnManager>
 {
     public void Tab(GameObject obj)
     {
         if (!obj.activeSelf)
+        {
             obj.SetActive(true);
+            UIManager.Instance.rayCastPannel.SetActive(true);
+            obj.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            obj.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce).SetUpdate(true);
+        }
         else
-            obj.SetActive(false);
+        {
+            UIManager.Instance.rayCastPannel.SetActive(false);
+            obj.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.25f).SetEase(Ease.InOutExpo).SetUpdate(true).OnComplete(() => obj.SetActive(false));
+        }
+    }
+
+    public void TabSlotMachine()
+    {
+        //Only Open
+        UIManager um = UIManager.Instance;
+        if (!um.clickTile.activeSelf || um.clickTile.GetComponentInParent<TileGround>().isBuild) // 클릭타일 활성화 x -> 가챠패널 열리지 않음
+            return;
+        Tab(um.gatchaPannel.gatchaPannel);
     }
 
     public void ClickSound()
@@ -63,14 +81,6 @@ public class BtnManager : Singleton<BtnManager>
         SceneManager.LoadScene(0);
     }
 
-    public void TabSlotMachine()
-    {
-        //Only Open
-        if (!UIManager.Instance.clickTile.activeSelf || UIManager.Instance.clickTile.GetComponentInParent<TileGround>().isBuild) // 클릭타일 활성화 x -> 가챠패널 열리지 않음
-            return;
-        UIManager.Instance.gatchaPannel.gatchaPannel.SetActive(true);
-    }
-
     IEnumerator SlotMachine()
     {
         UIManager ui = UIManager.Instance;
@@ -92,7 +102,6 @@ public class BtnManager : Singleton<BtnManager>
             ranTier = 3;
         else
             ranTier = 4;
-        ranTier = 3;
 
         // UI 설정
         for (int i = 0; i < (4 * 6 + (ranTier - 1)) * 2; i++) //슬롯 돌리기
@@ -104,7 +113,7 @@ public class BtnManager : Singleton<BtnManager>
         }
         yield return new WaitForSeconds(1f);
         ui.slotObj.transform.localPosition = new Vector3(0, 0, 0);
-        ui.gatchaPannel.gatchaPannel.SetActive(false);
+        Tab(ui.gatchaPannel.gatchaPannel);
         ui.gatchaPannel.gatchaBtn.interactable = true;
         ui.gatchaPannel.gatchaTab.interactable = true;
         gm.gatchaKey--;
@@ -130,7 +139,7 @@ public class BtnManager : Singleton<BtnManager>
 
     public void ExitInfo()
     {
-        UIManager.Instance.info.CloseInfo();
+        UIManager.Instance.CloseInfoClickTile();
     }
 
     public void SpeedBtn()
@@ -222,7 +231,6 @@ public class BtnManager : Singleton<BtnManager>
 
         GameManager.Instance.levelPoint--;
 
-        um.characteristicPannel.SetActive(true); // 특성 패널 활성화
         um.InitCard(); // 카드 생성
 
         um.levelUpBtn.SetUI(); // UI 설정

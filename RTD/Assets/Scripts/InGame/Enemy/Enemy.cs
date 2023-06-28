@@ -101,6 +101,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         {
             wayPoints[i] = SpawnManager.Instance.wayPointsObj.GetChild(i);
         }
+        transform.position = wayPoints[curWayPoint].position;
     }
     private void ResetWayPoint()
     {
@@ -294,6 +295,8 @@ public class Enemy : MonoBehaviour, IPoolObject
         // 경험치 증가
         int exp = (int)enemyStat.tier;
         GameManager.Instance.curExp += exp + (exp * CharacManager.Instance.plusExp);
+        // 퀘스트 전체 몬스터
+        WaveManager.Instance.maxWaveEnemy--;
 
         SpawnManager.Instance.DeSpawnEnemy(this);
     }

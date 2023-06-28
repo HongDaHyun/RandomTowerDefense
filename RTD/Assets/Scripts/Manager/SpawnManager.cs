@@ -74,6 +74,7 @@ public class SpawnManager : Singleton<SpawnManager>
         //작라임 생성
         Enemy babySlime = PoolManager.Instance.GetFromPool<Enemy>($"작{bigSlime.enemyStat.enemyName}");
         enemyList.Add(babySlime);
+        WaveManager.Instance.maxWaveEnemy++; // 전체 웨이브 몬스터 증가(새로운 슬라임이 생성되었기 때문)
 
         //위치 조정
         float ranPos = Random.Range(-5, 5) / 10f;
@@ -104,8 +105,6 @@ public class SpawnManager : Singleton<SpawnManager>
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.csvList.FindUnit(type, tier));
-        newUnit.ChangeState(UnitState.SearchTarget); // 천천히 받아오기에 OnGettingPool에서 사용 x
-
         unitList.Add(newUnit);
 
         // 타일
@@ -154,7 +153,7 @@ public class SpawnManager : Singleton<SpawnManager>
         Transform trans = PoolManager.Instance.GetFromPool<Transform>(_tier.ToString());
         trans.SetParent(spawnPoint);
         trans.localPosition = new Vector3(0, 0, 0);
-        trans.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        trans.localScale = new Vector3(0.15f, 0.15f, 0.1f);
     }
     #endregion
 
