@@ -22,7 +22,7 @@ public class SpawnManager : Singleton<SpawnManager>
     void Start()
     {
         wm = WaveManager.Instance;
-        StartCoroutine(wm.StartWave());
+        StartCoroutine(wm.TimeWave());
     }
 
     #region SpawnEnemy
@@ -32,12 +32,16 @@ public class SpawnManager : Singleton<SpawnManager>
             return;
 
         wm.isWave = true;
-        int waveNum = wm.curWave - 1;
+        int curWaveNum = wm.curWave - 1;
 
         if (wm.curWave > wm.maxWave) // maxWave를 넘길 시
-            wm.RanWave(wm.waves[waveNum - 1]); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
+        {
+            wm.RanWave(wm.waves[curWaveNum - 1]); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
+        }
 
-        StartCoroutine(SpawnEnemyRoutine(wm.waves[waveNum]));
+        wm.SetCurMaxWaveEnemy(); // 웨이브에 등장할 몬스터 수 계산
+
+        StartCoroutine(SpawnEnemyRoutine(wm.waves[curWaveNum]));
     }
 
     private IEnumerator SpawnEnemyRoutine(Wave wave)
@@ -100,8 +104,23 @@ public class SpawnManager : Singleton<SpawnManager>
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.csvList.FindUnit(type, tier));
+        newUnit.ChangeState(UnitState.SearchTarget); // 천천히 받아오기에 OnGettingPool에서 사용 x
 
-        SoundManager.Instance.PlaySFX("SpawnUnit");
+        unitList.Add(newUnit);
+
+        // 타일
+        TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
+        tileGround.SetTile(newUnit);
+        if (UIManager.Instance.clickTile.activeSelf)
+            UIManager.Instance.clickTile.SetActive(false);
+
+        if ((int)tier > 2) // Epic, Legend
+        {
+            SpawnVFX($"{tier}VFX", newUnit.transform);
+            SoundManager.Instance.PlaySFX("SpawnUnitUp");
+        }
+        else // Common, Rare
+            SoundManager.Instance.PlaySFX("SpawnUnitUp");
 
         QuestManager.Instance.tierNum[(int)(tier - 1)]++; // 퀘스트 10,11,12,13
         QuestManager.Instance.unitNum[(int)type]++; // 퀘스트 15 ~22
@@ -109,7 +128,6 @@ public class SpawnManager : Singleton<SpawnManager>
         // Charac
         CharacManager cm = CharacManager.Instance;
         CSVReader.Instance.csvList.UpgradeAllUnit(UpUnit.Dmg, cm.spawnDmg); // 33
-
         // 35
         if(tier == Tier.Common)
         {
@@ -120,14 +138,6 @@ public class SpawnManager : Singleton<SpawnManager>
                 GameManager.Instance.gatchaKey += pro;
             }
         }
-
-        unitList.Add(newUnit);
-        TileGround tileGround = UIManager.Instance.clickTile.GetComponentInParent<TileGround>();
-        tileGround.SetTile(newUnit);
-        if (UIManager.Instance.clickTile.activeSelf)
-            UIManager.Instance.clickTile.SetActive(false);
-
-        newUnit.ChangeState(UnitState.SearchTarget); // 유닛 OnGettingFromPool에서 사용 시 위치를 느리게 받아와 바로 찾는 문제로 인해 스폰매니저에서 처리
     }
 
     public void DeSpawnUnit(Unit unit)
@@ -139,10 +149,12 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void SpawnTier(Tier _tier, Transform spawnPoint)
     {
+        if ((int)_tier < 3) // Rare 이하 티어 생성
+            return;
         Transform trans = PoolManager.Instance.GetFromPool<Transform>(_tier.ToString());
         trans.SetParent(spawnPoint);
         trans.localPosition = new Vector3(0, 0, 0);
-        trans.localScale = new Vector2(0.2f, 0.2f);
+        trans.localScale = new Vector3(0.15f, 0.15f, 0.15f);
     }
     #endregion
 

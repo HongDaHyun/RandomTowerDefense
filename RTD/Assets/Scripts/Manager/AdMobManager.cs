@@ -86,7 +86,7 @@ public class AdMobManager : Singleton<AdMobManager>
     {
         frontAd = new InterstitialAd(isTestMode ? frontTestID : frontID);
         frontAd.LoadAd(GetAdRequest());
-        frontAd.OnAdClosed += (sender, e) =>
+        frontAd.OnAdLoaded += (e, sender) =>
         {
             //º¸»ó
         };

@@ -231,7 +231,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                         slowDuration *= plusSlow;
                         slowPercent *= plusSlow;
                     }
-                    speed *= 1 - slowPercent; // 느려진 속도
+                    speed *= Mathf.Min(1 - slowPercent, 0.2f); // 느려진 속도(최대 80%)
                     yield return new WaitForSeconds(slowDuration);
                     speed = enemyStat.moveSpeed / 100; // 원래 속도
                     break;
@@ -244,7 +244,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     //스턴
-                    float stunDuration = Mathf.Max(attributePower - GetStrengthModifier(), 0);
+                    float stunDuration = Mathf.Max(attributePower - GetStrengthModifier(), 4);
                     isStop = true;
                     yield return new WaitForSeconds(stunDuration); //지속 시간
                     isStop = false;

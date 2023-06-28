@@ -43,7 +43,11 @@ public class BtnManager : Singleton<BtnManager>
 
     public void AgainStart()
     {
-        GameManager.Instance.DifficultLevel(GameManager.Instance.level);
+        GameManager gm = GameManager.Instance;
+
+        gm.SetGM();
+
+        GameStart(gm.level.ToString());
     }
 
     public void TitleFX()
@@ -55,8 +59,6 @@ public class BtnManager : Singleton<BtnManager>
     private void Title()
     {
         GameManager.Instance.SetGM();
-
-        Play();
 
         SceneManager.LoadScene(0);
     }
@@ -90,6 +92,7 @@ public class BtnManager : Singleton<BtnManager>
             ranTier = 3;
         else
             ranTier = 4;
+        ranTier = 3;
 
         // UI 설정
         for (int i = 0; i < (4 * 6 + (ranTier - 1)) * 2; i++) //슬롯 돌리기

@@ -167,13 +167,13 @@ public class CSVList
     }
     private void SpawnUp_Unit(string unitName)
     {
-        SpawnManager.Instance.unitList.FindAll(unit => unit.name == unitName).ForEach(unit => unit.SetUp());
+        SpawnManager.Instance.unitList.FindAll(unit => unit.name == unitName).ForEach(unit => unit.SetStat());
     }
     private void SpawnUp_Unit() // All
     {
         for (int i = 0; i < SpawnManager.Instance.unitList.Count; i++)
         {
-            SpawnManager.Instance.unitList[i].SetUp();
+            SpawnManager.Instance.unitList[i].SetStat();
         }
     }
     #endregion

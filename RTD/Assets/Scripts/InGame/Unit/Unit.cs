@@ -29,14 +29,13 @@ public class Unit : MonoBehaviour, IPoolObject
         defSprite = render.sprite;
         if (anim != null)
             isAnim = true;
-        SetUp();
+        SetStat();
         SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
     }
 
     void IPoolObject.OnGettingFromPool()
     {
         SetUp();
-        render.sprite = defSprite;
     }
 
     void Update()
@@ -45,10 +44,18 @@ public class Unit : MonoBehaviour, IPoolObject
             RotateToTarget();
     }
 
-    public void SetUp()
+    public void SetStat()
     {
         unitStat = CSVReader.Instance.csvList.FindUnit(name);
         atkSpeedCount = Mathf.Round(3f / (1f + (unitStat.atkSpeed / 100f)) * 100f) / 100f; // 초당 공격 속도 계산 공식(소수점 셋째 자리에서 반올림)
+    }
+
+    void SetUp()
+    {
+        SetStat();
+        if (isAnim)
+            anim.SetBool("IsAtk", false);
+        render.sprite = defSprite;
     }
 
     #region Attack

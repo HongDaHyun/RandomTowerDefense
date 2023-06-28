@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveManager : Singleton<WaveManager>
 {
     public int curWave = 1;
-    public int maxWave;
+    public int maxWave, maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
     public float readyTime;
@@ -64,10 +64,10 @@ public class WaveManager : Singleton<WaveManager>
         // 적 HP 증가
         cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * curWave);
 
-        StartCoroutine(StartWave());
+        StartCoroutine(TimeWave());
     }
 
-    public IEnumerator StartWave()
+    public IEnumerator TimeWave()
     {
         readyTime = 10f;
 
@@ -83,7 +83,21 @@ public class WaveManager : Singleton<WaveManager>
                 SpawnManager.Instance.SpawnEnemy();
             }
         }
-    } // 웨이브 시작
+        // 웨이브 시작
+    }
+
+    public int CountEnemyWave(Wave wave)
+    {
+        maxWave = 0;
+        foreach (var enemy in wave.enemy)
+            maxWave += enemy.maxCount;
+        return maxWave;
+    }
+
+    public void SetCurMaxWaveEnemy()
+    {
+        maxWaveEnemy = CountEnemyWave(waves[curWave - 1]);
+    }
 
     public void RanWave(Wave wave)
     {
@@ -96,9 +110,7 @@ public class WaveManager : Singleton<WaveManager>
         newWave.enemy = new WaveEnemy[waveEnemyKind];
 
         // 최대 적 수
-        int maxWave = 0;
-        foreach (var enemy in wave.enemy)
-            maxWave += enemy.maxCount;
+        int previousWave = CountEnemyWave(wave) + Random.Range(2, 8);
 
         // 종류 별 적 설정
         for (int i = 0; i < waveEnemyKind; i++)
@@ -108,13 +120,13 @@ public class WaveManager : Singleton<WaveManager>
 
             // 마지막 인덱스
             if (i == waveEnemyKind - 1)
-                newWave.enemy[i].maxCount = maxWave; // 나머지
+                newWave.enemy[i].maxCount = previousWave; // 나머지
 
             // 마지막 인덱스 X
             else
             {
-                int count = Random.Range(3, maxWave); // 최대 적 수 사이 랜덤 값
-                maxWave -= count;
+                int count = Random.Range(3, previousWave); // 최대 적 수 사이 랜덤 값
+                previousWave -= count;
                 newWave.enemy[i].maxCount = count;
             }
         }

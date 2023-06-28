@@ -48,32 +48,7 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
-        UpdateUpPannel();
-    }
-
-    public void UpdateUpPannel()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 0) // 씬이 0이면 함수 실행 x
-            return;
-        GameManager gm = GameManager.Instance;
-
-        upPannel.gatchaKeyTxt.text = gm.gatchaKey.ToString(); // 가챠 키
-        upPannel.healthTxt.text = $"{gm.curHealth}/{gm.maxHealth}"; // 체력
-        upPannel.timerTxt.text = WaveManager.Instance.readyTime.ToString("00.0"); // 타이머
-        upPannel.levelTxt.text = $"{gm.expLevel}Lv:"; // 레벨
-        if (gm.level == Level.Infinite)
-            upPannel.waveTxt.text = WaveManager.Instance.curWave.ToString(); // 웨이브
-        else
-            upPannel.waveTxt.text = $"{WaveManager.Instance.curWave}/{gm.maxWave}"; // 웨이브
-
-        ExpSlider();
-    }
-
-    public void ExpSlider()
-    {
-        GameManager gm = GameManager.Instance;
-        float imsi = gm.curExp / gm.maxExp;
-        upPannel.expSlider.value = Mathf.Lerp(upPannel.expSlider.value, imsi, Time.deltaTime * 10);
+        upPannel.UpdateUpPannel();
     }
 
     public void DmgPopUp(float dmg, Vector3 startTrans, bool isCrit)
@@ -202,10 +177,51 @@ public struct EnemyInfo
 }
 
 [Serializable]
-public struct UpPannel
+public class UpPannel
 {
+    public CurWavePannel curWavePannel;
     public Text gatchaKeyTxt, healthTxt, waveTxt, timerTxt, levelTxt;
     public Slider expSlider;
+
+    public void UpdateUpPannel()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0) // 씬이 0이면 함수 실행 x
+            return;
+        GameManager gm = GameManager.Instance;
+
+        gatchaKeyTxt.text = gm.gatchaKey.ToString(); // 가챠 키
+        healthTxt.text = $"{gm.curHealth}/{gm.maxHealth}"; // 체력
+        timerTxt.text = WaveManager.Instance.readyTime.ToString("00.0"); // 타이머
+        levelTxt.text = $"{gm.expLevel}Lv:"; // 레벨
+        if (gm.level == Level.Infinite)
+            waveTxt.text = WaveManager.Instance.curWave.ToString(); // 웨이브
+        else
+            waveTxt.text = $"{WaveManager.Instance.curWave}/{gm.maxWave}"; // 웨이브
+
+        // 경험치 핸들러
+        float imsi = gm.curExp / gm.maxExp;
+        expSlider.value = Mathf.Lerp(expSlider.value, imsi, Time.deltaTime * 10);
+    }
+
+    public void ToggleCurWavePannel(bool b)
+    {
+        if(b)
+        {
+            
+        }
+    }
+
+    private void SetMaxCount()
+    {
+        curWavePannel.text.text = WaveManager.Instance.maxWaveEnemy.ToString();
+    }
+}
+
+[Serializable]
+public struct CurWavePannel
+{
+    public Transform trans;
+    public Text text;
 }
 
 [Serializable]

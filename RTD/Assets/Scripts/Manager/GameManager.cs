@@ -52,7 +52,7 @@ public class GameManager : Singleton<GameManager>
         isStart = false;
         gameTime = GameTime.Slow; // 속도
         //경험치
-        expLevel = 0;
+        expLevel = 1;
         maxExp = 1000;
         curExp = 0;
         levelPoint = 0;
