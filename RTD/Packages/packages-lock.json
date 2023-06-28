@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.cheeseallergyhamster.ugs": {
-      "version": "file:C:/UGS 1.0.7b/UGS",
+    "com.shlifedev.ugs": {
+      "version": "file:../Assets/Assets/UGS",
       "depth": 0,
       "source": "local",
       "dependencies": {

@@ -32,8 +32,6 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
-    - CAH.UnityGoogleSheets
-    - CAH.UnityGoogleSheets.Editor
     - DOTween.Modules
     - DOTweenPro.EditorScripts
     - DOTweenPro.Scripts
