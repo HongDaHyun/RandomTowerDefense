@@ -17,7 +17,7 @@ public class Unit : MonoBehaviour, IPoolObject
     public Animator anim;
     public bool isAnim; //공격 방식 animation or default
     private SpriteRenderer render;
-    private Sprite defSprite;
+    public Sprite defSprite;
     #endregion
     public UnitStat unitStat;
 

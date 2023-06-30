@@ -75,6 +75,7 @@ public class SpawnManager : Singleton<SpawnManager>
         Enemy babySlime = PoolManager.Instance.GetFromPool<Enemy>($"작{bigSlime.enemyStat.enemyName}");
         enemyList.Add(babySlime);
         WaveManager.Instance.maxWaveEnemy++; // 전체 웨이브 몬스터 증가(새로운 슬라임이 생성되었기 때문)
+        GameManager.Instance.killEnemyNum--;
 
         //위치 조정
         float ranPos = Random.Range(-5, 5) / 10f;
@@ -119,10 +120,12 @@ public class SpawnManager : Singleton<SpawnManager>
             SoundManager.Instance.PlaySFX("SpawnUnitUp");
         }
         else // Common, Rare
-            SoundManager.Instance.PlaySFX("SpawnUnitUp");
+            SoundManager.Instance.PlaySFX("SpawnUnit");
 
-        QuestManager.Instance.tierNum[(int)(tier - 1)]++; // 퀘스트 10,11,12,13
-        QuestManager.Instance.unitNum[(int)type]++; // 퀘스트 15 ~22
+        QuestManager qm = QuestManager.Instance;
+
+        qm.UpQuest(9 + ((int)tier - 1)); // 퀘스트 9 ~ 12
+        qm.UpQuest(14 + (int)type); // 퀘스트 14 ~ 21
 
         // Charac
         CharacManager cm = CharacManager.Instance;
@@ -134,7 +137,7 @@ public class SpawnManager : Singleton<SpawnManager>
             if(pro < cm.commonGatcha)
             {
                 pro = Random.Range(1, 4);
-                GameManager.Instance.gatchaKey += pro;
+                GameManager.Instance.GainGatcha(pro);
             }
         }
     }

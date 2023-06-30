@@ -45,8 +45,7 @@ public class CharacManager : Singleton<CharacManager>
                 doubleWave += (int)value;
                 break;
             case 9:
-                GameManager.Instance.maxHealth += (int)value;
-                GameManager.Instance.GainHealth((int)value);
+                GameManager.Instance.GainMaxHealth((int)value);
                 break;
             case 10:
                 healthWave += (int)value;
@@ -106,7 +105,7 @@ public class CharacManager : Singleton<CharacManager>
                 break;
             case 27:
                 iceGatcha = value;
-                GameManager.Instance.gatchaKey += Mathf.RoundToInt(SpawnManager.Instance.NumUnit(UnitType.Ice) * iceGatcha);
+                GameManager.Instance.GainGatcha(Mathf.RoundToInt(SpawnManager.Instance.NumUnit(UnitType.Ice) * iceGatcha));
                 break;
             case 28:
                 stats = list.FindUnit(UnitType.Thunder);
@@ -145,7 +144,7 @@ public class CharacManager : Singleton<CharacManager>
                 commonGatcha = value;
                 break;
             case 36:
-                plusExp = value / 100;
+                plusExp += value / 100;
                 break;
             case 37:
                 madDmg = value;

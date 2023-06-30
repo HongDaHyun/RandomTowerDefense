@@ -60,6 +60,7 @@ namespace Test
 		public System.String Contents;
 		public System.Int32 Condition;
 		public System.Int32 ConditionWidth;
+		public System.Int32 ID;
   
 
 #region fuctions

@@ -77,6 +77,7 @@ SpriteAtlas:
   - {fileID: 984317924, guid: 5e26f6baad4d09b4ba7080c4be2665cc, type: 3}
   - {fileID: 1010000210, guid: 5e26f6baad4d09b4ba7080c4be2665cc, type: 3}
   - {fileID: 1707311172, guid: 5e26f6baad4d09b4ba7080c4be2665cc, type: 3}
+  - {fileID: -1574932147, guid: 5e26f6baad4d09b4ba7080c4be2665cc, type: 3}
   m_PackedSpriteNamesToIndex:
   - Icon_10
   - Icon_11
@@ -104,6 +105,7 @@ SpriteAtlas:
   - Button_10
   - Button_13
   - Button_12
+  - Button_14
   m_RenderDataMap: {}
   m_Tag: UI_16bit
   m_IsVariant: 0

@@ -346,8 +346,11 @@ MonoBehaviour:
     conditionWidth: 0
     ID: 0
   curCondition: 0
-  readyCondition_1: 0
-  readyCondition_2: 0
+  texts:
+  - {fileID: 3509192936665762172}
+  - {fileID: 3509192936720397174}
+  - {fileID: 3509192938044165333}
+  button: {fileID: 3509192937588246186}
 --- !u!1 &3509192937653098359
 GameObject:
   m_ObjectHideFlags: 0

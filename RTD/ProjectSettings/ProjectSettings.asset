@@ -17,7 +17,7 @@ PlayerSettings:
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
-  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
@@ -317,32 +317,27 @@ PlayerSettings:
       m_Height: 192
       m_Kind: 1
       m_SubKind: 
-    - m_Textures:
-      - {fileID: 0}
+    - m_Textures: []
       m_Width: 144
       m_Height: 144
       m_Kind: 1
       m_SubKind: 
-    - m_Textures:
-      - {fileID: 0}
+    - m_Textures: []
       m_Width: 96
       m_Height: 96
       m_Kind: 1
       m_SubKind: 
-    - m_Textures:
-      - {fileID: 0}
+    - m_Textures: []
       m_Width: 72
       m_Height: 72
       m_Kind: 1
       m_SubKind: 
-    - m_Textures:
-      - {fileID: 0}
+    - m_Textures: []
       m_Width: 48
       m_Height: 48
       m_Kind: 1
       m_SubKind: 
-    - m_Textures:
-      - {fileID: 0}
+    - m_Textures: []
       m_Width: 36
       m_Height: 36
       m_Kind: 1
@@ -778,7 +773,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: UNITY_VISUAL_SCRIPTING;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_VALIDATOR;ODIN_VALIDATOR_3_1
+    Android: ES3GLOBAL_DISABLED;UNITY_VISUAL_SCRIPTING;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_VALIDATOR;ODIN_VALIDATOR_3_1
     CloudRendering: UNITY_VISUAL_SCRIPTING
     EmbeddedLinux: UNITY_VISUAL_SCRIPTING
     Nintendo Switch: UNITY_VISUAL_SCRIPTING

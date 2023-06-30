@@ -61,6 +61,8 @@ public class AdMobManager : Singleton<AdMobManager>
 
     public void ToggleBannerAd(bool b)
     {
+        if (bannerAd == null)
+            return;
         if (b) bannerAd.Show();
         else bannerAd.Hide();
     }

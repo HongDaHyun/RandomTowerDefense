@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         {Attribute.Ice, false },
         {Attribute.Thunder, false }
     };
+    public Sprite defSprite;
 
     #region Movement
     [HideInInspector] public Vector3 moveDirection;
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     public void OnCreatedInPool() //최초
     {
         name = name.Replace("(Clone)", "");
+        defSprite = GetComponent<SpriteRenderer>().sprite;
 
         SetWayPoint();
     }
@@ -54,9 +56,9 @@ public class Enemy : MonoBehaviour, IPoolObject
         HpSliderUpdate();
     }
 
-    protected void SetUp()
+    private void SetUp()
     {
-        enemyStat = CSVReader.Instance.csvList.FindEnemy(name); //스탯 가져오기
+        SetStat();
 
         if (enemyStat.enemyType == EnemyType.Skeleton && WaveManager.Instance.curWave > 20) // 20 웨이브 이상
             maxLife = 2;
@@ -77,6 +79,11 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         //위치 설정
         ResetWayPoint();
+    }
+
+    private void SetStat()
+    {
+        enemyStat = CSVReader.Instance.csvList.FindEnemy(name); //스탯 가져오기
     }
 
     public void ResetDebuffStat()
@@ -232,7 +239,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                         slowDuration *= plusSlow;
                         slowPercent *= plusSlow;
                     }
-                    speed *= Mathf.Min(1 - slowPercent, 0.2f); // 느려진 속도(최대 80%)
+                    speed *= Mathf.Max(1 - slowPercent, 0.2f); // 느려진 속도(최대 80%)
                     yield return new WaitForSeconds(slowDuration);
                     speed = enemyStat.moveSpeed / 100; // 원래 속도
                     break;
@@ -245,7 +252,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                     debuffState[attribute] = true;
 
                     //스턴
-                    float stunDuration = Mathf.Max(attributePower - GetStrengthModifier(), 4);
+                    float stunDuration = Mathf.Max(attributePower - GetStrengthModifier(), 4); // 최대 4초
                     isStop = true;
                     yield return new WaitForSeconds(stunDuration); //지속 시간
                     isStop = false;
@@ -290,13 +297,24 @@ public class Enemy : MonoBehaviour, IPoolObject
         isDie = true;
         StopAllCoroutines();
 
-        QuestManager.Instance.killEnemyNum++; // 퀘스트 5
+        QuestManager qm = QuestManager.Instance;
+        qm.UpQuest(4); // 퀘스트 4
+
+        int tierNum = (int)enemyStat.tier;
+        if (tierNum > 2)
+        {
+            if (tierNum > 3)
+                qm.UpQuest(24);
+            qm.UpQuest(5);
+        }
 
         // 경험치 증가
         int exp = (int)enemyStat.tier;
         GameManager.Instance.curExp += exp + (exp * CharacManager.Instance.plusExp);
-        // 퀘스트 전체 몬스터
+
+        // 웨이브 전체 몬스터
         WaveManager.Instance.maxWaveEnemy--;
+        GameManager.Instance.killEnemyNum++;
 
         SpawnManager.Instance.DeSpawnEnemy(this);
     }

@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 using System;
 using DG.Tweening;
 using Com.LuisPedroFonseca.ProCamera2D;
+using UnityEngine.EventSystems;
 
 public class UIManager : Singleton<UIManager>
 {
     [HideInInspector] public ProCamera2DTransitionsFX fx;
     public GameObject rayCastPannel;
     [Header("MainMenu")]
-    public GameObject[] mainPannel;
-    public Text[] levelWaveTxt;
+    public MainShop mainShopPannel;
+    public Button[] selectLevelBtn;
     [Header("InGame")]
     public GameObject clickTile;
     public GatchaPannel gatchaPannel;
@@ -26,7 +27,7 @@ public class UIManager : Singleton<UIManager>
     public CharacteristicCard[] cards;
     public GameObject slotObj;
     public Text gameSpeedTxt;
-    public GameObject gameOverPannel;
+    public GameOverPannel gameOverPannel;
 
     protected override void Awake()
     {
@@ -35,15 +36,9 @@ public class UIManager : Singleton<UIManager>
         fx = Camera.main.GetComponent<ProCamera2DTransitionsFX>();
     }
 
-    void Start()
+    private void Start()
     {
         fx.TransitionEnter();
-
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-            return;
-        questPannel.pannel.SetActive(true);
-        BtnManager.Instance.RefreshQuestBtn();
-        questPannel.pannel.SetActive(false);
     }
 
     private void Update()
@@ -112,6 +107,73 @@ public class UIManager : Singleton<UIManager>
         clickTile.SetActive(false); // 클릭 타일 제거
         info.TabInfo(false); // 정보 창 닫기
     }
+
+    public Color TierColor(Tier tier)
+    {
+        Color exportColor = Color.white;
+        switch (tier) // 티어 색상
+        {
+            case Tier.Common:
+                exportColor = Color.green;
+                break;
+            case Tier.Rare:
+                exportColor = Color.blue;
+                break;
+            case Tier.Epic:
+                exportColor = Color.magenta;
+                break;
+            case Tier.Legend:
+                exportColor = Color.yellow;
+                break;
+            case Tier.Hidden:
+                exportColor = Color.gray;
+                break;
+        }
+        return exportColor;
+    }
+}
+[Serializable]
+public class MainShop
+{
+    public Text title, explain, cost, curMoney;
+    public Text[] shopLevel;
+    public Image icon;
+    public int curSelect;
+
+    public void UpdateSelectUI()
+    {
+        CSVList cl = CSVReader.Instance.csvList;
+        ShopStat[] shops = cl.shopStat;
+
+        // SelectPannel
+
+        foreach (ShopStat shop in shops)
+        {
+            int shopIndex = shop.index;
+
+            if (shop.curLevel < shop.maxLevel)
+                shopLevel[shopIndex].text = $"Lv {shop.curLevel}";
+            else
+                shopLevel[shopIndex].text = "Max";
+        }
+
+        cost.text = cl.CalCost(cl.FindShop(curSelect)).ToString();
+        UpdateCurMoney();
+    }
+
+    public void UpdateShopUI(ShopStat stat)
+    {
+        title.text = stat.shopName;
+        icon.sprite = EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>().sprite;
+        explain.text = string.Format(stat.explanation, stat.condition);
+        cost.text = CSVReader.Instance.csvList.CalCost(stat).ToString();
+        UpdateCurMoney();
+    }
+
+    public void UpdateCurMoney()
+    {
+        curMoney.text = GameManager.Instance.curMoney.ToString();
+    }
 }
 
 [Serializable]
@@ -131,14 +193,16 @@ public class Info
         // 텍스트 동기화
         Unit unit = tile.GetComponentInChildren<Unit>();
 
-        unitInfo.img.sprite = unit.GetComponent<SpriteRenderer>().sprite;
-        unitInfo.nameTxt.text = unit.unitStat.unitName;
-        unitInfo.dmgTxt.text = unit.unitStat.dmg.ToString();
-        unitInfo.atkSpeedTxt.text = $"{unit.unitStat.atkSpeed}%";
-        unitInfo.rangeTxt.text = unit.unitStat.range.ToString();
-        unitInfo.critPercentTxt.text = $"{unit.unitStat.critPercent}%";
-        unitInfo.critDmgTxt.text = $"{unit.unitStat.critDmg}%";
-        unitInfo.unitRange.OnAtkRange(unit.transform.position, unit.unitStat.range);
+        unitInfo.img.sprite = unit.defSprite; // 이미지
+        unitInfo.icon.sprite = SpriteData.Instance.typeIcon[(int)unit.unitStat.unitType]; // 타입
+        unitInfo.nameTxt.text = unit.unitStat.unitName; // 이름
+        unitInfo.nameTxt.color = UIManager.Instance.TierColor(unit.unitStat.tier); // 이름 색 (티어)
+        unitInfo.dmgTxt.text = unit.unitStat.dmg.ToString(); // 데미지
+        unitInfo.atkSpeedTxt.text = $"{unit.atkSpeedCount}"; // 공속
+        unitInfo.rangeTxt.text = unit.unitStat.range.ToString(); // 사거리
+        unitInfo.critPercentTxt.text = $"{unit.unitStat.critPercent}%"; // 치명타 확률
+        unitInfo.critDmgTxt.text = $"{unit.unitStat.critDmg}%"; // 치명타 데미지
+        unitInfo.unitRange.OnAtkRange(unit.transform.position, unit.unitStat.range); // 사거리 표시 UI
     }
 
     public void SetEnemyInfo(Enemy enemy)
@@ -150,12 +214,13 @@ public class Info
         enemyInfo.pannel.SetActive(true);
 
         // 텍스트 동기화
-        enemyInfo.img.sprite = enemy.GetComponent<SpriteRenderer>().sprite;
-        enemyInfo.nameTxt.text = enemy.enemyStat.enemyName;
-        enemyInfo.hpTxt.text = enemy.enemyStat.hp.ToString();
-        enemyInfo.moveSpeedTxt.text = enemy.enemyStat.moveSpeed.ToString();
-        enemyInfo.defenseTxt.text = enemy.enemyStat.defense.ToString();
-        enemyInfo.strengthTxt.text = enemy.enemyStat.strength.ToString();
+        enemyInfo.img.sprite = enemy.defSprite; // 이미지
+        enemyInfo.nameTxt.text = enemy.enemyStat.enemyName; // 이름
+        enemyInfo.nameTxt.color = UIManager.Instance.TierColor(enemy.enemyStat.tier); // 이름 색 (티어)
+        enemyInfo.hpTxt.text = enemy.enemyStat.hp.ToString(); // 체력
+        enemyInfo.moveSpeedTxt.text = enemy.enemyStat.moveSpeed.ToString(); // 이동속도
+        enemyInfo.defenseTxt.text = enemy.enemyStat.defense.ToString(); // 방어력
+        enemyInfo.strengthTxt.text = enemy.enemyStat.strength.ToString(); // 강인함
     }
 
     public void TabInfo(bool b)
@@ -178,7 +243,7 @@ public class Info
 public struct UnitInfo
 {
     public GameObject pannel;
-    public Image img;
+    public Image img, icon;
     public UnitRange unitRange;
     public Text nameTxt, dmgTxt, atkSpeedTxt, rangeTxt, critPercentTxt, critDmgTxt;
 }
@@ -238,13 +303,21 @@ public struct CurWavePannel
 }
 
 [Serializable]
-public struct QuestPannel
+public class QuestPannel
 {
-    public GameObject pannel;
+    public GameObject pannel, notice;
     public Quest[] quests;
     public Button refreshBtn;
     public Text coolTxt;
     public int maxCool, curCool;
+
+    public void QuestCool()
+    {
+        coolTxt.text = string.Format("{0}/{1}", curCool, maxCool); // 퀘스트 쿨
+
+        if (curCool >= maxCool)
+            refreshBtn.interactable = true;
+    }
 }
 
 [Serializable]
@@ -284,5 +357,56 @@ public class LevelUpBtn
             img.SetActive(false);
             btn.interactable = false;
         }
+    }
+}
+
+[Serializable]
+public class GameOverPannel
+{
+    public GameObject pannel;
+    public Text title;
+    public Text killEnemyNum, curLevel, gatchaKey, curWave, level;
+    public Text total;
+
+    public void SetUI(bool isClear)
+    {
+        GameManager gm = GameManager.Instance;
+
+        title.text = isClear ? "클리어" : "게임오버";
+
+        int killNum = gm.killEnemyNum;
+        int expLevel = gm.expLevel;
+        int gatcha = gm.gatchaKey;
+        int wave = WaveManager.Instance.curWave;
+        Level gameLevel = gm.level;
+        int totalNum = (killNum + expLevel + gatcha + wave) * ((int)gameLevel + 1);
+
+        killEnemyNum.text = $"처치한 적 수: +{killNum}";
+        curLevel.text = $"현재 레벨: +{expLevel}";
+        gatchaKey.text = $"남은 가챠 키: +{gatcha}";
+        curWave.text = $"현재 웨이브: +{wave}";
+        string levelTxt = "난이도: ";
+        switch(gameLevel)
+        {
+            case Level.Easy:
+                levelTxt += "쉬움(×1.0)";
+                break;
+            case Level.Normal:
+                levelTxt = "보통(×2.0)";
+                break;
+            case Level.Hard:
+                levelTxt = "어려움(×3.0)";
+                break;
+            case Level.Infinite:
+                levelTxt = "무한(×4.0)";
+                break;
+        }
+        level.text = levelTxt;
+
+        total.text = $"= {totalNum}";
+
+        gm.EarnMoney(totalNum);
+
+        BtnManager.Instance.Tab(pannel);
     }
 }

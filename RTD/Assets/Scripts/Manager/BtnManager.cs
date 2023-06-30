@@ -23,6 +23,20 @@ public class BtnManager : Singleton<BtnManager>
         }
     }
 
+    public void Pop(GameObject obj)
+    {
+        if (obj.activeSelf)
+            return;
+        SoundManager.Instance.PlaySFX("Pop");
+        obj.SetActive(true);
+        obj.transform.localScale = new Vector3(0f, 0f, 0f);
+        Sequence seq = DOTween.Sequence();
+        seq.Append(obj.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.OutBounce));
+        seq.AppendInterval(2f);
+        seq.Append(obj.transform.DOScale(new Vector3(0f, 0f, 0f), 0.25f).SetEase(Ease.InBack).OnComplete(() => obj.SetActive(false)));
+        seq.Play();
+    }
+
     public void TabSlotMachine()
     {
         //Only Open
@@ -30,6 +44,14 @@ public class BtnManager : Singleton<BtnManager>
         if (!um.clickTile.activeSelf || um.clickTile.GetComponentInParent<TileGround>().isBuild) // 클릭타일 활성화 x -> 가챠패널 열리지 않음
             return;
         Tab(um.gatchaPannel.gatchaPannel);
+    }
+
+    public void ClickStartPannel()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            UIManager.Instance.selectLevelBtn[i].interactable = GameManager.Instance.isClear[i];
+        }
     }
 
     public void ClickSound()
@@ -56,6 +78,7 @@ public class BtnManager : Singleton<BtnManager>
         gm.DifficultLevel(gm.level);
 
         SceneManager.LoadScene(1);
+        
         AdMobManager.Instance.ToggleBannerAd(false);
     } // 레벨 설정에 따라
 
@@ -77,6 +100,8 @@ public class BtnManager : Singleton<BtnManager>
     private void Title()
     {
         GameManager.Instance.SetGM();
+
+        SoundManager.Instance.PlayBGM("Lobby");
 
         SceneManager.LoadScene(0);
     }
@@ -121,12 +146,9 @@ public class BtnManager : Singleton<BtnManager>
         Tier tier = (Tier)ranTier;
         UnitType type = (UnitType)ranType;
 
-        if (!QuestManager.Instance.unitTypesList.Contains(type))
-            QuestManager.Instance.unitTypesList.Add(type); // 퀘스트 6
-
         SpawnManager.Instance.SpawnUnit(type, tier);
 
-        QuestManager.Instance.gatchaNum++; // 퀘스트 9
+        QuestManager.Instance.UpQuest(8); // 퀘스트 8
     }
 
     public void SlotMachineBtn()
@@ -172,19 +194,22 @@ public class BtnManager : Singleton<BtnManager>
 
         Unit otherUnit = sm.FindUnit(thisUnit);
         
-        if(otherUnit != null)
+        if(otherUnit != null) // 업그레이드
         {
-            SoundManager.Instance.PlaySFX("UpgradeUnit"); // 사운드
-
             sm.DeSpawnUnit(otherUnit); // 순서 중요
             sm.DeSpawnUnit(thisUnit); // 순서 바꾸지 마셈
 
-            sm.SpawnVFX("UpgradeVFX", thisUnit.transform);
+            if ((int)thisUnit.unitStat.tier < 3) // Rare이하만
+            {
+                SoundManager.Instance.PlaySFX("UpgradeUnit"); // 사운드
+                sm.SpawnVFX("UpgradeVFX", thisUnit.transform); // Visual
+            }
 
             int ranType = UnityEngine.Random.Range(0, 7);
 
-            sm.SpawnUnit((UnitType)ranType, thisUnit.unitStat.tier + 1); // 업그레이드
-            QuestManager.Instance.evolNum++; // 퀘스트 23
+            sm.SpawnUnit((UnitType)ranType, thisUnit.unitStat.tier + 1); // 한 티어 높은 유닛 생성
+            UIManager.Instance.CloseInfoClickTile();
+            QuestManager.Instance.UpQuest(22); // 퀘스트 22
         }
     }
 
@@ -209,20 +234,16 @@ public class BtnManager : Singleton<BtnManager>
             }
         }
 
+        // 퀘스트 패널
         um.questPannel.curCool = 0;
+        um.questPannel.refreshBtn.interactable = false;
+
         QuestCool();
     }
 
     public void QuestCool()
     {
-        UIManager um = UIManager.Instance;
-
-        if (um.questPannel.curCool < um.questPannel.maxCool)
-            um.questPannel.refreshBtn.interactable = false;
-        else
-            um.questPannel.refreshBtn.interactable = true;
-
-        um.questPannel.coolTxt.text = string.Format("{0}/{1}", um.questPannel.curCool, um.questPannel.maxCool);
+        UIManager.Instance.questPannel.QuestCool();
     }
 
     public void LevelUpBtn()
@@ -234,5 +255,27 @@ public class BtnManager : Singleton<BtnManager>
         um.InitCard(); // 카드 생성
 
         um.levelUpBtn.SetUI(); // UI 설정
+    }
+
+    public void ShopSetSelectBtn(int id)
+    {
+        UIManager um = UIManager.Instance;
+        um.mainShopPannel.curSelect = id;
+        um.mainShopPannel.UpdateShopUI(CSVReader.Instance.csvList.FindShop(id));
+    }
+
+    public void ShopBtn()
+    {
+        UIManager um = UIManager.Instance;
+        CSVList cl = CSVReader.Instance.csvList;
+
+        cl.UpgradeShop(cl.FindShop(um.mainShopPannel.curSelect));
+        UIManager.Instance.mainShopPannel.UpdateSelectUI();
+    }
+
+    public void UpdateShopPannel()
+    {
+        UIManager.Instance.mainShopPannel.UpdateCurMoney();
+        UIManager.Instance.mainShopPannel.UpdateSelectUI();
     }
 }

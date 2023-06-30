@@ -55,6 +55,14 @@ public struct ProjectileStat
 }
 
 [Serializable]
+public struct ShopStat // csv 추가 시 뒤로만 추가 가능
+{
+    public string shopName, explanation;
+    public float condition;
+    public int curLevel, maxLevel, index;
+}
+
+[Serializable]
 public class CSVList
 {
     public UnitStat[] unitStat;
@@ -63,6 +71,7 @@ public class CSVList
     public CharacteristicStat[] characteristicStat;
     public AttributeStat[] attributeStat;
     public ProjectileStat[] projectileStat;
+    public ShopStat[] shopStat;
 
     #region Unit
     //Find
@@ -263,8 +272,11 @@ public class CSVList
     //Find
     public QuestStat FindQuest(QuestStat quest)
     {
-        QuestStat foundStat = Array.Find(questStat, stat => EqualityComparer<QuestStat>.Default.Equals(stat, quest));
-        return foundStat;
+        return Array.Find(questStat, stat => EqualityComparer<QuestStat>.Default.Equals(stat, quest));
+    }
+    public QuestStat FindQuest(string name)
+    {
+        return Array.Find(questStat, stat => stat.questName == name);
     }
     public QuestStat FindQuest(int id)
     {
@@ -359,6 +371,54 @@ public class CSVList
     public void ChangeProjectileAttribute(ref ProjectileStat stat, Attribute _attribute)
     {
         stat.attribute = _attribute;
+    }
+    #endregion
+
+    #region Shop
+    public ShopStat FindShop(string name)
+    {
+        return Array.Find(shopStat, stat => stat.shopName.ToString() == name);
+    }
+
+    public ShopStat FindShop(int id)
+    {
+        return shopStat[id];
+    }
+
+    public int CalCost(ShopStat stat)
+    {
+        return 100 * (int)Mathf.Pow(2, stat.curLevel); // 등비 수열 (20, 40, 80, 160 ... 10240)
+    }
+
+    public void SaveShop(ShopStat shop)
+    {
+        int index = shop.index;
+        ES3.Save<int>($"Shop_{index}", CSVReader.Instance.csvList.FindShop(index).curLevel , "Saves/Alpha2"); // 세이브 디렉토리
+    }
+
+    public void LoadShop()
+    {
+        int length = shopStat.Length;
+        for(int i = 0; i < length; i++)
+        {
+            if(ES3.KeyExists($"Shop_{i}", "Saves/Alpha2")) // 세이브 디렉토리
+                shopStat[i].curLevel = ES3.Load<int>($"Shop_{i}", "Saves/Alpha2"); // 세이브 디렉토리
+        }
+    }
+
+    public void UpgradeShop(ShopStat shop)
+    {
+        if (shop.curLevel >= shop.maxLevel)
+            return;
+
+        int cost = CalCost(shop);
+        if (GameManager.Instance.curMoney < cost)
+            return;
+
+        GameManager.Instance.EarnMoney(-cost);
+        shopStat[shop.index].curLevel++;
+
+        SaveShop(shop);
     }
     #endregion
 }

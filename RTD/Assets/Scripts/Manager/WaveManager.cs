@@ -45,20 +45,26 @@ public class WaveManager : Singleton<WaveManager>
             cl.SetAllEnemy();
 
         // 웨이브 종료 시 변수 설정
-        gm.gatchaKey += 2;
+        gm.GainGatcha(2);
         curWave++; //웨이브 시작 시 curWave 증가
         cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * curWave); // 적 HP 증가
         um.upPannel.ToggleCurWavePannel(false);
+
         // Quest Cool
         if (um.questPannel.curCool < um.questPannel.maxCool)
             um.questPannel.curCool++;
+        else
+            um.questPannel.refreshBtn.interactable = true;
+
+        // 퀘스트
+        QuestManager.Instance.UpQuest(0); // 퀘스트 0
 
         // Charac
         gm.GainHealth(cm.healthWave); // 10
         if (curWave % 2 == 0) // 8
-            gm.gatchaKey += cm.doubleWave;
+            gm.GainGatcha(cm.doubleWave);
         if (curWave % 5 == 0) // 34
-            gm.gatchaKey += cm.wave5;
+            gm.GainGatcha(cm.wave5);
         if (cm.dmgWave > 0) // 13
             cl.UpgradeAllUnit(UpUnit.Dmg, cm.dmgWave);
         if (cm.dmgWaveGun > 0) // 24

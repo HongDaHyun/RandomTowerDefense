@@ -7,7 +7,8 @@ public class GameManager : Singleton<GameManager>
     public Level level;
     public GameTime gameTime = GameTime.Slow;
     public bool isStart;
-    public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp, levelPoint;
+    public bool[] isClear;
+    public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp, levelPoint, curMoney, killEnemyNum;
     public float curExp, increaseExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public int[] levelNum;
@@ -40,6 +41,11 @@ public class GameManager : Singleton<GameManager>
 #endregion
     }
 
+    private void Start()
+    {
+        LoadData();
+    }
+
     private void Update()
     {
         if (curExp >= maxExp)
@@ -58,20 +64,52 @@ public class GameManager : Singleton<GameManager>
         levelPoint = 0;
     }
 
-    public void GainHealth(int a)
+    public void LoadData()  // 세이브 디렉토리
     {
-        curHealth += a;
+        // Shop
+        CSVReader.Instance.csvList.LoadShop();
 
-        LimitHealth();
+        // 돈
+        if(ES3.KeyExists("Money", "Saves/Alpha2"))
+            curMoney = ES3.Load<int>("Money", "Saves/Alpha2");
+
+        // 클리어
+        LoadClearData();
     }
 
-    private void LimitHealth()
+    private void LoadClearData() // 세이브 디렉토리
     {
-        if (curHealth >= maxHealth)
-        {
-            curHealth = maxHealth;
-            return;
-        }
+        // 정식 출시 시 세이브 파일 따로 저장 (ex. Saves/ClearSave)
+        if (ES3.KeyExists("ClearCommon", "Saves/Alpha2"))
+            isClear[0] = ES3.Load<bool>("ClearCommon", "Saves/Alpha2");
+        if (ES3.KeyExists("ClearNormal", "Saves/Alpha2"))
+            isClear[1] = ES3.Load<bool>("ClearNormal", "Saves/Alpha2");
+        if (ES3.KeyExists("ClearHard", "Saves/Alpha2"))
+            isClear[2] = ES3.Load<bool>("ClearHard", "Saves/Alpha2");
+    }
+
+    private void SaveClearData() // 세이브 디렉토리
+    {
+        // 정식 출시 시 세이브 파일 따로 저장 (ex. Saves/ClearSave)
+        ES3.Save("ClearCommon", isClear[0], "Saves/Alpha2");
+        ES3.Save("ClearNormal", isClear[1], "Saves/Alpha2");
+        ES3.Save("ClearHard", isClear[2], "Saves/Alpha2");
+    }
+
+    public void GainMaxHealth(int a)
+    {
+        maxHealth += a;
+
+        QuestManager.Instance.UpQuest(25, a);
+
+        GainHealth(a);
+    }
+
+    public void GainHealth(int a)
+    {
+        curHealth = Mathf.Min(curHealth + a, maxHealth);
+
+        QuestManager.Instance.UpQuest(7, a); // 퀘스트 7
     }
 
     public void LoseHealth(int i)
@@ -83,14 +121,30 @@ public class GameManager : Singleton<GameManager>
 
         curHealth -= i;
 
+        QuestManager.Instance.UpQuest(1, i); // 퀘스트 2
+
         cl.UpgradeUnit(cl.FindUnit(UnitType.Sword), UpUnit.Dmg, cm.dmgSword); // Charac 17
         cl.UpgradeAllUnit(UpUnit.AtkSpeed, cm.madDmg); // Charac 37
 
         // GameOver
         if (curHealth <= 0)
         {
+            curHealth = 0;
             GameOver();
         }
+    }
+
+    public void GainGatcha(int a)
+    {
+        gatchaKey += a;
+        QuestManager.Instance.UpQuest(1); // 퀘스트 1
+    }
+
+    public void EarnMoney(int a)
+    {
+        curMoney += a;
+
+        ES3.Save<int>("Money", curMoney, "Saves/Alpha2"); // 세이브 디렉토리
     }
 
     public void DifficultLevel(Level level)
@@ -131,18 +185,22 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
         gameTime = GameTime.Slow; // 속도 초기화
+        SoundManager.Instance.PlayBGM(level.ToString());
     }
 
     public void GameOver()
     {
         BtnManager.Instance.Pause();
-        UIManager.Instance.gameOverPannel.SetActive(true);
+        UIManager.Instance.gameOverPannel.SetUI(false);
     }
 
     public void GameClear() // 업데이트 필요
     {
         BtnManager.Instance.Pause();
-        UIManager.Instance.gameOverPannel.SetActive(true);
+        UIManager.Instance.gameOverPannel.SetUI(true);
+        isClear[(int)level] = true;
+
+        SaveClearData();
     }
 
     public void LevelUp()

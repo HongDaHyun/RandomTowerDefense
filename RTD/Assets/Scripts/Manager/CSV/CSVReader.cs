@@ -1,26 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
-using UnityEngine.Networking;
 using UGS;
+using UnityEngine.SceneManagement;
 
 public class CSVReader : Singleton<CSVReader>
 {
-    public bool isTest_Google;
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
 
-    void Start()
+    private void Start()
     {
-        if (!isTest_Google)
-            return;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        CSVReading();
+
         UnitGoogle();
         EnemyGoogle();
         QuestGoogle();
         CharacteristicGoogle();
         ProjectileGoogle();
+    }
+
+    public void StartUpdateStat()
+    {
+        ShopStat[] shopStat = csvList.shopStat;
+
+        csvList.UpgradeAllUnit(UpUnit.Dmg, shopStat[0].curLevel * shopStat[0].condition);
+        csvList.UpgradeAllUnit(UpUnit.AtkSpeed, shopStat[1].curLevel * shopStat[1].condition);
+        csvList.UpgradeAllUnit(UpUnit.Range, shopStat[2].curLevel * shopStat[2].condition);
+        csvList.UpgradeAllUnit(UpUnit.CritPercent, shopStat[3].curLevel * shopStat[3].condition);
+        csvList.UpgradeAllUnit(UpUnit.CritDmg, shopStat[4].curLevel * shopStat[4].condition);
+
+        csvList.UpgradeAllProjectile("Size", shopStat[5].curLevel * shopStat[5].condition);
+        csvList.UpgradeAllProjectile("Speed", shopStat[6].curLevel * shopStat[6].condition);
+        csvList.UpgradeAllAttribute(shopStat[7].curLevel * shopStat[7].condition);
+
+        GameManager.Instance.GainMaxHealth((int)(shopStat[8].curLevel * shopStat[8].condition));
+        CharacManager.Instance.healthWave += (int)(shopStat[9].curLevel * shopStat[9].condition);
+        CharacManager.Instance.plusExp += (int)(shopStat[10].curLevel * shopStat[10].condition);
+        GameManager.Instance.probability[2] += (int)(shopStat[11].curLevel * shopStat[11].condition);
+        GameManager.Instance.probability[3] += (int)(shopStat[11].curLevel * shopStat[11].condition);
     }
 
     #region ExcelRead
@@ -76,7 +99,7 @@ public class CSVReader : Singleton<CSVReader>
     [Button("퀘스트 데이터 불러오기")]
     public void QuestCSVReader()
     {
-        int order = 2; int size = 4;
+        int order = 2; int size = 5;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.questStat = new QuestStat[tableSize];
@@ -90,7 +113,7 @@ public class CSVReader : Singleton<CSVReader>
                 explanation = data[size * k + 1],
                 condition = int.Parse(data[size * k + 2]),
                 conditionWidth = int.Parse(data[size * k + 3]),
-                ID = i
+                ID = int.Parse(data[size * k + 4])
             };
         }
     }
@@ -98,7 +121,7 @@ public class CSVReader : Singleton<CSVReader>
     [Button("특성 데이터 불러오기")]
     public void CharacterisiticReader()
     {
-        int order = 3; int size = 4;
+        int order = 3; int size = 5;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.characteristicStat = new CharacteristicStat[tableSize];
@@ -112,8 +135,9 @@ public class CSVReader : Singleton<CSVReader>
                 explanation = data[size * k + 1],
                 condition = float.Parse(data[size * k + 2]),
                 conditionWidth = float.Parse(data[size * k + 3]),
+                ID = int.Parse(data[size * k + 4]),
                 level = 0,
-                ID = i
+
             };
         }
     }
@@ -135,6 +159,28 @@ public class CSVReader : Singleton<CSVReader>
                 attribute = (Attribute)Enum.Parse(typeof(Attribute), data[size * k + 1]),
                 size = float.Parse(data[size * k + 2]),
                 speed = float.Parse(data[size * k + 3])
+            };
+        }
+    }
+
+    [Button("상점 데이터 불러오기")]
+    public void ShopCSVReader()
+    {
+        int order = 5; int size = 5;
+        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / size - 1;
+        csvList.shopStat = new ShopStat[tableSize];
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            int k = i + 1;
+            csvList.shopStat[i] = new ShopStat
+            {
+                shopName = data[size * k],
+                explanation = data[size * k + 1],
+                condition = float.Parse(data[size * k + 2]),
+                maxLevel = int.Parse(data[size * k + 3]),
+                index = i
             };
         }
     }
@@ -220,7 +266,7 @@ public class CSVReader : Singleton<CSVReader>
                     explanation = x.Explanation,
                     condition = x.Condition,
                     conditionWidth = x.ConditionWidth,
-                    ID = index
+                    ID = x.ID
                 };
 
                 index++;
@@ -244,7 +290,7 @@ public class CSVReader : Singleton<CSVReader>
                     explanation = x.Contents,
                     condition = x.Condition,
                     conditionWidth = x.ConditionWidth,
-                    ID = index
+                    ID = x.ID
                 };
 
                 index++;

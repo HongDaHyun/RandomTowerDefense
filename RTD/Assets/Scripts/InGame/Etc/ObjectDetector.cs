@@ -112,8 +112,7 @@ public class ObjectDetector : MonoBehaviour
             // 길 타일
             else if (hit.collider.CompareTag("TileRoad"))
             {
-                if (uiManager.clickTile.activeSelf)
-                    uiManager.CloseInfoClickTile();
+                uiManager.CloseInfoClickTile();
             }
 
             // 적

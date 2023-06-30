@@ -6,4 +6,10 @@ public class SpriteData : Singleton<SpriteData>
 {
     public Sprite[] Stars;
     public Sprite[] CharacIcon;
+    public Sprite[] typeIcon;
+
+    private void Start()
+    {
+        CSVReader.Instance.StartUpdateStat();
+    }
 }
