@@ -5,14 +5,14 @@ using UnityEngine;
 public class WaveManager : Singleton<WaveManager>
 {
     public int curWave = 1;
-    public int maxWave, maxWaveEnemy;
+    public int maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
     public float readyTime;
 
     private void Start()
     {
-        maxWave = waves.Count;
+        StartCoroutine(TimeWave());
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         // 최대 웨이브 도달 시 모든 적 동기화
-        if (curWave == maxWave)
+        if (curWave == GameManager.Instance.maxWave)
             cl.SetAllEnemy();
 
         // 웨이브 종료 시 변수 설정
@@ -96,10 +96,10 @@ public class WaveManager : Singleton<WaveManager>
 
     public int CountEnemyWave(Wave wave)
     {
-        maxWave = 0;
+        int maxEnemy = 0;
         foreach (var enemy in wave.enemy)
-            maxWave += enemy.maxCount;
-        return maxWave;
+            maxEnemy += enemy.maxCount;
+        return maxEnemy;
     }
 
     public void SetCurMaxWaveEnemy()

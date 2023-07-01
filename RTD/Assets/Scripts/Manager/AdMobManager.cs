@@ -47,22 +47,16 @@ public class AdMobManager : Singleton<AdMobManager>
 
     void LoadBannerAd()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1) //씬이 1이면 함수 실행 x
+        if (SceneManager.GetActiveScene().buildIndex != 0)
             return;
         AdSize adaptiveSize = AdSize.GetPortraitAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
         bannerAd = new BannerView(isTestMode ? bannerTestID : bannerID,
             adaptiveSize, AdPosition.Top);
         bannerAd.LoadAd(GetAdRequest());
-        bannerAd.OnAdLoaded += (sender, e) =>
-        {
-            ToggleBannerAd(true);
-        };
     }
 
     public void ToggleBannerAd(bool b)
     {
-        if (bannerAd == null)
-            return;
         if (b) bannerAd.Show();
         else bannerAd.Hide();
     }

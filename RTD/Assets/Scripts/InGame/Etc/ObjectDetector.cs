@@ -8,8 +8,6 @@ public class ObjectDetector : MonoBehaviour
 {
     private RaycastHit2D hit;
     private ProCamera2DPanAndZoom proCam;
-    private UIManager uiManager;
-    private GameManager gm;
 
     private LayerMask targetLayer;
 
@@ -18,38 +16,32 @@ public class ObjectDetector : MonoBehaviour
     private void Awake()
     {
         proCam = Camera.main.GetComponent<ProCamera2DPanAndZoom>();
-        uiManager = UIManager.Instance;
-        gm = GameManager.Instance;
         targetLayer = LayerMask.GetMask("Tile", "Enemy", "UI");
     }
 
     private void Update()
     {
-        ClickTile(gm.device);
+        ClickTile();
     }
 
-    private void ClickTile(DEVICE device)
+    private void ClickTile()
     {
         if (proCam.IsPanning)
             return;
-
-        switch(device)
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0))
         {
-            case DEVICE.UNITY:
-                if (Input.GetMouseButtonDown(0))
-                {
-                    // 마우스가 UI요소 위에 있을 시
-                    if (EventSystem.current.IsPointerOverGameObject())
-                    {
-                        isTouchingUI = true;
-                        return;
-                    }
+            // 마우스가 UI요소 위에 있을 시
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                isTouchingUI = true;
+                return;
+            }
 
-                    isTouchingUI = false;
-                }
-                break;
-            case DEVICE.ANDROID:
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            isTouchingUI = false;
+        }
+#elif UNITY_ANDROID
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     // 터치 위에 UI요소가 있을 시
                     if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
@@ -60,9 +52,7 @@ public class ObjectDetector : MonoBehaviour
 
                     isTouchingUI = false;
                 }
-                break;
-        }
-
+#endif
         if (!isTouchingUI && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)))
             Tile();
     }
@@ -70,6 +60,8 @@ public class ObjectDetector : MonoBehaviour
     private void Tile()
     {
         // RayCast 설정
+        UIManager uiManager = UIManager.Instance;
+
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         hit = Physics2D.Raycast(pos, Vector2.zero, 0f, targetLayer);
 

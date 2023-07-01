@@ -10,19 +10,11 @@ public class SpawnManager : Singleton<SpawnManager>
     public List<Enemy> enemyList;
     public List<Unit> unitList;
 
-    WaveManager wm;
-
     protected override void Awake()
     {
         base.Awake();
         enemyList = new List<Enemy>();
         unitList = new List<Unit>();
-    }
-
-    void Start()
-    {
-        wm = WaveManager.Instance;
-        StartCoroutine(wm.TimeWave());
     }
 
     #region SpawnEnemy
@@ -31,10 +23,12 @@ public class SpawnManager : Singleton<SpawnManager>
         if (enemyList.Count != 0)
             return;
 
+        WaveManager wm = WaveManager.Instance;
+
         wm.isWave = true;
         int curWaveNum = wm.curWave - 1;
 
-        if (wm.curWave > wm.maxWave) // maxWave를 넘길 시
+        if (wm.curWave > GameManager.Instance.maxWave) // maxWave를 넘길 시
         {
             wm.RanWave(wm.waves[curWaveNum - 1]); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
         }

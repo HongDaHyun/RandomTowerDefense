@@ -19,9 +19,12 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] AudioSource bgmPlayer = null;
     [SerializeField] AudioSource[] sfxPlayer = null;
 
-    void Start()
+    private void Start()
     {
-        PlayBGM("Lobby");
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            PlayBGM("Lobby");
+        else
+            PlayBGM(GameManager.Instance.level.ToString());
     }
 
     public void PlayBGM(string p_bgmName)

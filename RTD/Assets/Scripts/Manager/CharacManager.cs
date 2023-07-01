@@ -50,7 +50,8 @@ public class CharacManager : Singleton<CharacManager>
             case 10:
                 healthWave += (int)value;
                 break;
-            case 11: // ¡¶¿€ ¡ﬂ
+            case 11:
+                GameManager.Instance.GainGatcha((int)value);
                 break;
             case 12:
                 plusReward += (int)value;

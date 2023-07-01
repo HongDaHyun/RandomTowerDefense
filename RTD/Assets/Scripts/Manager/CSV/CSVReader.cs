@@ -2,19 +2,13 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 using UGS;
-using UnityEngine.SceneManagement;
 
 public class CSVReader : Singleton<CSVReader>
 {
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
 
-    private void Start()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded()
     {
         CSVReading();
 
@@ -27,6 +21,8 @@ public class CSVReader : Singleton<CSVReader>
 
     public void StartUpdateStat()
     {
+        csvList.LoadShop();
+
         ShopStat[] shopStat = csvList.shopStat;
 
         csvList.UpgradeAllUnit(UpUnit.Dmg, shopStat[0].curLevel * shopStat[0].condition);
@@ -193,6 +189,7 @@ public class CSVReader : Singleton<CSVReader>
         QuestCSVReader();
         CharacterisiticReader();
         ProjectileCSVReader();
+        ShopCSVReader();
     }
     #endregion
 

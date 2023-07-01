@@ -26,9 +26,17 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (transform.parent != null)
-            return;
-        if (instance == null)   DontDestroyOnLoad(gameObject);
-        else    Destroy(gameObject);
+        if(name == "GameManager" || name == "AdMobManager")
+        {
+            if (instance == null)
+            {
+                instance = this as T;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

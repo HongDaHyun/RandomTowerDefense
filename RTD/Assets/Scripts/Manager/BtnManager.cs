@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class BtnManager : Singleton<BtnManager>
 {
@@ -69,6 +69,12 @@ public class BtnManager : Singleton<BtnManager>
         Time.timeScale = (int)GameManager.Instance.gameTime / 10f;
     }
 
+    public void GameStartFX(string _level)
+    {
+        UIManager.Instance.fx.TransitionExit();
+        UIManager.Instance.fx.OnTransitionExitEnded += () => GameStart(_level);
+    }
+
     public void GameStart(string _level)
     {
         GameManager gm = GameManager.Instance;
@@ -77,9 +83,11 @@ public class BtnManager : Singleton<BtnManager>
 
         gm.DifficultLevel(gm.level);
 
+        Play();
+
         SceneManager.LoadScene(1);
-        
-        AdMobManager.Instance.ToggleBannerAd(false);
+
+        CSVReader.Instance.OnSceneLoaded();
     } // 레벨 설정에 따라
 
     public void AgainStart()
@@ -100,9 +108,7 @@ public class BtnManager : Singleton<BtnManager>
     private void Title()
     {
         GameManager.Instance.SetGM();
-
-        SoundManager.Instance.PlayBGM("Lobby");
-
+        Play();
         SceneManager.LoadScene(0);
     }
 

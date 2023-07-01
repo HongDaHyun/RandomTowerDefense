@@ -7,4 +7,3 @@ public enum ProTier { Common = 82, Rare = 10, Epic = 5, Legend = 3}
 public enum GameTime { Slow = 10, Commonly = 15, Fast = 20 }
 public enum UpUnit { Dmg, CritPercent, CritDmg, AtkSpeed, Range, All }
 public enum UpEnemy { Strength, Hp, Defense, MoveSpeed, All }
-public enum DEVICE { UNITY, ANDROID }

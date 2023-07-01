@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,16 +13,10 @@ public class GameManager : Singleton<GameManager>
     public float curExp, increaseExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public int[] levelNum;
-    public DEVICE device;
 
     protected override void Awake()
     {
         base.Awake();
-#if UNITY_EDITOR
-        device = DEVICE.UNITY;
-#elif UNITY_ANDROID
-        device = DEVICE.ANDROID;
-#endif
 
         Application.targetFrameRate = 60;
 
@@ -60,8 +55,49 @@ public class GameManager : Singleton<GameManager>
         //경험치
         expLevel = 1;
         maxExp = 1000;
+        killEnemyNum = 0;
         curExp = 0;
         levelPoint = 0;
+    }
+
+    public void DifficultLevel(Level level)
+    {
+        switch (level)
+        {
+            case Level.Easy: // 쉬움
+                gatchaKey = 3;
+                maxHealth = 30;
+                maxExp = 10;
+                increaseExp = 0.3f;
+                maxWave = levelNum[0];
+                curHealth = maxHealth;
+                break;
+            case Level.Normal: // 보통
+                gatchaKey = 2;
+                maxHealth = 25;
+                maxExp = 10;
+                increaseExp = 0.5f;
+                maxWave = levelNum[1];
+                curHealth = maxHealth;
+                break;
+            case Level.Hard: // 어려움
+                gatchaKey = 2;
+                maxHealth = 20;
+                maxExp = 10;
+                increaseExp = 1f;
+                maxWave = levelNum[2];
+                curHealth = maxHealth;
+                break;
+            case Level.Infinite: // 무한
+                gatchaKey = 2;
+                maxHealth = 20;
+                maxExp = 10;
+                increaseExp = 1f;
+                maxWave = levelNum[3];
+                curHealth = maxHealth;
+                break;
+        }
+        gameTime = GameTime.Slow; // 속도 초기화
     }
 
     public void LoadData()  // 세이브 디렉토리
@@ -145,47 +181,6 @@ public class GameManager : Singleton<GameManager>
         curMoney += a;
 
         ES3.Save<int>("Money", curMoney, "Saves/Alpha2"); // 세이브 디렉토리
-    }
-
-    public void DifficultLevel(Level level)
-    {
-        switch (level)
-        {
-            case Level.Easy: // 쉬움
-                gatchaKey = 3;
-                maxHealth = 30;
-                maxExp = 10;
-                increaseExp = 0.3f;
-                maxWave = levelNum[0];
-                curHealth = maxHealth;
-                break;
-            case Level.Normal: // 보통
-                gatchaKey = 2;
-                maxHealth = 25;
-                maxExp = 10;
-                increaseExp = 0.5f;
-                maxWave = levelNum[1];
-                curHealth = maxHealth;
-                break;
-            case Level.Hard: // 어려움
-                gatchaKey = 2;
-                maxHealth = 20;
-                maxExp = 10;
-                increaseExp = 1f;
-                maxWave = levelNum[2];
-                curHealth = maxHealth;
-                break;
-            case Level.Infinite: // 무한
-                gatchaKey = 2;
-                maxHealth = 20;
-                maxExp = 10;
-                increaseExp = 1f;
-                maxWave = levelNum[3];
-                curHealth = maxHealth;
-                break;
-        }
-        gameTime = GameTime.Slow; // 속도 초기화
-        SoundManager.Instance.PlayBGM(level.ToString());
     }
 
     public void GameOver()
