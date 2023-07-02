@@ -1,27 +1,29 @@
 using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
-using UGS;
+using UnityEngine.SceneManagement;
 
 public class CSVReader : Singleton<CSVReader>
 {
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
 
-    public void OnSceneLoaded()
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            OnSceneLoad();
+    }
+
+    public void OnSceneLoad()
     {
         CSVReading();
 
-        UnitGoogle();
-        EnemyGoogle();
-        QuestGoogle();
-        CharacteristicGoogle();
-        ProjectileGoogle();
+        StartUpdateStat();
     }
 
-    public void StartUpdateStat()
+    public void StartUpdateStat() // QuestManager에서 처리
     {
-        csvList.LoadShop();
+        GameManager gm = GameManager.Instance;
 
         ShopStat[] shopStat = csvList.shopStat;
 
@@ -35,11 +37,12 @@ public class CSVReader : Singleton<CSVReader>
         csvList.UpgradeAllProjectile("Speed", shopStat[6].curLevel * shopStat[6].condition);
         csvList.UpgradeAllAttribute(shopStat[7].curLevel * shopStat[7].condition);
 
-        GameManager.Instance.GainMaxHealth((int)(shopStat[8].curLevel * shopStat[8].condition));
-        CharacManager.Instance.healthWave += (int)(shopStat[9].curLevel * shopStat[9].condition);
-        CharacManager.Instance.plusExp += (int)(shopStat[10].curLevel * shopStat[10].condition);
-        GameManager.Instance.probability[2] += (int)(shopStat[11].curLevel * shopStat[11].condition);
-        GameManager.Instance.probability[3] += (int)(shopStat[11].curLevel * shopStat[11].condition);
+        gm.maxHealth += (int)(shopStat[8].curLevel * shopStat[8].condition);
+        gm.curHealth = gm.maxHealth; // 싱글톤 순서 오류로 QuestManager에 접근하지 않게 GainMaxHealth 함수 사용하지 않음
+        gm.healthWave += (int)(shopStat[9].curLevel * shopStat[9].condition);
+        gm.plusExp += (int)(shopStat[10].curLevel * shopStat[10].condition);
+        gm.probability[2] += (int)(shopStat[11].curLevel * shopStat[11].condition);
+        gm.probability[3] += (int)(shopStat[11].curLevel * shopStat[11].condition);
     }
 
     #region ExcelRead
@@ -189,133 +192,6 @@ public class CSVReader : Singleton<CSVReader>
         QuestCSVReader();
         CharacterisiticReader();
         ProjectileCSVReader();
-        ShopCSVReader();
-    }
-    #endregion
-
-    #region GoogleRoad
-    private void UnitGoogle()
-    {
-        UnityGoogleSheet.LoadFromGoogle<string, Test.Unit>((list, map) => {
-            int length = list.Count;
-            csvList.unitStat = new UnitStat[length];
-
-            int index = 0; // 인덱스 변수 추가
-
-            foreach (var x in list) // foreach 루프로 변경
-            {
-                csvList.unitStat[index] = new UnitStat
-                {
-                    unitName = x.Name,
-                    unitType = (UnitType)Enum.Parse(typeof(UnitType), x.Type),
-                    tier = (Tier)Enum.Parse(typeof(Tier), x.Tier),
-                    dmg = x.Dmg,
-                    critPercent = x.CritPercent,
-                    critDmg = x.CritDmg,
-                    atkSpeed = x.AtkSpeed,
-                    range = x.Range
-                };
-
-                index++; // 인덱스 증가
-            }
-        }, true);
-    }
-
-    private void EnemyGoogle()
-    {
-        UnityGoogleSheet.LoadFromGoogle<string, Test.Enemy>((list, map) => {
-            int length = list.Count;
-            csvList.enemyStat = new EnemyStat[length];
-
-            int index = 0;
-
-            foreach (var x in list)
-            {
-                csvList.enemyStat[index] = new EnemyStat
-                {
-                    enemyName = x.Name,
-                    enemyType = (EnemyType)Enum.Parse(typeof(EnemyType), x.Type),
-                    tier = (Tier)Enum.Parse(typeof(Tier), x.Tier),
-                    hp = x.Hp,
-                    strength = x.Strength,
-                    defense = x.Defense,
-                    moveSpeed = x.MoveSpeed
-                };
-
-                index++;
-            }
-        }, true);
-    }
-
-    private void QuestGoogle()
-    {
-        UnityGoogleSheet.LoadFromGoogle<string, Test.Quest>((list, map) => {
-            int length = list.Count;
-            csvList.questStat = new QuestStat[length];
-
-            int index = 0;
-
-            foreach (var x in list)
-            {
-                csvList.questStat[index] = new QuestStat
-                {
-                    questName = x.Name,
-                    explanation = x.Explanation,
-                    condition = x.Condition,
-                    conditionWidth = x.ConditionWidth,
-                    ID = x.ID
-                };
-
-                index++;
-            }
-        }, true);
-    }
-
-    private void CharacteristicGoogle()
-    {
-        UnityGoogleSheet.LoadFromGoogle<string, Test.Characterisitic>((list, map) => {
-            int length = list.Count;
-            csvList.characteristicStat = new CharacteristicStat[length];
-
-            int index = 0;
-
-            foreach (var x in list)
-            {
-                csvList.characteristicStat[index] = new CharacteristicStat
-                {
-                    charateristicName = x.Name,
-                    explanation = x.Contents,
-                    condition = x.Condition,
-                    conditionWidth = x.ConditionWidth,
-                    ID = x.ID
-                };
-
-                index++;
-            }
-        }, true);
-    }
-
-    private void ProjectileGoogle()
-    {
-        UnityGoogleSheet.LoadFromGoogle<string, Test.Projectile>((list, map) => {
-            int length = list.Count;
-            csvList.projectileStat = new ProjectileStat[length];
-
-            int index = 0;
-
-            foreach (var x in list)
-            {
-                csvList.projectileStat[index] = new ProjectileStat
-                {
-                    projectileName = (UnitType)Enum.Parse(typeof(UnitType), x.Name),
-                    attribute = (Attribute)Enum.Parse(typeof(Attribute), x.Attribute),
-                    size = x.Size,
-                    speed = x.Speed
-                };
-
-                index++;
-            }
-        }, true);
     }
     #endregion
 }

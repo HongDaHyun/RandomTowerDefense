@@ -9,8 +9,8 @@ public class GameManager : Singleton<GameManager>
     public GameTime gameTime = GameTime.Slow;
     public bool isStart;
     public bool[] isClear;
-    public int gatchaKey, maxHealth, curHealth, maxWave, expLevel, maxExp, levelPoint, curMoney, killEnemyNum;
-    public float curExp, increaseExp;
+    public int gatchaKey, maxHealth, curHealth, healthWave, maxWave, expLevel, maxExp, levelPoint, curMoney, killEnemyNum;
+    public float curExp, increaseExp, plusExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public int[] levelNum;
 
@@ -136,7 +136,7 @@ public class GameManager : Singleton<GameManager>
     {
         maxHealth += a;
 
-        QuestManager.Instance.UpQuest(25, a);
+        QuestManager.Instance.UpQuest(23, a); // Äù½ºÆ® 23
 
         GainHealth(a);
     }
@@ -157,7 +157,7 @@ public class GameManager : Singleton<GameManager>
 
         curHealth -= i;
 
-        QuestManager.Instance.UpQuest(1, i); // Äù½ºÆ® 2
+        QuestManager.Instance.UpQuest(2, i); // Äù½ºÆ® 2
 
         cl.UpgradeUnit(cl.FindUnit(UnitType.Sword), UpUnit.Dmg, cm.dmgSword); // Charac 17
         cl.UpgradeAllUnit(UpUnit.AtkSpeed, cm.madDmg); // Charac 37
@@ -189,7 +189,7 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.gameOverPannel.SetUI(false);
     }
 
-    public void GameClear() // ¾÷µ¥ÀÌÆ® ÇÊ¿ä
+    public void GameClear()
     {
         BtnManager.Instance.Pause();
         UIManager.Instance.gameOverPannel.SetUI(true);

@@ -26,7 +26,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if(name == "GameManager" || name == "AdMobManager")
+        if(name == "GameManager" || name == "AdMobManager" || name == "CSVReader")
         {
             if (instance == null)
             {

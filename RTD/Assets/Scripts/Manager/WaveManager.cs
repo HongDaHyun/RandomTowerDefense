@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveManager : Singleton<WaveManager>
 {
     public int curWave = 1;
-    public int maxWaveEnemy;
+    public int maxWaveEnemy, setMaxWave;
     public bool isWave;
     public List<Wave> waves;
     public float readyTime;
@@ -13,6 +13,7 @@ public class WaveManager : Singleton<WaveManager>
     private void Start()
     {
         StartCoroutine(TimeWave());
+        setMaxWave = waves.Count;
     }
 
     private void Update()
@@ -41,7 +42,7 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         // 최대 웨이브 도달 시 모든 적 동기화
-        if (curWave == GameManager.Instance.maxWave)
+        if (curWave == setMaxWave)
             cl.SetAllEnemy();
 
         // 웨이브 종료 시 변수 설정
@@ -60,8 +61,8 @@ public class WaveManager : Singleton<WaveManager>
         QuestManager.Instance.UpQuest(0); // 퀘스트 0
 
         // Charac
-        gm.GainHealth(cm.healthWave); // 10
-        if (curWave % 2 == 0) // 8
+        gm.GainHealth(gm.healthWave); // 10
+        if (curWave % 3 == 0) // 8
             gm.GainGatcha(cm.doubleWave);
         if (curWave % 5 == 0) // 34
             gm.GainGatcha(cm.wave5);

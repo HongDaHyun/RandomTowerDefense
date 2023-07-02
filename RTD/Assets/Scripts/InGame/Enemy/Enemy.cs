@@ -232,13 +232,7 @@ public class Enemy : MonoBehaviour, IPoolObject
                     //슬로우
                     float slowDuration = Mathf.Max(attributePower - GetStrengthModifier(), 0); // 지속 시간
                     float slowPercent = attributePower / (10 + enemyStat.strength); // 슬로우 %
-                    // Charac 26
-                    int plusSlow = CharacManager.Instance.plusIce;
-                    if (plusSlow > 1)
-                    {
-                        slowDuration *= plusSlow;
-                        slowPercent *= plusSlow;
-                    }
+
                     speed *= Mathf.Max(1 - slowPercent, 0.2f); // 느려진 속도(최대 80%)
                     yield return new WaitForSeconds(slowDuration);
                     speed = enemyStat.moveSpeed / 100; // 원래 속도
@@ -304,17 +298,18 @@ public class Enemy : MonoBehaviour, IPoolObject
         if (tierNum > 2)
         {
             if (tierNum > 3)
-                qm.UpQuest(24);
-            qm.UpQuest(5);
+                qm.UpQuest(24); // 퀘스트 24
+            qm.UpQuest(5); // 퀘스트 5
         }
 
         // 경험치 증가
+        GameManager gm = GameManager.Instance;
         int exp = (int)enemyStat.tier;
-        GameManager.Instance.curExp += exp + (exp * CharacManager.Instance.plusExp);
+        gm.curExp += exp + (exp * gm.plusExp);
 
         // 웨이브 전체 몬스터
         WaveManager.Instance.maxWaveEnemy--;
-        GameManager.Instance.killEnemyNum++;
+        gm.killEnemyNum++;
 
         SpawnManager.Instance.DeSpawnEnemy(this);
     }

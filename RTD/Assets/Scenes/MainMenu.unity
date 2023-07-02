@@ -1653,6 +1653,7 @@ MonoBehaviour:
   gatchaKey: 0
   maxHealth: 0
   curHealth: 0
+  healthWave: 0
   maxWave: 0
   expLevel: 1
   maxExp: 1000
@@ -1661,6 +1662,7 @@ MonoBehaviour:
   killEnemyNum: 0
   curExp: 0
   increaseExp: 0
+  plusExp: 0
   probability: 520000000a0000000500000003000000
   levelNum: 140000001e00000028000000ffffffff
 --- !u!1 &200118006
@@ -4168,7 +4170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &536593574
 MonoBehaviour:
@@ -6190,6 +6192,18 @@ MonoBehaviour:
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1428449870}
+    Ordinal: 23
+    Priority: 0
+    IconType: 103000
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 12000
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
 --- !u!4 &857644894
 Transform:
   m_ObjectHideFlags: 0
@@ -6203,7 +6217,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &888534817
 GameObject:
@@ -7795,7 +7809,7 @@ RectTransform:
   - {fileID: 454730402}
   - {fileID: 1746404721}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9568,24 +9582,24 @@ MonoBehaviour:
     - attribute: 3
       attributePower: 2
     - attribute: 4
-      attributePower: 1
+      attributePower: 0.5
     projectileStat: []
     shopStat:
     - shopName: "\uAD34\uB825"
       explanation: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9\uB825 {0} \uC99D\uAC00"
-      condition: 1
+      condition: 0.5
       curLevel: 0
       maxLevel: 10
       index: 0
     - shopName: "\uCE58\uC18D"
       explanation: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9 \uC18D\uB3C4 {0}% \uC99D\uAC00"
-      condition: 10
+      condition: 5
       curLevel: 0
       maxLevel: 10
       index: 1
     - shopName: "\uC7A5\uD3EC"
       explanation: "\uB808\uBCA8 \uB2F9 \uC0AC\uAC70\uB9AC {0} \uC99D\uAC00"
-      condition: 0.2
+      condition: 0.3
       curLevel: 0
       maxLevel: 10
       index: 2
@@ -9604,22 +9618,22 @@ MonoBehaviour:
       index: 4
     - shopName: "\uB3CB\uBCF4\uAE30"
       explanation: "\uB808\uBCA8 \uB2F9 \uD22C\uC0AC\uCCB4 \uD06C\uAE30 {0} \uC99D\uAC00"
-      condition: 0.2
+      condition: 0.1
       curLevel: 0
       maxLevel: 5
       index: 5
     - shopName: "\uBE5B"
       explanation: "\uB808\uBCA8 \uB2F9 \uD22C\uC0AC\uCCB4 \uC18D\uB3C4 {0} \uC99D\uAC00"
-      condition: 0.2
+      condition: 1
       curLevel: 0
-      maxLevel: 5
+      maxLevel: 10
       index: 6
     - shopName: "\uB514\uBC84\uD504"
       explanation: "\uB808\uBCA8 \uB2F9 \uB514\uBC84\uD504 \uC9C0\uC18D\uC2DC\uAC04
         {0}\uCD08 \uC99D\uAC00"
       condition: 0.5
       curLevel: 0
-      maxLevel: 5
+      maxLevel: 10
       index: 7
     - shopName: "\uB3FC\uC9C0"
       explanation: "\uB808\uBCA8 \uB2F9 \uCCB4\uB825 {0} \uC99D\uAC00"
@@ -9638,14 +9652,14 @@ MonoBehaviour:
         \uC99D\uAC00"
       condition: 2
       curLevel: 0
-      maxLevel: 10
+      maxLevel: 5
       index: 10
     - shopName: "\uD589\uC6B4"
       explanation: "\uB808\uBCA8 \uB2F9 \uB192\uC740 \uB4F1\uAE09\uC758 \uC720\uB2DB
         \uB730 \uD655\uB960 {0}% \uC99D\uAC00"
-      condition: 2
+      condition: 1
       curLevel: 0
-      maxLevel: 5
+      maxLevel: 10
       index: 11
 --- !u!4 &1428449872
 Transform:
@@ -9659,7 +9673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1459125288}
+  m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442646415
@@ -10074,9 +10088,8 @@ Transform:
   - {fileID: 253012259}
   - {fileID: 1060610723}
   - {fileID: 69855125}
-  - {fileID: 1428449872}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1506791125 stripped
 MonoBehaviour:
@@ -12645,7 +12658,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951540149
 GameObject:

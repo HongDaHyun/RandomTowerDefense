@@ -87,7 +87,8 @@ public class BtnManager : Singleton<BtnManager>
 
         SceneManager.LoadScene(1);
 
-        CSVReader.Instance.OnSceneLoaded();
+        CSVReader.Instance.OnSceneLoad();
+
     } // 레벨 설정에 따라
 
     public void AgainStart()

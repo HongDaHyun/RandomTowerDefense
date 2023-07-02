@@ -308,13 +308,13 @@ public class CSVList
     // Upgrade
     public void UpgradeAttribute(Attribute attribute, float value)
     {
-        attributeStat[(int)attribute].attributePower = Mathf.Round((attributeStat[(int)attribute].attributePower + value) * 100f) / 100f;
+        attributeStat[(int)attribute].attributePower += value;
     }
     public void UpgradeAllAttribute(float value)
     {
         for(int i = 0; i < attributeStat.Length; i++)
         {
-            attributeStat[i].attributePower = Mathf.Round((attributeStat[i].attributePower + value) * 100f) / 100f;
+            attributeStat[i].attributePower += value;
         }
     }
     #endregion

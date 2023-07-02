@@ -1,13 +1,5 @@
 {
   "dependencies": {
-    "com.shlifedev.ugs": {
-      "version": "file:../Assets/Assets/UGS",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0"
-      }
-    },
     "com.unity.2d.animation": {
       "version": "7.0.2",
       "depth": 1,

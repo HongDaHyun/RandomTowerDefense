@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CharacManager : Singleton<CharacManager>
 {
-    [HideInInspector] public int doubleWave, healthWave, plusReward, plusIce = 1, wave5; // 8, 10, 12, 26
+    [HideInInspector] public int doubleWave, plusReward, wave5; // 8, 12, 34
     [HideInInspector]
     public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, defenseGerm, dmgWaveGun, iceGatcha,
-        execution, spawnDmg, commonGatcha, plusExp, madDmg; // 0, 13, 15, 17, 22, 23, 24, 27, 30, 33, 34, 35, 36
+        execution, spawnDmg, commonGatcha, madDmg; // 0, 13, 15, 17, 22, 23, 24, 27, 30, 33, 34, 36
     public void DoCharac(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;
@@ -23,7 +23,8 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, value);
                 break;
             case 2:
-                list.UpgradeAllAttribute(value);
+                list.UpgradeAttribute(Attribute.Fire, value);
+                list.UpgradeAttribute(Attribute.Germ, value);
                 break;
             case 3:
                 list.UpgradeAllUnit(UpUnit.Dmg, value);
@@ -48,7 +49,7 @@ public class CharacManager : Singleton<CharacManager>
                 GameManager.Instance.GainMaxHealth((int)value);
                 break;
             case 10:
-                healthWave += (int)value;
+                GameManager.Instance.healthWave += (int)value;
                 break;
             case 11:
                 GameManager.Instance.GainGatcha((int)value);
@@ -80,8 +81,8 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Bow), "Speed", value);
                 break;
             case 20:
-                list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Fighter), Attribute.Thunder);
-                list.UpgradeAttribute(Attribute.Thunder, value);
+                list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Fighter), Attribute.Ice);
+                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Fighter), "Speed", value);
                 break;
             case 21:
                 list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Fighter), "Size", value);
@@ -102,7 +103,8 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeUnit(stats, UpUnit.CritDmg, value);
                 break;
             case 26:
-                plusIce = (int)value;
+                list.UpgradeAttribute(Attribute.Ice, value / 10);
+                list.UpgradeAttribute(Attribute.Thunder, value / 100);
                 break;
             case 27:
                 iceGatcha = value;
@@ -122,9 +124,7 @@ public class CharacManager : Singleton<CharacManager>
                 }
                 break;
             case 29:
-                stats = list.FindUnit(UnitType.Thunder);
-                list.UpgradeUnit(stats, UpUnit.AtkSpeed, value);
-                list.UpgradeUnit(stats, UpUnit.CritDmg, -value);
+                list.UpgradeUnit(list.FindUnit(UnitType.Thunder), UpUnit.Dmg, value);
                 break;
             case 30:
                 execution = value / 100f;
@@ -145,7 +145,7 @@ public class CharacManager : Singleton<CharacManager>
                 commonGatcha = value;
                 break;
             case 36:
-                plusExp += value / 100;
+                GameManager.Instance.plusExp += value / 100;
                 break;
             case 37:
                 madDmg = value;
