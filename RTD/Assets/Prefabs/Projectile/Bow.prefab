@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3333181173557417467}
   - component: {fileID: 5227512794339955428}
   - component: {fileID: 6984194680931831941}
-  - component: {fileID: 8947413330841633704}
+  - component: {fileID: 4405807905537318816}
   - component: {fileID: -4190706733542816097}
   m_Layer: 0
   m_Name: Bow
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 515752179090386938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 247805382, guid: b3a5a53fa7efb4a478d9bba62ffd55cd, type: 3}
+  m_Sprite: {fileID: -1116044613, guid: b5be906befa7316469e44a136504f65d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,7 +113,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.3}
   m_EdgeRadius: 0
---- !u!50 &8947413330841633704
+--- !u!50 &4405807905537318816
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515752179090386938}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

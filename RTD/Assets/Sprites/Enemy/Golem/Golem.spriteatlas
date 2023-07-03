@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Golem
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 256
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: e16032ff203734e41874cf89b9a61400, type: 3}
+    - {fileID: 2800000, guid: 0c1eb64b559568843aa7c765eda888a8, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 158492472, guid: d86e155317480a34d9d1cb853d787964, type: 3}
+  - {fileID: 2005291174, guid: d86e155317480a34d9d1cb853d787964, type: 3}
+  - {fileID: -7271574, guid: d86e155317480a34d9d1cb853d787964, type: 3}
+  - {fileID: 1297797138, guid: 4a3e71660999e2d4698008ffd0a42507, type: 3}
+  - {fileID: -1065566814, guid: 4a3e71660999e2d4698008ffd0a42507, type: 3}
+  - {fileID: -732818888, guid: 4a3e71660999e2d4698008ffd0a42507, type: 3}
+  - {fileID: 1741353179, guid: 0c1eb64b559568843aa7c765eda888a8, type: 3}
+  - {fileID: 1411408632, guid: 0c1eb64b559568843aa7c765eda888a8, type: 3}
+  - {fileID: -634847599, guid: 0c1eb64b559568843aa7c765eda888a8, type: 3}
+  - {fileID: 1863927113, guid: 1711a94d78f68cd4faf43c6872ef4a13, type: 3}
+  - {fileID: -586870709, guid: 1711a94d78f68cd4faf43c6872ef4a13, type: 3}
+  - {fileID: 2147294245, guid: 1711a94d78f68cd4faf43c6872ef4a13, type: 3}
+  - {fileID: 454467203, guid: dbaddb8ea4fad2b4598adfcc5ec6242e, type: 3}
+  - {fileID: -585059489, guid: dbaddb8ea4fad2b4598adfcc5ec6242e, type: 3}
+  - {fileID: 398891084, guid: dbaddb8ea4fad2b4598adfcc5ec6242e, type: 3}
+  - {fileID: 147355381, guid: 9e57ac8ece8285f40816ea4f3a862ad7, type: 3}
+  - {fileID: 159838265, guid: 9e57ac8ece8285f40816ea4f3a862ad7, type: 3}
+  - {fileID: 662144470, guid: 9e57ac8ece8285f40816ea4f3a862ad7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Golem#4_1
+  - Golem#4_0
+  - Golem#4_2
+  - Golem#3_2
+  - Golem#3_0
+  - Golem#3_1
+  - BossGolem_1
+  - BossGolem_0
+  - BossGolem_2
+  - Golem#1_0
+  - Golem#1_1
+  - Golem#1_2
+  - Golem#5_0
+  - Golem#5_1
+  - Golem#5_2
+  - Golem#2_2
+  - Golem#2_1
+  - Golem#2_0
+  m_RenderDataMap: {}
+  m_Tag: Golem
+  m_IsVariant: 0

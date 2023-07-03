@@ -132,7 +132,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 0
         width: 48
         height: 48
       alignment: 9
@@ -149,11 +149,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton#2_Reborn_2
+      name: Skeleton#2_Reborn_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
+        x: 48
+        y: 0
         width: 48
         height: 48
       alignment: 9
@@ -170,10 +170,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton#2_Reborn_7
+      name: Skeleton#2_Reborn_2
       rect:
         serializedVersion: 2
-        x: 144
+        x: 96
         y: 0
         width: 48
         height: 48
@@ -195,7 +195,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 48
+        y: 0
         width: 48
         height: 48
       alignment: 9
@@ -212,10 +212,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton#2_Reborn_6
+      name: Skeleton#2_Reborn_4
       rect:
         serializedVersion: 2
-        x: 96
+        x: 192
         y: 0
         width: 48
         height: 48
@@ -233,10 +233,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton#2_Reborn_4
+      name: Skeleton#2_Reborn_5
       rect:
         serializedVersion: 2
-        x: 0
+        x: 240
         y: 0
         width: 48
         height: 48
@@ -254,10 +254,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton#2_Reborn_5
+      name: Skeleton#2_Reborn_6
       rect:
         serializedVersion: 2
-        x: 48
+        x: 288
         y: 0
         width: 48
         height: 48
@@ -275,11 +275,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton#2_Reborn_1
+      name: Skeleton#2_Reborn_7
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
+        x: 336
+        y: 0
         width: 48
         height: 48
       alignment: 9
@@ -307,13 +307,13 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Skeleton#2_Reborn_0: -88232186
-      Skeleton#2_Reborn_2: 1190613444
-      Skeleton#2_Reborn_7: -2090026364
+      Skeleton#2_Reborn_2: -2090026364
+      Skeleton#2_Reborn_7: 602977429
       Skeleton#2_Reborn_3: -929923698
-      Skeleton#2_Reborn_6: -541331391
-      Skeleton#2_Reborn_4: 461682648
-      Skeleton#2_Reborn_5: 1823014261
-      Skeleton#2_Reborn_1: 602977429
+      Skeleton#2_Reborn_6: 1823014261
+      Skeleton#2_Reborn_4: -541331391
+      Skeleton#2_Reborn_5: 461682648
+      Skeleton#2_Reborn_1: 1190613444
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

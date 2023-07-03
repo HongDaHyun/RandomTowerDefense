@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,8 +54,6 @@ public class Quest : MonoBehaviour
             texts[2].text = string.Format("키 {0} 증가", reward);
         else
             texts[2].text = string.Format("키 {0} + {1} 증가", reward - plus, plus);
-
-        CheckSuccess();
     }
 
     public void DoQuest(int id)
@@ -91,19 +91,11 @@ public class Quest : MonoBehaviour
 
     public void ClickQuest()
     {
-        BtnManager.Instance.ClickSound();
+        GameManager.Instance.GainGatcha(reward);
 
         QuestManager.Instance.UpQuest(6); // 퀘스트 6
 
         // 비활성화
         gameObject.SetActive(false);
-
-        if (questStat.ID == 3)
-        {
-            AdMobManager.Instance.ShowRewardAd(reward);
-            return;
-        }
-
-        GameManager.Instance.GainGatcha(reward);
     }
 }

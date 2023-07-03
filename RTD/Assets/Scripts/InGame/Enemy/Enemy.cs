@@ -201,7 +201,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                     for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(dmg, Color.red, 0.1f, isCrit);
+                        TakeDmg(dmg, Color.red, 0.5f, isCrit);
                         yield return new WaitForSeconds(delayDmg);
                     }
                     break;
@@ -213,59 +213,43 @@ public class Enemy : MonoBehaviour, IPoolObject
                     delayDmg = 0.3f; // 딜레이
                     dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
-                    // Charac 23
-                    if (CharacManager.Instance.defenseGerm > 0)
-                    {
-                        float defDefense = enemyStat.defense;
-                        enemyStat.defense = Mathf.Round(enemyStat.defense * (1 + CharacManager.Instance.defenseGerm / 100f) * 100f) / 100f;
-                        enemyStat.defense = defDefense;
-                    }
+                    enemyStat.defense -= CharacManager.Instance.defenseGerm; // Charac 23
 
                     for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(dmg, Color.black, 0.1f, isCrit);
+                        TakeDmg(dmg, Color.black, 0.5f, isCrit);
                         yield return new WaitForSeconds(delayDmg);
                     }
                     break;
 
                 case Attribute.Ice: // 얼음 공격
+                    TakeDmg(dmg, Color.cyan, attributePower, isCrit);
 
                     if (debuffState[attribute])
-                    {
-                        TakeDmg(dmg, Color.cyan, 0.1f, isCrit);
                         yield break;
-                    }
                     debuffState[attribute] = true;
-                    float slowDuration = Mathf.Min(attributePower - GetStrengthModifier(), 4); // 지속 시간
-                    float slowPercent = attributePower / (10 + enemyStat.strength); // 슬로우 %
-
-                    TakeDmg(dmg, Color.cyan, slowDuration, isCrit);
 
                     //슬로우
+                    float slowDuration = Mathf.Max(attributePower - GetStrengthModifier(), 0); // 지속 시간
+                    float slowPercent = attributePower / (10 + enemyStat.strength); // 슬로우 %
+
                     speed *= Mathf.Max(1 - slowPercent, 0.2f); // 느려진 속도(최대 80%)
                     yield return new WaitForSeconds(slowDuration);
                     speed = enemyStat.moveSpeed / 100; // 원래 속도
-
                     break;
 
                 case Attribute.Thunder: // 번개 공격
+                    TakeDmg(dmg, Color.blue, 1f, isCrit);
 
                     if (debuffState[attribute])
-                    {
-                        TakeDmg(dmg, Color.blue, 0.1f, isCrit);
                         yield break;
-                    }
-
                     debuffState[attribute] = true;
-                    float stunDuration = Mathf.Min(attributePower - GetStrengthModifier(), 4); // 최대 4초
-
-                    TakeDmg(dmg, Color.blue, stunDuration, isCrit);
 
                     //스턴
+                    float stunDuration = Mathf.Max(attributePower - GetStrengthModifier(), 4); // 최대 4초
                     isStop = true;
                     yield return new WaitForSeconds(stunDuration); //지속 시간
                     isStop = false;
-
                     break;
             }
             debuffState[attribute] = false;

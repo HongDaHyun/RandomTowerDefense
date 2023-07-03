@@ -8,8 +8,6 @@ public class AdMobManager : Singleton<AdMobManager>
 {
     public bool isTestMode;
 
-    [HideInInspector]public int reward;
-
     void Start()
     {
         var requestConfiguration = new RequestConfiguration.Builder().SetTestDeviceIds(new List<string>() { "DA55FBA1AEDF47FA" }).build();
@@ -117,16 +115,15 @@ public class AdMobManager : Singleton<AdMobManager>
     {
         rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
 
+        rewardAd.LoadAd(GetAdRequest());
         rewardAd.OnUserEarnedReward += (sender, e) =>
         {
-            GameManager.Instance.GainGatcha(reward);
+            //º¸»ó
         };
-        rewardAd.LoadAd(GetAdRequest());
     }
 
-    public void ShowRewardAd(int _reward)
+    public void ShowRewardAd()
     {
-        reward = _reward;
         rewardAd.Show();
         LoadRewardAd();
     }
