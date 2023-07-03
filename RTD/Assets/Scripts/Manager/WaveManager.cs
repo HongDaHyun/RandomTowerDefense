@@ -48,7 +48,7 @@ public class WaveManager : Singleton<WaveManager>
         // 웨이브 종료 시 변수 설정
         gm.GainGatcha(2);
         curWave++; //웨이브 시작 시 curWave 증가
-        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * curWave); // 적 HP 증가
+        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level); // 적 HP 증가
         um.upPannel.ToggleCurWavePannel(false);
 
         // Quest Cool

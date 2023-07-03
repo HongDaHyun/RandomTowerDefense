@@ -103,7 +103,7 @@ public class CSVList
     }
 
     //Upgrade
-    public void UpgradeUnit(string unitName, UpUnit kind, float value)
+    public void UpgradeUnit(string unitName, UpUnit kind, int value)
     {
         // CSV
         CSVUp_Unit(IndexOfUnit(unitName), kind, value);
@@ -111,7 +111,7 @@ public class CSVList
         // Spawn
         SpawnUp_Unit(unitName);
     }
-    public void UpgradeUnit(List<string> unitName, UpUnit kind, float value)
+    public void UpgradeUnit(List<string> unitName, UpUnit kind, int value)
     {
         for (int i = 0; i < unitName.Count; i++)
         {
@@ -148,10 +148,11 @@ public class CSVList
 
     private void CSVUp_Unit(int ID, UpUnit kind, float value)
     {
+        float percentValue = 1 + value / 100f;
         switch (kind)
         {
             case UpUnit.Dmg:
-                unitStat[ID].dmg = Mathf.Round((unitStat[ID].dmg + value) * 100f) / 100f;
+                unitStat[ID].dmg = Mathf.Round(unitStat[ID].dmg * percentValue * 100f) / 100f;
                 break;
             case UpUnit.CritPercent:
                 unitStat[ID].critPercent += (int)value;
@@ -160,17 +161,17 @@ public class CSVList
                 unitStat[ID].critDmg += (int)value;
                 break;
             case UpUnit.AtkSpeed:
-                unitStat[ID].atkSpeed = Mathf.Round((unitStat[ID].atkSpeed + value) * 100f) / 100f;
+                unitStat[ID].atkSpeed = Mathf.Round(unitStat[ID].atkSpeed * percentValue * 100f) / 100f;
                 break;
             case UpUnit.Range:
-                unitStat[ID].range = Mathf.Round((unitStat[ID].range + value) * 100f) / 100f;
+                unitStat[ID].range = Mathf.Round(unitStat[ID].range * percentValue * 100f) / 100f;
                 break;
             case UpUnit.All:
-                unitStat[ID].dmg = Mathf.Round((unitStat[ID].dmg + value) * 100f) / 100f;
+                unitStat[ID].dmg = Mathf.Round(unitStat[ID].dmg * percentValue * 100f) / 100f;
                 unitStat[ID].critPercent += (int)value;
                 unitStat[ID].critDmg += (int)value;
-                unitStat[ID].atkSpeed = Mathf.Round((unitStat[ID].atkSpeed + value) * 100f) / 100f;
-                unitStat[ID].range = Mathf.Round((unitStat[ID].range + value) * 100f) / 100f;
+                unitStat[ID].atkSpeed = Mathf.Round(unitStat[ID].atkSpeed * percentValue * 100f) / 100f;
+                unitStat[ID].range = Mathf.Round(unitStat[ID].range * percentValue * 100f) / 100f;
                 break;
         }
     }
@@ -242,27 +243,28 @@ public class CSVList
 
     private void CSVUp_Enemy(int ID, UpEnemy kind, float value)
     {
+        float percentValue = 1 + value / 100f;
+
         switch (kind)
         {
             case UpEnemy.Strength:
-                enemyStat[ID].strength += (int)value;
+                enemyStat[ID].strength = Mathf.RoundToInt(enemyStat[ID].strength * percentValue);
                 break;
             case UpEnemy.Hp:
-                enemyStat[ID].hp = Mathf.Round((enemyStat[ID].hp + value) * 100f) / 100f;
+                enemyStat[ID].hp = Mathf.Round(enemyStat[ID].hp * percentValue * 100f) / 100f;
                 break;
             case UpEnemy.Defense:
-                enemyStat[ID].defense = Mathf.Round((enemyStat[ID].defense + value) * 100f) / 100f;
+                enemyStat[ID].defense = Mathf.Round(enemyStat[ID].defense * percentValue * 100f) / 100f;
+
                 break;
             case UpEnemy.MoveSpeed:
-                enemyStat[ID].moveSpeed = Mathf.Round((enemyStat[ID].moveSpeed + value) * 100f) / 100f;
-                enemyStat[ID].moveSpeed = MathF.Max(enemyStat[ID].moveSpeed, 0.3f); // 이동 속도 최소값
+                enemyStat[ID].moveSpeed = Mathf.Round(enemyStat[ID].moveSpeed * percentValue * 100f) / 100f;
                 break;
             case UpEnemy.All:
                 enemyStat[ID].strength += (int)value;
-                enemyStat[ID].hp = Mathf.Round((enemyStat[ID].hp + value) * 100f) / 100f;
-                enemyStat[ID].defense = Mathf.Round((enemyStat[ID].defense + value) * 100f) / 100f;
-                enemyStat[ID].moveSpeed = Mathf.Round((enemyStat[ID].moveSpeed + value) * 100f) / 100f;
-                enemyStat[ID].moveSpeed = MathF.Max(enemyStat[ID].moveSpeed, 0.3f); // 이동 속도 최소값
+                enemyStat[ID].hp = Mathf.Round(enemyStat[ID].hp * percentValue * 100f) / 100f;
+                enemyStat[ID].defense = Mathf.Round(enemyStat[ID].defense * percentValue * 100f) / 100f;
+                enemyStat[ID].moveSpeed = Mathf.Round(enemyStat[ID].moveSpeed * percentValue * 100f) / 100f;
                 break;
         }
     }
@@ -339,13 +341,15 @@ public class CSVList
 
     public void UpgradeProjectile(ref ProjectileStat stat, string kind, float value)
     {
+        float percentValue = 1 + value / 100f;
+
         switch (kind)
         {
             case "Size":
-                stat.size = Mathf.Round((stat.size + value) * 100f) / 100f;
+                stat.size = Mathf.Round(stat.size * percentValue * 100f) / 100f;
                 break;
             case "Speed":
-                stat.speed = Mathf.Round((stat.speed + value) * 100f) / 100f;
+                stat.speed = Mathf.Round(stat.speed * percentValue * 100f) / 100f;
                 break;
         }
     }
@@ -353,17 +357,18 @@ public class CSVList
     public void UpgradeAllProjectile(string kind, float value)
     {
         int length = projectileStat.Length;
+        float percentValue = 1 + value / 100f;
 
         switch (kind)
         {
             case "Size":
                 for (int i = 0; i < length; i++)
-                    projectileStat[i].size = Mathf.Round((projectileStat[i].size + value) * 100f) / 100f;
+                    projectileStat[i].size = Mathf.Round(projectileStat[i].size * percentValue * 100f) / 100f;
                 break;
 
             case "Speed":
                 for (int i = 0; i < length; i++)
-                    projectileStat[i].speed = Mathf.Round((projectileStat[i].speed + value) * 100f) / 100f;
+                    projectileStat[i].speed = Mathf.Round(projectileStat[i].speed * percentValue * 100f) / 100f;
                 break;
         }
     }

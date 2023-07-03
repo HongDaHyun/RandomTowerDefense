@@ -1,5 +1,5 @@
 Name,Attribute,Size,Speed
-Bow,None,1,10
+Bow,None,0.8,10
 Fighter,None,0.8,10
 Fire,Fire,0.8,10
 Germ,Germ,0.4,10
