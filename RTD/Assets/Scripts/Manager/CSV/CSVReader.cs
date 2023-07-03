@@ -8,8 +8,9 @@ public class CSVReader : Singleton<CSVReader>
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         if (SceneManager.GetActiveScene().buildIndex != 0)
             OnSceneLoad();
     }

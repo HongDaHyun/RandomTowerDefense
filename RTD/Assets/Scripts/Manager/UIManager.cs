@@ -198,7 +198,7 @@ public class Info
         unitInfo.nameTxt.text = unit.unitStat.unitName; // 이름
         unitInfo.nameTxt.color = UIManager.Instance.TierColor(unit.unitStat.tier); // 이름 색 (티어)
         unitInfo.dmgTxt.text = unit.unitStat.dmg.ToString(); // 데미지
-        unitInfo.atkSpeedTxt.text = $"{unit.atkSpeedCount}"; // 공속
+        unitInfo.atkSpeedTxt.text = $"{unit.unitStat.atkSpeed}"; // 공속
         unitInfo.rangeTxt.text = unit.unitStat.range.ToString(); // 사거리
         unitInfo.critPercentTxt.text = $"{unit.unitStat.critPercent}%"; // 치명타 확률
         unitInfo.critDmgTxt.text = $"{unit.unitStat.critDmg}%"; // 치명타 데미지

@@ -19,8 +19,8 @@ public class CharacManager : Singleton<CharacManager>
                 proportionHP += value;
                 break;
             case 1:
-                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, value);
-                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, value);
+                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, (int)value);
+                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, (int)value);
                 break;
             case 2:
                 list.UpgradeAttribute(Attribute.Fire, value);

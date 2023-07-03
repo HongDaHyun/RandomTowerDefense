@@ -11,7 +11,6 @@ public class Unit : MonoBehaviour, IPoolObject
     private UnitState unitState = UnitState.SearchTarget;
     public Transform attackTarget = null;
     private bool isAtkCool;
-    public float atkSpeedCount;
     #endregion
     #region Animation
     public Animator anim;
@@ -47,7 +46,6 @@ public class Unit : MonoBehaviour, IPoolObject
     public void SetStat()
     {
         unitStat = CSVReader.Instance.csvList.FindUnit(name);
-        atkSpeedCount = Mathf.Round(3f / (1f + (unitStat.atkSpeed / 100f)) * 100f) / 100f; // 초당 공격 속도 계산 공식(소수점 셋째 자리에서 반올림)
     }
 
     void SetUp()
@@ -120,7 +118,7 @@ public class Unit : MonoBehaviour, IPoolObject
 
             Shoot();
 
-            yield return new WaitForSeconds(atkSpeedCount);
+            yield return new WaitForSeconds(1f / unitStat.atkSpeed);
             ChangeState(UnitState.SearchTarget);
         }
     }
@@ -130,7 +128,7 @@ public class Unit : MonoBehaviour, IPoolObject
     {
         isAtkCool = true;
         anim.SetBool("IsAtk", false);
-        yield return new WaitForSeconds(atkSpeedCount);
+        yield return new WaitForSeconds(1f / unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
     }
 

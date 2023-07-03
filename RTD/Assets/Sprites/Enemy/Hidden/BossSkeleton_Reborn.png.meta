@@ -132,7 +132,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 9
@@ -153,7 +153,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 9
@@ -174,7 +174,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 9
@@ -195,7 +195,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 9
@@ -215,7 +215,7 @@ TextureImporter:
       name: BossSkeleton_Reborn_4
       rect:
         serializedVersion: 2
-        x: 192
+        x: 0
         y: 0
         width: 48
         height: 48
@@ -236,7 +236,7 @@ TextureImporter:
       name: BossSkeleton_Reborn_5
       rect:
         serializedVersion: 2
-        x: 240
+        x: 48
         y: 0
         width: 48
         height: 48
@@ -257,7 +257,7 @@ TextureImporter:
       name: BossSkeleton_Reborn_6
       rect:
         serializedVersion: 2
-        x: 288
+        x: 96
         y: 0
         width: 48
         height: 48
@@ -278,7 +278,7 @@ TextureImporter:
       name: BossSkeleton_Reborn_7
       rect:
         serializedVersion: 2
-        x: 336
+        x: 144
         y: 0
         width: 48
         height: 48
