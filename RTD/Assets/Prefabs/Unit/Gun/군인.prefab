@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4890744760523647094
 Transform:
@@ -103,6 +103,7 @@ MonoBehaviour:
   atkSpeedCount: 0
   anim: {fileID: 0}
   isAnim: 0
+  defSprite: {fileID: 0}
   unitStat:
     unitName: 
     unitType: 0
@@ -146,7 +147,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6041578630045607699
 Transform:

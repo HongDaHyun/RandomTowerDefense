@@ -155,6 +155,7 @@ MonoBehaviour:
     defense: 0
     moveSpeed: 0
   speed: 0
+  defSprite: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   curWayPoint: 0
   maxLife: 0

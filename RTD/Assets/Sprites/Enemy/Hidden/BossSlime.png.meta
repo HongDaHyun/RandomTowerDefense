@@ -124,6 +124,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -132,7 +144,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 114
         width: 38
         height: 38
       alignment: 9
@@ -153,7 +165,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 38
-        y: 0
+        y: 114
         width: 38
         height: 38
       alignment: 9
@@ -174,7 +186,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 76
-        y: 0
+        y: 114
         width: 38
         height: 38
       alignment: 9
@@ -195,7 +207,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 114
-        y: 0
+        y: 114
         width: 38
         height: 38
       alignment: 9
@@ -215,8 +227,8 @@ TextureImporter:
       name: BossSlime_4
       rect:
         serializedVersion: 2
-        x: 152
-        y: 0
+        x: 0
+        y: 76
         width: 38
         height: 38
       alignment: 9
@@ -236,8 +248,8 @@ TextureImporter:
       name: BossSlime_5
       rect:
         serializedVersion: 2
-        x: 190
-        y: 0
+        x: 38
+        y: 76
         width: 38
         height: 38
       alignment: 9
@@ -257,8 +269,8 @@ TextureImporter:
       name: BossSlime_6
       rect:
         serializedVersion: 2
-        x: 228
-        y: 0
+        x: 76
+        y: 76
         width: 38
         height: 38
       alignment: 9
@@ -278,8 +290,8 @@ TextureImporter:
       name: BossSlime_7
       rect:
         serializedVersion: 2
-        x: 266
-        y: 0
+        x: 114
+        y: 76
         width: 38
         height: 38
       alignment: 9
@@ -299,8 +311,8 @@ TextureImporter:
       name: BossSlime_8
       rect:
         serializedVersion: 2
-        x: 304
-        y: 0
+        x: 0
+        y: 38
         width: 38
         height: 38
       alignment: 9
@@ -320,8 +332,8 @@ TextureImporter:
       name: BossSlime_9
       rect:
         serializedVersion: 2
-        x: 342
-        y: 0
+        x: 38
+        y: 38
         width: 38
         height: 38
       alignment: 9
@@ -341,8 +353,8 @@ TextureImporter:
       name: BossSlime_10
       rect:
         serializedVersion: 2
-        x: 380
-        y: 0
+        x: 76
+        y: 38
         width: 38
         height: 38
       alignment: 9
@@ -362,8 +374,8 @@ TextureImporter:
       name: BossSlime_11
       rect:
         serializedVersion: 2
-        x: 418
-        y: 0
+        x: 114
+        y: 38
         width: 38
         height: 38
       alignment: 9
@@ -383,7 +395,7 @@ TextureImporter:
       name: BossSlime_12
       rect:
         serializedVersion: 2
-        x: 456
+        x: 0
         y: 0
         width: 38
         height: 38
@@ -404,7 +416,7 @@ TextureImporter:
       name: BossSlime_13
       rect:
         serializedVersion: 2
-        x: 494
+        x: 38
         y: 0
         width: 38
         height: 38

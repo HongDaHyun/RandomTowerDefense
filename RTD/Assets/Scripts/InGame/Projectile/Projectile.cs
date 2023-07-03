@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         StartCoroutine(Remain());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         switch (projectileStat.projectileName)
         {
@@ -54,18 +54,37 @@ public class Projectile : MonoBehaviour, IPoolObject
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.CompareTag("Enemy"))     return;
+        if (!collision.gameObject.CompareTag("Enemy")) return;
 
-        Enemy enemy = collision.GetComponent<Enemy>();
-        switch(projectileStat.projectileName)
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        switch (projectileStat.projectileName)
         {
             case UnitType.Bow:
             case UnitType.Gun:
             case UnitType.Ice:
             case UnitType.Thunder:
-                if (collision.transform != target)  return;
+                if (collision.transform != target) return;
+                SpawnManager.Instance.DeSpawnProjectile(this);
+                break;
+        }
+
+        enemy.Hit(dmg, projectileStat.attribute, isCrit);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Enemy")) return;
+
+        Enemy enemy = collision.GetComponent<Enemy>();
+        switch (projectileStat.projectileName)
+        {
+            case UnitType.Bow:
+            case UnitType.Gun:
+            case UnitType.Ice:
+            case UnitType.Thunder:
+                if (collision.transform != target) return;
                 SpawnManager.Instance.DeSpawnProjectile(this);
                 break;
         }
