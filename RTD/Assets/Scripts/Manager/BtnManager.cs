@@ -136,12 +136,12 @@ public class BtnManager : Singleton<BtnManager>
             ranTier = 4;
 
         // UI 설정
-        for (int i = 0; i < (4 * 3 + (ranTier - 1)) * 2; i++) //슬롯 돌리기
-        {;
+        for (int i = 0; i < (8 * 3 + (ranTier - 1)) * 2; i++) //슬롯 돌리기
+        {
             ui.slotObj.transform.localPosition += new Vector3(0, 100f, 0);
             if (ui.slotObj.transform.localPosition.y > 800f)
                 ui.slotObj.transform.localPosition -= new Vector3(0, 800f, 0);
-            yield return new WaitForSeconds(0.01f * Time.deltaTime);
+            yield return new WaitForSeconds(0.005f * Time.deltaTime);
         }
         yield return new WaitForSeconds(0.5f);
         ui.slotObj.transform.localPosition = new Vector3(0, 0, 0);

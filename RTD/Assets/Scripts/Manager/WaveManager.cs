@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveManager : Singleton<WaveManager>
 {
     public int curWave = 1;
-    public int maxWaveEnemy, setMaxWave;
+    public int maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
     public float readyTime;
@@ -13,7 +13,6 @@ public class WaveManager : Singleton<WaveManager>
     private void Start()
     {
         StartCoroutine(TimeWave());
-        setMaxWave = waves.Count;
     }
 
     private void Update()
@@ -42,7 +41,7 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         // 최대 웨이브 도달 시 모든 적 동기화
-        if (curWave == setMaxWave)
+        if (curWave == waves.Count)
             cl.SetAllEnemy();
 
         // 웨이브 종료 시 변수 설정
@@ -95,20 +94,14 @@ public class WaveManager : Singleton<WaveManager>
         // 웨이브 시작
     }
 
-    public int CountEnemyWave(Wave wave)
+    public void CountEnemyWave()
     {
-        int maxEnemy = 0;
-        foreach (var enemy in wave.enemy)
-            maxEnemy += enemy.maxCount;
-        return maxEnemy;
+        maxWaveEnemy = 0;
+        foreach (var enemy in waves[curWave - 1].enemy)
+            maxWaveEnemy += enemy.maxCount;
     }
 
-    public void SetCurMaxWaveEnemy()
-    {
-        maxWaveEnemy = CountEnemyWave(waves[curWave - 1]);
-    }
-
-    public void RanWave(Wave wave)
+    public void RanWave()
     {
         CSVList cl = CSVReader.Instance.csvList;
         Wave newWave;
@@ -119,7 +112,7 @@ public class WaveManager : Singleton<WaveManager>
         newWave.enemy = new WaveEnemy[waveEnemyKind];
 
         // 최대 적 수
-        int previousWave = CountEnemyWave(wave) + Random.Range(2, 8);
+        int countNewWave = maxWaveEnemy + Random.Range(2, 8) - waveEnemyKind;
 
         // 종류 별 적 설정
         for (int i = 0; i < waveEnemyKind; i++)
@@ -127,17 +120,10 @@ public class WaveManager : Singleton<WaveManager>
             newWave.enemy[i] = new WaveEnemy();
             newWave.enemy[i].name = cl.FindEnemy(Random.Range(0, cl.enemyStat.Length)).enemyName; // 이름 설정
 
-            // 마지막 인덱스
-            if (i == waveEnemyKind - 1)
-                newWave.enemy[i].maxCount = previousWave; // 나머지
+            int maxEnemyCount = 1 + Mathf.Min(Random.Range(3, countNewWave + 1), countNewWave);
+            newWave.enemy[i].maxCount = maxEnemyCount;
 
-            // 마지막 인덱스 X
-            else
-            {
-                int count = Random.Range(3, previousWave); // 최대 적 수 사이 랜덤 값
-                previousWave -= count;
-                newWave.enemy[i].maxCount = count;
-            }
+            countNewWave -= maxEnemyCount;
         }
         waves.Add(newWave);
     }

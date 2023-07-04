@@ -26,16 +26,15 @@ public class SpawnManager : Singleton<SpawnManager>
         WaveManager wm = WaveManager.Instance;
 
         wm.isWave = true;
-        int curWaveNum = wm.curWave - 1;
 
-        if (wm.curWave > GameManager.Instance.maxWave) // maxWave를 넘길 시
+        if (wm.curWave > wm.waves.Count) // maxWave를 넘길 시
         {
-            wm.RanWave(wm.waves[curWaveNum - 1]); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
+            wm.RanWave(); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
         }
 
-        wm.SetCurMaxWaveEnemy(); // 웨이브에 등장할 몬스터 수 계산
+        wm.CountEnemyWave(); // 웨이브에 등장할 몬스터 수 계산
 
-        StartCoroutine(SpawnEnemyRoutine(wm.waves[curWaveNum]));
+        StartCoroutine(SpawnEnemyRoutine(wm.waves[wm.curWave - 1]));
     }
 
     private IEnumerator SpawnEnemyRoutine(Wave wave)

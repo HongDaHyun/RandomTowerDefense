@@ -278,7 +278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curWave: 1
   maxWaveEnemy: 0
-  setMaxWave: 0
   isWave: 0
   waves:
   - spawnTime: 1
@@ -292,13 +291,11 @@ MonoBehaviour:
     - name: "\uC2A4\uCEEC"
       maxCount: 6
     - name: "\uBE68\uAC15\uD3EC\uC158"
-      maxCount: 10
+      maxCount: 5
     - name: "\uBB3C\uB77C\uC784"
       maxCount: 3
-    - name: "\uC7BC\uBBFC\uC774"
-      maxCount: 5
     - name: "\uACFC\uD559\uC790"
-      maxCount: 5
+      maxCount: 1
   - spawnTime: 1
     enemy:
     - name: "\uB178\uB791\uD3EC\uC158"
@@ -14846,7 +14843,7 @@ MonoBehaviour:
     _container: {fileID: 1226476187}
     _nonLazy: 0
   - _name: Epic
-    _component: {fileID: 466308, guid: 48e534b8d6c36d0469a03dac81c8d8de, type: 3}
+    _component: {fileID: 466308, guid: 56643ea30ab06684b993b14281d7d6c5, type: 3}
     _count: 0
     _container: {fileID: 0}
     _nonLazy: 0

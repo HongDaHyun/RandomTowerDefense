@@ -301,7 +301,7 @@ PrefabInstance:
     - target: {fileID: 7794671807973555351, guid: e023a59fc92492b41b20504ff5437445, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1863692907, guid: b5be906befa7316469e44a136504f65d, type: 3}
+      objectReference: {fileID: -858233848, guid: b3a5a53fa7efb4a478d9bba62ffd55cd, type: 3}
     - target: {fileID: 8687108089904999227, guid: e023a59fc92492b41b20504ff5437445, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -3633,8 +3633,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5179,7 +5179,7 @@ PrefabInstance:
     - target: {fileID: 7794671807973555351, guid: e023a59fc92492b41b20504ff5437445, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 400156789, guid: b5be906befa7316469e44a136504f65d, type: 3}
+      objectReference: {fileID: 1822650748, guid: b3a5a53fa7efb4a478d9bba62ffd55cd, type: 3}
     - target: {fileID: 8687108089904999227, guid: e023a59fc92492b41b20504ff5437445, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -6843,7 +6843,7 @@ PrefabInstance:
     - target: {fileID: 7794671807973555351, guid: e023a59fc92492b41b20504ff5437445, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1116044613, guid: b5be906befa7316469e44a136504f65d, type: 3}
+      objectReference: {fileID: 247805382, guid: b3a5a53fa7efb4a478d9bba62ffd55cd, type: 3}
     - target: {fileID: 8687108089904999227, guid: e023a59fc92492b41b20504ff5437445, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -7415,6 +7415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTestMode: 1
+  reward: 0
 --- !u!4 &1029086215
 Transform:
   m_ObjectHideFlags: 0
@@ -9320,8 +9321,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9754,8 +9755,8 @@ MonoBehaviour:
     projectileStat: []
     shopStat:
     - shopName: "\uAD34\uB825"
-      explanation: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9\uB825 {0} \uC99D\uAC00"
-      condition: 0.5
+      explanation: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9\uB825 {0}% \uC99D\uAC00"
+      condition: 2.5
       curLevel: 0
       maxLevel: 10
       index: 0
@@ -9766,8 +9767,8 @@ MonoBehaviour:
       maxLevel: 10
       index: 1
     - shopName: "\uC7A5\uD3EC"
-      explanation: "\uB808\uBCA8 \uB2F9 \uC0AC\uAC70\uB9AC {0} \uC99D\uAC00"
-      condition: 0.3
+      explanation: "\uB808\uBCA8 \uB2F9 \uC0AC\uAC70\uB9AC {0}% \uC99D\uAC00"
+      condition: 3
       curLevel: 0
       maxLevel: 10
       index: 2
@@ -11059,8 +11060,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

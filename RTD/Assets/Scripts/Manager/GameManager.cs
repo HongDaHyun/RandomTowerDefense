@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
 
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
 
         GPGSBinder.Inst.Login();
 
