@@ -23,6 +23,20 @@ public class BtnManager : Singleton<BtnManager>
         }
     }
 
+    public void Tab_NoRayCast(GameObject obj)
+    {
+        if (!obj.activeSelf)
+        {
+            obj.SetActive(true);
+            obj.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            obj.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce).SetUpdate(true);
+        }
+        else
+        {
+            obj.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.25f).SetEase(Ease.InOutExpo).SetUpdate(true).OnComplete(() => obj.SetActive(false));
+        }
+    }
+
     public void Pop(GameObject obj)
     {
         if (obj.activeSelf)
@@ -42,8 +56,41 @@ public class BtnManager : Singleton<BtnManager>
         //Only Open
         UIManager um = UIManager.Instance;
         if (!um.clickTile.activeSelf || um.clickTile.GetComponentInParent<TileGround>().isBuild) // 클릭타일 활성화 x -> 가챠패널 열리지 않음
+        {
+            HelpTxt(um, "먼저 타일을 선택하세요!");
             return;
+        }
         Tab(um.gatchaPannel.gatchaPannel);
+    }
+
+    private void HelpTxt(UIManager um, string s)
+    {
+        if (um.helpTxt.gameObject.activeSelf)
+            return;
+
+        um.helpTxt.gameObject.SetActive(true);
+
+        um.helpTxt.SetText(s);
+
+        um.PopUp(um.helpTxt, 450f);
+    }
+
+    public void TabFrame()
+    {
+        UIManager um = UIManager.Instance;
+        GameManager gm = GameManager.Instance;
+        if (gm.is30) // 30프레임이었다면
+        {
+            um.pausePannel.frameBtn.SetActive(false);
+            gm.is30 = false;
+        }
+        else
+        {
+            um.pausePannel.frameBtn.SetActive(true);
+            gm.is30 = true;
+        }
+        gm.SetFrame();
+        ES3.Save("Is30", gm.is30, "Saves/Alpha2"); // 세이브 디렉토리
     }
 
     public void ClickStartPannel()
@@ -135,8 +182,10 @@ public class BtnManager : Singleton<BtnManager>
         else
             ranTier = 4;
 
+        int slotSpeed = gm.is30 ? 12 : 24;
+
         // UI 설정
-        for (int i = 0; i < (8 * 3 + (ranTier - 1)) * 2; i++) //슬롯 돌리기
+        for (int i = 0; i < (slotSpeed + (ranTier - 1)) * 2; i++) //슬롯 돌리기
         {
             ui.slotObj.transform.localPosition += new Vector3(0, 100f, 0);
             if (ui.slotObj.transform.localPosition.y > 800f)
@@ -148,7 +197,7 @@ public class BtnManager : Singleton<BtnManager>
         Tab(ui.gatchaPannel.gatchaPannel);
         ui.gatchaPannel.gatchaBtn.interactable = true;
         ui.gatchaPannel.gatchaTab.interactable = true;
-        gm.gatchaKey--;
+        gm.LoseGatcha(1);
 
         Tier tier = (Tier)ranTier;
         UnitType type = (UnitType)ranType;

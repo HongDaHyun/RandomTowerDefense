@@ -4,7 +4,7 @@ public class GameManager : Singleton<GameManager>
 {
     public Level level;
     public GameTime gameTime = GameTime.Slow;
-    public bool isStart;
+    public bool isStart, is30;
     public bool[] isClear;
     public int gatchaKey, maxHealth, curHealth, healthWave, maxWave, expLevel, maxExp, levelPoint, curMoney, killEnemyNum;
     public float curExp, increaseExp, plusExp;
@@ -15,10 +15,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
 
-        Application.targetFrameRate = 60;
-
         GPGSBinder.Inst.Login();
-
 #region GPGS
         //GPGSBinder.Inst.ShowAchievementUI(); 업적보기
         //GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_test); 업적성공
@@ -36,12 +33,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         LoadData();
-    }
-
-    private void Update()
-    {
-        if (curExp >= maxExp)
-            LevelUp();
+        SetFrame();
     }
 
     public void SetGM()
@@ -70,25 +62,25 @@ public class GameManager : Singleton<GameManager>
                 curHealth = maxHealth;
                 break;
             case Level.Normal: // 보통
-                gatchaKey = 2;
+                gatchaKey = 3;
                 maxHealth = 25;
-                maxExp = 10;
+                maxExp = 20;
                 increaseExp = 0.5f;
                 maxWave = levelNum[1];
                 curHealth = maxHealth;
                 break;
             case Level.Hard: // 어려움
-                gatchaKey = 2;
+                gatchaKey = 3;
                 maxHealth = 20;
-                maxExp = 10;
+                maxExp = 30;
                 increaseExp = 1f;
                 maxWave = levelNum[2];
                 curHealth = maxHealth;
                 break;
             case Level.Infinite: // 무한
-                gatchaKey = 2;
+                gatchaKey = 3;
                 maxHealth = 20;
-                maxExp = 10;
+                maxExp = 30;
                 increaseExp = 1f;
                 maxWave = levelNum[3];
                 curHealth = maxHealth;
@@ -103,11 +95,15 @@ public class GameManager : Singleton<GameManager>
         CSVReader.Instance.csvList.LoadShop();
 
         // 돈
-        if(ES3.KeyExists("Money", "Saves/Alpha2"))
+        if(ES3.KeyExists("Money", "Saves/Alpha2")) // 세이브 디렉토리
             curMoney = ES3.Load<int>("Money", "Saves/Alpha2");
 
         // 클리어
         LoadClearData();
+
+        // 프레임
+        if (ES3.KeyExists("Is30", "Saves/Alpha2"))
+            is30 = ES3.Load<bool>("Is30", "Saves/Alpha2");
     }
 
     private void LoadClearData() // 세이브 디렉토리
@@ -143,6 +139,8 @@ public class GameManager : Singleton<GameManager>
         curHealth = Mathf.Min(curHealth + a, maxHealth);
 
         QuestManager.Instance.UpQuest(7, a); // 퀘스트 7
+
+        UIManager.Instance.upPannel.healthTxt.text = $"{curHealth}/{maxHealth}"; // UI
     }
 
     public void LoseHealth(int i)
@@ -165,12 +163,23 @@ public class GameManager : Singleton<GameManager>
             curHealth = 0;
             GameOver();
         }
+
+        UIManager.Instance.upPannel.healthTxt.text = $"{curHealth}/{maxHealth}"; // UI
     }
 
     public void GainGatcha(int a)
     {
         gatchaKey += a;
         QuestManager.Instance.UpQuest(1); // 퀘스트 1
+
+        UIManager.Instance.upPannel.gatchaKeyTxt.text = gatchaKey.ToString(); // UI
+    }
+
+    public void LoseGatcha(int a)
+    {
+        gatchaKey = Mathf.Max(gatchaKey - a, 0);
+
+        UIManager.Instance.upPannel.gatchaKeyTxt.text = gatchaKey.ToString(); // UI
     }
 
     public void EarnMoney(int a)
@@ -180,22 +189,19 @@ public class GameManager : Singleton<GameManager>
         ES3.Save<int>("Money", curMoney, "Saves/Alpha2"); // 세이브 디렉토리
     }
 
-    public void GameOver()
+    public void GainExp(int a)
     {
-        BtnManager.Instance.Pause();
-        UIManager.Instance.gameOverPannel.SetUI(false);
+        UIManager um = UIManager.Instance;
+
+        curExp += a + (a * plusExp / 100);
+
+        if (curExp >= maxExp)
+            LevelUp(um);
+
+        StartCoroutine(um.upPannel.EXPHandlerCoroutine(this)); 
     }
 
-    public void GameClear()
-    {
-        BtnManager.Instance.Pause();
-        UIManager.Instance.gameOverPannel.SetUI(true);
-        isClear[(int)level] = true;
-
-        SaveClearData();
-    }
-
-    public void LevelUp()
+    public void LevelUp(UIManager um)
     {
         // 로비GM의 MaxExp를 1000으로 조정함으로 로비에서는 실행 X
         SoundManager.Instance.PlaySFX("LevelUp");
@@ -205,6 +211,28 @@ public class GameManager : Singleton<GameManager>
         levelPoint++;
         maxExp += Mathf.RoundToInt(increaseExp * maxExp);
 
-        UIManager.Instance.levelUpBtn.SetUI(); // UI 설정
+        um.levelUpBtn.SetUI(); // UI 설정
+        um.upPannel.levelTxt.text = $"{expLevel}Lv:";
+    }
+
+    public void GameOver()
+    {
+        UIManager.Instance.gameOverPannel.SetUI(false);
+    }
+
+    public void GameClear()
+    {
+        UIManager.Instance.gameOverPannel.SetUI(true);
+        isClear[(int)level] = true;
+
+        SaveClearData();
+    }
+
+    public void SetFrame()
+    {
+        if (is30)
+            Application.targetFrameRate = 30;
+        else
+            Application.targetFrameRate = 60;
     }
 }

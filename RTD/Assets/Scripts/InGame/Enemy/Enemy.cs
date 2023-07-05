@@ -39,11 +39,13 @@ public class Enemy : MonoBehaviour, IPoolObject
         defSprite = GetComponent<SpriteRenderer>().sprite;
 
         SetWayPoint();
+
+        SetUp();
     }
 
     public void OnGettingFromPool() //재사용
     {
-        SetUp();
+        SetStat();
     }
 
     private void FixedUpdate()
@@ -51,22 +53,17 @@ public class Enemy : MonoBehaviour, IPoolObject
         Movement();
     }
 
-    private void Update()
-    {
-        HpSliderUpdate();
-    }
-
     private void SetUp()
     {
-        SetStat();
-
-        if (enemyStat.enemyType == EnemyType.Skeleton && WaveManager.Instance.curWave > 20) // 20 웨이브 이상
-            maxLife = 2;
-
         //컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         hpSlider = GetComponentInChildren<Slider>();
+    }
+
+    private void SetStat()
+    {
+        enemyStat = CSVReader.Instance.csvList.FindEnemy(name); //스탯 가져오기
 
         //변수 초기화
         curHp = enemyStat.hp;
@@ -75,15 +72,12 @@ public class Enemy : MonoBehaviour, IPoolObject
         isStop = false;
         ResetDebuffStat();
         spriteRenderer.color = Color.white;
-        speed = enemyStat.moveSpeed / 100;
+        hpSlider.value = 1f;
 
         //위치 설정
         ResetWayPoint();
-    }
 
-    private void SetStat()
-    {
-        enemyStat = CSVReader.Instance.csvList.FindEnemy(name); //스탯 가져오기
+        speed = enemyStat.moveSpeed / 100;
     }
 
     public void ResetDebuffStat()
@@ -169,7 +163,21 @@ public class Enemy : MonoBehaviour, IPoolObject
             * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지) * 방어력
 
         curHp -= totalDmg;
-        UIManager.Instance.DmgPopUp(totalDmg, transform.position, isCrit);
+
+        // UI
+        StartCoroutine(HPHandlerCoroutine());
+        // DmgPopUp
+        UIManager um = UIManager.Instance;
+
+        TMPro.TextMeshPro dmgText = SpawnManager.Instance.SpawnDmgText(dmg);
+        dmgText.transform.position = transform.position;
+
+        if (isCrit) // 크리티컬 색
+            dmgText.color = Color.yellow;
+        else
+            dmgText.color = Color.white;
+
+        um.PopUp(dmgText);
 
         StartCoroutine(HitColorAnimation(_color, time));
 
@@ -294,11 +302,22 @@ public class Enemy : MonoBehaviour, IPoolObject
         spriteRenderer.color = Color.white;
     }
 
-    private void HpSliderUpdate()
+    private IEnumerator HPHandlerCoroutine()
     {
         float imsi = curHp / enemyStat.hp;
+        float elapsedTime = 0f;
+        float duration = 0.5f; // 변경되는 시간 간격
 
-        hpSlider.value = Mathf.Lerp(hpSlider.value, imsi, Time.deltaTime * 10);
+        float startValue = hpSlider.value; // 시작 값 저장
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            hpSlider.value = Mathf.Lerp(startValue, imsi, elapsedTime / duration);
+            yield return null;
+        }
+
+        hpSlider.value = imsi; // 최종 값을 설정하여 정확히 일치하도록 합니다.
     }
 
     private void Die()
@@ -320,11 +339,13 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         // 경험치 증가
         GameManager gm = GameManager.Instance;
-        int exp = (int)enemyStat.tier;
-        gm.curExp += exp + (exp * gm.plusExp);
+
+        gm.GainExp((int)enemyStat.tier);
 
         // 웨이브 전체 몬스터
+        WaveManager wm = WaveManager.Instance;
         WaveManager.Instance.maxWaveEnemy--;
+        UIManager.Instance.upPannel.curWavePannel.text.text = $"×{wm.maxWaveEnemy}";
         gm.killEnemyNum++;
 
         SpawnManager.Instance.DeSpawnEnemy(this);

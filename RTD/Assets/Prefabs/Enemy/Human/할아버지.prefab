@@ -109,6 +109,7 @@ MonoBehaviour:
     defense: 0
     moveSpeed: 0
   speed: 0
+  defSprite: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   curWayPoint: 0
   maxLife: 0
@@ -198,11 +199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5269653243860874454, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1080
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5269653243860874454, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 2400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5269653243860874454, guid: aae66f28991aacc4e8d85e6319e56003, type: 3}
       propertyPath: m_LocalPosition.x

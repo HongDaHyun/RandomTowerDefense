@@ -145,7 +145,7 @@ public class CharacManager : Singleton<CharacManager>
                 commonGatcha = value;
                 break;
             case 36:
-                GameManager.Instance.plusExp += value / 100;
+                GameManager.Instance.plusExp += value;
                 break;
             case 37:
                 madDmg = value;

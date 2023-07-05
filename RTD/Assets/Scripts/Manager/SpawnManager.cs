@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 using TMPro;
+using System.Linq;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
@@ -32,28 +33,34 @@ public class SpawnManager : Singleton<SpawnManager>
             wm.RanWave(); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
         }
 
-        wm.CountEnemyWave(); // 웨이브에 등장할 몬스터 수 계산
-
         StartCoroutine(SpawnEnemyRoutine(wm.waves[wm.curWave - 1]));
     }
 
     private IEnumerator SpawnEnemyRoutine(Wave wave)
     {
+        int totalEnemyCount = wave.enemy.Sum(enemyData => enemyData.maxCount);
+
         foreach (WaveEnemy enemyData in wave.enemy)
         {
-            int spawnEnemyCount = 0;
-            while (spawnEnemyCount < enemyData.maxCount)
+            int length = enemyData.maxCount;
+            for (int i = 0; i < length; i++)
             {
                 Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(enemyData.name);
                 enemyList.Add(newEnemy);
-                spawnEnemyCount++;
+                totalEnemyCount--;
 
                 SoundManager.Instance.PlaySFX("SpawnEnemy");
 
                 yield return new WaitForSeconds(wave.spawnTime);
             }
         }
-        //모든 적 소환 완료
+
+        while (enemyList.Count > 0)
+        {
+            yield return null;
+        }
+
+        WaveManager.Instance.EndWaveSet(); // 웨이브 종료
     }
 
     public void DeSpawnEnemy(Enemy enemy)
@@ -99,6 +106,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.csvList.FindUnit(type, tier));
+        newUnit.unitStat.tier = tier; // 티어 생성 위함
         unitList.Add(newUnit);
 
         // 타일
@@ -185,7 +193,6 @@ public class SpawnManager : Singleton<SpawnManager>
     public TextMeshPro SpawnDmgText(float dmg)
     {
         TextMeshPro dmgText = PoolManager.Instance.GetFromPool<TextMeshPro>("DmgText");
-        dmgText.sortingOrder = 2;
         dmgText.alpha = 1f;
         dmgText.SetText(dmg.ToString("F1")); // 소수점 한자리까지만 표기
         return dmgText;

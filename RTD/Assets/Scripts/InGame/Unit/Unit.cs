@@ -28,19 +28,13 @@ public class Unit : MonoBehaviour, IPoolObject
         defSprite = render.sprite;
         if (anim != null)
             isAnim = true;
-        SetStat();
+
         SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
     }
 
     void IPoolObject.OnGettingFromPool()
     {
         SetUp();
-    }
-
-    void Update()
-    {
-        if (attackTarget != null)
-            RotateToTarget();
     }
 
     public void SetStat()
@@ -50,10 +44,12 @@ public class Unit : MonoBehaviour, IPoolObject
 
     void SetUp()
     {
+        StopAllCoroutines();
         SetStat();
         if (isAnim)
             anim.SetBool("IsAtk", false);
         render.sprite = defSprite;
+        StartCoroutine(DelayTarget());
     }
 
     #region Attack
@@ -70,6 +66,12 @@ public class Unit : MonoBehaviour, IPoolObject
             transform.rotation = Quaternion.Euler(0, -180, 0);
         else
             transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private IEnumerator DelayTarget()
+    {
+        yield return new WaitForSeconds(0.5f);
+        ChangeState(UnitState.SearchTarget);
     }
 
     private IEnumerator SearchTarget()
@@ -99,6 +101,7 @@ public class Unit : MonoBehaviour, IPoolObject
 
     protected virtual IEnumerator AttackToTarget()
     {
+        RotateToTarget(); // 방향 설정
         // 1. 사거리 벗어났는지 체크
         float distance = Vector2.Distance(attackTarget.position, transform.position);
         if (distance > unitStat.range)

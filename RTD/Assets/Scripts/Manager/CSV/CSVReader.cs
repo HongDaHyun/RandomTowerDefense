@@ -40,8 +40,10 @@ public class CSVReader : Singleton<CSVReader>
 
         gm.maxHealth += (int)(shopStat[8].curLevel * shopStat[8].condition);
         gm.curHealth = gm.maxHealth; // 싱글톤 순서 오류로 QuestManager에 접근하지 않게 GainMaxHealth 함수 사용하지 않음
-        gm.healthWave += (int)(shopStat[9].curLevel * shopStat[9].condition);
-        gm.plusExp += (int)(shopStat[10].curLevel * shopStat[10].condition);
+        gm.healthWave = (int)(shopStat[9].curLevel * shopStat[9].condition);
+        gm.plusExp = (int)(shopStat[10].curLevel * shopStat[10].condition);
+        // 확률 초기화
+        gm.probability = new int[] { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
         gm.probability[2] += (int)(shopStat[11].curLevel * shopStat[11].condition);
         gm.probability[3] += (int)(shopStat[11].curLevel * shopStat[11].condition);
     }
@@ -119,7 +121,7 @@ public class CSVReader : Singleton<CSVReader>
     }
 
     [Button("특성 데이터 불러오기")]
-    public void CharacterisiticReader()
+    public void CharacterisiticCSVReader()
     {
         int order = 3; int size = 5;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
@@ -142,10 +144,29 @@ public class CSVReader : Singleton<CSVReader>
         }
     }
 
+    [Button("디버프 데이터 불러오기")]
+    public void AttributeCSVReader()
+    {
+        int order = 4; int size = 2;
+        string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / size - 1;
+        csvList.attributeStat = new AttributeStat[tableSize];
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            int k = i + 1;
+            csvList.attributeStat[i] = new AttributeStat
+            {
+                attribute = (Attribute)Enum.Parse(typeof(Attribute), data[size * k]),
+                attributePower = float.Parse(data[size * k + 1])
+            };
+        }
+    }
+
     [Button("투사체 데이터 불러오기")]
     public void ProjectileCSVReader()
     {
-        int order = 4; int size = 4;
+        int order = 5; int size = 4;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.projectileStat = new ProjectileStat[tableSize];
@@ -166,7 +187,7 @@ public class CSVReader : Singleton<CSVReader>
     [Button("상점 데이터 불러오기")]
     public void ShopCSVReader()
     {
-        int order = 5; int size = 5;
+        int order = 6; int size = 5;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.shopStat = new ShopStat[tableSize];
@@ -191,7 +212,8 @@ public class CSVReader : Singleton<CSVReader>
         UnitCSVReader();
         EnemyCSVReader();
         QuestCSVReader();
-        CharacterisiticReader();
+        CharacterisiticCSVReader();
+        AttributeCSVReader();
         ProjectileCSVReader();
     }
     #endregion

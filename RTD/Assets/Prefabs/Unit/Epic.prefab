@@ -4682,6 +4682,7 @@ GameObject:
   - component: {fileID: 466308}
   - component: {fileID: 19808374}
   - component: {fileID: 19945652}
+  - component: {fileID: 4833347106294633055}
   m_Layer: 0
   m_Name: Epic
   m_TagString: Untagged
@@ -9388,3 +9389,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4833347106294633055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66d13f919950614aa5aedd57a57b2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

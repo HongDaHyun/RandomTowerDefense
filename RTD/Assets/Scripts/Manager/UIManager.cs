@@ -7,6 +7,7 @@ using System;
 using DG.Tweening;
 using Com.LuisPedroFonseca.ProCamera2D;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -24,10 +25,12 @@ public class UIManager : Singleton<UIManager>
     public UpPannel upPannel;
     public QuestPannel questPannel;
     public LevelUpBtn levelUpBtn;
+    public PausePannel pausePannel;
     public CharacteristicCard[] cards;
     public GameObject slotObj;
     public Text gameSpeedTxt;
     public GameOverPannel gameOverPannel;
+    public TextMeshProUGUI helpTxt;
 
     protected override void Awake()
     {
@@ -39,29 +42,40 @@ public class UIManager : Singleton<UIManager>
     private void Start()
     {
         fx.TransitionEnter();
-    }
-
-    private void Update()
-    {
-        upPannel.UpdateUpPannel();
-    }
-
-    public void DmgPopUp(float dmg, Vector3 startTrans, bool isCrit)
-    {
-        TMPro.TextMeshPro dmgText = SpawnManager.Instance.SpawnDmgText(dmg);
-
-        if (isCrit) // 크리티컬 색
-            dmgText.color = Color.yellow;
-        else
-            dmgText.color = Color.white;
-
-        dmgText.transform.position = startTrans;
-        dmgText.transform.DOMove(startTrans + new Vector3(0f, 1f, 0f), 0.5f).SetEase(Ease.OutQuad).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
+        
+        if(SceneManager.GetActiveScene().buildIndex != 0)
         {
-            dmgText.DOFade(0f, 0.5f) //0.5f -> moveDuration
+            if (GameManager.Instance.is30)
+                pausePannel.frameBtn.SetActive(true);
+            else
+                pausePannel.frameBtn.SetActive(false);
+
+            upPannel.UpdateUpPannel();
+        }
+    }
+
+    public void PopUp(TextMeshPro meshPro)
+    {
+        meshPro.transform.DOMove(meshPro.transform.position + new Vector3(0f, 1f, 0f), 0.5f).SetEase(Ease.OutQuad).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
+        {
+            meshPro.DOFade(0f, 0.5f) //0.5f -> moveDuration
             .OnComplete(() =>
             {
-                SpawnManager.Instance.DeSpawnDmgText(dmgText);
+                SpawnManager.Instance.DeSpawnDmgText(meshPro);
+            });
+        });
+    }
+
+    public void PopUp(TextMeshProUGUI meshPro, float endValue)
+    {
+        meshPro.alpha = 1f;
+        meshPro.rectTransform.DOAnchorPosY(endValue, 0.5f).SetEase(Ease.OutQuad).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
+        {
+            meshPro.DOFade(0f, 0.5f) //0.5f -> moveDuration
+            .OnComplete(() =>
+            {
+                meshPro.gameObject.SetActive(false);
+                meshPro.rectTransform.anchoredPosition -= new Vector2(0, 200f);
             });
         });
     }
@@ -257,6 +271,12 @@ public struct EnemyInfo
 }
 
 [Serializable]
+public struct PausePannel
+{
+    public GameObject frameBtn;
+}
+
+[Serializable]
 public class UpPannel
 {
     public CurWavePannel curWavePannel;
@@ -269,27 +289,48 @@ public class UpPannel
             return;
         GameManager gm = GameManager.Instance;
 
-        gatchaKeyTxt.text = gm.gatchaKey.ToString(); // 가챠 키
+        gatchaKeyTxt.text = gm.gatchaKey.ToString(); // UI
         healthTxt.text = $"{gm.curHealth}/{gm.maxHealth}"; // 체력
-        timerTxt.text = WaveManager.Instance.readyTime.ToString("00.0"); // 타이머
         levelTxt.text = $"{gm.expLevel}Lv:"; // 레벨
-        // 웨이브
+
+        SetWaveTxt(gm); // 웨이브
+
+        expSlider.value = 0;
+    }
+
+    public void SetWaveTxt(GameManager gm)
+    {
         if (gm.level == Level.Infinite)
             waveTxt.text = WaveManager.Instance.curWave.ToString();
         else
             waveTxt.text = $"{WaveManager.Instance.curWave}/{gm.maxWave}";
-        // 현재 웨이브
-        curWavePannel.text.text = $"×{WaveManager.Instance.maxWaveEnemy}";
+    }
 
-        // 경험치 핸들러
+    public IEnumerator EXPHandlerCoroutine(GameManager gm)
+    {
         float imsi = gm.curExp / gm.maxExp;
-        expSlider.value = Mathf.Lerp(expSlider.value, imsi, Time.deltaTime * 10);
+        float elapsedTime = 0f;
+        float duration = 0.5f; // 변경되는 시간 간격
+
+        float startValue = expSlider.value; // 시작 값 저장
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            expSlider.value = Mathf.Lerp(startValue, imsi, elapsedTime / duration);
+            yield return null;
+        }
+
+        expSlider.value = imsi; // 최종 값을 설정하여 정확히 일치하도록 합니다.
     }
 
     public void ToggleCurWavePannel(bool b)
     {
         if (b)
+        {
+            curWavePannel.text.text = $"×{WaveManager.Instance.maxWaveEnemy}";
             curWavePannel.trans.DOAnchorPosY(-200, 0.5f).SetEase(Ease.OutBounce).SetUpdate(true);
+        }
         else
             curWavePannel.trans.DOAnchorPosY(-50, 0.5f).SetEase(Ease.InBack).SetUpdate(true);
     }
@@ -408,5 +449,6 @@ public class GameOverPannel
         gm.EarnMoney(totalNum);
 
         BtnManager.Instance.Tab(pannel);
+        BtnManager.Instance.Pause();
     }
 }

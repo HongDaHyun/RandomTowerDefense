@@ -16,7 +16,7 @@ public class ObjectDetector : MonoBehaviour
     private void Awake()
     {
         proCam = Camera.main.GetComponent<ProCamera2DPanAndZoom>();
-        targetLayer = LayerMask.GetMask("Tile", "Enemy", "UI");
+        targetLayer = LayerMask.GetMask("Tile", "Enemy");
     }
 
     private void Update()
