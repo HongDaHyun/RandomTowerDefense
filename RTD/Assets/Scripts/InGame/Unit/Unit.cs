@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour, IPoolObject
         if (anim != null)
             isAnim = true;
 
+        Debug.Log(unitStat.tier);
         SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
     }
 

@@ -106,7 +106,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public void SpawnUnit(UnitType type, Tier tier)
     {
         Unit newUnit = PoolManager.Instance.GetFromPool<Unit>(CSVReader.Instance.csvList.FindUnit(type, tier));
-        newUnit.unitStat.tier = tier; // 티어 생성 위함
+
         unitList.Add(newUnit);
 
         // 타일
@@ -114,6 +114,9 @@ public class SpawnManager : Singleton<SpawnManager>
         tileGround.SetTile(newUnit);
         if (UIManager.Instance.clickTile.activeSelf)
             UIManager.Instance.clickTile.SetActive(false);
+
+        if (newUnit.GetComponentInChildren<TierParticle>() == null)
+            SpawnTier(tier, newUnit.transform);
 
         if ((int)tier > 2) // Epic, Legend
         {
