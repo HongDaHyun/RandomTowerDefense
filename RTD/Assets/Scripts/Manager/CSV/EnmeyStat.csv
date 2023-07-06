@@ -24,8 +24,8 @@ Name,Type,Tier,Hp,Strength,Defense,MoveSpeed
 푸딩라임,Slime,Epic,60,10,5,3.2
 얼라임,Slime,Legend,300,20,10,3.5
 부울라임,Slime,Boss,1400,20,20,3
-녹슨골렘,Golem,Hidden,4000,32,800,1.7
-인형탈,Human,Hidden,10000,5,50,3
+녹슨골렘,Golem,Hidden,4000,32,600,1.7
+인형탈,Human,Hidden,11000,5,50,3
 검정포션,Portion,Hidden,1800,40,5,4.5
-스카스카,Skeleton,Hidden,5400,0,0,3
-불라임,Slime,Hidden,5000,10,5,3.3
+스카스카,Skeleton,Hidden,5000,0,0,3
+불라임,Slime,Hidden,4800,10,5,3.3

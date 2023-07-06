@@ -403,16 +403,17 @@ public class CSVList
     public void SaveShop(ShopStat shop)
     {
         int index = shop.index;
-        ES3.Save<int>($"Shop_{index}", CSVReader.Instance.csvList.FindShop(index).curLevel , "Saves/Alpha2"); // 세이브 디렉토리
+        ES3.Save<int>($"Shop_{index}", CSVReader.Instance.csvList.FindShop(index).curLevel , GameManager.Instance.saveDirectory); // 세이브 디렉토리
     }
 
     public void LoadShop()
     {
         int length = shopStat.Length;
+        string saveDirectory = GameManager.Instance.saveDirectory;
         for(int i = 0; i < length; i++)
         {
-            if(ES3.KeyExists($"Shop_{i}", "Saves/Alpha2")) // 세이브 디렉토리
-                shopStat[i].curLevel = ES3.Load<int>($"Shop_{i}", "Saves/Alpha2"); // 세이브 디렉토리
+            if(ES3.KeyExists($"Shop_{i}", saveDirectory)) // 세이브 디렉토리
+                shopStat[i].curLevel = ES3.Load<int>($"Shop_{i}", saveDirectory); // 세이브 디렉토리
         }
     }
 

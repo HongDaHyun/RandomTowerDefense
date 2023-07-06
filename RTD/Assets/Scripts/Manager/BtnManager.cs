@@ -90,7 +90,7 @@ public class BtnManager : Singleton<BtnManager>
             gm.is30 = true;
         }
         gm.SetFrame();
-        ES3.Save("Is30", gm.is30, "Saves/Alpha2"); // 세이브 디렉토리
+        ES3.Save("Is30", gm.is30, gm.saveDirectory); // 세이브 디렉토리
     }
 
     public void ClickStartPannel()

@@ -395,6 +395,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         isDie = false;
         curLife--;
         curHp = enemyStat.hp;
+        hpSlider.value = 1f;
         ResetDebuffStat();
 
         soundm.PlaySFX("Reborn");

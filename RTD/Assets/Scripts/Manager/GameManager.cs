@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public float curExp, increaseExp, plusExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public int[] levelNum;
+    public string saveDirectory = "Saves/Beta1";
 
     protected override void Awake()
     {
@@ -34,6 +35,27 @@ public class GameManager : Singleton<GameManager>
     {
         LoadData();
         SetFrame();
+    }
+
+    public void LoadData()  // 세이브 디렉토리
+    {
+        string previousDirectory = "Saves/Alpha2";
+        if (ES3.FileExists(previousDirectory))
+            ES3.DeleteFile(previousDirectory);
+
+        // Shop
+        CSVReader.Instance.csvList.LoadShop();
+
+        // 돈
+        if (ES3.KeyExists("Money", saveDirectory)) // 세이브 디렉토리
+            curMoney = ES3.Load<int>("Money", saveDirectory);
+
+        // 클리어
+        LoadClearData();
+
+        // 프레임
+        if (ES3.KeyExists("Is30", saveDirectory))
+            is30 = ES3.Load<bool>("Is30", saveDirectory);
     }
 
     public void SetGM()
@@ -72,7 +94,7 @@ public class GameManager : Singleton<GameManager>
             case Level.Hard: // 어려움
                 gatchaKey = 3;
                 maxHealth = 20;
-                maxExp = 30;
+                maxExp = 25;
                 increaseExp = 0.7f;
                 maxWave = levelNum[2];
                 curHealth = maxHealth;
@@ -80,7 +102,7 @@ public class GameManager : Singleton<GameManager>
             case Level.Infinite: // 무한
                 gatchaKey = 3;
                 maxHealth = 20;
-                maxExp = 30;
+                maxExp = 25;
                 increaseExp = 0.7f;
                 maxWave = levelNum[3];
                 curHealth = maxHealth;
@@ -89,40 +111,23 @@ public class GameManager : Singleton<GameManager>
         gameTime = GameTime.Slow; // 속도 초기화
     }
 
-    public void LoadData()  // 세이브 디렉토리
-    {
-        // Shop
-        CSVReader.Instance.csvList.LoadShop();
-
-        // 돈
-        if(ES3.KeyExists("Money", "Saves/Alpha2")) // 세이브 디렉토리
-            curMoney = ES3.Load<int>("Money", "Saves/Alpha2");
-
-        // 클리어
-        LoadClearData();
-
-        // 프레임
-        if (ES3.KeyExists("Is30", "Saves/Alpha2"))
-            is30 = ES3.Load<bool>("Is30", "Saves/Alpha2");
-    }
-
     private void LoadClearData() // 세이브 디렉토리
     {
         // 정식 출시 시 세이브 파일 따로 저장 (ex. Saves/ClearSave)
-        if (ES3.KeyExists("ClearCommon", "Saves/Alpha2"))
-            isClear[0] = ES3.Load<bool>("ClearCommon", "Saves/Alpha2");
-        if (ES3.KeyExists("ClearNormal", "Saves/Alpha2"))
-            isClear[1] = ES3.Load<bool>("ClearNormal", "Saves/Alpha2");
-        if (ES3.KeyExists("ClearHard", "Saves/Alpha2"))
-            isClear[2] = ES3.Load<bool>("ClearHard", "Saves/Alpha2");
+        if (ES3.KeyExists("ClearCommon", saveDirectory))
+            isClear[0] = ES3.Load<bool>("ClearCommon", saveDirectory);
+        if (ES3.KeyExists("ClearNormal", saveDirectory))
+            isClear[1] = ES3.Load<bool>("ClearNormal", saveDirectory);
+        if (ES3.KeyExists("ClearHard", saveDirectory))
+            isClear[2] = ES3.Load<bool>("ClearHard", saveDirectory);
     }
 
     private void SaveClearData() // 세이브 디렉토리
     {
         // 정식 출시 시 세이브 파일 따로 저장 (ex. Saves/ClearSave)
-        ES3.Save("ClearCommon", isClear[0], "Saves/Alpha2");
-        ES3.Save("ClearNormal", isClear[1], "Saves/Alpha2");
-        ES3.Save("ClearHard", isClear[2], "Saves/Alpha2");
+        ES3.Save("ClearCommon", isClear[0], saveDirectory);
+        ES3.Save("ClearNormal", isClear[1], saveDirectory);
+        ES3.Save("ClearHard", isClear[2], saveDirectory);
     }
 
     public void GainMaxHealth(int a)
@@ -186,7 +191,7 @@ public class GameManager : Singleton<GameManager>
     {
         curMoney += a;
 
-        ES3.Save<int>("Money", curMoney, "Saves/Alpha2"); // 세이브 디렉토리
+        ES3.Save<int>("Money", curMoney, saveDirectory); // 세이브 디렉토리
     }
 
     public void GainExp(int a)
