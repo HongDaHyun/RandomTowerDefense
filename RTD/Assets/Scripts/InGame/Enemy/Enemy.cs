@@ -7,6 +7,15 @@ using System;
 
 public class Enemy : MonoBehaviour, IPoolObject
 {
+    GameManager gm;
+    CharacManager cm;
+    UIManager um;
+    SpawnManager sm;
+    CSVReader cr;
+    QuestManager qm;
+    SoundManager soundm;
+    WaveManager wm;
+
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     public EnemyStat enemyStat;
@@ -38,9 +47,9 @@ public class Enemy : MonoBehaviour, IPoolObject
         name = name.Replace("(Clone)", "");
         defSprite = GetComponent<SpriteRenderer>().sprite;
 
-        SetWayPoint();
-
         SetUp();
+
+        SetWayPoint();
     }
 
     public void OnGettingFromPool() //재사용
@@ -55,7 +64,17 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     private void SetUp()
     {
-        //컴포넌트 가져오기
+        // 외부 컴포넌트 가져오기
+        gm = GameManager.Instance;
+        cm = CharacManager.Instance;
+        um = UIManager.Instance;
+        sm = SpawnManager.Instance;
+        cr = CSVReader.Instance;
+        qm = QuestManager.Instance;
+        soundm = SoundManager.Instance;
+        wm = WaveManager.Instance;
+
+        //자체 컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         hpSlider = GetComponentInChildren<Slider>();
@@ -63,7 +82,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     private void SetStat()
     {
-        enemyStat = CSVReader.Instance.csvList.FindEnemy(name); //스탯 가져오기
+        enemyStat = cr.csvList.FindEnemy(name); //스탯 가져오기
 
         //변수 초기화
         curHp = enemyStat.hp;
@@ -97,10 +116,10 @@ public class Enemy : MonoBehaviour, IPoolObject
     {
         if (wayPoints != null)
             return;
-        wayPoints = new Transform[SpawnManager.Instance.wayPointsObj.childCount];
+        wayPoints = new Transform[sm.wayPointsObj.childCount];
         for (int i = 0; i < wayPoints.Length; i++)
         {
-            wayPoints[i] = SpawnManager.Instance.wayPointsObj.GetChild(i);
+            wayPoints[i] = sm.wayPointsObj.GetChild(i);
         }
         transform.position = wayPoints[curWayPoint].position;
     }
@@ -139,8 +158,8 @@ public class Enemy : MonoBehaviour, IPoolObject
         }
         else //끝 도달
         {
-            SpawnManager.Instance.DeSpawnEnemy(this);
-            GameManager.Instance.LoseHealth((int)enemyStat.tier);
+            sm.DeSpawnEnemy(this);
+            gm.LoseHealth((int)enemyStat.tier);
         }
     }
 
@@ -152,27 +171,27 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     #region Damaged
     //Damage
-    private void TakeDmg(float dmg, Color _color, float time, bool isCrit)
+    private void TakeDmg(Projectile project, Color _color, float time)
     {
         if (isDie || !gameObject.activeSelf)
             return;
 
-        enemyStat.defense = Mathf.Max(enemyStat.defense, 0); // 방어력 최소값 0
-        float defenseRatio = MathF.Round(100 / (100 + enemyStat.defense), 1);
-        float totalDmg = (dmg + (curHp * (CharacManager.Instance.proportionHP / 100)))
+        float defenseIgnore = enemyStat.defense * (1f - project.projectileStat.ignoreDefense);
+        float defenseRatio = Mathf.Round(100f / (100f + defenseIgnore) * 10f) / 10f;
+
+        float totalDmg = (project.dmg + (curHp * (cm.proportionHP / 100)))
             * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지) * 방어력
 
         curHp -= totalDmg;
 
         // UI
         StartCoroutine(HPHandlerCoroutine());
-        // DmgPopUp
-        UIManager um = UIManager.Instance;
 
-        TMPro.TextMeshPro dmgText = SpawnManager.Instance.SpawnDmgText(dmg);
+        // DmgPopUp
+        TMPro.TextMeshPro dmgText = sm.SpawnDmgText(totalDmg);
         dmgText.transform.position = transform.position;
 
-        if (isCrit) // 크리티컬 색
+        if (project.isCrit) // 크리티컬 색
             dmgText.color = Color.yellow;
         else
             dmgText.color = Color.white;
@@ -182,72 +201,63 @@ public class Enemy : MonoBehaviour, IPoolObject
         StartCoroutine(HitColorAnimation(_color, time));
 
         // 처형
-        if (curHp <= CharacManager.Instance.execution * enemyStat.hp) // Charac 30
+        if (curHp <= cm.execution * enemyStat.hp) // Charac 30
             SpecificDie();
     }
 
     // 일반 공격과 데미지 공격 구분
-    private IEnumerator Hitted(float dmg, Attribute attribute, bool isCrit)
+    private IEnumerator Hitted(Projectile project)
     {
-        if(attribute == Attribute.None) // 일반 공격
+        if(project.projectileStat.attribute == Attribute.None) // 일반 공격
         {
-            TakeDmg(dmg, Color.red, 0.05f, isCrit);
+            TakeDmg(project, Color.red, 0.05f);
         }
         else // 디버프 공격
         {
-            float attributePower = CSVReader.Instance.csvList.FindAttribute(attribute);
+            float attributePower = cr.csvList.FindAttribute(project.projectileStat.attribute);
+            Attribute kind = project.projectileStat.attribute;
 
-            switch (attribute)
+            switch (kind)
             {
                 case Attribute.Fire: // 불 공격
-                    if (debuffState[attribute])
-                        dmg *= 2 + CharacManager.Instance.dmgFire; // Charac 15
-                    debuffState[attribute] = true;
+                    if (debuffState[kind])
+                        project.dmg *= 2 + cm.dmgFire; // Charac 15
+                    debuffState[kind] = true;
 
-                    float delayDmg = 0.3f; // 딜레이
                     int dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
                     for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(dmg, Color.red, 0.1f, isCrit);
-                        yield return new WaitForSeconds(delayDmg);
+                        TakeDmg(project, Color.red, 0.1f);
+                        yield return new WaitForSeconds(0.3f);
                     }
                     break;
                 case Attribute.Germ: // 독 공격
-                    if (debuffState[attribute])
-                        dmg *= 2 + CharacManager.Instance.dmgGerm; // Charac 22
-                    debuffState[attribute] = true;
+                    if (debuffState[kind])
+                        project.dmg *= 2 + cm.dmgGerm; // Charac 22
+                    debuffState[kind] = true;
 
-                    delayDmg = 0.3f; // 딜레이
                     dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
-
-                    // Charac 23
-                    if (CharacManager.Instance.defenseGerm > 0)
-                    {
-                        float defDefense = enemyStat.defense;
-                        enemyStat.defense = Mathf.Round(enemyStat.defense * (1 + CharacManager.Instance.defenseGerm / 100f) * 100f) / 100f;
-                        enemyStat.defense = defDefense;
-                    }
 
                     for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(dmg, Color.black, 0.1f, isCrit);
-                        yield return new WaitForSeconds(delayDmg);
+                        TakeDmg(project, Color.black, 0.1f);
+                        yield return new WaitForSeconds(0.3f);
                     }
                     break;
 
                 case Attribute.Ice: // 얼음 공격
 
-                    if (debuffState[attribute])
+                    if (debuffState[kind])
                     {
-                        TakeDmg(dmg, Color.cyan, 0.1f, isCrit);
+                        TakeDmg(project, Color.cyan, 0.1f);
                         yield break;
                     }
-                    debuffState[attribute] = true;
+                    debuffState[kind] = true;
                     float slowDuration = Mathf.Min(attributePower - GetStrengthModifier(), 4); // 지속 시간
                     float slowPercent = attributePower / (10 + enemyStat.strength); // 슬로우 %
 
-                    TakeDmg(dmg, Color.cyan, slowDuration, isCrit);
+                    TakeDmg(project, Color.cyan, slowDuration);
 
                     //슬로우
                     speed *= Mathf.Max(1 - slowPercent, 0.2f); // 느려진 속도(최대 80%)
@@ -258,16 +268,16 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                 case Attribute.Thunder: // 번개 공격
 
-                    if (debuffState[attribute])
+                    if (debuffState[kind])
                     {
-                        TakeDmg(dmg, Color.blue, 0.1f, isCrit);
+                        TakeDmg(project, Color.blue, 0.1f);
                         yield break;
                     }
 
-                    debuffState[attribute] = true;
+                    debuffState[kind] = true;
                     float stunDuration = Mathf.Min(attributePower - GetStrengthModifier(), 4); // 최대 4초
 
-                    TakeDmg(dmg, Color.blue, stunDuration, isCrit);
+                    TakeDmg(project, Color.blue, stunDuration);
 
                     //스턴
                     isStop = true;
@@ -276,7 +286,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                     break;
             }
-            debuffState[attribute] = false;
+            debuffState[kind] = false;
         }
     }
 
@@ -285,12 +295,12 @@ public class Enemy : MonoBehaviour, IPoolObject
         return enemyStat.strength / 10;
     }
 
-    public void Hit(float dmg, Attribute attribute, bool isCrit)
+    public void Hit(Projectile project)
     {
         if (!gameObject.activeSelf || isDie)
             return;
 
-        StartCoroutine(Hitted(dmg, attribute, isCrit));
+        StartCoroutine(Hitted(project));
     }
 
     private IEnumerator HitColorAnimation(Color _color, float time)
@@ -326,7 +336,6 @@ public class Enemy : MonoBehaviour, IPoolObject
         isDie = true;
         StopAllCoroutines();
 
-        QuestManager qm = QuestManager.Instance;
         qm.UpQuest(4); // 퀘스트 4
 
         int tierNum = (int)enemyStat.tier;
@@ -338,14 +347,11 @@ public class Enemy : MonoBehaviour, IPoolObject
         }
 
         // 경험치 증가
-        GameManager gm = GameManager.Instance;
-
         gm.GainExp((int)enemyStat.tier);
 
         // 웨이브 전체 몬스터
-        WaveManager wm = WaveManager.Instance;
-        WaveManager.Instance.maxWaveEnemy--;
-        UIManager.Instance.upPannel.curWavePannel.text.text = $"×{wm.maxWaveEnemy}";
+        wm.maxWaveEnemy--;
+        um.upPannel.curWavePannel.text.text = $"×{wm.maxWaveEnemy}";
         gm.killEnemyNum++;
 
         SpawnManager.Instance.DeSpawnEnemy(this);
@@ -391,15 +397,15 @@ public class Enemy : MonoBehaviour, IPoolObject
         curHp = enemyStat.hp;
         ResetDebuffStat();
 
-        SoundManager.Instance.PlaySFX("Reborn");
+        soundm.PlaySFX("Reborn");
     }
 
     public void Split()
     {
-        SoundManager.Instance.PlaySFX("Split");
+        soundm.PlaySFX("Split");
 
-        SpawnManager.Instance.SpawnBabySlime(this);
-        SpawnManager.Instance.SpawnBabySlime(this);
+        sm.SpawnBabySlime(this);
+        sm.SpawnBabySlime(this);
 
         Die();
     }

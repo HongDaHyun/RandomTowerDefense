@@ -25,6 +25,6 @@ public class Projectile_Germ : Projectile
     public void Explosion()
     {
         SpawnManager.Instance.DeSpawnProjectile(this);
-        SpawnManager.Instance.SpawnExplosion(transform, dmg, "DeathExplosion");
+        SpawnManager.Instance.SpawnExplosion(transform, this, "DeathExplosion");
     }
 }

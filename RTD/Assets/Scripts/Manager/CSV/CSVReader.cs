@@ -166,7 +166,7 @@ public class CSVReader : Singleton<CSVReader>
     [Button("투사체 데이터 불러오기")]
     public void ProjectileCSVReader()
     {
-        int order = 5; int size = 4;
+        int order = 5; int size = 5;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.projectileStat = new ProjectileStat[tableSize];
@@ -179,7 +179,8 @@ public class CSVReader : Singleton<CSVReader>
                 projectileName = (UnitType)Enum.Parse(typeof(UnitType), data[size * k]),
                 attribute = (Attribute)Enum.Parse(typeof(Attribute), data[size * k + 1]),
                 size = float.Parse(data[size * k + 2]),
-                speed = float.Parse(data[size * k + 3])
+                speed = float.Parse(data[size * k + 3]),
+                ignoreDefense = float.Parse(data[size * k + 4])
             };
         }
     }

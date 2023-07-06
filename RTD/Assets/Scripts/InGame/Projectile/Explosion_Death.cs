@@ -6,6 +6,7 @@ using Redcode.Pools;
 
 public class Explosion_Death : MonoBehaviour, IPoolObject
 {
+    public Projectile parent;
     public float dmg;
 
     void IPoolObject.OnCreatedInPool()
@@ -28,11 +29,12 @@ public class Explosion_Death : MonoBehaviour, IPoolObject
         if (!collision.CompareTag("Enemy"))
             return;
         Enemy enemy = collision.GetComponent<Enemy>();
-        enemy.Hit(dmg, Attribute.Germ, false); // 독 크리티컬 x
+        enemy.Hit(parent);
     }
 
-    public void SetDmg(float damage)
+    public void SetParentProjectile(Projectile project)
     {
-        dmg = damage;
+        parent = project;
+        dmg = project.dmg;
     }
 }

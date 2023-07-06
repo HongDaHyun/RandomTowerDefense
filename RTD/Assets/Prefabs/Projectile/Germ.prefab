@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5227512794339955428}
   - component: {fileID: 4405807905537318816}
   - component: {fileID: 4846232039636219545}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Germ
   m_TagString: Untagged
   m_Icon: {fileID: 0}

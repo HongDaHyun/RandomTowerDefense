@@ -177,12 +177,12 @@ public class SpawnManager : Singleton<SpawnManager>
         PoolManager.Instance.TakeToPool<Projectile>(projectile.name, projectile);
     }
 
-    public Explosion_Death SpawnExplosion(Transform start, float damage, string name)
+    public Explosion_Death SpawnExplosion(Transform start, Projectile germ, string name)
     {
         Explosion_Death newProjectile = PoolManager.Instance.GetFromPool<Explosion_Death>(name);
         newProjectile.transform.position = start.position;
         newProjectile.transform.localScale = start.localScale;
-        newProjectile.SetDmg(damage);
+        newProjectile.SetParentProjectile(germ);
         return newProjectile;
     }
 

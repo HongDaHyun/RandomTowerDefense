@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 229775705515722615}
   - component: {fileID: 911507405507407889}
   - component: {fileID: 7347358028346850316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DeathExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4933,7 +4933,7 @@ GameObject:
   - component: {fileID: 3899315312859317190}
   - component: {fileID: 3899315312865745782}
   - component: {fileID: 3899315312865098112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5042,7 +5042,7 @@ GameObject:
   - component: {fileID: 3899315312859322294}
   - component: {fileID: 3899315312873441476}
   - component: {fileID: 3899315312873420088}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmokeCentral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9771,7 +9771,7 @@ GameObject:
   - component: {fileID: 3899315312859339368}
   - component: {fileID: 3899315312873501100}
   - component: {fileID: 3899315312873350482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14500,7 +14500,7 @@ GameObject:
   - component: {fileID: 3899315312859341506}
   - component: {fileID: 3899315312873505020}
   - component: {fileID: 3899315312873463016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmokeRadial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19229,7 +19229,7 @@ GameObject:
   - component: {fileID: 3899315312859376942}
   - component: {fileID: 3899315312873497394}
   - component: {fileID: 3899315312873384494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}

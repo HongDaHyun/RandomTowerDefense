@@ -6,8 +6,8 @@ public class CharacManager : Singleton<CharacManager>
 {
     [HideInInspector] public int doubleWave, plusReward, wave5; // 8, 12, 34
     [HideInInspector]
-    public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, defenseGerm, dmgWaveGun, iceGatcha,
-        execution, spawnDmg, commonGatcha, madDmg; // 0, 13, 15, 17, 22, 23, 24, 27, 30, 33, 34, 36
+    public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, dmgWaveGun, iceGatcha,
+        execution, spawnDmg, commonGatcha, madDmg; // 0, 13, 15, 17, 22, 24, 27, 30, 33, 34, 36
     public void DoCharac(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;
@@ -92,7 +92,7 @@ public class CharacManager : Singleton<CharacManager>
                 dmgGerm += value / 100;
                 break;
             case 23:
-                defenseGerm += value;
+                list.SetIgnoreDefense(ref list.FindProjectile_Ref(UnitType.Germ), value / 100f);
                 break;
             case 24:
                 dmgWaveGun = value;

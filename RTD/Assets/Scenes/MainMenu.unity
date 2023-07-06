@@ -1973,6 +1973,7 @@ MonoBehaviour:
     curWave: {fileID: 0}
     level: {fileID: 0}
     total: {fileID: 0}
+  helpTxt: {fileID: 0}
 --- !u!4 &253012259
 Transform:
   m_ObjectHideFlags: 0
@@ -3938,7 +3939,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.357143
+  orthographic size: 4.285714
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

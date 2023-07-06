@@ -51,7 +51,7 @@ public struct ProjectileStat
 {
     public UnitType projectileName;
     public Attribute attribute;
-    public float size, speed;
+    public float size, speed, ignoreDefense;
 }
 
 [Serializable]
@@ -376,6 +376,11 @@ public class CSVList
     public void ChangeProjectileAttribute(ref ProjectileStat stat, Attribute _attribute)
     {
         stat.attribute = _attribute;
+    }
+
+    public void SetIgnoreDefense(ref ProjectileStat stat, float value)
+    {
+        stat.ignoreDefense = Mathf.Clamp(stat.ignoreDefense + value, 0f, 1f);
     }
     #endregion
 

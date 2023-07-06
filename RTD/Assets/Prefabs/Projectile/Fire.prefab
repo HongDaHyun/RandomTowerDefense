@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6984194680931831941}
   - component: {fileID: 4405807905537318816}
   - component: {fileID: -2966460338774561568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,9 +112,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3333181173557417467}
     m_Modifications:
+    - target: {fileID: 113974, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114182, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 147348, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 150102, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
       propertyPath: m_Name
       value: PixelFlameThrowerRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 150102, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 156052, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 430788, guid: bfa685ea41593124286d2e0a0621349c, type: 3}
       propertyPath: m_RootOrder

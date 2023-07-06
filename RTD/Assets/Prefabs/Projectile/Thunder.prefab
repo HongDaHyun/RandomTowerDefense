@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2716012619059196227}
   - component: {fileID: 2716012619078674371}
   - component: {fileID: 2716012619079516065}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4682,7 +4682,7 @@ GameObject:
   - component: {fileID: 2716012619059294383}
   - component: {fileID: 2716012619078566909}
   - component: {fileID: 2716012619079484871}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9488,7 +9488,7 @@ GameObject:
   - component: {fileID: 2716012619059213319}
   - component: {fileID: 2716012619078636931}
   - component: {fileID: 2716012619078649967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14167,7 +14167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2716012619059194291}
   - component: {fileID: 2716012619052928155}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14265,7 +14265,7 @@ GameObject:
   - component: {fileID: 6528097974677309344}
   - component: {fileID: 3925829914943358315}
   - component: {fileID: 4427597666988656255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Thunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

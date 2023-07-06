@@ -27177,7 +27177,6 @@ MonoBehaviour:
   dmgFire: 0
   dmgSword: 0
   dmgGerm: 0
-  defenseGerm: 0
   dmgWaveGun: 0
   iceGatcha: 0
   execution: 0
@@ -28087,7 +28086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4132086054349199680, guid: 956e0c3ca430485429b39d944d93d991, type: 3}
       propertyPath: m_RaycastTarget
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4132086054349199684, guid: 956e0c3ca430485429b39d944d93d991, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -28184,6 +28183,10 @@ PrefabInstance:
     - target: {fileID: 4132086054740756491, guid: 956e0c3ca430485429b39d944d93d991, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132086055403083170, guid: 956e0c3ca430485429b39d944d93d991, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4132086055403083175, guid: 956e0c3ca430485429b39d944d93d991, type: 3}
       propertyPath: m_StaticEditorFlags

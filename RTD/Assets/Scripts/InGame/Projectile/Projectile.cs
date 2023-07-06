@@ -70,7 +70,7 @@ public class Projectile : MonoBehaviour, IPoolObject
                 break;
         }
 
-        enemy.Hit(dmg, projectileStat.attribute, isCrit);
+        enemy.Hit(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -89,7 +89,7 @@ public class Projectile : MonoBehaviour, IPoolObject
                 break;
         }
 
-        enemy.Hit(dmg, projectileStat.attribute, isCrit);
+        enemy.Hit(this);
     }
 
     public virtual void SetPos(Transform _start, Transform _target) // SpawnManager에서 사용

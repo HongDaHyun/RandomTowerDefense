@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1142780361547305850}
   - component: {fileID: 1142780361566619650}
   - component: {fileID: 1142780361565495140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4740,7 +4740,7 @@ GameObject:
   - component: {fileID: 1142780361547309012}
   - component: {fileID: 1142780361566648270}
   - component: {fileID: 1142780361565453496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SlashLinger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9604,7 +9604,7 @@ GameObject:
   - component: {fileID: 1142780361547219168}
   - component: {fileID: 1142780361566671776}
   - component: {fileID: 1142780361565498176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14453,7 +14453,7 @@ GameObject:
   - component: {fileID: 2331849560771512575}
   - component: {fileID: -8904582654592673153}
   - component: {fileID: 6105448551752674635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}

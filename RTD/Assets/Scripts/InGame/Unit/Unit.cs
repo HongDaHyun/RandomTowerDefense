@@ -7,6 +7,10 @@ public enum UnitState { SearchTarget = 0, AttackToTarget }
 
 public class Unit : MonoBehaviour, IPoolObject
 {
+    SpawnManager sm;
+    CSVReader cr;
+    SoundManager soundm;
+
     #region Attack
     private UnitState unitState = UnitState.SearchTarget;
     public Transform attackTarget = null;
@@ -23,34 +27,43 @@ public class Unit : MonoBehaviour, IPoolObject
     void IPoolObject.OnCreatedInPool()
     {
         name = name.Replace("(Clone)", ""); //(Clone) 삭제
-        anim = GetComponent<Animator>();
-        render = GetComponent<SpriteRenderer>();
+
+        SetUp();
+
         defSprite = render.sprite;
         if (anim != null)
             isAnim = true;
 
-        Debug.Log(unitStat.tier);
-        SpawnManager.Instance.SpawnTier(unitStat.tier, transform);
+        sm.SpawnTier(unitStat.tier, transform);
     }
 
     void IPoolObject.OnGettingFromPool()
     {
-        SetUp();
+        StopAllCoroutines();
+        SetStat();
+
+        if (isAnim)
+            anim.SetBool("IsAtk", false);
+
+        render.sprite = defSprite;
+        StartCoroutine(DelayTarget());
     }
 
     public void SetStat()
     {
-        unitStat = CSVReader.Instance.csvList.FindUnit(name);
+        unitStat = cr.csvList.FindUnit(name);
     }
 
-    void SetUp()
+    void SetUp() // 컴포넌트
     {
-        StopAllCoroutines();
-        SetStat();
-        if (isAnim)
-            anim.SetBool("IsAtk", false);
-        render.sprite = defSprite;
-        StartCoroutine(DelayTarget());
+        // 외부 컴포넌트
+        sm = SpawnManager.Instance;
+        cr = CSVReader.Instance;
+        soundm = SoundManager.Instance;
+
+        // 내부 컴포넌트
+        anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     #region Attack
@@ -81,14 +94,14 @@ public class Unit : MonoBehaviour, IPoolObject
         while(true)
         {
             float closetDistSqr = Mathf.Infinity;
-            for (int i = 0; i < SpawnManager.Instance.enemyList.Count; i++)
+            for (int i = 0; i < sm.enemyList.Count; i++)
             {
-                float distance = Vector2.Distance(SpawnManager.Instance.enemyList[i].transform.position,
+                float distance = Vector2.Distance(sm.enemyList[i].transform.position,
                     transform.position);
                 if(distance <= unitStat.range && distance <= closetDistSqr)
                 {
                     closetDistSqr = distance;
-                    attackTarget = SpawnManager.Instance.enemyList[i].transform;
+                    attackTarget = sm.enemyList[i].transform;
                 }
             }
 
@@ -141,11 +154,11 @@ public class Unit : MonoBehaviour, IPoolObject
         if (attackTarget == null || !attackTarget.gameObject.activeSelf)
             return null;
 
-        Projectile projectile = SpawnManager.Instance.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat.unitType.ToString());
+        Projectile projectile = sm.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat.unitType.ToString());
 
         projectile.SetStat(unitStat); // 투사체 공격력, 사거리 세팅
 
-        SoundManager.Instance.PlaySFX($"Shoot{projectile.projectileStat.projectileName}"); // 효과음
+        soundm.PlaySFX($"Shoot{projectile.projectileStat.projectileName}"); // 효과음
 
         return projectile;
     }
