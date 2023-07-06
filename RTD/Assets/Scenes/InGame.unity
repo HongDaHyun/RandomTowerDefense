@@ -14763,7 +14763,7 @@ MonoBehaviour:
   increaseExp: 0.3
   plusExp: 0
   probability: 520000000a0000000500000003000000
-  levelNum: 140000001e00000028000000ffffffff
+  levelNum: 14000000190000001e000000ffffffff
 --- !u!4 &894474364
 Transform:
   m_ObjectHideFlags: 0

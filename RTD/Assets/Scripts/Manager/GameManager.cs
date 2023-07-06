@@ -73,7 +73,7 @@ public class GameManager : Singleton<GameManager>
                 gatchaKey = 3;
                 maxHealth = 20;
                 maxExp = 30;
-                increaseExp = 1f;
+                increaseExp = 0.7f;
                 maxWave = levelNum[2];
                 curHealth = maxHealth;
                 break;
@@ -81,7 +81,7 @@ public class GameManager : Singleton<GameManager>
                 gatchaKey = 3;
                 maxHealth = 20;
                 maxExp = 30;
-                increaseExp = 1f;
+                increaseExp = 0.7f;
                 maxWave = levelNum[3];
                 curHealth = maxHealth;
                 break;
