@@ -8,6 +8,7 @@ public class CharacManager : Singleton<CharacManager>
     [HideInInspector]
     public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, dmgWaveGun, iceGatcha,
         execution, spawnDmg, commonGatcha, madDmg; // 0, 13, 15, 17, 22, 24, 27, 30, 33, 34, 36
+
     public void DoCharac(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;

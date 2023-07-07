@@ -203,20 +203,31 @@ public class Info
         TabInfo(true);
         enemyInfo.pannel.SetActive(false);
         unitInfo.pannel.SetActive(true);
+        enemyInfo.select = null;
 
         // 텍스트 동기화
-        Unit unit = tile.GetComponentInChildren<Unit>();
+        unitInfo.select = tile.GetComponentInChildren<Unit>();
 
-        unitInfo.img.sprite = unit.defSprite; // 이미지
-        unitInfo.icon.sprite = SpriteData.Instance.typeIcon[(int)unit.unitStat.unitType]; // 타입
-        unitInfo.nameTxt.text = unit.unitStat.unitName; // 이름
-        unitInfo.nameTxt.color = UIManager.Instance.TierColor(unit.unitStat.tier); // 이름 색 (티어)
-        unitInfo.dmgTxt.text = unit.unitStat.dmg.ToString(); // 데미지
-        unitInfo.atkSpeedTxt.text = $"{unit.unitStat.atkSpeed}"; // 공속
-        unitInfo.rangeTxt.text = unit.unitStat.range.ToString(); // 사거리
-        unitInfo.critPercentTxt.text = $"{unit.unitStat.critPercent}%"; // 치명타 확률
-        unitInfo.critDmgTxt.text = $"{unit.unitStat.critDmg}%"; // 치명타 데미지
-        unitInfo.unitRange.OnAtkRange(unit.transform.position, unit.unitStat.range); // 사거리 표시 UI
+        unitInfo.img.sprite = unitInfo.select.defSprite; // 이미지
+        unitInfo.icon.sprite = SpriteData.Instance.typeIcon[(int)unitInfo.select.unitStat.unitType]; // 타입
+        unitInfo.nameTxt.text = unitInfo.select.unitStat.unitName; // 이름
+        unitInfo.nameTxt.color = UIManager.Instance.TierColor(unitInfo.select.unitStat.tier); // 이름 색 (티어)
+
+        UpdateUnitUI();
+    }
+
+    public void UpdateUnitUI()
+    {
+        if (!pannelTrans.gameObject.activeSelf || unitInfo.select == null)
+            return;
+        unitInfo.dmgTxt.text = unitInfo.select.unitStat.dmg.ToString(); // 데미지
+        unitInfo.atkSpeedTxt.text = $"{unitInfo.select.unitStat.atkSpeed}"; // 공속
+        unitInfo.rangeTxt.text = unitInfo.select.unitStat.range.ToString(); // 사거리
+        unitInfo.critPercentTxt.text = $"{unitInfo.select.unitStat.critPercent}%"; // 치명타 확률
+        unitInfo.critDmgTxt.text = $"{unitInfo.select.unitStat.critDmg}%"; // 치명타 데미지
+        unitInfo.totalDmgTxt.text = unitInfo.select.totalDmg.ToString("N2"); // 총 데미지
+
+        unitInfo.unitRange.OnAtkRange(unitInfo.select.transform.position, unitInfo.select.unitStat.range); // 사거리 표시 UI
     }
 
     public void SetEnemyInfo(Enemy enemy)
@@ -226,15 +237,27 @@ public class Info
         unitInfo.unitRange.OffAtkRange();
         unitInfo.pannel.SetActive(false);
         enemyInfo.pannel.SetActive(true);
+        unitInfo.select = null;
+
+        enemyInfo.select = enemy;
 
         // 텍스트 동기화
         enemyInfo.img.sprite = enemy.defSprite; // 이미지
         enemyInfo.nameTxt.text = enemy.enemyStat.enemyName; // 이름
         enemyInfo.nameTxt.color = UIManager.Instance.TierColor(enemy.enemyStat.tier); // 이름 색 (티어)
-        enemyInfo.hpTxt.text = enemy.enemyStat.hp.ToString(); // 체력
-        enemyInfo.moveSpeedTxt.text = enemy.enemyStat.moveSpeed.ToString(); // 이동속도
-        enemyInfo.defenseTxt.text = enemy.enemyStat.defense.ToString(); // 방어력
-        enemyInfo.strengthTxt.text = enemy.enemyStat.strength.ToString(); // 강인함
+
+        UpdateEnemyUI();
+    }
+
+    public void UpdateEnemyUI()
+    {
+        if (!pannelTrans.gameObject.activeSelf || enemyInfo.select == null)
+            return;
+
+        enemyInfo.hpTxt.text = $"{(int)enemyInfo.select.curHp}/{(int)enemyInfo.select.enemyStat.hp}"; // 체력
+        enemyInfo.moveSpeedTxt.text = enemyInfo.select.enemyStat.moveSpeed.ToString(); // 이동속도
+        enemyInfo.defenseTxt.text = enemyInfo.select.enemyStat.defense.ToString(); // 방어력
+        enemyInfo.strengthTxt.text = enemyInfo.select.enemyStat.strength.ToString(); // 강인함
     }
 
     public void TabInfo(bool b)
@@ -247,6 +270,8 @@ public class Info
         else
         {
             pannelTrans.DOAnchorPosY(-600, 0.25f).SetEase(Ease.InBack).SetUpdate(true).OnComplete(() => pannelTrans.gameObject.SetActive(false));
+            enemyInfo.select = null;
+            unitInfo.select = null;
             unitInfo.unitRange.OffAtkRange();
         }
 
@@ -259,7 +284,9 @@ public struct UnitInfo
     public GameObject pannel;
     public Image img, icon;
     public UnitRange unitRange;
-    public Text nameTxt, dmgTxt, atkSpeedTxt, rangeTxt, critPercentTxt, critDmgTxt;
+    public Text nameTxt, dmgTxt, atkSpeedTxt, rangeTxt, critPercentTxt, critDmgTxt, totalDmgTxt;
+
+    [HideInInspector]public Unit select;
 }
 
 [Serializable]
@@ -268,6 +295,8 @@ public struct EnemyInfo
     public GameObject pannel;
     public Image img;
     public Text nameTxt, hpTxt, moveSpeedTxt, defenseTxt, strengthTxt;
+
+    [HideInInspector]public Enemy select;
 }
 
 [Serializable]

@@ -165,10 +165,11 @@ public class SpawnManager : Singleton<SpawnManager>
     #endregion
 
     #region SpawnProjectile
-    public Projectile SpawnProjectile(Transform start, Transform target, string _name)
+    public Projectile SpawnProjectile(Unit _unit, string _name)
     {
         Projectile newProjectile = PoolManager.Instance.GetFromPool<Projectile>(_name);
-        newProjectile.SetPos(start, target);
+        newProjectile.SetPos(_unit.transform.GetChild(0), _unit.attackTarget);
+        newProjectile.unit = _unit;
         return newProjectile;
     }
 

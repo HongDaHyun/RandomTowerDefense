@@ -183,6 +183,9 @@ public class Enemy : MonoBehaviour, IPoolObject
             * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지) * 방어력
 
         curHp -= totalDmg;
+        project.unit.totalDmg += totalDmg;
+        um.info.UpdateUnitUI();
+        um.info.UpdateEnemyUI();
 
         // UI
         StartCoroutine(HPHandlerCoroutine());

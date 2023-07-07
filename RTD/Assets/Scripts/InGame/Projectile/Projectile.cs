@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     public float dmg, range;
     public Transform target, startTrans;
     public float remainTime = 2f;
+    public Unit unit;
 
     public ProjectileStat projectileStat;
 

@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public float curExp, increaseExp, plusExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public int[] levelNum;
-    public string saveDirectory = "Saves/Beta1";
+    public string saveDirectory = "Saves/Alpha2";
 
     protected override void Awake()
     {
@@ -39,9 +39,9 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadData()  // 세이브 디렉토리
     {
-        string previousDirectory = "Saves/Alpha2";
+/*        string previousDirectory = "Saves/Alpha2";
         if (ES3.FileExists(previousDirectory))
-            ES3.DeleteFile(previousDirectory);
+            ES3.DeleteFile(previousDirectory);*/
 
         // Shop
         CSVReader.Instance.csvList.LoadShop();

@@ -110,6 +110,8 @@ public class CSVList
 
         // Spawn
         SpawnUp_Unit(unitName);
+
+        UIManager.Instance.info.UpdateUnitUI();
     }
     public void UpgradeUnit(List<string> unitName, UpUnit kind, int value)
     {
@@ -121,6 +123,8 @@ public class CSVList
             // Spawn
             SpawnUp_Unit(unitName[i]);
         }
+
+        UIManager.Instance.info.UpdateUnitUI();
     }
     public void UpgradeUnit(List<UnitStat> stats, UpUnit kind, float value)
     {
@@ -132,8 +136,24 @@ public class CSVList
             // Spawn
             SpawnUp_Unit(stats[i].unitName);
         }
+
+        UIManager.Instance.info.UpdateUnitUI();
     }
     public void UpgradeAllUnit(UpUnit kind, float value)
+    {
+        int lenght = unitStat.Length;
+        for (int i = 0; i < lenght; i++)
+        {
+            // CSV
+            CSVUp_Unit(i, kind, value);
+
+            // Spawn
+            SpawnUp_Unit();
+        }
+
+        UIManager.Instance.info.UpdateUnitUI();
+    }
+    public void UpgradeAllUnit_Begin(UpUnit kind, float value)
     {
         int lenght = unitStat.Length;
         for (int i = 0; i < lenght; i++)
@@ -239,6 +259,8 @@ public class CSVList
         int length = enemyStat.Length;
         for (int i = 0; i < length; i++)
             CSVUp_Enemy(i, kind, value);
+
+        UIManager.Instance.info.UpdateEnemyUI();
     }
 
     private void CSVUp_Enemy(int ID, UpEnemy kind, float value)

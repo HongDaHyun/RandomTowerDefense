@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour, IPoolObject
     private UnitState unitState = UnitState.SearchTarget;
     public Transform attackTarget = null;
     private bool isAtkCool;
+    public float totalDmg;
     #endregion
     #region Animation
     public Animator anim;
@@ -41,6 +42,7 @@ public class Unit : MonoBehaviour, IPoolObject
     {
         StopAllCoroutines();
         SetStat();
+        totalDmg = 0;
 
         if (isAnim)
             anim.SetBool("IsAtk", false);
@@ -154,7 +156,7 @@ public class Unit : MonoBehaviour, IPoolObject
         if (attackTarget == null || !attackTarget.gameObject.activeSelf)
             return null;
 
-        Projectile projectile = sm.SpawnProjectile(transform.GetChild(0), attackTarget, unitStat.unitType.ToString());
+        Projectile projectile = sm.SpawnProjectile(this, unitStat.unitType.ToString());
 
         projectile.SetStat(unitStat); // 투사체 공격력, 사거리 세팅
 

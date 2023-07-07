@@ -28,11 +28,11 @@ public class CSVReader : Singleton<CSVReader>
 
         ShopStat[] shopStat = csvList.shopStat;
 
-        csvList.UpgradeAllUnit(UpUnit.Dmg, shopStat[0].curLevel * shopStat[0].condition);
-        csvList.UpgradeAllUnit(UpUnit.AtkSpeed, shopStat[1].curLevel * shopStat[1].condition);
-        csvList.UpgradeAllUnit(UpUnit.Range, shopStat[2].curLevel * shopStat[2].condition);
-        csvList.UpgradeAllUnit(UpUnit.CritPercent, shopStat[3].curLevel * shopStat[3].condition);
-        csvList.UpgradeAllUnit(UpUnit.CritDmg, shopStat[4].curLevel * shopStat[4].condition);
+        csvList.UpgradeAllUnit_Begin(UpUnit.Dmg, shopStat[0].curLevel * shopStat[0].condition);
+        csvList.UpgradeAllUnit_Begin(UpUnit.AtkSpeed, shopStat[1].curLevel * shopStat[1].condition);
+        csvList.UpgradeAllUnit_Begin(UpUnit.Range, shopStat[2].curLevel * shopStat[2].condition);
+        csvList.UpgradeAllUnit_Begin(UpUnit.CritPercent, shopStat[3].curLevel * shopStat[3].condition);
+        csvList.UpgradeAllUnit_Begin(UpUnit.CritDmg, shopStat[4].curLevel * shopStat[4].condition);
 
         csvList.UpgradeAllProjectile("Size", shopStat[5].curLevel * shopStat[5].condition);
         csvList.UpgradeAllProjectile("Speed", shopStat[6].curLevel * shopStat[6].condition);
