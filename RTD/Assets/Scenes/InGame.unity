@@ -12374,7 +12374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8286452031094a9448a3cd76a6190953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTestMode: 1
+  isTestMode: 0
   reward: 0
 --- !u!4 &757788940
 Transform:

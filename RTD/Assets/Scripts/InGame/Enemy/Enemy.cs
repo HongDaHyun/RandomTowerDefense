@@ -205,7 +205,10 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         // 처형
         if (curHp <= cm.execution * enemyStat.hp) // Charac 30
+        {
+            project.unit.totalDmg -= curHp - cm.execution * enemyStat.hp;
             SpecificDie();
+        }
     }
 
     // 일반 공격과 데미지 공격 구분
@@ -335,8 +338,6 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     private void Die()
     {
-        isStop = true;
-        isDie = true;
         StopAllCoroutines();
 
         qm.UpQuest(4); // 퀘스트 4
@@ -366,30 +367,29 @@ public class Enemy : MonoBehaviour, IPoolObject
     {
         if (isDie)
             return;
+
+        isStop = true;
+        isDie = true;
+        curHp = 0;
+
         switch (enemyStat.enemyType)
         {
             case EnemyType.Portion:
-                isStop = true;
                 anim.SetTrigger("Die");
                 break;
             case EnemyType.Skeleton:
-                isStop = true;
-                isDie = true;
                 if (curLife > 0)
                     anim.SetTrigger("Reborn");
                 else
                     Die();
                 break;
             case EnemyType.Slime:
-                isStop = true;
-                isDie = true;
                 anim.SetTrigger("Split");
                 break;
             default: // 사람, 골렘, 작라임
                 Die();
                 break;
         }
-        isDie = true;
     }
 
     public void Reborn()
