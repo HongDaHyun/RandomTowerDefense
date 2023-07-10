@@ -23,22 +23,20 @@ public class AdMobManager : Singleton<AdMobManager>
         LoadRewardAd();
     }
 
-    AdRequest GetAdRequest()
-    {
-        return new AdRequest.Builder().Build();
-    }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 이전 광고 삭제
         DestroyBannerAd();
         DestroyFrontAd();
         DestroyRewardAd();
 
-        // 광고 로드
         LoadBannerAd();
         LoadFrontAd();
         LoadRewardAd();
+    }
+
+    AdRequest GetAdRequest()
+    {
+        return new AdRequest.Builder().Build();
     }
 
     #region 배너 광고
@@ -77,21 +75,24 @@ public class AdMobManager : Singleton<AdMobManager>
     #region 전면 광고
     const string frontTestID = "ca-app-pub-3940256099942544/8691691433";
     const string frontID = "ca-app-pub-4059713768893618/6725590211";
-    InterstitialAd frontAd;
+    [HideInInspector] public InterstitialAd frontAd;
 
 
     void LoadFrontAd()
     {
         frontAd = new InterstitialAd(isTestMode ? frontTestID : frontID);
+
         frontAd.LoadAd(GetAdRequest());
-        frontAd.OnAdLoaded += (e, sender) =>
-        {
-            //보상
-        };
     }
 
     public void ShowFrontAd()
     {
+        if (!frontAd.IsLoaded())
+        {
+            BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
+            return;
+        }
+
         frontAd.Show();
         LoadFrontAd();
     }
@@ -110,7 +111,7 @@ public class AdMobManager : Singleton<AdMobManager>
     #region 리워드 광고
     const string rewardTestID = "ca-app-pub-3940256099942544/5224354917";
     const string rewardID = "ca-app-pub-4059713768893618/6725590211";
-    RewardedAd rewardAd;
+    [HideInInspector] public RewardedAd rewardAd;
 
 
     void LoadRewardAd()
@@ -126,6 +127,9 @@ public class AdMobManager : Singleton<AdMobManager>
 
     public void ShowRewardAd(int _reward)
     {
+        if (!rewardAd.IsLoaded())
+            return;
+
         reward = _reward;
         rewardAd.Show();
         LoadRewardAd();

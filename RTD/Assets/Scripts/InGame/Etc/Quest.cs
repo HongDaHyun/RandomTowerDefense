@@ -93,17 +93,22 @@ public class Quest : MonoBehaviour
     {
         BtnManager.Instance.ClickSound();
 
+        if (questStat.ID == 3)
+        {
+            if (AdMobManager.Instance.rewardAd.IsLoaded())
+                AdMobManager.Instance.ShowRewardAd(reward);
+            else
+            {
+                BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
+                return;
+            }
+        }
+        else
+            GameManager.Instance.GainGatcha(reward);
+
         QuestManager.Instance.UpQuest(6); // 퀘스트 6
 
         // 비활성화
         gameObject.SetActive(false);
-
-        if (questStat.ID == 3)
-        {
-            AdMobManager.Instance.ShowRewardAd(reward);
-            return;
-        }
-
-        GameManager.Instance.GainGatcha(reward);
     }
 }

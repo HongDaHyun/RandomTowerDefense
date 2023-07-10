@@ -63,7 +63,7 @@ public class BtnManager : Singleton<BtnManager>
         Tab(um.gatchaPannel.gatchaPannel);
     }
 
-    private void HelpTxt(UIManager um, string s)
+    public void HelpTxt(UIManager um, string s)
     {
         if (um.helpTxt.gameObject.activeSelf)
             return;
@@ -144,7 +144,14 @@ public class BtnManager : Singleton<BtnManager>
 
         gm.SetGM();
 
-        GameStart(gm.level.ToString());
+        AdMobManager.Instance.frontAd.OnAdClosed += (sender, e) => GameStart(gm.level.ToString());
+        AdMobManager.Instance.ShowFrontAd();
+    }
+
+    public void TitleAd()
+    {
+        AdMobManager.Instance.frontAd.OnAdClosed += (sender, e) => TitleFX();
+        AdMobManager.Instance.ShowFrontAd();
     }
 
     public void TitleFX()

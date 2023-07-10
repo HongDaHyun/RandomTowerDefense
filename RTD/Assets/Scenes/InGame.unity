@@ -8315,7 +8315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC124\uBA85 \uD14D\uC2A4\uD2B8"
+  m_text: " \uC124\uBA85\uD14D\uC2A4\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e91447f0a30947e4daecf16e2fd54d24, type: 2}
   m_sharedMaterial: {fileID: -7123457951816856407, guid: e91447f0a30947e4daecf16e2fd54d24, type: 2}
@@ -8345,9 +8345,9 @@ MonoBehaviour:
   m_fontSize: 60
   m_fontSizeBase: 60
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 40
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -8405,12 +8405,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 945401274}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: -100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!4 &599096629 stripped
 Transform:
@@ -9292,7 +9292,7 @@ RectTransform:
   - {fileID: 1728044333}
   - {fileID: 28893011}
   m_Father: {fileID: 945401274}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13181,7 +13181,7 @@ RectTransform:
   - {fileID: 1640725684}
   - {fileID: 3478809}
   m_Father: {fileID: 945401274}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16156,7 +16156,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 594672122}
   - {fileID: 1902797591}
   - {fileID: 1451694445}
   - {fileID: 1424027521}
@@ -16165,6 +16164,7 @@ RectTransform:
   - {fileID: 987914398}
   - {fileID: 805550169}
   - {fileID: 1969227687}
+  - {fileID: 594672122}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16403,7 +16403,7 @@ RectTransform:
   - {fileID: 517310324}
   - {fileID: 453859681}
   m_Father: {fileID: 945401274}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20385,7 +20385,7 @@ RectTransform:
   - {fileID: 1798775603}
   - {fileID: 71285649}
   m_Father: {fileID: 945401274}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20621,7 +20621,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1060610722}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
-        m_MethodName: TitleFX
+        m_MethodName: TitleAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21055,7 +21055,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 945401274}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22848,7 +22848,7 @@ RectTransform:
   - {fileID: 116626928}
   - {fileID: 2042723150}
   m_Father: {fileID: 945401274}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24644,7 +24644,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1060610722}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
-        m_MethodName: TitleFX
+        m_MethodName: TitleAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25831,7 +25831,7 @@ RectTransform:
   - {fileID: 1603961480}
   - {fileID: 808970256}
   m_Father: {fileID: 945401274}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -27116,7 +27116,7 @@ RectTransform:
   - {fileID: 1775199792}
   - {fileID: 1746843497}
   m_Father: {fileID: 945401274}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
