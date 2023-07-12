@@ -74,7 +74,7 @@ public class AdMobManager : Singleton<AdMobManager>
 
     #region 전면 광고
     const string frontTestID = "ca-app-pub-3940256099942544/8691691433";
-    const string frontID = "ca-app-pub-4059713768893618/6725590211";
+    const string frontID = "ca-app-pub-4059713768893618/5410307410";
     [HideInInspector] public InterstitialAd frontAd;
 
 
@@ -87,9 +87,10 @@ public class AdMobManager : Singleton<AdMobManager>
 
     public void ShowFrontAd()
     {
-        if (!frontAd.IsLoaded())
+        if (!frontAd.CanShowAd())
         {
             BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
+            LoadFrontAd();
             return;
         }
 
@@ -127,8 +128,12 @@ public class AdMobManager : Singleton<AdMobManager>
 
     public void ShowRewardAd(int _reward)
     {
-        if (!rewardAd.IsLoaded())
+        if (!rewardAd.CanShowAd())
+        {
+            BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
+            LoadRewardAd();
             return;
+        }
 
         reward = _reward;
         rewardAd.Show();

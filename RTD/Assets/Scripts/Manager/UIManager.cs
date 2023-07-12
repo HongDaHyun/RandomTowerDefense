@@ -69,9 +69,9 @@ public class UIManager : Singleton<UIManager>
     public void PopUp(TextMeshProUGUI meshPro, float endValue)
     {
         meshPro.alpha = 1f;
-        meshPro.rectTransform.DOAnchorPosY(endValue, 0.5f).SetEase(Ease.OutQuad).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
+        meshPro.rectTransform.DOAnchorPosY(endValue, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
         {
-            meshPro.DOFade(0f, 0.5f) //0.5f -> moveDuration
+            meshPro.DOFade(0f, 0.5f).SetUpdate(true) //0.5f -> moveDuration
             .OnComplete(() =>
             {
                 meshPro.gameObject.SetActive(false);

@@ -94,15 +94,8 @@ public class Quest : MonoBehaviour
         BtnManager.Instance.ClickSound();
 
         if (questStat.ID == 3)
-        {
-            if (AdMobManager.Instance.rewardAd.IsLoaded())
-                AdMobManager.Instance.ShowRewardAd(reward);
-            else
-            {
-                BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
-                return;
-            }
-        }
+            AdMobManager.Instance.ShowRewardAd(reward);
+        
         else
             GameManager.Instance.GainGatcha(reward);
 
