@@ -57,7 +57,6 @@ public class GameManager : Singleton<GameManager>
     public void SetGM()
     {
         //초기화
-        isStart = false;
         gameTime = GameTime.Slow; // 속도
         //경험치
         expLevel = 1;
@@ -77,7 +76,6 @@ public class GameManager : Singleton<GameManager>
                 maxExp = 10;
                 increaseExp = 0.3f;
                 maxWave = levelNum[0];
-                curHealth = maxHealth;
                 break;
             case Level.Normal: // 보통
                 gatchaKey = 3;
@@ -85,7 +83,6 @@ public class GameManager : Singleton<GameManager>
                 maxExp = 20;
                 increaseExp = 0.5f;
                 maxWave = levelNum[1];
-                curHealth = maxHealth;
                 break;
             case Level.Hard: // 어려움
                 gatchaKey = 3;
@@ -93,7 +90,6 @@ public class GameManager : Singleton<GameManager>
                 maxExp = 25;
                 increaseExp = 0.7f;
                 maxWave = levelNum[2];
-                curHealth = maxHealth;
                 break;
             case Level.Infinite: // 무한
                 gatchaKey = 3;
@@ -101,7 +97,6 @@ public class GameManager : Singleton<GameManager>
                 maxExp = 25;
                 increaseExp = 0.7f;
                 maxWave = levelNum[3];
-                curHealth = maxHealth;
                 break;
         }
         gameTime = GameTime.Slow; // 속도 초기화
@@ -159,9 +154,10 @@ public class GameManager : Singleton<GameManager>
         cl.UpgradeAllUnit(UpUnit.AtkSpeed, cm.madDmg); // Charac 37
 
         // GameOver
-        if (curHealth <= 0)
+        if (curHealth <= 0 && isStart)
         {
             curHealth = 0;
+            isStart = false;
             GameOver();
         }
 

@@ -19,8 +19,6 @@ public class AdMobManager : Singleton<AdMobManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         LoadBannerAd();
-        LoadFrontAd();
-        LoadRewardAd();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -81,8 +79,6 @@ public class AdMobManager : Singleton<AdMobManager>
     void LoadFrontAd()
     {
         frontAd = new InterstitialAd(isTestMode ? frontTestID : frontID);
-
-        frontAd.OnAdClosed += (sender, e) => BtnManager.Instance.HelpTxt(UIManager.Instance, "±¤°í Ã³¸®Áß...");
 
         frontAd.LoadAd(GetAdRequest());
     }

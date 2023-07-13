@@ -159,6 +159,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         else //끝 도달
         {
             sm.DeSpawnEnemy(this);
+            um.upPannel.UpdateCurWave(-1);
             gm.LoseHealth((int)enemyStat.tier);
         }
     }
@@ -354,8 +355,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         gm.GainExp((int)enemyStat.tier);
 
         // 웨이브 전체 몬스터
-        wm.maxWaveEnemy--;
-        um.upPannel.curWavePannel.text.text = $"×{wm.maxWaveEnemy}";
+        um.upPannel.UpdateCurWave(-1);
         gm.killEnemyNum++;
 
         SpawnManager.Instance.DeSpawnEnemy(this);

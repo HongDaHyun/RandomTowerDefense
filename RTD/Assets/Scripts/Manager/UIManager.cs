@@ -365,6 +365,14 @@ public class UpPannel
         else
             curWavePannel.trans.DOAnchorPosY(-50, 0.5f).SetEase(Ease.InBack).SetUpdate(true);
     }
+
+    public void UpdateCurWave(int a)
+    {
+        WaveManager wm = WaveManager.Instance;
+
+        wm.maxWaveEnemy += a;
+        curWavePannel.text.text = $"¡¿{wm.maxWaveEnemy}";
+    }
 }
 
 [Serializable]

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class WaveManager : Singleton<WaveManager>
 {
-    public int curWave = 1;
+    public int curWave = 1, maxWave;
     public int maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
-    public float readyTime;
+    public float readyTime, perEnemyPower = 1.2f;
 
     private void Start()
     {
+        maxWave = waves.Count;
         StartCoroutine(TimeWave());
     }
 
@@ -34,14 +35,18 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         // 최대 웨이브 도달 시 모든 적 동기화
-        if (curWave == waves.Count)
+        if (curWave == maxWave)
+        {
             cl.SetAllEnemy();
+            if (gm.level == Level.Infinite)
+                perEnemyPower += 3;
+        }
 
         // 웨이브 종료 시 변수 설정
         gm.GainGatcha(2);
         curWave++; //웨이브 시작 시 curWave 증가
         um.upPannel.SetWaveTxt(gm); // UI
-        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level); // 적 HP 증가
+        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * perEnemyPower); // 적 HP 증가
         um.upPannel.ToggleCurWavePannel(false);
 
         // Quest Cool
@@ -82,7 +87,7 @@ public class WaveManager : Singleton<WaveManager>
                 readyTime = 0;
                 SoundManager.Instance.PlaySFX("StartWave");
                 SpawnManager.Instance.SpawnEnemy();
-                CountEnemyWave(); // 최대 적 수 세기
+                CountEnemyWave(waves[curWave - 1]); // 최대 적 수 세기
                 UIManager.Instance.upPannel.ToggleCurWavePannel(true); // UI
             }
 
@@ -91,10 +96,10 @@ public class WaveManager : Singleton<WaveManager>
         // 웨이브 시작
     }
 
-    public void CountEnemyWave()
+    public void CountEnemyWave(Wave wave)
     {
         maxWaveEnemy = 0;
-        foreach (var enemy in waves[curWave - 1].enemy)
+        foreach (var enemy in wave.enemy)
             maxWaveEnemy += enemy.maxCount;
     }
 
@@ -109,6 +114,7 @@ public class WaveManager : Singleton<WaveManager>
         newWave.enemy = new WaveEnemy[waveEnemyKind];
 
         // 최대 적 수
+        CountEnemyWave(waves[curWave - 2]);
         int countNewWave = maxWaveEnemy + Random.Range(10, 21);
         int countNum = countNewWave / waveEnemyKind;
         int countNumRes = countNewWave % waveEnemyKind;

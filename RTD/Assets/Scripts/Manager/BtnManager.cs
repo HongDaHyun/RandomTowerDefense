@@ -118,8 +118,8 @@ public class BtnManager : Singleton<BtnManager>
 
     public void GameStartFX(string _level)
     {
-        UIManager.Instance.fx.TransitionExit();
         UIManager.Instance.fx.OnTransitionExitEnded += () => GameStart(_level);
+        UIManager.Instance.fx.TransitionExit();
     }
 
     public void GameStart(string _level)
@@ -144,7 +144,7 @@ public class BtnManager : Singleton<BtnManager>
 
         gm.SetGM();
 
-        AdMobManager.Instance.frontAd.OnAdClosed += (sender, e) => GameStart(gm.level.ToString());
+        AdMobManager.Instance.frontAd.OnAdClosed += (sender, e) => GameStartFX(gm.level.ToString());
         AdMobManager.Instance.ShowFrontAd();
     }
 
@@ -156,8 +156,8 @@ public class BtnManager : Singleton<BtnManager>
 
     public void TitleFX()
     {
-        UIManager.Instance.fx.TransitionExit();
         UIManager.Instance.fx.OnTransitionExitEnded += Title;
+        UIManager.Instance.fx.TransitionExit();
     }
 
     private void Title()

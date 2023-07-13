@@ -3943,7 +3943,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.285714
+  orthographic size: 5.357143
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11892,7 +11892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ver 1.4
+  m_Text: Ver 1.5
 --- !u!222 &1810173137
 CanvasRenderer:
   m_ObjectHideFlags: 0

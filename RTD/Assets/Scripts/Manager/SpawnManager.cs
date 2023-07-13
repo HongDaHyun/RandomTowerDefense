@@ -28,10 +28,8 @@ public class SpawnManager : Singleton<SpawnManager>
 
         wm.isWave = true;
 
-        if (wm.curWave > wm.waves.Count) // maxWave를 넘길 시
-        {
-            wm.RanWave(); // 바로 전 wave데이터를 바탕으로 새로운 웨이브 생성
-        }
+        if (wm.curWave > wm.maxWave) // maxWave를 넘길 시
+            wm.RanWave();
 
         StartCoroutine(SpawnEnemyRoutine(wm.waves[wm.curWave - 1]));
     }
@@ -74,7 +72,7 @@ public class SpawnManager : Singleton<SpawnManager>
         //작라임 생성
         Enemy babySlime = PoolManager.Instance.GetFromPool<Enemy>($"작{bigSlime.enemyStat.enemyName}");
         enemyList.Add(babySlime);
-        WaveManager.Instance.maxWaveEnemy++; // 전체 웨이브 몬스터 증가(새로운 슬라임이 생성되었기 때문)
+        UIManager.Instance.upPannel.UpdateCurWave(1); // 전체 웨이브 몬스터 증가(새로운 슬라임이 생성되었기 때문)
         GameManager.Instance.killEnemyNum--;
 
         //위치 조정
