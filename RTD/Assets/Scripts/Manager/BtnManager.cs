@@ -341,4 +341,9 @@ public class BtnManager : Singleton<BtnManager>
         UIManager.Instance.mainShopPannel.UpdateCurMoney();
         UIManager.Instance.mainShopPannel.UpdateSelectUI();
     }
+
+    public void ShowLeaderBoard()
+    {
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(RTD.leaderboard_infinite_ranking);
+    }
 }

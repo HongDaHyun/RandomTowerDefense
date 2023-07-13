@@ -8,15 +8,17 @@ using DG.Tweening;
 using Com.LuisPedroFonseca.ProCamera2D;
 using UnityEngine.EventSystems;
 using TMPro;
+using Sirenix.OdinInspector;
 
 public class UIManager : Singleton<UIManager>
 {
     [HideInInspector] public ProCamera2DTransitionsFX fx;
     public GameObject rayCastPannel;
-    [Header("MainMenu")]
+    [Title("메인메뉴", titleAlignment: TitleAlignments.Centered)]
     public MainShop mainShopPannel;
     public Button[] selectLevelBtn;
-    [Header("InGame")]
+
+    [Title("인 게임", titleAlignment: TitleAlignments.Centered)]
     public GameObject clickTile;
     public GatchaPannel gatchaPannel;
     public GameObject characteristicPannel;

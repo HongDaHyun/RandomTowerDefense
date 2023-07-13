@@ -24,11 +24,7 @@
 
 public static class RTD
 {
-        public const string achievement_testhide = "CgkIhcm01ZQGEAIQBA"; // <GPGSID>
-        public const string achievement_test = "CgkIhcm01ZQGEAIQAw"; // <GPGSID>
-        public const string achievement_testlevel = "CgkIhcm01ZQGEAIQBQ"; // <GPGSID>
-        public const string leaderboard_hdh4300 = "CgkIhcm01ZQGEAIQBg"; // <GPGSID>
-        public const string event_testevent = "CgkIhcm01ZQGEAIQBw"; // <GPGSID>
+        public const string leaderboard_infinite_ranking = "CgkIhcm01ZQGEAIQBg"; // <GPGSID>
 
 }
 

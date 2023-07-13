@@ -39,10 +39,6 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadData()  // 세이브 디렉토리
     {
-        string previousDirectory = "Saves/Alpha2";
-        if (ES3.FileExists(previousDirectory))
-            ES3.DeleteFile(previousDirectory);
-
         // Shop
         CSVReader.Instance.csvList.LoadShop();
 
@@ -191,7 +187,7 @@ public class GameManager : Singleton<GameManager>
     {
         curMoney += a;
 
-        ES3.Save<int>("Money", curMoney, saveDirectory); // 세이브 디렉토리
+        ES3.Save("Money", curMoney, saveDirectory); // 세이브 디렉토리
     }
 
     public void GainExp(int a)
@@ -222,6 +218,9 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
+        if (level == Level.Infinite)
+            GPGSBinder.Inst.ReportLeaderboard(RTD.leaderboard_infinite_ranking, WaveManager.Instance.curWave);
+
         UIManager.Instance.gameOverPannel.SetUI(false);
     }
 
