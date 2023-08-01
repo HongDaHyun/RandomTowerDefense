@@ -1,10 +1,5 @@
 public class QuestManager : Singleton<QuestManager>
 {
-    private void Start()
-    {
-        BtnManager.Instance.RefreshQuestBtn();
-    }
-
     public void UpQuest(int id)
     {
         for (int i = 0; i < 3; i++)

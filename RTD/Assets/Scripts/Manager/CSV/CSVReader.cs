@@ -8,20 +8,6 @@ public class CSVReader : Singleton<CSVReader>
     public TextAsset[] textAssets;
     public CSVList csvList = new CSVList();
 
-    protected override void Awake()
-    {
-        base.Awake();
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            OnSceneLoad();
-    }
-
-    public void OnSceneLoad()
-    {
-        CSVReading();
-
-        StartUpdateStat();
-    }
-
     public void StartUpdateStat() // QuestManager에서 처리
     {
         GameManager gm = GameManager.Instance;

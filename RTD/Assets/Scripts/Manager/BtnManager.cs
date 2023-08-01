@@ -118,31 +118,20 @@ public class BtnManager : Singleton<BtnManager>
 
     public void GameStartFX(string _level)
     {
-        UIManager.Instance.fx.OnTransitionExitEnded += () => GameStart(_level);
+        UIManager.Instance.fx.OnTransitionExitEnded += () => GameStartBtn(_level);
         UIManager.Instance.fx.TransitionExit();
     }
 
-    public void GameStart(string _level)
+    public void GameStartBtn(string _level)
     {
-        GameManager gm = GameManager.Instance;
-        gm.isStart = true;
-        gm.level = (Level)Enum.Parse(typeof(Level), _level);
-
-        gm.DifficultLevel(gm.level);
+        GameManager.Instance.GameStart((Level)Enum.Parse(typeof(Level), _level));
 
         Play();
-
-        SceneManager.LoadScene(1);
-
-        CSVReader.Instance.OnSceneLoad();
-
     } // 레벨 설정에 따라
 
     public void AgainStart()
     {
         GameManager gm = GameManager.Instance;
-
-        gm.SetGM();
 
         AdMobManager.Instance.frontAd.OnAdClosed += (sender, e) => GameStartFX(gm.level.ToString());
         AdMobManager.Instance.ShowFrontAd();
@@ -162,9 +151,8 @@ public class BtnManager : Singleton<BtnManager>
 
     private void Title()
     {
-        GameManager.Instance.SetGM();
         Play();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(0);
     }
 
     IEnumerator SlotMachine()
@@ -189,6 +177,12 @@ public class BtnManager : Singleton<BtnManager>
         else
             ranTier = 4;
 
+        if (gm.isTutorial)
+        {
+            ranType = 0;
+            ranTier = 1;
+        }
+
         int slotSpeed = gm.is30 ? 12 : 24;
 
         // UI 설정
@@ -199,7 +193,7 @@ public class BtnManager : Singleton<BtnManager>
                 ui.slotObj.transform.localPosition -= new Vector3(0, 800f, 0);
             yield return new WaitForSeconds(0.005f * Time.deltaTime);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f * Time.deltaTime);
         ui.slotObj.transform.localPosition = new Vector3(0, 0, 0);
         Tab(ui.gatchaPannel.gatchaPannel);
         ui.gatchaPannel.gatchaBtn.interactable = true;
@@ -345,5 +339,16 @@ public class BtnManager : Singleton<BtnManager>
     public void ShowLeaderBoard()
     {
         GPGSBinder.Inst.ShowTargetLeaderboardUI(RTD.leaderboard_infinite_ranking);
+    }
+
+    public void TutoTextId()
+    {
+        UIManager.Instance.tutorialPannel.textId++;
+    }
+
+    public void TutoStart()
+    {
+        GameManager.Instance.isTutorial = true;
+        GameStartFX("Easy");
     }
 }

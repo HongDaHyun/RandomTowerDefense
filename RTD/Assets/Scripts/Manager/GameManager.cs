@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     public Level level;
     public GameTime gameTime = GameTime.Slow;
-    public bool isStart, is30;
+    public bool isStart, is30, isTutorial;
     public bool[] isClear;
     public int gatchaKey, maxHealth, curHealth, healthWave, maxWave, expLevel, maxExp, levelPoint, curMoney, killEnemyNum;
     public float curExp, increaseExp, plusExp;
@@ -54,8 +55,9 @@ public class GameManager : Singleton<GameManager>
             is30 = ES3.Load<bool>("Is30", saveDirectory);
     }
 
-    public void SetGM()
+    public void ReSetGM()
     {
+        gatchaKey = 3; // 가챠 키
         //초기화
         gameTime = GameTime.Slow; // 속도
         //경험치
@@ -66,40 +68,37 @@ public class GameManager : Singleton<GameManager>
         levelPoint = 0;
     }
 
-    public void DifficultLevel(Level level)
+    public void DifficultLevel()
     {
+        ReSetGM();
+
         switch (level)
         {
             case Level.Easy: // 쉬움
-                gatchaKey = 3;
                 maxHealth = 30;
                 maxExp = 10;
                 increaseExp = 0.3f;
-                maxWave = levelNum[0];
                 break;
             case Level.Normal: // 보통
-                gatchaKey = 3;
                 maxHealth = 25;
                 maxExp = 20;
                 increaseExp = 0.5f;
-                maxWave = levelNum[1];
                 break;
             case Level.Hard: // 어려움
-                gatchaKey = 3;
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
-                maxWave = levelNum[2];
                 break;
             case Level.Infinite: // 무한
-                gatchaKey = 3;
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
-                maxWave = levelNum[3];
                 break;
         }
-        gameTime = GameTime.Slow; // 속도 초기화
+        if (isTutorial)
+            gatchaKey = 2;
+
+        maxWave = levelNum[(int)level];
     }
 
     private void LoadClearData() // 세이브 디렉토리
@@ -234,5 +233,31 @@ public class GameManager : Singleton<GameManager>
             Application.targetFrameRate = 30;
         else
             Application.targetFrameRate = 60;
+    }
+
+    public void GameStart(Level _level)
+    {
+        isStart = true;
+        level = _level;
+
+        DifficultLevel();
+
+        SceneManager.sceneLoaded += InGameLoad;
+        SceneManager.LoadSceneAsync(1);
+    }
+
+    public void InGameLoad(Scene scene, LoadSceneMode mode)
+    {
+        CSVReader cr = CSVReader.Instance;
+
+        cr.CSVReading();
+        cr.StartUpdateStat();
+
+        BtnManager.Instance.RefreshQuestBtn();
+
+        if(isTutorial)
+            StartCoroutine(UIManager.Instance.tutorialPannel.DoTutorial());
+
+        SceneManager.sceneLoaded -= InGameLoad; // 초기화
     }
 }
