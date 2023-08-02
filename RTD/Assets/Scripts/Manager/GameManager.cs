@@ -18,7 +18,7 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
 
         GPGSBinder.Inst.Login();
-#region GPGS
+        #region GPGS
         //GPGSBinder.Inst.ShowAchievementUI(); 업적보기
         //GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_test); 업적성공
         //GPGSBinder.Inst.IncrementAchievement(GPGSIds.achievement_testlevel, 1); 업적(레벨) 1 증가
@@ -29,7 +29,13 @@ public class GameManager : Singleton<GameManager>
         //GPGSBinder.Inst.IncrementEvent(GPGSIds.event_testevent, 1); 이벤트 1 증가
         //GPGSBinder.Inst.LoadEvent(GPGSIds.event_testevent); 이벤트 불러오기
         //GPGSBinder.Inst.LoadAllEvent(); 이벤트 모두 불러오기
-#endregion
+        #endregion
+
+#if UNITY_EDITOR
+        return;
+#elif UNITY_ANDROID
+        StartCoroutine(CheckAppUpdate.CheckForUpdate());
+#endif
     }
 
     private void Start()
