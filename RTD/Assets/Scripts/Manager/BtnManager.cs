@@ -193,7 +193,7 @@ public class BtnManager : Singleton<BtnManager>
                 ui.slotObj.transform.localPosition -= new Vector3(0, 800f, 0);
             yield return new WaitForSeconds(0.005f * Time.deltaTime);
         }
-        yield return new WaitForSeconds(0.5f * Time.deltaTime);
+        yield return new WaitForSecondsRealtime(0.25f);
         ui.slotObj.transform.localPosition = new Vector3(0, 0, 0);
         Tab(ui.gatchaPannel.gatchaPannel);
         ui.gatchaPannel.gatchaBtn.interactable = true;

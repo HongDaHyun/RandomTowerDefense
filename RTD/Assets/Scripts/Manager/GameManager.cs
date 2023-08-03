@@ -211,7 +211,7 @@ public class GameManager : Singleton<GameManager>
         curExp = 0;
         expLevel++;
         levelPoint++;
-        maxExp += Mathf.RoundToInt(increaseExp * maxExp);
+        maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), 100); // 최대 경험치 100
 
         um.levelUpBtn.SetUI(); // UI 설정
         um.upPannel.levelTxt.text = $"{expLevel}Lv:";

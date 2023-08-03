@@ -13,12 +13,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             if (instance == null)
             {
                 instance = (T)FindObjectOfType(typeof(T));
-
-                if (instance == null)
-                {
-                    GameObject obj = new GameObject(typeof(T).Name, typeof(T));
-                    instance = obj.GetComponent<T>();
-                }
             }
             return instance;
         }
@@ -26,7 +20,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if(name == "GameManager" || name == "AdMobManager" || name == "CSVReader")
+        if(transform.parent == null)
         {
             if (instance == null)
             {
