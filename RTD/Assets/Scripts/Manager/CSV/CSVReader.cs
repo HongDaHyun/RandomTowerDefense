@@ -109,7 +109,7 @@ public class CSVReader : Singleton<CSVReader>
     [Button("특성 데이터 불러오기")]
     public void CharacterisiticCSVReader()
     {
-        int order = 3; int size = 5;
+        int order = 3; int size = 6;
         string[] data = textAssets[order].text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / size - 1;
         csvList.characteristicStat = new CharacteristicStat[tableSize];
@@ -121,9 +121,10 @@ public class CSVReader : Singleton<CSVReader>
             {
                 charateristicName = data[size * k],
                 explanation = data[size * k + 1],
-                condition = float.Parse(data[size * k + 2]),
-                conditionWidth = float.Parse(data[size * k + 3]),
-                ID = int.Parse(data[size * k + 4]),
+                maxExplanation = data[size * k + 2],
+                condition = float.Parse(data[size * k + 3]),
+                conditionWidth = float.Parse(data[size * k + 4]),
+                ID = int.Parse(data[size * k + 5]),
                 level = 0,
 
             };

@@ -4,6 +4,7 @@ using UnityEngine;
 using Redcode.Pools;
 using TMPro;
 using System.Linq;
+using DG.Tweening;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
@@ -215,6 +216,72 @@ public class SpawnManager : Singleton<SpawnManager>
     public void DeSpawnVFX(string name, Particle particle)
     {
         PoolManager.Instance.TakeToPool<Particle>(name, particle);
+    }
+
+    public Bubble SpawnTxtBubble(Transform parent, string s)
+    {
+        // 이미 말풍선이 있다면
+        if (parent.GetComponentInChildren<Bubble>() != null)
+            return null;
+
+        SoundManager.Instance.PlaySFX("Pop"); // 사운드
+
+        // 말풍선 소환
+        Bubble bubble = PoolManager.Instance.GetFromPool<Bubble>("TxtBubble");
+        bubble.transform.SetParent(parent);
+        bubble.transform.localPosition = Vector3.zero;
+        bubble.text.text = s;
+
+        // 닷트윈()
+        BubblePop(bubble);
+
+        return bubble;
+    }
+
+    public Bubble SpawnCharacBubble(RectTransform parent, CharacSlot slot)
+    {
+        // 이미 말풍선이 있다면
+        if (slot.isShow)
+            return null;
+
+        SoundManager.Instance.PlaySFX("Pop"); // 사운드
+
+        // 말풍선 소환
+        Bubble bubble = PoolManager.Instance.GetFromPool<Bubble>("CharacBubble");
+        bubble.transform.SetParent(slot.transform);
+        bubble.transform.localPosition = Vector3.zero;
+        bubble.text.text = slot.s;
+        bubble.transform.SetParent(parent);
+
+        // 닷트윈()
+        BubblePop_Charac(slot, bubble);
+
+        return bubble;
+    }
+
+    private void BubblePop(Bubble bubble)
+    {
+        bubble.transform.localScale = Vector3.zero;
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(bubble.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBounce));
+        seq.AppendInterval(2f);
+        seq.Append(bubble.transform.DOScale(0f, 0.25f).SetEase(Ease.InBack).OnComplete(() => PoolManager.Instance.TakeToPool<Bubble>("TxtBubble", bubble)));
+        seq.Play();
+    }
+
+    private void BubblePop_Charac(CharacSlot slot, Bubble bubble)
+    {
+        bubble.transform.localScale = Vector3.zero;
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(bubble.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBounce).OnStart(() => slot.isShow = true));
+        seq.AppendInterval(2f);
+        seq.Append(bubble.transform.DOScale(0f, 0.25f).SetEase(Ease.InBack).OnComplete(() => {
+            PoolManager.Instance.TakeToPool<Bubble>("CharacBubble", bubble);
+            slot.isShow = false;
+        }));
+        seq.Play();
     }
 
     public Transform SpawnUI(string name)

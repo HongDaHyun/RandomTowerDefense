@@ -34,7 +34,7 @@ public struct QuestStat
 [Serializable]
 public struct CharacteristicStat
 {
-    public string charateristicName, explanation;
+    public string charateristicName, explanation, maxExplanation;
     public float condition, conditionWidth;
     public int level, ID;
 }

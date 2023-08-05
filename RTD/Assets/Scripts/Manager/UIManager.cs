@@ -22,8 +22,8 @@ public class UIManager : Singleton<UIManager>
     public GameObject clickTile;
     public GatchaPannel gatchaPannel;
     public GameObject characteristicPannel;
-    public List<CharacSlot> characSlots;
     public Info info;
+    public CharacInfo characInfo;
     public Tutiorial tutorialPannel;
     public UpPannel upPannel;
     public QuestPannel questPannel;
@@ -100,23 +100,7 @@ public class UIManager : Singleton<UIManager>
                 cards[i].SetCard(ranID); //퀘스트 생성
             }
         }
-    }
-
-    public void CharacInfoPannel(CharacteristicCard card)
-    {
-        CharacSlot slot = characSlots.Find(img => img.icon.sprite == card.cardPannel.cardIconImg.sprite);
-
-        // 기존에 존재하는 특성 얻을 시
-        if (slot != null)
-            slot.SetUI(card);
-        // 새로운 특성 얻을 시
-        else
-        {
-            Transform characIcon = SpawnManager.Instance.SpawnUI("CharacIcon");
-            slot = characIcon.GetComponent<CharacSlot>();
-            slot.SetUI(card);
-            characSlots.Add(slot);
-        }
+        cards[0].SetCard(0);
     }
 
     public void CloseInfoClickTile()
@@ -547,6 +531,33 @@ public struct CardPannel
     public Text cardNameTxt, explanationTxt;
     public Image cardIconImg;
     public Image[] starImg;
+}
+
+[Serializable]
+public class CharacInfo
+{
+    public RectTransform pannel;
+    public List<CharacSlot> characSlots;
+
+    public void CharacInfoPannel(CharacteristicCard card)
+    {
+        CharacSlot slot = characSlots.Find(img => img.icon.sprite == card.cardPannel.cardIconImg.sprite);
+
+        // 기존에 존재하는 특성 얻을 시
+        if (slot != null)
+            slot.SetUI(card);
+        // 새로운 특성 얻을 시
+        else
+        {
+            SpawnManager sm = SpawnManager.Instance;
+
+            Transform characIcon = sm.SpawnUI("CharacIcon");
+            slot = characIcon.GetComponent<CharacSlot>();
+            slot.SetUI(card);
+
+            characSlots.Add(slot);
+        }
+    }
 }
 
 [Serializable]

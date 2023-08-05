@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class BtnManager : Singleton<BtnManager>
 {
@@ -50,6 +51,12 @@ public class BtnManager : Singleton<BtnManager>
         seq.Append(obj.transform.DOScale(new Vector3(0f, 0f, 0f), 0.25f).SetEase(Ease.InBack).OnComplete(() => obj.SetActive(false)));
         seq.Play();
     }
+
+    public void SpawnBubbleBtn(string s) // Help
+    {
+        SpawnManager.Instance.SpawnTxtBubble(EventSystem.current.currentSelectedGameObject.transform, s);
+    }
+
 
     public void TabSlotMachine()
     {
