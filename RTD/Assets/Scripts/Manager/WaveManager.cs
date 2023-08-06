@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveManager : Singleton<WaveManager>
 {
-    public int curWave = 1, maxWave;
+    public int curWave = 1, maxWave, waveGatcha = 2;
     public int maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
@@ -43,7 +43,7 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         // 웨이브 종료 시 변수 설정
-        gm.GainGatcha(2);
+        gm.GainGatcha(waveGatcha);
         curWave++; //웨이브 시작 시 curWave 증가
         um.upPannel.SetWaveTxt(gm); // UI
         cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * perEnemyPower); // 적 HP 증가

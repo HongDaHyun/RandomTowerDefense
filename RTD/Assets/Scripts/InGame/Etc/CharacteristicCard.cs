@@ -44,8 +44,14 @@ public class CharacteristicCard : MonoBehaviour
 
     public void ClickCard()
     {
+        CharacManager cm = CharacManager.Instance;
+
         CharacLevelUp(ref CSVReader.Instance.csvList.characteristicStat[characStat.ID]); // 레벨 업
-        CharacManager.Instance.DoCharac(characStat);
+
+        if (characStat.level < 7) // 만렙 전
+            cm.DoCharac(characStat);
+        else // 만렙
+            cm.DoCharac_Max(characStat);
 
         UIManager.Instance.characInfo.CharacInfoPannel(this); // 내 정보 업데이트
 

@@ -160,4 +160,63 @@ public class CharacManager : Singleton<CharacManager>
                 break;
         }
     }
+
+    public void DoCharac_Max(CharacteristicStat characStat)
+    {
+        CSVList list = CSVReader.Instance.csvList;
+
+        switch (characStat.ID)
+        {
+            case 0:
+                list.UpgradeAllEnemy(UpEnemy.All, -30f);
+                break;
+            case 1:
+                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, 200);
+                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, 200);
+                break;
+            case 2:
+                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Fire), "Size", 100f);
+                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Germ), "Size", 100f);
+                break;
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                list.UpgradeAllUnit(UpUnit.Dmg, 33f);
+                list.UpgradeAllUnit(UpUnit.AtkSpeed, 33f);
+                list.UpgradeAllUnit(UpUnit.CritPercent, 33f);
+                break;
+            case 7:
+                GameManager.Instance.probability[3] += 20;
+                break;
+            case 8:
+                WaveManager.Instance.waveGatcha++;
+                break;
+            case 9:
+                list.UpgradeAllUnit(UpUnit.Dmg, GameManager.Instance.maxHealth);
+                break;
+            case 10:
+                GameManager.Instance.healthWave += 20;
+                break;
+            case 11:
+                GameManager gm = GameManager.Instance;
+                gm.LoseHealth(5);
+                gm.GainGatcha(20);
+                break;
+            case 12:
+                UIManager um = UIManager.Instance;
+                um.questPannel.maxCool = 1;
+                um.questPannel.curCool = 0;
+
+                um.questPannel.QuestCool();
+                break;
+            case 13:
+                dmgWave *= 2;
+                break;
+            case 14:
+
+                break;
+
+        }
+    }
 }

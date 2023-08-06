@@ -325,7 +325,7 @@ public class Tutiorial
 
         btn.interactable = true;
         Time.timeScale = 0;
-        DotText("내가 불투명해지면\n나를 클릭해서 <color=red>대화</color>를\n이어갈 수 있어.");
+        DotText("나를 클릭해서\n<color=red>대화</color>를 이어가.");
         yield return new WaitWhile(() => textId == 0);
         DotText("유닛 소환 시 <color=brown>가챠 키\n1개</color>가 소모 돼.");
         yield return new WaitWhile(() => textId == 1);
@@ -543,20 +543,18 @@ public class CharacInfo
     {
         CharacSlot slot = characSlots.Find(img => img.icon.sprite == card.cardPannel.cardIconImg.sprite);
 
-        // 기존에 존재하는 특성 얻을 시
-        if (slot != null)
-            slot.SetUI(card);
         // 새로운 특성 얻을 시
-        else
+        if(slot == null)
         {
             SpawnManager sm = SpawnManager.Instance;
 
             Transform characIcon = sm.SpawnUI("CharacIcon");
             slot = characIcon.GetComponent<CharacSlot>();
-            slot.SetUI(card);
 
             characSlots.Add(slot);
         }
+        // 기존에 존재하는 특성 얻을 시
+        slot.SetUI(card);
     }
 }
 

@@ -245,7 +245,7 @@ public class CSVList
         }
     }
 
-    public void SetAllEnemy()
+    public void SetAllEnemy() // ¸ðµç À¯´Ö µ¿±âÈ­
     {
         SetEnemy(FindEnemy(EnemyType.Golem), FindEnemy("³ì½¼°ñ·½"));
         SetEnemy(FindEnemy(EnemyType.Human), FindEnemy("ÀÎÇüÅ»"));
