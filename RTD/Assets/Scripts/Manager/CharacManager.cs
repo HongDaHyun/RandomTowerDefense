@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacManager : Singleton<CharacManager>
 {
+    public bool isLevelUping;
+
     [HideInInspector] public int doubleWave, plusReward, wave5; // 8, 12, 34
     [HideInInspector]
     public float proportionHP, dmgWave, dmgFire, dmgSword, dmgGerm, dmgWaveGun, iceGatcha,
@@ -20,8 +22,8 @@ public class CharacManager : Singleton<CharacManager>
                 proportionHP += value;
                 break;
             case 1:
-                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, (int)value);
-                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, (int)value);
+                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, value);
+                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, value);
                 break;
             case 2:
                 list.UpgradeAttribute(Attribute.Fire, value);
@@ -50,7 +52,7 @@ public class CharacManager : Singleton<CharacManager>
                 GameManager.Instance.GainMaxHealth((int)value);
                 break;
             case 10:
-                GameManager.Instance.healthWave += (int)value;
+                GameManager.Instance.healthRegen += (int)value;
                 break;
             case 11:
                 GameManager.Instance.GainGatcha((int)value);
@@ -114,15 +116,6 @@ public class CharacManager : Singleton<CharacManager>
             case 28:
                 stats = list.FindUnit(UnitType.Thunder);
                 list.UpgradeUnit(stats, UpUnit.CritPercent, value);
-
-                // 크리 확률 초과 분 크리 데미지로 치환
-                foreach (UnitStat stat in stats)
-                {
-                    if (stat.critPercent > 100)
-                    {
-                        list.UpgradeUnit(stat.unitName, UpUnit.CritDmg, stat.critPercent - 100);
-                    }
-                }
                 break;
             case 29:
                 list.UpgradeUnit(list.FindUnit(UnitType.Thunder), UpUnit.Dmg, value);
@@ -164,6 +157,7 @@ public class CharacManager : Singleton<CharacManager>
     public void DoCharac_Max(CharacteristicStat characStat)
     {
         CSVList list = CSVReader.Instance.csvList;
+        GameManager gm = GameManager.Instance;
 
         switch (characStat.ID)
         {
@@ -171,8 +165,8 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllEnemy(UpEnemy.All, -30f);
                 break;
             case 1:
-                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, 200);
-                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, 200);
+                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, 200f);
+                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, 200f);
                 break;
             case 2:
                 list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Fire), "Size", 100f);
@@ -187,7 +181,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllUnit(UpUnit.CritPercent, 33f);
                 break;
             case 7:
-                GameManager.Instance.probability[3] += 20;
+                gm.probability[3] += 20;
                 break;
             case 8:
                 WaveManager.Instance.waveGatcha++;
@@ -196,10 +190,9 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllUnit(UpUnit.Dmg, GameManager.Instance.maxHealth);
                 break;
             case 10:
-                GameManager.Instance.healthWave += 20;
+                gm.healthRegen += 20;
                 break;
             case 11:
-                GameManager gm = GameManager.Instance;
                 gm.LoseHealth(5);
                 gm.GainGatcha(20);
                 break;
@@ -214,9 +207,87 @@ public class CharacManager : Singleton<CharacManager>
                 dmgWave *= 2;
                 break;
             case 14:
-
+                list.UpgradeUnit(list.FindUnit(UnitType.Fire), UpUnit.Dmg, 100f);
                 break;
-
+            case 15:
+                list.UpgradeAttribute(Attribute.Fire, 10);
+                break;
+            case 16:
+                list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Sword), Attribute.Ice);
+                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Sword), "Size", 100f);
+                break;
+            case 17:
+                gm.healthReduce++;
+                break;
+            case 18:
+                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Bow), "Speed", 200f);
+                break;
+            case 19:
+                list.UpgradeUnit(list.FindUnit(UnitType.Bow), UpUnit.CritDmg, 100f);
+                break;
+            case 20:
+                list.UpgradeUnit(list.FindUnit(UnitType.Fighter), UpUnit.Range, 150f);
+                break;
+            case 21:
+                list.UpgradeUnit(list.FindUnit(UnitType.Fighter), UpUnit.CritPercent, 100f);
+                break;
+            case 22:
+                list.UpgradeAttribute(Attribute.Germ, 10);
+                break;
+            case 23:
+                list.UpgradeAllEnemy(UpEnemy.Strength, -80f);
+                break;
+            case 24:
+                list.ChangeProjectileAttribute(ref list.FindProjectile_Ref(UnitType.Gun), Attribute.Germ);
+                list.UpgradeUnit(list.FindUnit(UnitType.Gun), UpUnit.Range, 100f);
+                break;
+            case 25:
+                list.SetIgnoreDefense(ref list.FindProjectile_Ref(UnitType.Gun), 20f);
+                break;
+            case 26:
+                gm.playerDefense++;
+                break;
+            case 27:
+                list.SetIgnoreDefense(ref list.FindProjectile_Ref(UnitType.Ice), 30f);
+                break;
+            case 28:
+                list.UpgradeUnit(list.FindUnit(UnitType.Thunder), UpUnit.CritPercent, 100f);
+                break;
+            case 29:
+                gm.LoseHealth(5);
+                list.UpgradeAllUnit(UpUnit.All, 20f);
+                break;
+            case 30:
+                proportionHP += 3f;
+                break;
+            case 31:
+                list.UpgradeAllProjectile("Size", 80f);
+                break;
+            case 32:
+                list.UpgradeAllUnit(UpUnit.Range, 50f);
+                break;
+            case 33:
+                list.UpgradeAllUnit(UpUnit.Dmg, SpawnManager.Instance.enemyList.Count * 3f);
+                break;
+            case 34:
+                WaveManager.Instance.waveGatcha += 2;
+                break;
+            case 35:
+                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.All, 100f);
+                break;
+            case 36:
+                gm.limitExp = 60;
+                break;
+            case 37:
+                gm.healthReduce += 2;
+                break;
+            case 38:
+                gm.probability[2] += 10;
+                gm.probability[3] += 10;
+                break;
+            case 39:
+                list.UpgradeAllAttribute(5);
+                break;
         }
     }
 }

@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isShow: 0
+  pannelImg: {fileID: 5829347760280278866}
   icon: {fileID: 5829347760273923663}
   level: {fileID: 5829347760147345179}
   s: 

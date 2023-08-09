@@ -390,11 +390,13 @@ MonoBehaviour:
   characStat:
     charateristicName: 
     explanation: 
+    maxExplanation: 
     condition: 0
     conditionWidth: 0
     level: 0
     ID: 0
   cardPannel:
+    cardImg: {fileID: 8769057265019277503}
     cardNameTxt: {fileID: 8769057265178286775}
     explanationTxt: {fileID: 8769057265031395052}
     cardIconImg: {fileID: 8769057265491815122}

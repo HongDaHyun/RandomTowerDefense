@@ -21,7 +21,7 @@ public class UIManager : Singleton<UIManager>
     [Title("인 게임", titleAlignment: TitleAlignments.Centered)]
     public GameObject clickTile;
     public GatchaPannel gatchaPannel;
-    public GameObject characteristicPannel;
+    public CharacCardPannel characCardPannel;
     public Info info;
     public CharacInfo characInfo;
     public Tutiorial tutorialPannel;
@@ -100,7 +100,6 @@ public class UIManager : Singleton<UIManager>
                 cards[i].SetCard(ranID); //퀘스트 생성
             }
         }
-        cards[0].SetCard(0);
     }
 
     public void CloseInfoClickTile()
@@ -365,7 +364,7 @@ public class Tutiorial
         gm.LevelUp(um);
         btn.interactable = false;
 
-        yield return new WaitUntil(() => um.characteristicPannel.activeSelf);
+        yield return new WaitUntil(() => um.characCardPannel.pannel.activeSelf);
 
         DotRect(2, false);
         DotText("원하는 <color=green>특성</color>을 선택해~");
@@ -526,8 +525,16 @@ public struct GatchaPannel
 }
 
 [Serializable]
+public struct CharacCardPannel
+{
+    public GameObject pannel, miniPannel;
+    public Text btnTxt;
+}
+
+[Serializable]
 public struct CardPannel
 {
+    public Image cardImg;
     public Text cardNameTxt, explanationTxt;
     public Image cardIconImg;
     public Image[] starImg;
@@ -541,15 +548,17 @@ public class CharacInfo
 
     public void CharacInfoPannel(CharacteristicCard card)
     {
-        CharacSlot slot = characSlots.Find(img => img.icon.sprite == card.cardPannel.cardIconImg.sprite);
+        CharacSlot slot = characSlots.Find(slot => slot.name == card.characStat.charateristicName);
 
         // 새로운 특성 얻을 시
         if(slot == null)
         {
             SpawnManager sm = SpawnManager.Instance;
 
-            Transform characIcon = sm.SpawnUI("CharacIcon");
-            slot = characIcon.GetComponent<CharacSlot>();
+            Transform characSlot = sm.SpawnUI("CharacSlot");
+
+            slot = characSlot.GetComponent<CharacSlot>();
+            slot.name = card.characStat.charateristicName;
 
             characSlots.Add(slot);
         }

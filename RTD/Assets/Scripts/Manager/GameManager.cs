@@ -5,9 +5,9 @@ public class GameManager : Singleton<GameManager>
 {
     public Level level;
     public GameTime gameTime = GameTime.Slow;
-    public bool isStart, is30, isTutorial;
+    public bool isStart, is30, isTutorial, isSceneLoading;
     public bool[] isClear;
-    public int gatchaKey, maxHealth, curHealth, healthWave, maxWave, expLevel, maxExp, levelPoint, curMoney, killEnemyNum;
+    public int gatchaKey, maxHealth, curHealth, healthRegen, healthReduce, playerDefense, maxWave, expLevel, maxExp, limitExp = 70, levelPoint, curMoney, killEnemyNum;
     public float curExp, increaseExp, plusExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public int[] levelNum;
@@ -69,6 +69,9 @@ public class GameManager : Singleton<GameManager>
         //경험치
         expLevel = 1;
         maxExp = 1000;
+        limitExp = 70;
+        healthReduce = 0;
+        playerDefense = 0;
         killEnemyNum = 0;
         curExp = 0;
         levelPoint = 0;
@@ -146,6 +149,9 @@ public class GameManager : Singleton<GameManager>
 
     public void LoseHealth(int i)
     {
+        if (i <= 0)
+            return;
+
         CSVList cl = CSVReader.Instance.csvList;
         CharacManager cm = CharacManager.Instance;
 
@@ -211,7 +217,7 @@ public class GameManager : Singleton<GameManager>
         curExp = 0;
         expLevel++;
         levelPoint++;
-        maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), 100); // 최대 경험치 100
+        maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), 70); // 최대 경험치 70
 
         um.levelUpBtn.SetUI(); // UI 설정
         um.upPannel.levelTxt.text = $"{expLevel}Lv:";
@@ -256,6 +262,8 @@ public class GameManager : Singleton<GameManager>
     {
         CSVReader cr = CSVReader.Instance;
 
+        SoundManager.Instance.PlayBGM(level.ToString());
+
         cr.CSVReading();
         cr.StartUpdateStat();
 
@@ -264,6 +272,17 @@ public class GameManager : Singleton<GameManager>
         if(isTutorial)
             StartCoroutine(UIManager.Instance.tutorialPannel.DoTutorial());
 
+        isSceneLoading = false;
         SceneManager.sceneLoaded -= InGameLoad; // 초기화
+    }
+
+    public void TitleLoad(Scene scene, LoadSceneMode mode)
+    {
+        gameTime = GameTime.Slow;
+        BtnManager.Instance.Play();
+        SoundManager.Instance.PlayBGM("Lobby");
+
+        isSceneLoading = false;
+        SceneManager.sceneLoaded -= TitleLoad;
     }
 }

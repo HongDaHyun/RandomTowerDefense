@@ -1,20 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CharacteristicCard : MonoBehaviour
 {
     public CharacteristicStat characStat;
     public CardPannel cardPannel;
+    public bool isMax;
 
     public void SetCard(int id)
     {
         characStat = CSVReader.Instance.csvList.FindCharac(id);
 
         cardPannel.cardNameTxt.text = characStat.charateristicName;
-        cardPannel.explanationTxt.text = string.Format(characStat.explanation, characStat.condition);
 
-        cardPannel.cardIconImg.sprite = SpriteData.Instance.CharacIcon[id];
+        if(characStat.level < 7) // ¸¸·¾ Àü
+        {
+            isMax = false;
+
+            cardPannel.explanationTxt.text = string.Format(characStat.explanation, characStat.condition);
+            cardPannel.cardIconImg.sprite = SpriteData.Instance.CharacIcon[id];
+            cardPannel.cardImg.color = Color.white;
+        }
+        else
+        {
+            isMax = true;
+
+            cardPannel.explanationTxt.text = characStat.maxExplanation;
+            cardPannel.cardIconImg.sprite = SpriteData.Instance.CharacMaxIcon[id];
+
+            Color color;
+            ColorUtility.TryParseHtmlString("#FFECAF", out color);
+            cardPannel.cardImg.color = color;
+        }
 
         SetStar(characStat.level);
     }
@@ -46,9 +65,18 @@ public class CharacteristicCard : MonoBehaviour
     {
         CharacManager cm = CharacManager.Instance;
 
+        if (cm.isLevelUping)
+            return;
+
+        BtnManager bm = BtnManager.Instance;
+
+        bm.ClickSound(); // Sound
+
+        cm.isLevelUping = true;
+
         CharacLevelUp(ref CSVReader.Instance.csvList.characteristicStat[characStat.ID]); // ·¹º§ ¾÷
 
-        if (characStat.level < 7) // ¸¸·¾ Àü
+        if (!isMax) // ¸¸·¾ Àü
             cm.DoCharac(characStat);
         else // ¸¸·¾
             cm.DoCharac_Max(characStat);
@@ -56,10 +84,16 @@ public class CharacteristicCard : MonoBehaviour
         UIManager.Instance.characInfo.CharacInfoPannel(this); // ³» Á¤º¸ ¾÷µ¥ÀÌÆ®
 
         //UI
-        BtnManager bm = BtnManager.Instance;
-        bm.Tab(UIManager.Instance.characteristicPannel);
-        bm.Play();
-        bm.ClickSound();
+        Sequence seq = DOTween.Sequence().SetUpdate(true);
+
+        seq.Append(cardPannel.starImg[characStat.level % 4].DOFade(0f, 0.5f).OnComplete(() => {
+            cardPannel.starImg[characStat.level % 4].sprite = characStat.level + 1 > 4 ? SpriteData.Instance.Stars[1] : SpriteData.Instance.Stars[0];
+        }));
+        seq.Append(cardPannel.starImg[characStat.level % 4].DOFade(1f, 0.5f).OnComplete(() => {
+            bm.Tab(UIManager.Instance.characCardPannel.pannel);
+            bm.Play();
+            cm.isLevelUping = false;
+        }));
     }
 
     public void CharacLevelUp(ref CharacteristicStat stat)

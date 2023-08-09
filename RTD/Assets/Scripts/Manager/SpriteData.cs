@@ -6,5 +6,6 @@ public class SpriteData : Singleton<SpriteData>
 {
     public Sprite[] Stars;
     public Sprite[] CharacIcon;
+    public Sprite[] CharacMaxIcon;
     public Sprite[] typeIcon;
 }

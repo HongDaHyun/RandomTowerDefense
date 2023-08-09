@@ -88,6 +88,7 @@ public class AdMobManager : Singleton<AdMobManager>
         if (!frontAd.CanShowAd())
         {
             BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
+            LoadFrontAd();
             return;
         }
 

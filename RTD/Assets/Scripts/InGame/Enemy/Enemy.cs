@@ -160,7 +160,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         {
             sm.DeSpawnEnemy(this);
             um.upPannel.UpdateCurWave(-1);
-            gm.LoseHealth((int)enemyStat.tier);
+            gm.LoseHealth(Mathf.Max((int)enemyStat.tier - gm.playerDefense, 1));
         }
     }
 

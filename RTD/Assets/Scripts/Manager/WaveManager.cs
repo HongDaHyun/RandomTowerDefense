@@ -43,7 +43,10 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         // 웨이브 종료 시 변수 설정
-        gm.GainGatcha(waveGatcha);
+        gm.GainGatcha(waveGatcha); // 키 증가
+        gm.GainHealth(gm.healthRegen); // 체력 재생
+        gm.LoseHealth(gm.healthReduce); // 체력 감소
+
         curWave++; //웨이브 시작 시 curWave 증가
         um.upPannel.SetWaveTxt(gm); // UI
         cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * perEnemyPower); // 적 HP 증가
@@ -59,7 +62,6 @@ public class WaveManager : Singleton<WaveManager>
         QuestManager.Instance.UpQuest(0); // 퀘스트 0
 
         // Charac
-        gm.GainHealth(gm.healthWave); // 10
         if (curWave % 3 == 0) // 8
             gm.GainGatcha(cm.doubleWave);
         if (curWave % 5 == 0) // 34

@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class CharacSlot : MonoBehaviour, IPointerClickHandler
 {
     public bool isShow;
+    public Image pannelImg;
     public Image icon;
     public Text level;
 
@@ -21,8 +22,18 @@ public class CharacSlot : MonoBehaviour, IPointerClickHandler
     {
         icon.sprite = card.cardPannel.cardIconImg.sprite;
 
-        level.text = card.characStat.level < 7 ? string.Format("Lv {0}", card.characStat.level + 1) : "MAX";
+        if(!card.isMax) // ¸¸·¾ Àü
+        {
+            s = string.Format(card.characStat.explanation, card.characStat.condition);
+            level.text = string.Format("Lv {0}", card.characStat.level + 1);
+        }
 
-        s = string.Format(card.characStat.explanation, card.characStat.condition);
+        else // ¸¸·¾
+        {
+            level.text = "MAX";
+            level.color = Color.cyan;
+            pannelImg.color = Color.cyan;
+            s += "\n\n" + card.characStat.maxExplanation;
+        }
     }
 }

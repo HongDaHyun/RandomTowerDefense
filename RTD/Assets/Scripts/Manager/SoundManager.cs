@@ -23,8 +23,6 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
             PlayBGM("Lobby");
-        else
-            PlayBGM(GameManager.Instance.level.ToString());
     }
 
     public void PlayBGM(string p_bgmName)

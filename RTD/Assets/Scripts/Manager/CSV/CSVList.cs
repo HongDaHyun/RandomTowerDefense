@@ -103,7 +103,7 @@ public class CSVList
     }
 
     //Upgrade
-    public void UpgradeUnit(string unitName, UpUnit kind, int value)
+    public void UpgradeUnit(string unitName, UpUnit kind, float value)
     {
         // CSV
         CSVUp_Unit(IndexOfUnit(unitName), kind, value);
@@ -113,7 +113,7 @@ public class CSVList
 
         UIManager.Instance.info.UpdateUnitUI();
     }
-    public void UpgradeUnit(List<string> unitName, UpUnit kind, int value)
+    public void UpgradeUnit(List<string> unitName, UpUnit kind, float value)
     {
         for (int i = 0; i < unitName.Count; i++)
         {
@@ -176,6 +176,13 @@ public class CSVList
                 break;
             case UpUnit.CritPercent:
                 unitStat[ID].critPercent += (int)value;
+
+                // 초과분은 크리데미지로 치환
+                if (unitStat[ID].critPercent > 100)
+                {
+                    unitStat[ID].critDmg += unitStat[ID].critPercent - 100;
+                    unitStat[ID].critPercent = 100;
+                }
                 break;
             case UpUnit.CritDmg:
                 unitStat[ID].critDmg += (int)value;

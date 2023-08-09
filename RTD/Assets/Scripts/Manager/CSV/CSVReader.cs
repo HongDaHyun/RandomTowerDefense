@@ -26,7 +26,7 @@ public class CSVReader : Singleton<CSVReader>
 
         gm.maxHealth += (int)(shopStat[8].curLevel * shopStat[8].condition);
         gm.curHealth = gm.maxHealth; // 싱글톤 순서 오류로 QuestManager에 접근하지 않게 GainMaxHealth 함수 사용하지 않음
-        gm.healthWave = (int)(shopStat[9].curLevel * shopStat[9].condition);
+        gm.healthRegen = (int)(shopStat[9].curLevel * shopStat[9].condition);
         gm.plusExp = (int)(shopStat[10].curLevel * shopStat[10].condition);
         // 확률 초기화
         gm.probability = new int[] { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };

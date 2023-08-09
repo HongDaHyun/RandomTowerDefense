@@ -57,7 +57,6 @@ public class BtnManager : Singleton<BtnManager>
         SpawnManager.Instance.SpawnTxtBubble(EventSystem.current.currentSelectedGameObject.transform, s);
     }
 
-
     public void TabSlotMachine()
     {
         //Only Open
@@ -125,6 +124,13 @@ public class BtnManager : Singleton<BtnManager>
 
     public void GameStartFX(string _level)
     {
+        GameManager gm = GameManager.Instance;
+
+        if (gm.isSceneLoading)
+            return;
+
+        gm.isSceneLoading = true;
+
         UIManager.Instance.fx.OnTransitionExitEnded += () => GameStartBtn(_level);
         UIManager.Instance.fx.TransitionExit();
     }
@@ -152,14 +158,34 @@ public class BtnManager : Singleton<BtnManager>
 
     public void TitleFX()
     {
+        GameManager gm = GameManager.Instance;
+
+        if (gm.isSceneLoading)
+            return;
+
+        gm.isSceneLoading = true;
+
         UIManager.Instance.fx.OnTransitionExitEnded += Title;
         UIManager.Instance.fx.TransitionExit();
     }
 
     private void Title()
     {
-        Play();
+        SceneManager.sceneLoaded += GameManager.Instance.TitleLoad;
         SceneManager.LoadSceneAsync(0);
+    }
+
+    public void SurrenBtn()
+    {
+        GameManager gm = GameManager.Instance;
+
+        if (gm.isTutorial)
+        {
+            HelpTxt(UIManager.Instance, "튜토리얼에서는 항복할 수 없습니다.");
+            return;
+        }
+
+        gm.LoseHealth(gm.maxHealth);
     }
 
     IEnumerator SlotMachine()
@@ -319,6 +345,18 @@ public class BtnManager : Singleton<BtnManager>
         um.InitCard(); // 카드 생성
 
         um.levelUpBtn.SetUI(); // UI 설정
+    }
+
+    public void HideBtn()
+    {
+        if (CharacManager.Instance.isLevelUping)
+            return;
+
+        UIManager um = UIManager.Instance;
+
+        um.characCardPannel.btnTxt.text = um.characCardPannel.miniPannel.activeSelf ? ">" : "<";
+
+        Tab_NoRayCast(um.characCardPannel.miniPannel);
     }
 
     public void ShopSetSelectBtn(int id)
