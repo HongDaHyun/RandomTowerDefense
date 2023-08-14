@@ -8,7 +8,7 @@ using DG.Tweening;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
-    public Transform wayPointsObj;
+    public Transform[] stageMaps;
     public List<Enemy> enemyList;
     public List<Unit> unitList;
 
@@ -17,6 +17,20 @@ public class SpawnManager : Singleton<SpawnManager>
         base.Awake();
         enemyList = new List<Enemy>();
         unitList = new List<Unit>();
+    }
+
+    public void SpawnTilemap(int index)
+    {
+        Transform stage = Instantiate(stageMaps[index]);
+
+        SpriteRenderer[] grounds = stage.GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < grounds.Length; i++)
+        {
+            if (grounds[i].name == "Ground1")
+                grounds[i].sprite = SpriteData.Instance.tileMapSprites[index].ground1;
+            else if(grounds[i].name == "Ground2")
+                grounds[i].sprite = SpriteData.Instance.tileMapSprites[index].ground2;
+        }
     }
 
     #region SpawnEnemy

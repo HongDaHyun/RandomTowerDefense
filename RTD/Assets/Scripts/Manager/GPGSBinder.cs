@@ -100,17 +100,47 @@ public class GPGSBinder
             });
     }
 
-
+    #region AchieveMent
     public void ShowAchievementUI() =>
         Social.ShowAchievementsUI();
 
-    public void UnlockAchievement(string gpgsId, Action<bool> onUnlocked = null) =>
+    private void UnlockAchievement(string gpgsId, Action<bool> onUnlocked = null) =>
         Social.ReportProgress(gpgsId, 100, success => onUnlocked?.Invoke(success));
 
-    public void IncrementAchievement(string gpgsId, int steps, Action<bool> onUnlocked = null) =>
+    private void IncrementAchievement(string gpgsId, int steps, Action<bool> onUnlocked = null) =>
         PlayGamesPlatform.Instance.IncrementAchievement(gpgsId, steps, success => onUnlocked?.Invoke(success));
 
+    string[] clear = { RTD.achievement, RTD.achievement_2, RTD.achievement_3, RTD.achievement_52, RTD.achievement_53, RTD.achievement_54, RTD.achievement_55,
+    RTD.achievement_56, RTD.achievement_57, RTD.achievement_58, RTD.achievement_59, RTD.achievement_60, RTD.achievement_61, RTD.achievement_62, RTD.achievement_63, RTD.achievement_64};
+    // 클리어 업적 (1 ~ 3)
+    public void ClearAchievement(Stage curStage, Level curLevel)
+    {
+        int index = 0 + 3 * (int)curStage;
 
+        UnlockAchievement(clear[index + (int)curLevel]); // 레벨 클리어
+
+        if(curLevel == Level.Hard)
+            UnlockAchievement(clear[Enum.GetValues(typeof(Stage)).Length * 3 + (int)curStage]); // 스테이지 클리어
+    }
+
+    string[] charac = {RTD.achievement_12, RTD.achievement_13, RTD.achievement_14, RTD.achievement_15, RTD.achievement_16, RTD.achievement_17, RTD.achievement_18, RTD.achievement_19,
+        RTD.achievement_20, RTD.achievement_21, RTD.achievement_22, RTD.achievement_23, RTD.achievement_24, RTD.achievement_25, RTD.achievement_26, RTD.achievement_27, RTD.achievement_28,
+        RTD.achievement_29, RTD.achievement_30, RTD.achievement_31, RTD.achievement_32, RTD.achievement_33, RTD.achievement_34, RTD.achievement_35, RTD.achievement_36, RTD.achievement_37,
+        RTD.achievement_38, RTD.achievement_39, RTD.achievement_40, RTD.achievement_41, RTD.achievement_42, RTD.achievement_43, RTD.achievement_44, RTD.achievement_45, RTD.achievement_46,
+        RTD.achievement_47, RTD.achievement_48, RTD.achievement_49, RTD.achievement_50, RTD.achievement_51};
+    public void CharacAchievement(int id) // 특성 업적들
+    {
+        UnlockAchievement(charac[id]);
+    }
+
+    // 기타 업적들(4 ~ 11)
+    public void ETCAchievement(string gpgsId)
+    {
+        UnlockAchievement(gpgsId);
+    }
+    #endregion
+
+    #region LeaderBoard
     public void ShowAllLeaderboardUI() =>
         Social.ShowLeaderboardUI();
 
@@ -131,6 +161,18 @@ public class GPGSBinder
             onloaded?.Invoke(data.Status == ResponseStatus.Success, data);
         });
     }
+
+    string[] stage = { RTD.leaderboard, RTD.leaderboard_2, RTD.leaderboard_3, RTD.leaderboard_4 };
+    public void StageLeaderBoard(Stage curStage, Level curLevel)
+    {
+        if (curLevel != Level.Infinite)
+            return;
+
+        int stageIndex = (int)curStage;
+
+        ReportLeaderboard(stage[stageIndex], WaveManager.Instance.curWave);
+    }
+    #endregion
 
 
     public void IncrementEvent(string gpgsId, uint steps)

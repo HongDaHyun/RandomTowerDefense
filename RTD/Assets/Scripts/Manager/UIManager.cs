@@ -16,6 +16,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject rayCastPannel;
     [Title("메인메뉴", titleAlignment: TitleAlignments.Centered)]
     public MainShop mainShopPannel;
+    public Button[] selectStageBtn;
     public Button[] selectLevelBtn;
 
     [Title("인 게임", titleAlignment: TitleAlignments.Centered)]
@@ -154,7 +155,10 @@ public class MainShop
             if (shop.curLevel < shop.maxLevel)
                 shopLevel[shopIndex].text = $"Lv {shop.curLevel}";
             else
+            {
                 shopLevel[shopIndex].text = "Max";
+                GPGSBinder.Inst.ETCAchievement(RTD.achievement_flex); // 업적 FLEX
+            }
         }
 
         cost.text = cl.CalCost(cl.FindShop(curSelect)).ToString();
@@ -398,6 +402,7 @@ public class Tutiorial
         btn.interactable = false;
         yield return new WaitForSecondsRealtime(2f);
 
+        GPGSBinder.Inst.ETCAchievement(RTD.achievement_4); // 업적 4
         gm.isTutorial = false;
         BtnManager.Instance.TitleFX();
     }

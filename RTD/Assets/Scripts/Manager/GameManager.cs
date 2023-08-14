@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Level level;
+    public Level level; public Stage stage;
     public GameTime gameTime = GameTime.Slow;
     public bool isStart, is30, isTutorial, isSceneLoading;
-    public bool[] isClear;
+    public ClearData[] clearData;
     public int gatchaKey, maxHealth, curHealth, healthRegen, healthReduce, playerDefense, maxWave, expLevel, maxExp, limitExp = 70, levelPoint, curMoney, killEnemyNum;
     public float curExp, increaseExp, plusExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
@@ -110,28 +110,60 @@ public class GameManager : Singleton<GameManager>
         maxWave = levelNum[(int)level];
     }
 
+    private void LoadPreviousData()
+    {
+        if (!ES3.FileExists(saveDirectory))
+            return;
+
+        if (ES3.KeyExists("ClearCommon", saveDirectory))
+        {
+            clearData[0].isLevelClear[0] = ES3.Load<bool>("ClearCommon",saveDirectory);
+            ES3.DeleteKey("ClearCommon", saveDirectory);
+        }
+        if (ES3.KeyExists("ClearNormal", saveDirectory))
+        {
+            clearData[0].isLevelClear[1] = ES3.Load<bool>("ClearNormal", saveDirectory);
+            ES3.DeleteKey("ClearNormal", saveDirectory);
+        }
+        if (ES3.KeyExists("ClearHard", saveDirectory))
+        {
+            clearData[0].isLevelClear[2] = ES3.Load<bool>("ClearHard", saveDirectory);
+            ES3.DeleteKey("ClearHard", saveDirectory);
+        }
+
+        SaveClearData();
+    }
+
     private void LoadClearData() // 세이브 디렉토리
     {
-        // 정식 출시 시 세이브 파일 따로 저장 (ex. Saves/ClearSave)
-        if (ES3.KeyExists("ClearCommon", saveDirectory))
-            isClear[0] = ES3.Load<bool>("ClearCommon", saveDirectory);
-        if (ES3.KeyExists("ClearNormal", saveDirectory))
-            isClear[1] = ES3.Load<bool>("ClearNormal", saveDirectory);
-        if (ES3.KeyExists("ClearHard", saveDirectory))
-            isClear[2] = ES3.Load<bool>("ClearHard", saveDirectory);
+        if (ES3.KeyExists("ClearGrass", saveDirectory))
+            clearData[0] = ES3.Load<ClearData>("ClearGrass", saveDirectory);
+        if (ES3.KeyExists("ClearDesert", saveDirectory))
+            clearData[1] = ES3.Load<ClearData>("ClearDesert", saveDirectory);
+        if (ES3.KeyExists("ClearForest", saveDirectory))
+            clearData[2] = ES3.Load<ClearData>("ClearForest", saveDirectory);
+        if (ES3.KeyExists("ClearCity", saveDirectory))
+            clearData[3] = ES3.Load<ClearData>("ClearCity", saveDirectory);
+
+        LoadPreviousData();
     }
 
     private void SaveClearData() // 세이브 디렉토리
     {
         // 정식 출시 시 세이브 파일 따로 저장 (ex. Saves/ClearSave)
-        ES3.Save("ClearCommon", isClear[0], saveDirectory);
-        ES3.Save("ClearNormal", isClear[1], saveDirectory);
-        ES3.Save("ClearHard", isClear[2], saveDirectory);
+        ES3.Save("ClearGrass", clearData[0], saveDirectory);
+        ES3.Save("ClearDesert", clearData[1], saveDirectory);
+        ES3.Save("ClearForest", clearData[2], saveDirectory);
+        ES3.Save("ClearCity", clearData[3], saveDirectory);
     }
 
     public void GainMaxHealth(int a)
     {
         maxHealth += a;
+
+        // 업적 9
+        if (maxHealth >= 120)
+            GPGSBinder.Inst.ETCAchievement(RTD.achievement_9);
 
         QuestManager.Instance.UpQuest(23, a); // 퀘스트 23
 
@@ -180,6 +212,10 @@ public class GameManager : Singleton<GameManager>
         gatchaKey += a;
         QuestManager.Instance.UpQuest(1); // 퀘스트 1
 
+        // 업적 10
+        if (gatchaKey >= 10)
+            GPGSBinder.Inst.ETCAchievement(RTD.achievement_10);
+
         UIManager.Instance.upPannel.gatchaKeyTxt.text = gatchaKey.ToString(); // UI
     }
 
@@ -193,6 +229,12 @@ public class GameManager : Singleton<GameManager>
     public void EarnMoney(int a)
     {
         curMoney += a;
+
+        // 업적 (7 ~ 8)
+        if (a >= 10000)
+            GPGSBinder.Inst.ETCAchievement(RTD.achievement_7);
+        if (curMoney >= 100000)
+            GPGSBinder.Inst.ETCAchievement(RTD.achievement_8);
 
         ES3.Save("Money", curMoney, saveDirectory); // 세이브 디렉토리
     }
@@ -219,14 +261,19 @@ public class GameManager : Singleton<GameManager>
         levelPoint++;
         maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), 70); // 최대 경험치 70
 
+        // 업적 (5 ~ 6)
+        if (expLevel >= 50)
+            GPGSBinder.Inst.ETCAchievement(RTD.achievement_6);
+        else if(expLevel >= 25)
+            GPGSBinder.Inst.ETCAchievement(RTD.achievement_5);
+
         um.levelUpBtn.SetUI(); // UI 설정
         um.upPannel.levelTxt.text = $"{expLevel}Lv:";
     }
 
     public void GameOver()
     {
-        if (level == Level.Infinite)
-            GPGSBinder.Inst.ReportLeaderboard(RTD.leaderboard_infinite_ranking, WaveManager.Instance.curWave);
+        GPGSBinder.Inst.StageLeaderBoard(stage, level);
 
         UIManager.Instance.gameOverPannel.SetUI(false);
     }
@@ -234,7 +281,11 @@ public class GameManager : Singleton<GameManager>
     public void GameClear()
     {
         UIManager.Instance.gameOverPannel.SetUI(true);
-        isClear[(int)level] = true;
+        clearData[(int)stage].isLevelClear[(int)level] = true;
+        if (level == Level.Hard)
+            clearData[(int)stage].isClear = true;
+
+        GPGSBinder.Inst.ClearAchievement(stage, level); // 업적
 
         SaveClearData();
     }
@@ -267,6 +318,8 @@ public class GameManager : Singleton<GameManager>
         cr.CSVReading();
         cr.StartUpdateStat();
 
+        SpawnManager.Instance.SpawnTilemap((int)stage);
+
         BtnManager.Instance.RefreshQuestBtn();
 
         if(isTutorial)
@@ -285,4 +338,12 @@ public class GameManager : Singleton<GameManager>
         isSceneLoading = false;
         SceneManager.sceneLoaded -= TitleLoad;
     }
+}
+
+[System.Serializable]
+public struct ClearData
+{
+    public Stage stage;
+    public bool[] isLevelClear;
+    public bool isClear;
 }

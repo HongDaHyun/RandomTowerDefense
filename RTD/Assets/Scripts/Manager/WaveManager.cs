@@ -8,7 +8,7 @@ public class WaveManager : Singleton<WaveManager>
     public int maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
-    public float readyTime, perEnemyPower = 1.2f;
+    public float readyTime, perEnemyPower = 3f;
 
     private void Start()
     {
@@ -39,7 +39,7 @@ public class WaveManager : Singleton<WaveManager>
         {
             cl.SetAllEnemy();
             if (gm.level == Level.Infinite)
-                perEnemyPower += 3;
+                perEnemyPower += 5f;
         }
 
         // 웨이브 종료 시 변수 설정

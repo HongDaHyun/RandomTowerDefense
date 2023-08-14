@@ -99,11 +99,23 @@ public class BtnManager : Singleton<BtnManager>
         ES3.Save("Is30", gm.is30, gm.saveDirectory); // 세이브 디렉토리
     }
 
-    public void ClickStartPannel()
+    public void ClickStagePannel()
     {
+        UIManager um = UIManager.Instance;
+
+        for (int i = 0; i < um.selectStageBtn.Length; i++)
+        {
+            um.selectStageBtn[i].interactable = GameManager.Instance.clearData[i].isClear;
+        }
+    }
+
+    public void ClickLevelPannel()
+    {
+        GameManager gm = GameManager.Instance;
+
         for (int i = 0; i < 3; i++)
         {
-            UIManager.Instance.selectLevelBtn[i].interactable = GameManager.Instance.isClear[i];
+            UIManager.Instance.selectLevelBtn[i].interactable = gm.clearData[(int)gm.stage].isLevelClear[i];
         }
     }
 
@@ -120,6 +132,11 @@ public class BtnManager : Singleton<BtnManager>
     public void Play() // 재생
     {
         Time.timeScale = (int)GameManager.Instance.gameTime / 10f;
+    }
+
+    public void ChangeStage(string _stage)
+    {
+        GameManager.Instance.stage = (Stage)Enum.Parse(typeof(Stage), _stage);
     }
 
     public void GameStartFX(string _level)
@@ -383,7 +400,12 @@ public class BtnManager : Singleton<BtnManager>
 
     public void ShowLeaderBoard()
     {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(RTD.leaderboard_infinite_ranking);
+        GPGSBinder.Inst.ShowAllLeaderboardUI();
+    }
+
+    public void ShowAchieve()
+    {
+        GPGSBinder.Inst.ShowAchievementUI();
     }
 
     public void TutoTextId()

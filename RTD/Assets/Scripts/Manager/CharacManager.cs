@@ -127,7 +127,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllUnit(UpUnit.Range, value);
                 break;
             case 32:
-                list.UpgradeAllProjectile("size", value);
+                list.UpgradeAllProjectile("Size", value);
                 break;
             case 33:
                 spawnDmg = value;
@@ -289,5 +289,6 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllAttribute(5);
                 break;
         }
+        GPGSBinder.Inst.CharacAchievement(characStat.ID); // 특성 업적
     }
 }

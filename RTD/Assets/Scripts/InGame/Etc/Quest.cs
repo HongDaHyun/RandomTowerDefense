@@ -100,6 +100,7 @@ public class Quest : MonoBehaviour
             GameManager.Instance.GainGatcha(reward);
 
         QuestManager.Instance.UpQuest(6); // 퀘스트 6
+        GPGSBinder.Inst.ETCAchievement(RTD.achievement_11); // 업적 11
 
         // 비활성화
         gameObject.SetActive(false);

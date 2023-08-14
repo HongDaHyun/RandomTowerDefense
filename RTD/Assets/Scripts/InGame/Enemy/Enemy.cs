@@ -116,13 +116,15 @@ public class Enemy : MonoBehaviour, IPoolObject
     {
         if (wayPoints != null)
             return;
-        wayPoints = new Transform[sm.wayPointsObj.childCount];
+
+        int stage = (int)GameManager.Instance.stage;
+
+        wayPoints = new Transform[sm.stageMaps[stage].GetChild(1).childCount]; // WayPoint -> 자식 1
         for (int i = 0; i < wayPoints.Length; i++)
-        {
-            wayPoints[i] = sm.wayPointsObj.GetChild(i);
-        }
+            wayPoints[i] = sm.stageMaps[stage].GetChild(1).GetChild(i); // WayPoint -> 자식 1
         transform.position = wayPoints[curWayPoint].position;
     }
+
     private void ResetWayPoint()
     {
         curWayPoint = 0;

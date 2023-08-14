@@ -86,10 +86,10 @@ public class CharacteristicCard : MonoBehaviour
         //UI
         Sequence seq = DOTween.Sequence().SetUpdate(true);
 
-        seq.Append(cardPannel.starImg[characStat.level % 4].DOFade(0f, 0.5f).OnComplete(() => {
+        seq.Append(cardPannel.starImg[characStat.level % 4].DOFade(0f, 0.1f).OnComplete(() => {
             cardPannel.starImg[characStat.level % 4].sprite = characStat.level + 1 > 4 ? SpriteData.Instance.Stars[1] : SpriteData.Instance.Stars[0];
         }));
-        seq.Append(cardPannel.starImg[characStat.level % 4].DOFade(1f, 0.5f).OnComplete(() => {
+        seq.Append(cardPannel.starImg[characStat.level % 4].DOFade(1f, 0.1f).OnComplete(() => {
             bm.Tab(UIManager.Instance.characCardPannel.pannel);
             bm.Play();
             cm.isLevelUping = false;
