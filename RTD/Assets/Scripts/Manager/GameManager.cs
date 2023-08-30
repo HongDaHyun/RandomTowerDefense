@@ -7,10 +7,9 @@ public class GameManager : Singleton<GameManager>
     public GameTime gameTime = GameTime.Slow;
     public bool isStart, is30, isTutorial, isSceneLoading;
     public ClearData[] clearData;
-    public int gatchaKey, maxHealth, curHealth, healthRegen, healthReduce, playerDefense, maxWave, expLevel, maxExp, limitExp = 70, levelPoint, curMoney, killEnemyNum;
+    public int gatchaKey, maxHealth, curHealth, healthRegen, healthReduce, playerDefense, expLevel, maxExp, limitExp = 70, levelPoint, curMoney, killEnemyNum;
     public float curExp, increaseExp, plusExp;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
-    public int[] levelNum;
     public string saveDirectory = "Saves/Beta1";
 
     protected override void Awake()
@@ -106,8 +105,6 @@ public class GameManager : Singleton<GameManager>
         }
         if (isTutorial)
             gatchaKey = 2;
-
-        maxWave = levelNum[(int)level];
     }
 
     private void LoadPreviousData()
@@ -128,6 +125,7 @@ public class GameManager : Singleton<GameManager>
         if (ES3.KeyExists("ClearHard", saveDirectory))
         {
             clearData[0].isLevelClear[2] = ES3.Load<bool>("ClearHard", saveDirectory);
+            clearData[0].isClear = ES3.Load<bool>("ClearHard", saveDirectory);
             ES3.DeleteKey("ClearHard", saveDirectory);
         }
 

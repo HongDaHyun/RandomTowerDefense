@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour, IPoolObject
     CSVReader cr;
     QuestManager qm;
     SoundManager soundm;
-    WaveManager wm;
 
     private SpriteRenderer spriteRenderer;
     private Animator anim;
@@ -72,7 +71,6 @@ public class Enemy : MonoBehaviour, IPoolObject
         cr = CSVReader.Instance;
         qm = QuestManager.Instance;
         soundm = SoundManager.Instance;
-        wm = WaveManager.Instance;
 
         //자체 컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -185,8 +183,12 @@ public class Enemy : MonoBehaviour, IPoolObject
         float totalDmg = (project.dmg + (curHp * (cm.proportionHP / 100)))
             * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지) * 방어력
 
+        totalDmg = curHp - totalDmg > enemyStat.hp * cm.execution ? totalDmg : curHp; // 만약 체력보다 더 큰 피해가 들어오면 체력으로 대체 (체력 0을 맞추기 위함)
+
         curHp -= totalDmg;
         project.unit.totalDmg += totalDmg;
+        
+        // 정보창 업데이트
         um.info.UpdateUnitUI();
         um.info.UpdateEnemyUI();
 
@@ -206,10 +208,9 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         StartCoroutine(HitColorAnimation(_color, time));
 
-        // 처형
-        if (curHp <= cm.execution * enemyStat.hp) // Charac 30
+        // 사망
+        if (curHp <= 0) // Charac 30
         {
-            project.unit.totalDmg -= curHp - cm.execution * enemyStat.hp;
             SpecificDie();
         }
     }

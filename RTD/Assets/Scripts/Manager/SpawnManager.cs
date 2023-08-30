@@ -43,7 +43,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
         wm.isWave = true;
 
-        if (wm.curWave > wm.maxWave) // maxWave를 넘길 시
+        if (wm.curWave > 20) // maxWave를 넘길 시
             wm.RanWave();
 
         StartCoroutine(SpawnEnemyRoutine(wm.waves[wm.curWave - 1]));
@@ -51,14 +51,21 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private IEnumerator SpawnEnemyRoutine(Wave wave)
     {
+        CSVList cl = CSVReader.Instance.csvList;
+
         int totalEnemyCount = wave.enemy.Sum(enemyData => enemyData.maxCount);
 
         foreach (WaveEnemy enemyData in wave.enemy)
         {
             int length = enemyData.maxCount;
+
+            // 티어에 맞는 무작위 적 정하기
+            List<EnemyStat> enemyStats = cl.FindEnemy(enemyData.tier);
+            string ranEnemy = enemyStats[Random.Range(0, enemyStats.Count)].enemyName;
+
             for (int i = 0; i < length; i++)
             {
-                Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(enemyData.name);
+                Enemy newEnemy = PoolManager.Instance.GetFromPool<Enemy>(ranEnemy);
                 enemyList.Add(newEnemy);
                 totalEnemyCount--;
 

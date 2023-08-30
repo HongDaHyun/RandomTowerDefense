@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveManager : Singleton<WaveManager>
 {
-    public int curWave = 1, maxWave, waveGatcha = 2;
+    public int curWave = 1, waveGatcha = 2;
     public int maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
@@ -12,7 +12,6 @@ public class WaveManager : Singleton<WaveManager>
 
     private void Start()
     {
-        maxWave = waves.Count;
         StartCoroutine(TimeWave());
     }
 
@@ -28,14 +27,14 @@ public class WaveManager : Singleton<WaveManager>
         SoundManager.Instance.PlaySFX("EndWave"); // 사운드
 
         // 클리어
-        if (curWave == gm.levelNum[(int)gm.level])
+        if (curWave == 20 && gm.level != Level.Infinite)
         {
             gm.GameClear();
             return;
         }
 
         // 최대 웨이브 도달 시 모든 적 동기화
-        if (curWave == maxWave)
+        if (curWave == 20)
         {
             cl.SetAllEnemy();
             if (gm.level == Level.Infinite)
@@ -124,7 +123,7 @@ public class WaveManager : Singleton<WaveManager>
         for (int i = 0; i < waveEnemyKind; i++)
         {
             newWave.enemy[i] = new WaveEnemy();
-            newWave.enemy[i].name = cl.FindEnemy(Random.Range(0, cl.enemyStat.Length)).enemyName; // 이름 설정
+            newWave.enemy[i].tier = cl.FindEnemy(Random.Range(0, cl.enemyStat.Length)).tier; // 티어 설정
 
             newWave.enemy[i].maxCount = countNum;
         }
@@ -151,6 +150,6 @@ public struct Wave
 [System.Serializable]
 public class WaveEnemy
 {
-    public string name;
+    public Tier tier;
     public int maxCount;
 }

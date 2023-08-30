@@ -126,6 +126,9 @@ public class UIManager : Singleton<UIManager>
             case Tier.Legend:
                 exportColor = Color.yellow;
                 break;
+            case Tier.Hero:
+                exportColor = Color.cyan;
+                break;
             case Tier.Hidden:
                 exportColor = Color.gray;
                 break;
@@ -455,7 +458,7 @@ public class UpPannel
         if (gm.level == Level.Infinite)
             waveTxt.text = WaveManager.Instance.curWave.ToString();
         else
-            waveTxt.text = $"{WaveManager.Instance.curWave}/{gm.maxWave}";
+            waveTxt.text = $"{WaveManager.Instance.curWave}/20";
     }
 
     public IEnumerator EXPHandlerCoroutine(GameManager gm)

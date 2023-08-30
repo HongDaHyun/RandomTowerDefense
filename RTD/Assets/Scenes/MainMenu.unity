@@ -2112,7 +2112,6 @@ MonoBehaviour:
   healthRegen: 0
   healthReduce: 0
   playerDefense: 0
-  maxWave: 0
   expLevel: 0
   maxExp: 0
   limitExp: 70
@@ -2123,7 +2122,6 @@ MonoBehaviour:
   increaseExp: 0
   plusExp: 0
   probability: 520000000a0000000500000003000000
-  levelNum: 14000000190000001e000000ffffffff
   saveDirectory: Saves/Alpha2
 --- !u!1 &200872651
 GameObject:
@@ -8499,6 +8497,18 @@ MonoBehaviour:
     IconTexture: {fileID: 0}
     IsIconRecursive: 0
     BackgroundType: 3000
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 519420028}
+    Ordinal: 28
+    Priority: 0
+    IconType: 290000
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0

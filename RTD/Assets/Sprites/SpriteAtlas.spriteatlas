@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 1024
+      m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 0
@@ -45,6 +45,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 8c96c5508ae1f8d44b81e7827f58c913, type: 3}
+    - {fileID: 102900000, guid: 880f9777e786993489fcfed9411352c6, type: 3}
     - {fileID: 102900000, guid: e2028d206c93a5b4fa8921f897aa2a40, type: 3}
     - {fileID: 102900000, guid: ca527f6f15a01a34e8a72c1ffb5b69a5, type: 3}
     - {fileID: 2800000, guid: 1a4d0c85451f13c4f857197215b0d362, type: 3}
@@ -57,7 +58,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
     - {fileID: 2800000, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
     - {fileID: 2800000, guid: ec16a571f0478f0449216226fb3befde, type: 3}
-    - {fileID: 102900000, guid: 880f9777e786993489fcfed9411352c6, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -100,6 +100,19 @@ SpriteAtlas:
   - {fileID: -293984396, guid: 0ba7eb1067d27e84dbb67095acc0d44d, type: 3}
   - {fileID: -1757071164, guid: 0ba7eb1067d27e84dbb67095acc0d44d, type: 3}
   - {fileID: -1507073683, guid: 0ba7eb1067d27e84dbb67095acc0d44d, type: 3}
+  - {fileID: 2051496694, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: 2096194751, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: -394288706, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: -1021356566, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: -1162105072, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: 1378118729, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: 479091346, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: -774346140, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: 1839881408, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: 1874224308, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: -481838454, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: -1202630959, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
+  - {fileID: 915747500, guid: 83785770231f1e24eb69aa43276cd30c, type: 3}
   - {fileID: 53787321, guid: c9d69090fb2cfea4d83f707e3e07b583, type: 3}
   - {fileID: -354194665, guid: c9d69090fb2cfea4d83f707e3e07b583, type: 3}
   - {fileID: 469692273, guid: c9d69090fb2cfea4d83f707e3e07b583, type: 3}
@@ -516,6 +529,14 @@ SpriteAtlas:
   - {fileID: 635556583, guid: 6db01d7cc12fbe14eabc20efb6a5d885, type: 3}
   - {fileID: 573615327, guid: 6db01d7cc12fbe14eabc20efb6a5d885, type: 3}
   - {fileID: -2041482171, guid: 6db01d7cc12fbe14eabc20efb6a5d885, type: 3}
+  - {fileID: 1464738258, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
+  - {fileID: -385667507, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
+  - {fileID: -253449189, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
+  - {fileID: 1741135738, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
+  - {fileID: 881840840, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
+  - {fileID: 1042736603, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
+  - {fileID: 2078180315, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
+  - {fileID: 608909015, guid: 4b7ce5ecba48c6e438a08e526710c58d, type: 3}
   - {fileID: -1687534273, guid: 6bb04d0d6b23a5f4f88db8dd377b6792, type: 3}
   - {fileID: 2071134545, guid: 6bb04d0d6b23a5f4f88db8dd377b6792, type: 3}
   - {fileID: -826115248, guid: 6bb04d0d6b23a5f4f88db8dd377b6792, type: 3}
@@ -705,6 +726,19 @@ SpriteAtlas:
   - CharacMaxIcon_33
   - CharacMaxIcon_30
   - CharacMaxIcon_31
+  - Boss_Active_12
+  - Boss_Active_11
+  - Boss_Active_10
+  - Boss_Active_8
+  - Boss_Active_9
+  - Boss_Active_4
+  - Boss_Active_5
+  - Boss_Active_6
+  - Boss_Active_7
+  - Boss_Active_0
+  - Boss_Active_1
+  - Boss_Active_2
+  - Boss_Active_3
   - BigSword_7
   - BigSword_6
   - BigSword_5
@@ -1121,6 +1155,14 @@ SpriteAtlas:
   - Slime#4_8
   - Slime#4_10
   - Slime#4_11
+  - Boss_Move_5
+  - Boss_Move_4
+  - Boss_Move_7
+  - Boss_Move_6
+  - Boss_Move_1
+  - Boss_Move_0
+  - Boss_Move_3
+  - Boss_Move_2
   - ForestWall_7
   - ForestWall_6
   - ForestWall_9

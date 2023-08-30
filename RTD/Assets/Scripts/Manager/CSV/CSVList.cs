@@ -225,6 +225,10 @@ public class CSVList
     {
         return enemyStat.Where(stat => stat.enemyType == type).ToList();
     }
+    public List<EnemyStat> FindEnemy(Tier tier)
+    {
+        return enemyStat.Where(stat => stat.tier == tier).ToList();
+    }
     public EnemyStat FindEnemy(string name)
     {
         return Array.Find(enemyStat, stat => stat.enemyName == name);

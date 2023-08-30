@@ -216,189 +216,174 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curWave: 1
-  maxWave: 0
   waveGatcha: 2
   maxWaveEnemy: 0
   isWave: 0
   waves:
-  - spawnTime: 1
+  - spawnTime: 0.5
     enemy:
-    - name: "\uC7BC\uBBFC\uC774"
+    - tier: 1
       maxCount: 5
   - spawnTime: 1
     enemy:
-    - name: "\uC8FC\uC0AC\uACE8\uB818"
+    - tier: 1
+      maxCount: 3
+    - tier: 1
+      maxCount: 1
+    - tier: 1
+      maxCount: 3
+    - tier: 1
+      maxCount: 2
+    - tier: 1
+      maxCount: 3
+  - spawnTime: 0.8
+    enemy:
+    - tier: 1
       maxCount: 5
-    - name: "\uC2A4\uCEEC"
+    - tier: 2
+      maxCount: 3
+    - tier: 1
+      maxCount: 5
+  - spawnTime: 1
+    enemy:
+    - tier: 1
+      maxCount: 3
+    - tier: 2
+      maxCount: 5
+    - tier: 1
+      maxCount: 3
+    - tier: 2
+      maxCount: 5
+  - spawnTime: 1.2
+    enemy:
+    - tier: 2
+      maxCount: 5
+    - tier: 3
+      maxCount: 1
+    - tier: 2
+      maxCount: 5
+  - spawnTime: 1
+    enemy:
+    - tier: 3
+      maxCount: 1
+    - tier: 2
+      maxCount: 5
+    - tier: 3
+      maxCount: 1
+  - spawnTime: 1
+    enemy:
+    - tier: 3
+      maxCount: 2
+    - tier: 2
+      maxCount: 5
+    - tier: 3
+      maxCount: 3
+  - spawnTime: 1
+    enemy:
+    - tier: 3
+      maxCount: 5
+    - tier: 2
+      maxCount: 5
+    - tier: 3
+      maxCount: 5
+  - spawnTime: 1
+    enemy:
+    - tier: 3
+      maxCount: 5
+    - tier: 4
+      maxCount: 1
+  - spawnTime: 0.5
+    enemy:
+    - tier: 4
+      maxCount: 1
+    - tier: 3
+      maxCount: 5
+    - tier: 4
+      maxCount: 1
+  - spawnTime: 1.4
+    enemy:
+    - tier: 4
+      maxCount: 5
+  - spawnTime: 1
+    enemy:
+    - tier: 5
+      maxCount: 1
+    - tier: 4
+      maxCount: 5
+  - spawnTime: 1.2
+    enemy:
+    - tier: 5
+      maxCount: 2
+    - tier: 4
+      maxCount: 5
+  - spawnTime: 1
+    enemy:
+    - tier: 4
+      maxCount: 5
+    - tier: 5
+      maxCount: 3
+    - tier: 4
+      maxCount: 5
+  - spawnTime: 0.8
+    enemy:
+    - tier: 4
+      maxCount: 8
+    - tier: 5
+      maxCount: 5
+    - tier: 4
+      maxCount: 7
+  - spawnTime: 1
+    enemy:
+    - tier: 6
+      maxCount: 1
+  - spawnTime: 1
+    enemy:
+    - tier: 4
+      maxCount: 5
+    - tier: 6
+      maxCount: 1
+    - tier: 5
+      maxCount: 3
+  - spawnTime: 1.4
+    enemy:
+    - tier: 6
+      maxCount: 1
+    - tier: 5
       maxCount: 6
-    - name: "\uBE68\uAC15\uD3EC\uC158"
-      maxCount: 5
-    - name: "\uBB3C\uB77C\uC784"
-      maxCount: 3
-    - name: "\uACFC\uD559\uC790"
+    - tier: 6
       maxCount: 1
   - spawnTime: 1
     enemy:
-    - name: "\uB178\uB791\uD3EC\uC158"
-      maxCount: 5
-    - name: "\uC2DC\uAD11\uACE8\uB818"
-      maxCount: 5
-    - name: "\uD480\uB77C\uC784"
-      maxCount: 5
-    - name: "\uD2B8\uB808\uC774\uB108"
+    - tier: 6
       maxCount: 1
-  - spawnTime: 1.2
-    enemy:
-    - name: "\uC2DC\uAD11\uACE8\uB818"
-      maxCount: 10
-    - name: "\uD478\uB529\uB77C\uC784"
-      maxCount: 2
-    - name: "\uAC80\uC2A4\uCEEC"
-      maxCount: 10
-  - spawnTime: 1
-    enemy:
-    - name: "\uC11D\uD0C4\uACE8\uB818"
-      maxCount: 3
-    - name: "\uCD08\uB85D\uD3EC\uC158"
+    - tier: 4
       maxCount: 5
-    - name: "\uD2B8\uB808\uC774\uB108"
-      maxCount: 2
-  - spawnTime: 1.5
-    enemy:
-    - name: "\uD65C\uC2A4\uCEEC"
-      maxCount: 5
-    - name: "\uC11D\uD0C4\uACE8\uB818"
-      maxCount: 2
-    - name: "\uCD08\uB85D\uD3EC\uC158"
+    - tier: 5
       maxCount: 4
-    - name: "\uD478\uB529\uB77C\uC784"
-      maxCount: 2
-  - spawnTime: 1.2
-    enemy:
-    - name: "\uC5BC\uB77C\uC784"
-      maxCount: 5
-    - name: "\uC8FC\uBA39\uC2A4\uCEEC"
-      maxCount: 5
-    - name: "\uC790\uC218\uC815\uACE8\uB818"
-      maxCount: 2
-  - spawnTime: 1
-    enemy:
-    - name: "\uD3B8\uC758\uC810\uC54C\uBC14"
-      maxCount: 10
-    - name: "\uC8FC\uBA39\uC2A4\uCEEC"
-      maxCount: 5
-  - spawnTime: 0.6
-    enemy:
-    - name: "\uD30C\uB791\uD3EC\uC158"
-      maxCount: 10
-    - name: "\uC5BC\uB77C\uC784"
-      maxCount: 5
-    - name: "\uD2B8\uB808\uC774\uB108"
-      maxCount: 10
-    - name: "\uC790\uC218\uC815\uACE8\uB818"
-      maxCount: 2
-    - name: "\uD3B8\uC758\uC810\uC54C\uBC14"
-      maxCount: 5
-    - name: "\uC8FC\uD669\uD3EC\uC158"
-      maxCount: 3
-  - spawnTime: 2
-    enemy:
-    - name: "\uD560\uC544\uBC84\uC9C0"
-      maxCount: 2
-    - name: "\uB9C8\uBC95\uC2A4\uCEEC"
-      maxCount: 3
-  - spawnTime: 1.5
-    enemy:
-    - name: "\uC790\uC218\uC815\uACE8\uB818"
-      maxCount: 5
-    - name: "\uBD80\uC6B8\uB77C\uC784"
-      maxCount: 5
-    - name: "\uD615\uC11D\uACE8\uB818"
-      maxCount: 2
-    - name: "\uAC80\uC815\uD3EC\uC158"
-      maxCount: 2
-  - spawnTime: 1
-    enemy:
-    - name: "\uD560\uC544\uBC84\uC9C0"
-      maxCount: 10
-    - name: "\uAC80\uC815\uD3EC\uC158"
-      maxCount: 5
-    - name: "\uB9C8\uBC95\uC2A4\uCEEC"
-      maxCount: 10
-  - spawnTime: 1
-    enemy:
-    - name: "\uD615\uC11D\uACE8\uB818"
-      maxCount: 10
-    - name: "\uAC80\uC815\uD3EC\uC158"
-      maxCount: 3
-    - name: "\uBD80\uC6B8\uB77C\uC784"
-      maxCount: 5
-    - name: "\uB179\uC2A8\uACE8\uB818"
+    - tier: 6
+      maxCount: 1
+    - tier: 5
+      maxCount: 4
+    - tier: 6
       maxCount: 1
   - spawnTime: 0.8
     enemy:
-    - name: "\uAC80\uC815\uD3EC\uC158"
-      maxCount: 8
-    - name: "\uC778\uD615\uD0C8"
-      maxCount: 3
-    - name: "\uD65C\uC2A4\uCEEC"
+    - tier: 4
       maxCount: 5
-    - name: "\uBD88\uB77C\uC784"
+    - tier: 5
       maxCount: 2
-  - spawnTime: 2
-    enemy:
-    - name: "\uC2A4\uCE74\uC2A4\uCE74"
-      maxCount: 10
-  - spawnTime: 0.4
-    enemy:
-    - name: "\uC8FC\uD669\uD3EC\uC158"
-      maxCount: 10
-    - name: "\uAC80\uC815\uD3EC\uC158"
+    - tier: 6
+      maxCount: 1
+    - tier: 4
       maxCount: 5
-    - name: "\uBD88\uB77C\uC784"
-      maxCount: 10
-  - spawnTime: 0.7
-    enemy:
-    - name: "\uC778\uD615\uD0C8"
-      maxCount: 15
-    - name: "\uD560\uC544\uBC84\uC9C0"
-      maxCount: 5
-    - name: "\uB179\uC2A8\uACE8\uB818"
-      maxCount: 10
-  - spawnTime: 1
-    enemy:
-    - name: "\uC8FC\uBA39\uC2A4\uCEEC"
-      maxCount: 5
-    - name: "\uC2A4\uCE74\uC2A4\uCE74"
-      maxCount: 10
-    - name: "\uAC80\uC815\uD3EC\uC158"
-      maxCount: 10
-    - name: "\uBD88\uB77C\uC784"
-      maxCount: 5
-  - spawnTime: 1
-    enemy:
-    - name: "\uC2A4\uCE74\uC2A4\uCE74"
-      maxCount: 20
-    - name: "\uB179\uC2A8\uACE8\uB818"
-      maxCount: 15
-    - name: "\uAC80\uC815\uD3EC\uC158"
-      maxCount: 10
-    - name: "\uC778\uD615\uD0C8"
-      maxCount: 15
-    - name: "\uBD88\uB77C\uC784"
-      maxCount: 10
-  - spawnTime: 1
-    enemy:
-    - name: "\uC778\uD615\uD0C8"
-      maxCount: 20
-    - name: "\uBD88\uB77C\uC784"
-      maxCount: 20
-    - name: "\uAC80\uC815\uD3EC\uC158"
-      maxCount: 20
-    - name: "\uB179\uC2A8\uACE8\uB818"
-      maxCount: 20
-    - name: "\uC2A4\uCE74\uC2A4\uCE74"
-      maxCount: 20
+    - tier: 5
+      maxCount: 3
+    - tier: 6
+      maxCount: 2
+    - tier: 5
+      maxCount: 2
+    - tier: 6
+      maxCount: 2
   readyTime: 15
   perEnemyPower: 1.2
 --- !u!1 &28893010
@@ -2670,6 +2655,7 @@ MonoBehaviour:
     shopLevel: []
     icon: {fileID: 0}
     curSelect: 0
+  selectStageBtn: []
   selectLevelBtn: []
   clickTile: {fileID: 273825764623961686}
   gatchaPannel:
