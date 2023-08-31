@@ -15,13 +15,6 @@ public class Projectile_Germ : Projectile
         transform.DOMove(target.position, dur); //¿Ãµø
     }
 
-    public override void SetStat(UnitStat unit)
-    {
-        base.SetStat(unit);
-
-        dmg = (float)System.Math.Round(dmg / 10, 1);
-    }
-
     public void Explosion()
     {
         SpawnManager.Instance.DeSpawnProjectile(this);

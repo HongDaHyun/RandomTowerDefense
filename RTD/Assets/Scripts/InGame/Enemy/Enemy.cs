@@ -183,7 +183,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         float totalDmg = (project.dmg + (curHp * (cm.proportionHP / 100)))
             * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지) * 방어력
 
-        totalDmg = curHp - totalDmg > enemyStat.hp * cm.execution ? totalDmg : curHp; // 만약 체력보다 더 큰 피해가 들어오면 체력으로 대체 (체력 0을 맞추기 위함)
+        totalDmg = curHp - totalDmg < enemyStat.hp * cm.execution ? curHp : totalDmg; // 만약 체력보다 더 큰 피해가 들어오면 체력으로 대체 (체력 0을 맞추기 위함)
 
         curHp -= totalDmg;
         project.unit.totalDmg += totalDmg;
@@ -234,6 +234,8 @@ public class Enemy : MonoBehaviour, IPoolObject
                         project.dmg *= 2 + cm.dmgFire; // Charac 15
                     debuffState[kind] = true;
 
+                    project.dmg = (float)Math.Round(project.dmg / 10, 1);
+
                     int dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
                     for (int i = 0; i < dmgCount; i++)
@@ -246,6 +248,8 @@ public class Enemy : MonoBehaviour, IPoolObject
                     if (debuffState[kind])
                         project.dmg *= 2 + cm.dmgGerm; // Charac 22
                     debuffState[kind] = true;
+
+                    project.dmg = (float)Math.Round(project.dmg / 10, 1);
 
                     dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
@@ -302,7 +306,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     private float GetStrengthModifier()
     {
-        return enemyStat.strength / 10;
+        return enemyStat.strength / 100;
     }
 
     public void Hit(Projectile project)
@@ -346,12 +350,11 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         qm.UpQuest(4); // 퀘스트 4
 
-        int tierNum = (int)enemyStat.tier;
-        if (tierNum > 2)
+        if (enemyStat.tier >= Tier.Epic)
         {
-            if (tierNum > 3)
-                qm.UpQuest(24); // 퀘스트 24
-            qm.UpQuest(5); // 퀘스트 5
+            if (enemyStat.tier >= Tier.Legend)
+                qm.UpQuest(5); // 퀘스트 5
+            qm.UpQuest(24); // 퀘스트 24
         }
 
         // 경험치 증가

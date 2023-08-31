@@ -15,7 +15,7 @@ public class CharacteristicCard : MonoBehaviour
 
         cardPannel.cardNameTxt.text = characStat.charateristicName;
 
-        if(characStat.level < 7) // 만렙 전
+        if(characStat.level < 4) // 만렙 전
         {
             isMax = false;
 
@@ -35,23 +35,21 @@ public class CharacteristicCard : MonoBehaviour
             cardPannel.cardImg.color = color;
         }
 
-        SetStar(characStat.level);
+        SetStar();
     }
 
-    private void SetStar(int count)
+    private void SetStar()
     {
         Sprite[] starSprites = SpriteData.Instance.Stars;
 
-        if (count > 4) // 4레벨 이상 (보라색 스타)
-        {
-            DrawStar(4, starSprites[0]); // 노란색 스타
-            DrawStar(count - 4, starSprites[1]); // 보라색 스타
-        }
+        if (isMax) // 만렙 (보라색 스타)
+            DrawStar(4, starSprites[1]);
 
-        else // 4레벨 이하 (노란색 스타)
+
+        else // 만렙 이하 (노란색 스타)
         {
             DrawStar(4, starSprites[2]); // 빈 스타
-            DrawStar(count, starSprites[0]); // 노란색 스타
+            DrawStar(characStat.level, starSprites[0]); // 노란색 스타
         }
     }
 

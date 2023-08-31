@@ -257,7 +257,7 @@ public class GameManager : Singleton<GameManager>
         curExp = 0;
         expLevel++;
         levelPoint++;
-        maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), 70); // 최대 경험치 70
+        maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), 40); // 최대 경험치 40
 
         // 업적 (5 ~ 6)
         if (expLevel >= 50)

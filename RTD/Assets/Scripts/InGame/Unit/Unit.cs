@@ -164,24 +164,5 @@ public class Unit : MonoBehaviour, IPoolObject
 
         return projectile;
     }
-
-
-    private float DmgCalculator(Projectile projectile)
-    {
-        float totalDmg = unitStat.dmg;
-
-        // 크리티컬 계산
-        int critRan = Random.Range(0, 100);
-
-        if (critRan < unitStat.critPercent || unitStat.critPercent >= 100)
-        {
-            totalDmg *= unitStat.critDmg / 100;
-            projectile.isCrit = true;
-        }
-        else
-            projectile.isCrit = false;
-
-        return totalDmg;
-    }
     #endregion
 }

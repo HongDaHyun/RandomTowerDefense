@@ -93,7 +93,7 @@ public class UIManager : Singleton<UIManager>
         for (int i = 0; i < length; i++)
         {
             ranID = UnityEngine.Random.Range(0, stats.Length);
-            if (IDs.Contains(ranID) || stats[ranID].level >= 8) // 중복이거나 만렙이면 다시
+            if (IDs.Contains(ranID) || stats[ranID].level >= 4) // 중복이거나 만렙이면 다시
                 i--;
             else
             {

@@ -35,9 +35,6 @@ public class Porjectile_Fire : Projectile
     {
         base.SetStat(unit);
 
-        dmg = (float)System.Math.Round(dmg / 10, 1);
-        isCrit = false;
-
         FireRange();
     }
 
