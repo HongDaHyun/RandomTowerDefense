@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
     public bool isStart, is30, isTutorial, isSceneLoading;
     public ClearData[] clearData;
     public int gatchaKey, maxHealth, curHealth, healthRegen, healthReduce, playerDefense, expLevel, maxExp, limitExp = 70, levelPoint, curMoney, killEnemyNum;
-    public float curExp, increaseExp, plusExp;
+    public float curExp, increaseExp, plusExp, increaseHP_enemy;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public string saveDirectory = "Saves/Beta1";
 
@@ -86,23 +86,28 @@ public class GameManager : Singleton<GameManager>
                 maxHealth = 30;
                 maxExp = 10;
                 increaseExp = 0.3f;
+                increaseHP_enemy = 0f;
                 break;
             case Level.Normal: // 보통
                 maxHealth = 25;
                 maxExp = 20;
                 increaseExp = 0.5f;
+                increaseHP_enemy = 50f;
                 break;
             case Level.Hard: // 어려움
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
+                increaseHP_enemy = 100f;
                 break;
             case Level.Infinite: // 무한
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
+                increaseHP_enemy = 100f;
                 break;
         }
+
         if (isTutorial)
             gatchaKey = 2;
     }

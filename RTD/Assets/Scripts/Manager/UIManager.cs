@@ -247,7 +247,7 @@ public class Info
         if (!pannelTrans.gameObject.activeSelf || enemyInfo.select == null)
             return;
 
-        enemyInfo.hpTxt.text = $"{(int)enemyInfo.select.curHp}/{(int)enemyInfo.select.enemyStat.hp}"; // 체력
+        enemyInfo.hpTxt.text = enemyInfo.select.curHp.ToString("N0") + "/" + enemyInfo.select.enemyStat.hp.ToString("N0"); // 체력
         enemyInfo.moveSpeedTxt.text = enemyInfo.select.enemyStat.moveSpeed.ToString(); // 이동속도
         enemyInfo.defenseTxt.text = enemyInfo.select.enemyStat.defense.ToString(); // 방어력
         enemyInfo.strengthTxt.text = enemyInfo.select.enemyStat.strength.ToString(); // 강인함

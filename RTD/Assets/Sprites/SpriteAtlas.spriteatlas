@@ -58,6 +58,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 6e0f81e389bb9204ca7c201e5954ecf2, type: 3}
     - {fileID: 2800000, guid: 50f50a81e1ffc8b41a5fd38209ec1298, type: 3}
     - {fileID: 2800000, guid: ec16a571f0478f0449216226fb3befde, type: 3}
+    - {fileID: 2800000, guid: 3b06c769020d01246b257aae52cf7a02, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -448,6 +449,7 @@ SpriteAtlas:
   - {fileID: -1798246316, guid: a3f02bd865013e440be516ea0fa43a11, type: 3}
   - {fileID: 1632133939, guid: a3f02bd865013e440be516ea0fa43a11, type: 3}
   - {fileID: 664443303, guid: a3f02bd865013e440be516ea0fa43a11, type: 3}
+  - {fileID: 21300000, guid: 3b06c769020d01246b257aae52cf7a02, type: 3}
   - {fileID: 1049836764, guid: 15f44d89f664cfe4086237044b2b9560, type: 3}
   - {fileID: 840098628, guid: 15f44d89f664cfe4086237044b2b9560, type: 3}
   - {fileID: -1997243087, guid: 15f44d89f664cfe4086237044b2b9560, type: 3}
@@ -460,6 +462,15 @@ SpriteAtlas:
   - {fileID: 1786338725, guid: 93ae011a6f661bc4aa9eccfb9bccd542, type: 3}
   - {fileID: 284205540, guid: 93ae011a6f661bc4aa9eccfb9bccd542, type: 3}
   - {fileID: -325315535, guid: 93ae011a6f661bc4aa9eccfb9bccd542, type: 3}
+  - {fileID: 1681179720, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: 1768628859, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: 836172163, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: -709995559, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: -334973124, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: 1680176778, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: 1492545648, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: -455501271, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
+  - {fileID: 1055255660, guid: 81fffb5abe57f8c498122042e4f92e90, type: 3}
   - {fileID: -1811932761, guid: af84398a6b77ef748945f6aa40a77e3d, type: 3}
   - {fileID: -300326352, guid: af84398a6b77ef748945f6aa40a77e3d, type: 3}
   - {fileID: 1654553098, guid: af84398a6b77ef748945f6aa40a77e3d, type: 3}
@@ -1074,6 +1085,7 @@ SpriteAtlas:
   - ThunderSlime_5
   - ThunderSlime_6
   - ThunderSlime_7
+  - warning
   - Skeleton#3_Reborn_0
   - Skeleton#3_Reborn_1
   - Skeleton#3_Reborn_2
@@ -1086,6 +1098,15 @@ SpriteAtlas:
   - Germ_0
   - Germ_3
   - Germ_2
+  - Boss_Die_6
+  - Boss_Die_7
+  - Boss_Die_4
+  - Boss_Die_5
+  - Boss_Die_2
+  - Boss_Die_3
+  - Boss_Die_0
+  - Boss_Die_1
+  - Boss_Die_8
   - Skeleton#1_Reborn_6
   - Skeleton#1_Reborn_7
   - Skeleton#1_Reborn_4

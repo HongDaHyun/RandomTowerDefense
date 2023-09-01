@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     SoundManager soundm;
 
     private SpriteRenderer spriteRenderer;
-    private Animator anim;
+    protected Animator anim;
     public EnemyStat enemyStat;
     [HideInInspector] public float speed;
     private Dictionary<Attribute, bool> debuffState = new Dictionary<Attribute, bool>()
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         SetWayPoint();
     }
 
-    public void OnGettingFromPool() //재사용
+    public virtual void OnGettingFromPool() //재사용
     {
         SetStat();
     }
@@ -172,7 +172,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     #region Damaged
     //Damage
-    private void TakeDmg(Projectile project, Color _color, float time)
+    private void TakeDmg(float curDmg, Projectile project, Color _color, float time)
     {
         if (isDie || !gameObject.activeSelf)
             return;
@@ -180,7 +180,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         float defenseIgnore = enemyStat.defense * (1f - project.projectileStat.ignoreDefense);
         float defenseRatio = Mathf.Round(100f / (100f + defenseIgnore) * 10f) / 10f;
 
-        float totalDmg = (project.dmg + (curHp * (cm.proportionHP / 100)))
+        float totalDmg = (curDmg + (curHp * (cm.proportionHP / 100)))
             * defenseRatio; // 총 데미지 (데미지 + 체력비례 데미지) * 방어력
 
         totalDmg = curHp - totalDmg < enemyStat.hp * cm.execution ? curHp : totalDmg; // 만약 체력보다 더 큰 피해가 들어오면 체력으로 대체 (체력 0을 맞추기 위함)
@@ -220,7 +220,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     {
         if(project.projectileStat.attribute == Attribute.None) // 일반 공격
         {
-            TakeDmg(project, Color.red, 0.05f);
+            TakeDmg(project.dmg, project, Color.red, 0.05f);
         }
         else // 디버프 공격
         {
@@ -230,32 +230,32 @@ public class Enemy : MonoBehaviour, IPoolObject
             switch (kind)
             {
                 case Attribute.Fire: // 불 공격
-                    if (debuffState[kind])
-                        project.dmg *= 2 + cm.dmgFire; // Charac 15
-                    debuffState[kind] = true;
+                    float curDmg = (float)Math.Round(project.dmg / 10f, 1);
 
-                    project.dmg = (float)Math.Round(project.dmg / 10, 1);
+                    if (debuffState[kind])
+                        curDmg *= 2 + cm.dmgFire; // Charac 15
+                    debuffState[kind] = true;
 
                     int dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
                     for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(project, Color.red, 0.1f);
+                        TakeDmg(curDmg, project, Color.red, 0.1f);
                         yield return new WaitForSeconds(0.3f);
                     }
                     break;
                 case Attribute.Germ: // 독 공격
-                    if (debuffState[kind])
-                        project.dmg *= 2 + cm.dmgGerm; // Charac 22
-                    debuffState[kind] = true;
+                    curDmg = (float)Math.Round(project.dmg / 10f, 1);
 
-                    project.dmg = (float)Math.Round(project.dmg / 10, 1);
+                    if (debuffState[kind])
+                        curDmg *= 2 + cm.dmgGerm; // Charac 22
+                    debuffState[kind] = true;
 
                     dmgCount = Mathf.CeilToInt(attributePower / 1 + GetStrengthModifier()); // 반복 횟수(올림)
 
                     for (int i = 0; i < dmgCount; i++)
                     {
-                        TakeDmg(project, Color.black, 0.1f);
+                        TakeDmg(curDmg, project, Color.black, 0.1f);
                         yield return new WaitForSeconds(0.3f);
                     }
                     break;
@@ -264,14 +264,14 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                     if (debuffState[kind])
                     {
-                        TakeDmg(project, Color.cyan, 0.1f);
+                        TakeDmg(project.dmg, project, Color.cyan, 0.1f);
                         yield break;
                     }
                     debuffState[kind] = true;
                     float slowDuration = Mathf.Min(attributePower - GetStrengthModifier(), 4); // 지속 시간
                     float slowPercent = attributePower / (10 + enemyStat.strength); // 슬로우 %
 
-                    TakeDmg(project, Color.cyan, slowDuration);
+                    TakeDmg(project.dmg, project, Color.cyan, slowDuration);
 
                     //슬로우
                     speed *= Mathf.Max(1 - slowPercent, 0.2f); // 느려진 속도(최대 80%)
@@ -284,14 +284,14 @@ public class Enemy : MonoBehaviour, IPoolObject
 
                     if (debuffState[kind])
                     {
-                        TakeDmg(project, Color.blue, 0.1f);
+                        TakeDmg(project.dmg, project, Color.blue, 0.1f);
                         yield break;
                     }
 
                     debuffState[kind] = true;
                     float stunDuration = Mathf.Min(attributePower - GetStrengthModifier(), 4); // 최대 4초
 
-                    TakeDmg(project, Color.blue, stunDuration);
+                    TakeDmg(project.dmg, project, Color.blue, stunDuration);
 
                     //스턴
                     isStop = true;
@@ -344,7 +344,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         hpSlider.value = imsi; // 최종 값을 설정하여 정확히 일치하도록 합니다.
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         StopAllCoroutines();
 
@@ -380,6 +380,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         switch (enemyStat.enemyType)
         {
+            case EnemyType.BOSS:
             case EnemyType.Portion:
                 anim.SetTrigger("Die");
                 break;

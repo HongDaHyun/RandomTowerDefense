@@ -8,7 +8,7 @@ public class WaveManager : Singleton<WaveManager>
     public int maxWaveEnemy;
     public bool isWave;
     public List<Wave> waves;
-    public float readyTime, perEnemyPower = 3f;
+    public float readyTime;
 
     private void Start()
     {
@@ -26,20 +26,9 @@ public class WaveManager : Singleton<WaveManager>
 
         SoundManager.Instance.PlaySFX("EndWave"); // 사운드
 
-        // 클리어
-        if (curWave == 20 && gm.level != Level.Infinite)
-        {
-            gm.GameClear();
-            return;
-        }
-
-        // 최대 웨이브 도달 시 모든 적 동기화
-        if (curWave == 20)
-        {
-            cl.SetAllEnemy();
-            if (gm.level == Level.Infinite)
-                perEnemyPower += 5f;
-        }
+        // 무한 모드에서 21 웨이브 이상 시
+        if(curWave >= 21)
+            cl.UpgradeAllEnemy(UpEnemy.Hp, 10f); // 체력 10%씩 증가
 
         // 웨이브 종료 시 변수 설정
         gm.GainGatcha(waveGatcha); // 키 증가
@@ -48,7 +37,6 @@ public class WaveManager : Singleton<WaveManager>
 
         curWave++; //웨이브 시작 시 curWave 증가
         um.upPannel.SetWaveTxt(gm); // UI
-        cl.UpgradeAllEnemy(UpEnemy.Hp, (int)gm.level * perEnemyPower); // 적 HP 증가
         um.upPannel.ToggleCurWavePannel(false);
 
         // Quest Cool
@@ -137,6 +125,18 @@ public class WaveManager : Singleton<WaveManager>
         }
 
         waves.Add(newWave);
+    }
+
+    public void BossWaveEnd()
+    {
+        GameManager gm = GameManager.Instance;
+        CSVList cl = CSVReader.Instance.csvList;
+
+        // 무한 모드 일때
+        if (gm.level == Level.Infinite)
+            cl.SetAllEnemy(); // 적 체력 동기화
+        else
+            gm.GameClear();
     }
 }
 

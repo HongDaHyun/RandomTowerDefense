@@ -2121,6 +2121,7 @@ MonoBehaviour:
   curExp: 0
   increaseExp: 0
   plusExp: 0
+  increaseHP_enemy: 0
   probability: 520000000a0000000500000003000000
   saveDirectory: Saves/Alpha2
 --- !u!1 &200872651
@@ -13854,7 +13855,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2.1
+  m_Text: 2.2
 --- !u!222 &1588017330
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15169,7 +15170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ver 2.1
+  m_Text: Ver 2.2
 --- !u!222 &1810173137
 CanvasRenderer:
   m_ObjectHideFlags: 0

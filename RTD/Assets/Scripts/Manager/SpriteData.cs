@@ -8,6 +8,7 @@ public class SpriteData : Singleton<SpriteData>
     public Sprite[] CharacIcon;
     public Sprite[] CharacMaxIcon;
     public Sprite[] typeIcon;
+    public Sprite[] bossIcon;
     public TileMapSprite[] tileMapSprites;
 }
 

@@ -29,3 +29,4 @@ Name,Type,Tier,Hp,Strength,Defense,MoveSpeed
 노랑포션,Portion,Rare,300,15,0,3.7
 검스컬,Skeleton,Rare,350,0,-5,3
 풀라임,Slime,Rare,400,50,-5,3
+죽음,BOSS,Boss,30000000,0,0,2.5

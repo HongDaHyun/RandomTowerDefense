@@ -14,24 +14,29 @@ public class CSVReader : Singleton<CSVReader>
 
         ShopStat[] shopStat = csvList.shopStat;
 
-        csvList.UpgradeAllUnit_Begin(UpUnit.Dmg, shopStat[0].curLevel * shopStat[0].condition);
-        csvList.UpgradeAllUnit_Begin(UpUnit.AtkSpeed, shopStat[1].curLevel * shopStat[1].condition);
-        csvList.UpgradeAllUnit_Begin(UpUnit.Range, shopStat[2].curLevel * shopStat[2].condition);
-        csvList.UpgradeAllUnit_Begin(UpUnit.CritPercent, shopStat[3].curLevel * shopStat[3].condition);
-        csvList.UpgradeAllUnit_Begin(UpUnit.CritDmg, shopStat[4].curLevel * shopStat[4].condition);
+        // 상점 스탯
+        csvList.UpgradeAllUnit_Begin(UpUnit.Dmg, shopStat[0].curLevel * shopStat[0].condition); // 데미지
+        csvList.UpgradeAllUnit_Begin(UpUnit.AtkSpeed, shopStat[1].curLevel * shopStat[1].condition); // 공속
+        csvList.UpgradeAllUnit_Begin(UpUnit.Range, shopStat[2].curLevel * shopStat[2].condition); // 사거리
+        csvList.UpgradeAllUnit_Begin(UpUnit.CritPercent, shopStat[3].curLevel * shopStat[3].condition); // 크리티컬 확률
+        csvList.UpgradeAllUnit_Begin(UpUnit.CritDmg, shopStat[4].curLevel * shopStat[4].condition); // 크리티컬 데미지
 
-        csvList.UpgradeAllProjectile("Size", shopStat[5].curLevel * shopStat[5].condition);
-        csvList.UpgradeAllProjectile("Speed", shopStat[6].curLevel * shopStat[6].condition);
-        csvList.UpgradeAllAttribute(shopStat[7].curLevel * shopStat[7].condition);
+        csvList.UpgradeAllProjectile("Size", shopStat[5].curLevel * shopStat[5].condition); // 투사체 크기
+        csvList.UpgradeAllProjectile("Speed", shopStat[6].curLevel * shopStat[6].condition); // 이동속도
+        csvList.UpgradeAllAttribute(shopStat[7].curLevel * shopStat[7].condition); // 디버프
 
-        gm.maxHealth += (int)(shopStat[8].curLevel * shopStat[8].condition);
+        gm.maxHealth += (int)(shopStat[8].curLevel * shopStat[8].condition); // 최대 체력
         gm.curHealth = gm.maxHealth; // 싱글톤 순서 오류로 QuestManager에 접근하지 않게 GainMaxHealth 함수 사용하지 않음
-        gm.healthRegen = (int)(shopStat[9].curLevel * shopStat[9].condition);
-        gm.plusExp = (int)(shopStat[10].curLevel * shopStat[10].condition);
+        gm.healthRegen = (int)(shopStat[9].curLevel * shopStat[9].condition); // 체력 재생
+        gm.plusExp = (int)(shopStat[10].curLevel * shopStat[10].condition); // 추가 경험치
+
         // 확률 초기화
         gm.probability = new int[] { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
-        gm.probability[2] += (int)(shopStat[11].curLevel * shopStat[11].condition);
-        gm.probability[3] += (int)(shopStat[11].curLevel * shopStat[11].condition);
+        gm.probability[2] += (int)(shopStat[11].curLevel * shopStat[11].condition); // 에픽 확률
+        gm.probability[3] += (int)(shopStat[11].curLevel * shopStat[11].condition); // 레전드 확률
+
+        // 레벨에 따른 적 체력 증가
+        csvList.UpgradeAllEnemy(UpEnemy.Hp, gm.increaseHP_enemy);
     }
 
     #region ExcelRead

@@ -43,7 +43,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
         wm.isWave = true;
 
-        if (wm.curWave > 20) // maxWave를 넘길 시
+        if (wm.curWave > 21) // maxWave를 넘길 시
             wm.RanWave();
 
         StartCoroutine(SpawnEnemyRoutine(wm.waves[wm.curWave - 1]));
