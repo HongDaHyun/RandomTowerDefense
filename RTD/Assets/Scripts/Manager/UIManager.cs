@@ -35,6 +35,7 @@ public class UIManager : Singleton<UIManager>
     public Text gameSpeedTxt;
     public GameOverPannel gameOverPannel;
     public TextMeshProUGUI helpTxt;
+    public WarningPannel warningPannel;
 
     protected override void Awake()
     {
@@ -649,4 +650,11 @@ public class GameOverPannel
         BtnManager.Instance.Tab(pannel);
         BtnManager.Instance.Pause();
     }
+}
+
+[Serializable]
+public struct WarningPannel
+{
+    public GameObject pannel;
+    public Image img;
 }

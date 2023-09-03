@@ -7,8 +7,8 @@ public class GameManager : Singleton<GameManager>
     public GameTime gameTime = GameTime.Slow;
     public bool isStart, is30, isTutorial, isSceneLoading;
     public ClearData[] clearData;
-    public int gatchaKey, maxHealth, curHealth, healthRegen, healthReduce, playerDefense, expLevel, maxExp, limitExp = 70, levelPoint, curMoney, killEnemyNum;
-    public float curExp, increaseExp, plusExp, increaseHP_enemy;
+    public int gatchaKey, maxHealth, curHealth, healthRegen, healthReduce, playerDefense, expLevel, maxExp, limitExp = 40, levelPoint, curMoney, killEnemyNum;
+    public float curExp, increaseExp, plusExp, increase_enemy;
     public int[] probability = { (int)ProTier.Common, (int)ProTier.Rare, (int)ProTier.Epic, (int)ProTier.Legend };
     public string saveDirectory = "Saves/Beta1";
 
@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
         //경험치
         expLevel = 1;
         maxExp = 1000;
-        limitExp = 70;
+        limitExp = 40; // 경험치 최대
         healthReduce = 0;
         playerDefense = 0;
         killEnemyNum = 0;
@@ -86,25 +86,25 @@ public class GameManager : Singleton<GameManager>
                 maxHealth = 30;
                 maxExp = 10;
                 increaseExp = 0.3f;
-                increaseHP_enemy = 0f;
+                increase_enemy = 0f;
                 break;
             case Level.Normal: // 보통
                 maxHealth = 25;
                 maxExp = 20;
                 increaseExp = 0.5f;
-                increaseHP_enemy = 50f;
+                increase_enemy = 50f;
                 break;
             case Level.Hard: // 어려움
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
-                increaseHP_enemy = 100f;
+                increase_enemy = 100f;
                 break;
             case Level.Infinite: // 무한
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
-                increaseHP_enemy = 100f;
+                increase_enemy = 100f;
                 break;
         }
 
@@ -262,7 +262,7 @@ public class GameManager : Singleton<GameManager>
         curExp = 0;
         expLevel++;
         levelPoint++;
-        maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), 40); // 최대 경험치 40
+        maxExp = Mathf.Min(maxExp + Mathf.RoundToInt(increaseExp * maxExp), limitExp);
 
         // 업적 (5 ~ 6)
         if (expLevel >= 50)

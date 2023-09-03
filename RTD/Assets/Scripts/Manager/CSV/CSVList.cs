@@ -146,10 +146,10 @@ public class CSVList
         {
             // CSV
             CSVUp_Unit(i, kind, value);
-
-            // Spawn
-            SpawnUp_Unit();
         }
+
+        // Spawn
+        SpawnUp_Unit();
 
         UIManager.Instance.info.UpdateUnitUI();
     }
@@ -246,32 +246,51 @@ public class CSVList
     public void UpgradeEnemy(string enemyName, UpEnemy kind, float value)
     {
         CSVUp_Enemy(IndexOfEnemy(enemyName), kind, value);
+
+        SpawnUp_Enemy(enemyName);
+
+        UIManager.Instance.info.UpdateEnemyUI();
     }
 
-    public void SetEnemy(List<EnemyStat> stats, EnemyStat stat)
+    public void UpgradeEnemy(List<EnemyStat> stats, UpEnemy kind, float value)
     {
         for (int i = 0; i < stats.Count; i++)
         {
-            stats[i] = stat;
+            // CSV
+            CSVUp_Enemy(IndexOfEnemy(stats[i].enemyName), kind, value);
+
+            SpawnUp_Enemy(stats[i].enemyName);
         }
+        UIManager.Instance.info.UpdateEnemyUI();
     }
 
     public void SetAllEnemy() // ¸ðµç À¯´Ö µ¿±âÈ­
     {
-        SetEnemy(FindEnemy(EnemyType.Golem), FindEnemy("³ì½¼°ñ·½"));
-        SetEnemy(FindEnemy(EnemyType.Human), FindEnemy("ÀÎÇüÅ»"));
-        SetEnemy(FindEnemy(EnemyType.Portion), FindEnemy("°ËÁ¤Æ÷¼Ç"));
-        SetEnemy(FindEnemy(EnemyType.Skeleton), FindEnemy("½ºÄ«½ºÄ«"));
-        SetEnemy(FindEnemy(EnemyType.Slime), FindEnemy("ºÒ¶óÀÓ"));
+        SetEnemy(FindEnemy(EnemyType.Golem), "³ì½¼°ñ·½");
+        SetEnemy(FindEnemy(EnemyType.Human), "ÀÎÇüÅ»");
+        SetEnemy(FindEnemy(EnemyType.Portion), "°ËÁ¤Æ÷¼Ç");
+        SetEnemy(FindEnemy(EnemyType.Skeleton), "½ºÄ«½ºÄ«");
+        SetEnemy(FindEnemy(EnemyType.Slime), "ºÒ¶óÀÓ");
     }
 
     public void UpgradeAllEnemy(UpEnemy kind, float value)
     {
         int length = enemyStat.Length;
         for (int i = 0; i < length; i++)
+        {
             CSVUp_Enemy(i, kind, value);
+        }
+        SpawnUp_Enemy();
 
         UIManager.Instance.info.UpdateEnemyUI();
+    }
+
+    public void SetEnemy(List<EnemyStat> stats, string s)
+    {
+        for(int i = 0; i < stats.Count; i++)
+        {
+            enemyStat[IndexOfEnemy(stats[i].enemyName)] = enemyStat[IndexOfEnemy(s)];
+        }
     }
 
     private void CSVUp_Enemy(int ID, UpEnemy kind, float value)
@@ -299,6 +318,17 @@ public class CSVList
                 enemyStat[ID].defense = Mathf.Round(enemyStat[ID].defense * percentValue * 100f) / 100f;
                 enemyStat[ID].moveSpeed = Mathf.Round(enemyStat[ID].moveSpeed * percentValue * 100f) / 100f;
                 break;
+        }
+    }
+    private void SpawnUp_Enemy(string enemyName)
+    {
+        SpawnManager.Instance.enemyList.FindAll(enemy => enemy.name == enemyName).ForEach(enemy => enemy.SetStat());
+    }
+    private void SpawnUp_Enemy() // All
+    {
+        for (int i = 0; i < SpawnManager.Instance.enemyList.Count; i++)
+        {
+            SpawnManager.Instance.enemyList[i].SetStat();
         }
     }
     #endregion

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class WaveManager : Singleton<WaveManager>
 {
@@ -25,6 +26,22 @@ public class WaveManager : Singleton<WaveManager>
         isWave = false;
 
         SoundManager.Instance.PlaySFX("EndWave"); // 사운드
+
+        // 보스전 경고창
+        if (curWave == 20)
+        {
+            um.warningPannel.pannel.SetActive(true);
+
+            Sequence seq = DOTween.Sequence().SetUpdate(true);
+
+            // 페이드 인 페이드 아웃
+            for(int i = 0; i < 3; i++) // 5번 반복
+            {
+                seq.Append(um.warningPannel.img.DOFade(0f, 1f))
+                   .Append(um.warningPannel.img.DOFade(1f, 1f));
+            }
+            seq.Append(um.warningPannel.img.DOFade(0f, 1f)).OnComplete(() => um.warningPannel.pannel.SetActive(false));
+        }
 
         // 무한 모드에서 21 웨이브 이상 시
         if(curWave >= 21)
@@ -99,12 +116,12 @@ public class WaveManager : Singleton<WaveManager>
 
         newWave.spawnTime = Mathf.Round(Random.Range(0.8f, 1.3f) * 10) / 10f; // 스폰 주기
         // 적 종류
-        int waveEnemyKind = Random.Range(3, 10);
+        int waveEnemyKind = Random.Range(2, 8);
         newWave.enemy = new WaveEnemy[waveEnemyKind];
 
         // 최대 적 수
         CountEnemyWave(waves[curWave - 2]);
-        int countNewWave = maxWaveEnemy + Random.Range(10, 21);
+        int countNewWave = maxWaveEnemy + Random.Range(2, 5);
         int countNum = countNewWave / waveEnemyKind;
         int countNumRes = countNewWave % waveEnemyKind;
 

@@ -162,11 +162,11 @@ public class CharacManager : Singleton<CharacManager>
         switch (characStat.ID)
         {
             case 0:
-                list.UpgradeAllEnemy(UpEnemy.All, -30f);
+                list.UpgradeAllEnemy(UpEnemy.All, -15f);
                 break;
             case 1:
-                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, 200f);
-                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, 200f);
+                list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.AtkSpeed, 100f);
+                list.UpgradeUnit(list.FindUnit(Tier.Rare), UpUnit.AtkSpeed, 100f);
                 break;
             case 2:
                 list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Fire), "Size", 100f);
@@ -220,7 +220,7 @@ public class CharacManager : Singleton<CharacManager>
                 gm.healthReduce++;
                 break;
             case 18:
-                list.UpgradeProjectile(ref list.FindProjectile_Ref(UnitType.Bow), "Speed", 200f);
+                list.UpgradeUnit(list.FindUnit(UnitType.Bow), UpUnit.Range, 100f);
                 break;
             case 19:
                 list.UpgradeUnit(list.FindUnit(UnitType.Bow), UpUnit.CritDmg, 100f);
@@ -258,7 +258,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllUnit(UpUnit.All, 20f);
                 break;
             case 30:
-                proportionHP += 3f;
+                proportionHP += 1f;
                 break;
             case 31:
                 list.UpgradeAllProjectile("Size", 80f);
@@ -267,7 +267,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeAllUnit(UpUnit.Range, 50f);
                 break;
             case 33:
-                list.UpgradeAllUnit(UpUnit.Dmg, SpawnManager.Instance.enemyList.Count * 3f);
+                list.UpgradeAllUnit(UpUnit.Dmg, SpawnManager.Instance.enemyList.Count * 2f);
                 break;
             case 34:
                 WaveManager.Instance.waveGatcha += 2;
@@ -276,7 +276,7 @@ public class CharacManager : Singleton<CharacManager>
                 list.UpgradeUnit(list.FindUnit(Tier.Common), UpUnit.All, 100f);
                 break;
             case 36:
-                gm.limitExp = 60;
+                gm.limitExp = 30;
                 break;
             case 37:
                 gm.healthReduce += 2;

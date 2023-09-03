@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     public virtual void OnGettingFromPool() //재사용
     {
         SetStat();
+        SetValue();
     }
 
     private void FixedUpdate()
@@ -78,10 +79,16 @@ public class Enemy : MonoBehaviour, IPoolObject
         hpSlider = GetComponentInChildren<Slider>();
     }
 
-    private void SetStat()
+    public void SetStat()
     {
+        if (enemyStat.enemyType == EnemyType.SlimeBaby)
+            return;
         enemyStat = cr.csvList.FindEnemy(name); //스탯 가져오기
+        speed = enemyStat.moveSpeed / 100;
+    }
 
+    private void SetValue()
+    {
         //변수 초기화
         curHp = enemyStat.hp;
         curLife = maxLife;
@@ -93,8 +100,6 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         //위치 설정
         ResetWayPoint();
-
-        speed = enemyStat.moveSpeed / 100;
     }
 
     public void ResetDebuffStat()
@@ -296,7 +301,8 @@ public class Enemy : MonoBehaviour, IPoolObject
                     //스턴
                     isStop = true;
                     yield return new WaitForSeconds(stunDuration); //지속 시간
-                    isStop = false;
+                    if(!isDie)
+                        isStop = false;
 
                     break;
             }
@@ -358,7 +364,7 @@ public class Enemy : MonoBehaviour, IPoolObject
         }
 
         // 경험치 증가
-        gm.GainExp((int)enemyStat.tier);
+        gm.GainExp(Mathf.Min((int)enemyStat.tier, 10));
 
         // 웨이브 전체 몬스터
         um.upPannel.UpdateCurWave(-1);
@@ -401,6 +407,7 @@ public class Enemy : MonoBehaviour, IPoolObject
 
     public void Reborn()
     {
+        spriteRenderer.color = Color.white;
         isStop = false;
         isDie = false;
         curLife--;
