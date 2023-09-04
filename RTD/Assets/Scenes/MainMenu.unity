@@ -563,7 +563,7 @@ RectTransform:
   m_Father: {fileID: 611165909}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.7075472}
+  m_AnchorMin: {x: 0, y: 0.7155963}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -1489,7 +1489,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00024414062}
-  m_SizeDelta: {x: 0, y: 3000}
+  m_SizeDelta: {x: 0, y: 3120}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &134734159
 MonoBehaviour:
@@ -2337,7 +2337,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 28853998}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.29245278
+  m_Size: 0.2844037
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3087,7 +3087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -2490}
+  m_AnchoredPosition: {x: 360, y: -2610}
   m_SizeDelta: {x: 720, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289128039
@@ -7660,8 +7660,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -350}
-  m_SizeDelta: {x: 720, y: 640}
+  m_AnchoredPosition: {x: 360, y: -410}
+  m_SizeDelta: {x: 720, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &745083159
 MonoBehaviour:
@@ -9450,7 +9450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -2910}
+  m_AnchoredPosition: {x: 360, y: -3030}
   m_SizeDelta: {x: 720, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958247921
@@ -11522,7 +11522,9 @@ MonoBehaviour:
     AdventurousSeal1277: 58\uC810</color>\n<color=green>2. \uCD95\uD558\uD574\uC694:
     46\uC810</color>\n<color=brown>3. \uADC0\uC9C0\uC218: 43\uC810</color>\n\n- <color=cyan>~2.1\uC2DC\uC98C
     <color=orange>\uC0AC\uB9C9</color>\uB7AD\uD0B9:</color>\n<color=yellow>1. dhkslcldrn:
-    38\uC810</color>\n<color=green>2. jy256: 15\uC810</color>\n\n- \uBAA8\uB450 <color=white>\uCD95\uD558\uB4DC\uB9BD\uB2C8\uB2E4!</color>"
+    38\uC810</color>\n<color=green>2. jy256: 15\uC810</color>\n\n- <color=cyan>~2.1\uC2DC\uC98C
+    <color=orange>\uB3C4\uC2DC</color>\uB7AD\uD0B9:</color>\n<color=yellow>1. AdventurousSeal1277:
+    38\uC810</color>\n\n- \uBAA8\uB450 <color=white>\uCD95\uD558\uB4DC\uB9BD\uB2C8\uB2E4!</color>"
 --- !u!222 &1219361009
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14025,7 +14027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -930}
+  m_AnchoredPosition: {x: 360, y: -1050}
   m_SizeDelta: {x: 720, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1521564786
@@ -15223,7 +15225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -3650}
+  m_AnchoredPosition: {x: 360, y: -3770}
   m_SizeDelta: {x: 720, y: 1120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1674070530
@@ -15795,7 +15797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -1710}
+  m_AnchoredPosition: {x: 360, y: -1830}
   m_SizeDelta: {x: 720, y: 1040}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1743834731

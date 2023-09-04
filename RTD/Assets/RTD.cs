@@ -49,7 +49,7 @@ public static class RTD
         public const string achievement_15 = "CgkIhcm01ZQGEAIQFQ"; // <GPGSID>
         public const string achievement_45 = "CgkIhcm01ZQGEAIQMA"; // <GPGSID>
         public const string achievement_55 = "CgkIhcm01ZQGEAIQQg"; // <GPGSID>
-        public const string leaderboard = "CgkIhcm01ZQGEAIQBg"; // <GPGSID>
+        public const string leaderboard = "CgkIhcm01ZQGEAIQTA"; // <GPGSID>
         public const string achievement_7 = "CgkIhcm01ZQGEAIQDw"; // <GPGSID>
         public const string achievement_27 = "CgkIhcm01ZQGEAIQHg"; // <GPGSID>
         public const string achievement_37 = "CgkIhcm01ZQGEAIQKA"; // <GPGSID>
@@ -58,9 +58,9 @@ public static class RTD
         public const string achievement_57 = "CgkIhcm01ZQGEAIQRA"; // <GPGSID>
         public const string achievement_24 = "CgkIhcm01ZQGEAIQGw"; // <GPGSID>
         public const string achievement_9 = "CgkIhcm01ZQGEAIQEQ"; // <GPGSID>
-        public const string leaderboard_4 = "CgkIhcm01ZQGEAIQPg"; // <GPGSID>
-        public const string leaderboard_3 = "CgkIhcm01ZQGEAIQPQ"; // <GPGSID>
-        public const string leaderboard_2 = "CgkIhcm01ZQGEAIQPA"; // <GPGSID>
+        public const string leaderboard_4 = "CgkIhcm01ZQGEAIQTw"; // <GPGSID>
+        public const string leaderboard_3 = "CgkIhcm01ZQGEAIQTg"; // <GPGSID>
+        public const string leaderboard_2 = "CgkIhcm01ZQGEAIQTQ"; // <GPGSID>
         public const string achievement_61 = "CgkIhcm01ZQGEAIQSA"; // <GPGSID>
         public const string achievement_41 = "CgkIhcm01ZQGEAIQLA"; // <GPGSID>
         public const string achievement_26 = "CgkIhcm01ZQGEAIQHQ"; // <GPGSID>
