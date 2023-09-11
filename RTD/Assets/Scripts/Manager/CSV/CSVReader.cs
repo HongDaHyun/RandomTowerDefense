@@ -35,13 +35,15 @@ public class CSVReader : Singleton<CSVReader>
         gm.probability[2] += (int)(shopStat[11].curLevel * shopStat[11].condition); // 에픽 확률
         gm.probability[3] += (int)(shopStat[11].curLevel * shopStat[11].condition); // 레전드 확률
 
+        float enemyUpStat = gm.increase_enemy * ((int)gm.stage + 1);
+
         // 레벨에 따른 적 체력 증가
-        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Human), UpEnemy.Hp, gm.increase_enemy); // 사람형 체력 증가
-        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Golem), UpEnemy.Defense, gm.increase_enemy / 2f); // 골렘형 방어력 증가
-        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Portion), UpEnemy.MoveSpeed, gm.increase_enemy / 2f); // 포션형 이속 증가
-        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Skeleton), UpEnemy.Hp, gm.increase_enemy); // 스켈레톤형 체력 증가
-        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Slime), UpEnemy.Hp, gm.increase_enemy); // 슬라임형 체력 증가
-        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.BOSS), UpEnemy.Hp, gm.increase_enemy / 2f); // 보스형 체력 증가
+        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Human), UpEnemy.Hp, enemyUpStat); // 사람형 체력 증가
+        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Golem), UpEnemy.Defense, enemyUpStat / 2f ); // 골렘형 방어력 증가
+        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Portion), UpEnemy.MoveSpeed, enemyUpStat / 2f); // 포션형 이속 증가
+        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Skeleton), UpEnemy.Hp, enemyUpStat); // 스켈레톤형 체력 증가
+        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.Slime), UpEnemy.Hp, enemyUpStat); // 슬라임형 체력 증가
+        csvList.UpgradeEnemy(csvList.FindEnemy(EnemyType.BOSS), UpEnemy.Hp, enemyUpStat / 2f); // 보스형 체력 증가
     }
 
     #region ExcelRead

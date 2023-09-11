@@ -92,19 +92,19 @@ public class GameManager : Singleton<GameManager>
                 maxHealth = 25;
                 maxExp = 20;
                 increaseExp = 0.5f;
-                increase_enemy = 50f;
+                increase_enemy = 25f;
                 break;
             case Level.Hard: // 어려움
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
-                increase_enemy = 100f;
+                increase_enemy = 50f;
                 break;
             case Level.Infinite: // 무한
                 maxHealth = 20;
                 maxExp = 25;
                 increaseExp = 0.7f;
-                increase_enemy = 100f;
+                increase_enemy = 50f;
                 break;
         }
 

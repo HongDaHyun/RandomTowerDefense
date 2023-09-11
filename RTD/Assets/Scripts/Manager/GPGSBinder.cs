@@ -115,9 +115,7 @@ public class GPGSBinder
     // 클리어 업적 (1 ~ 3)
     public void ClearAchievement(Stage curStage, Level curLevel)
     {
-        int index = 0 + 3 * (int)curStage;
-
-        UnlockAchievement(clear[index + (int)curLevel]); // 레벨 클리어
+        UnlockAchievement(clear[3 * (int)curStage + (int)curLevel]); // 레벨 클리어
 
         if(curLevel == Level.Hard)
             UnlockAchievement(clear[Enum.GetValues(typeof(Stage)).Length * 3 + (int)curStage]); // 스테이지 클리어
