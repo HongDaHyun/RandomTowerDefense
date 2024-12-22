@@ -111,7 +111,7 @@ public class CharacManager : Singleton<CharacManager>
                 break;
             case 27:
                 iceGatcha = value;
-                GameManager.Instance.GainGatcha(Mathf.RoundToInt(SpawnManager.Instance.NumUnit(UnitType.Ice) * iceGatcha));
+                GameManager.Instance.GainGatcha(Mathf.CeilToInt(SpawnManager.Instance.NumUnit(UnitType.Ice) * iceGatcha));
                 break;
             case 28:
                 stats = list.FindUnit(UnitType.Thunder);

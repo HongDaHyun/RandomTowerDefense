@@ -104,5 +104,17 @@ public class Quest : MonoBehaviour
 
         // 비활성화
         gameObject.SetActive(false);
+
+        int activeQuestCount = 0;
+        foreach (Quest quest in UIManager.Instance.questPannel.quests)
+        {
+            if (quest.gameObject.activeSelf)
+            {
+                activeQuestCount++;
+            }
+        }
+
+        if (activeQuestCount <= 0)
+            BtnManager.Instance.RefreshQuestBtn();
     }
 }

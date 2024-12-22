@@ -521,7 +521,10 @@ public class QuestPannel
         coolTxt.text = string.Format("{0}/{1}", curCool, maxCool); // 퀘스트 쿨
 
         if (curCool >= maxCool)
+        {
+            notice.SetActive(true);
             refreshBtn.interactable = true;
+        }
     }
 }
 
@@ -605,8 +608,10 @@ public class GameOverPannel
 {
     public GameObject pannel;
     public Text title;
-    public Text killEnemyNum, curLevel, gatchaKey, curWave, level;
+    public Text killEnemyNum, curLevel, gatchaKey, curWave, stage, level;
     public Text total;
+    public RectTransform coinRect;
+    public Button titleBtn, restartBtn;
 
     public void SetUI(bool isClear)
     {
@@ -619,36 +624,71 @@ public class GameOverPannel
         int gatcha = gm.gatchaKey;
         int wave = WaveManager.Instance.curWave;
         Level gameLevel = gm.level;
-        int totalNum = (killNum + expLevel + gatcha + wave) * ((int)gameLevel + 1);
+        Stage curStage = gm.stage;
+        int totalNum = (killNum + expLevel + gatcha + wave) * ((int)curStage + 1) * ((int)gameLevel + 1);
 
-        killEnemyNum.text = $"처치한 적 수: +{killNum}";
-        curLevel.text = $"현재 레벨: +{expLevel}";
-        gatchaKey.text = $"남은 가챠 키: +{gatcha}";
-        curWave.text = $"현재 웨이브: +{wave}";
-        string levelTxt = "난이도: ";
+        killEnemyNum.text = "";
+        curLevel.text = "";
+        gatchaKey.text = "";
+        curWave.text = "";
+        stage.text = "";
+        level.text = "";
+
+        total.text = "";
+
+        string stageKO = "";
+        switch(curStage)
+        {
+            case Stage.Grass:
+                stageKO = "초원";
+                break;
+            case Stage.Desert:
+                stageKO = "사막";
+                break;
+            case Stage.Forest:
+                stageKO = "숲";
+                break;
+            case Stage.City:
+                stageKO = "도시";
+                break;
+        }
+
+        string levelKO = "";
         switch(gameLevel)
         {
             case Level.Easy:
-                levelTxt += "쉬움(×1.0)";
+                levelKO = "쉬움";
                 break;
             case Level.Normal:
-                levelTxt = "보통(×2.0)";
+                levelKO = "보통";
                 break;
             case Level.Hard:
-                levelTxt = "어려움(×3.0)";
+                levelKO = "어려움";
                 break;
             case Level.Infinite:
-                levelTxt = "무한(×4.0)";
+                levelKO = "무한";
                 break;
         }
-        level.text = levelTxt;
-
-        total.text = $"= {totalNum}";
 
         gm.EarnMoney(totalNum);
 
         BtnManager.Instance.Tab(pannel);
         BtnManager.Instance.Pause();
+
+        Sequence textSeq = DOTween.Sequence().SetUpdate(true);
+        textSeq.Append(killEnemyNum.DOText($"처치한 적 수: +{killNum}", 0.5f))
+            .Append(curLevel.DOText($"현재 레벨: +{expLevel}", 0.5f))
+            .Append(gatchaKey.DOText($"남은 가챠 키: +{gatcha}", 0.5f))
+            .Append(curWave.DOText($"현재 웨이브: +{wave}", 0.5f))
+            .Append(stage.DOText($"스테이지: {stageKO}(x{(int)curStage + 1}.0)", 0.5f))
+            .Append(level.DOText($"난이도: {levelKO}(x{(int)gameLevel + 1}.0)", 0.5f))
+            .Append(total.DOText($"= {totalNum}", 0.5f))
+            .Append(coinRect.DOScale(1f, 0.5f).SetEase(Ease.OutQuad))
+            .OnComplete(() =>
+            {
+                titleBtn.interactable = true;
+                restartBtn.interactable = true;
+            });
     }
 }
 

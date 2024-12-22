@@ -2593,8 +2593,12 @@ MonoBehaviour:
     curLevel: {fileID: 0}
     gatchaKey: {fileID: 0}
     curWave: {fileID: 0}
+    stage: {fileID: 0}
     level: {fileID: 0}
     total: {fileID: 0}
+    coinRect: {fileID: 0}
+    titleBtn: {fileID: 0}
+    restartBtn: {fileID: 0}
   helpTxt: {fileID: 0}
   warningPannel:
     pannel: {fileID: 0}

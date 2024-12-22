@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
-  atkSpeedCount: 0
+  totalDmg: 0
   anim: {fileID: 0}
   isAnim: 0
   defSprite: {fileID: 0}
@@ -123,7 +123,7 @@ Animator:
   m_GameObject: {fileID: 55855422068721460}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 43e75b0c589167d48935ed099efbc6f8, type: 2}
+  m_Controller: {fileID: 22100000, guid: 557c95db52c51a447971b69c76a21c41, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

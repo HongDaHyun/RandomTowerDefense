@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour, IPoolObject
     public float totalDmg;
     #endregion
     #region Animation
-    public Animator anim;
+    [HideInInspector] public Animator anim;
     public bool isAnim; //공격 방식 animation or default
     private SpriteRenderer render;
     public Sprite defSprite;
@@ -43,9 +43,6 @@ public class Unit : MonoBehaviour, IPoolObject
         StopAllCoroutines();
         SetStat();
         totalDmg = 0;
-
-        if (isAnim)
-            anim.SetBool("IsAtk", false);
 
         render.sprite = defSprite;
         StartCoroutine(DelayTarget());
@@ -93,23 +90,26 @@ public class Unit : MonoBehaviour, IPoolObject
     private IEnumerator SearchTarget()
     {
         isAtkCool = false;
+        attackTarget = null;
         while(true)
         {
+            List<Enemy> enemies = new List<Enemy>(sm.enemyList);
+
             float closetDistSqr = Mathf.Infinity;
-            for (int i = 0; i < sm.enemyList.Count; i++)
+            foreach(Enemy enemy in enemies)
             {
-                float distance = Vector2.Distance(sm.enemyList[i].transform.position,
-                    transform.position);
-                if(distance <= unitStat.range && distance <= closetDistSqr)
+                float distance = Vector2.Distance(enemy.transform.position, transform.position);
+                if (distance <= unitStat.range && distance <= closetDistSqr)
                 {
                     closetDistSqr = distance;
-                    attackTarget = sm.enemyList[i].transform;
+                    attackTarget = enemy.transform;
                 }
             }
 
-            if (attackTarget != null && attackTarget.gameObject.activeSelf && !attackTarget.GetComponent<Enemy>().isDie)
+            if (attackTarget != null && attackTarget.gameObject.activeSelf)
             {
                 ChangeState(UnitState.AttackToTarget);
+                break;
             }
             yield return null;
         }
@@ -117,36 +117,36 @@ public class Unit : MonoBehaviour, IPoolObject
 
     protected virtual IEnumerator AttackToTarget()
     {
-        RotateToTarget(); // 방향 설정
-        // 1. 사거리 벗어났는지 체크
-        float distance = Vector2.Distance(attackTarget.position, transform.position);
-        if (distance > unitStat.range)
-        {
-            attackTarget = null;
-            ChangeState(UnitState.SearchTarget);
-        }
-
-        // 2. 공격
-        if (isAnim && !isAtkCool)
-        {
-            anim.SetBool("IsAtk", true);
-        }
-        else
+        if(!isAtkCool)
         {
             isAtkCool = true;
+            RotateToTarget(); // 방향 설정
 
-            Shoot();
+            if (isAnim)
+            {
+                anim.SetTrigger("Atk");
 
-            yield return new WaitForSeconds(1f / unitStat.atkSpeed);
-            ChangeState(UnitState.SearchTarget);
+                // 공격 애니메이션 종료 대기
+                yield return new WaitUntil(() =>
+                    anim.GetCurrentAnimatorStateInfo(0).IsName("Atk"));
+                yield return new WaitUntil(() =>
+                    anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
+
+                StartCoroutine(AtkCoolAnim());
+            }
+            else
+            {
+                Shoot();
+
+                yield return new WaitForSeconds(1f / unitStat.atkSpeed);
+                ChangeState(UnitState.SearchTarget);
+            }
         }
     }
 
     // 애니메이션에서 작동
     IEnumerator AtkCoolAnim()
     {
-        isAtkCool = true;
-        anim.SetBool("IsAtk", false);
         yield return new WaitForSeconds(1f / unitStat.atkSpeed);
         ChangeState(UnitState.SearchTarget);
     }
