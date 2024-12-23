@@ -163,14 +163,12 @@ public class BtnManager : Singleton<BtnManager>
     {
         GameManager gm = GameManager.Instance;
 
-        AdMobManager.Instance.frontAd.OnAdClosed += (sender, e) => GameStartFX(gm.level.ToString());
-        AdMobManager.Instance.ShowFrontAd();
+        AdMobManager.Instance.ShowFrontAd(() => GameStartFX(gm.level.ToString()));
     }
 
     public void TitleAd()
     {
-        AdMobManager.Instance.frontAd.OnAdClosed += (sender, e) => TitleFX();
-        AdMobManager.Instance.ShowFrontAd();
+        AdMobManager.Instance.ShowFrontAd(() => TitleFX());
     }
 
     public void TitleFX()
@@ -330,7 +328,8 @@ public class BtnManager : Singleton<BtnManager>
         for (int i = 0; i < 3; i++)
         {
             ranID = UnityEngine.Random.Range(0, CSVReader.Instance.csvList.questStat.Length);
-            if (IDs.Contains(ranID)) // 중복이면 다시
+
+            if (IDs.Contains(ranID) || (ranID == 3 && GameManager.Instance.isTutorial)) // 중복이면 다시
                 i--;
             else
             {
@@ -389,7 +388,7 @@ public class BtnManager : Singleton<BtnManager>
         CSVList cl = CSVReader.Instance.csvList;
 
         cl.UpgradeShop(cl.FindShop(um.mainShopPannel.curSelect));
-        UIManager.Instance.mainShopPannel.UpdateSelectUI();
+        um.mainShopPannel.UpdateSelectUI();
     }
 
     public void UpdateShopPannel()
@@ -406,11 +405,6 @@ public class BtnManager : Singleton<BtnManager>
     public void ShowAchieve()
     {
         GPGSBinder.Inst.ShowAchievementUI();
-    }
-
-    public void TutoTextId()
-    {
-        UIManager.Instance.tutorialPannel.textId++;
     }
 
     public void TutoStart()

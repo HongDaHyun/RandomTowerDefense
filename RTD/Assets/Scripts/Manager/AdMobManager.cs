@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using UnityEngine.SceneManagement;
+using System;
 
 public class AdMobManager : Singleton<AdMobManager>
 {
     public bool isTestMode;
-
-    [HideInInspector]public int reward;
 
     void Start()
     {
@@ -78,20 +78,25 @@ public class AdMobManager : Singleton<AdMobManager>
 
     void LoadFrontAd()
     {
-        frontAd = new InterstitialAd(isTestMode ? frontTestID : frontID);
-
-        frontAd.LoadAd(GetAdRequest());
+        InterstitialAd.Load(isTestMode ? frontTestID : frontID, GetAdRequest(),
+            (InterstitialAd ad, LoadAdError error) => {
+                if (error != null || ad == null)
+                    LoadFrontAd();
+                else
+                    frontAd = ad;
+            });
     }
 
-    public void ShowFrontAd()
+    public void ShowFrontAd(Action onAdClosedCallback)
     {
-        if (!frontAd.CanShowAd())
+        if (!frontAd.CanShowAd() || frontAd == null)
         {
             BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
             LoadFrontAd();
             return;
         }
 
+        frontAd.OnAdFullScreenContentClosed += () => { onAdClosedCallback(); };
         frontAd.Show();
     }
 
@@ -114,26 +119,32 @@ public class AdMobManager : Singleton<AdMobManager>
 
     void LoadRewardAd()
     {
-        rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
-
-        rewardAd.OnUserEarnedReward += (sender, e) =>
-        {
-            GameManager.Instance.GainGatcha(reward);
-        };
-        rewardAd.LoadAd(GetAdRequest());
+        RewardedAd.Load(isTestMode ? frontTestID : frontID, GetAdRequest(),
+            (RewardedAd ad, LoadAdError error) => {
+                if (error != null || ad == null)
+                    LoadRewardAd();
+                else
+                    rewardAd = ad;
+            });
     }
 
     public void ShowRewardAd(int _reward)
     {
-        if (!rewardAd.CanShowAd())
+        if (!rewardAd.CanShowAd() || rewardAd == null)
         {
             BtnManager.Instance.HelpTxt(UIManager.Instance, "광고가 로드 중입니다. 잠시 후 다시 시도해주세요.");
             LoadRewardAd();
             return;
         }
 
-        reward = _reward;
-        rewardAd.Show();
+        rewardAd.Show(userReward =>
+        {
+            // 광고 보상 처리
+            if (userReward != null)
+            {
+                GameManager.Instance.GainGatcha(_reward);
+            }
+        });
         LoadRewardAd();
     }
 

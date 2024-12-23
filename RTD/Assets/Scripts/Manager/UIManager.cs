@@ -140,8 +140,8 @@ public class UIManager : Singleton<UIManager>
 [Serializable]
 public class MainShop
 {
-    public Text title, explain, cost, curMoney;
-    public Text[] shopLevel;
+    public TextMeshProUGUI title, explain, cost, curMoney;
+    public TextMeshProUGUI[] shopLevel;
     public Image icon;
     public int curSelect;
 
@@ -157,7 +157,7 @@ public class MainShop
             int shopIndex = shop.index;
 
             if (shop.curLevel < shop.maxLevel)
-                shopLevel[shopIndex].text = $"Lv {shop.curLevel}";
+                shopLevel[shopIndex].text = $"Lv{shop.curLevel}";
             else
             {
                 shopLevel[shopIndex].text = "Max";
@@ -173,9 +173,8 @@ public class MainShop
     {
         title.text = stat.shopName;
         icon.sprite = EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>().sprite;
-        explain.text = string.Format(stat.explanation, stat.condition);
+        explain.text = string.Format(stat.explanation, stat.condition, stat.condition * stat.curLevel);
         cost.text = CSVReader.Instance.csvList.CalCost(stat).ToString();
-        UpdateCurMoney();
     }
 
     public void UpdateCurMoney()
@@ -296,10 +295,10 @@ public struct EnemyInfo
 [Serializable]
 public class Tutiorial
 {
+    bool isTextEnd;
     public GameObject pannel;
     public Text text;
-    public int textId = 0;
-    public Button btn;
+    public Button gatchaBtn, questBtn, pauseBtn, gatchaXBtn, questXBtn;
 
     public RectTransform[] trans;
 
@@ -310,117 +309,114 @@ public class Tutiorial
         GameManager gm = GameManager.Instance;
 
         pannel.SetActive(true);
-        btn.interactable = false;
+        gatchaBtn.interactable = false;
+        questBtn.interactable = false;
+        pauseBtn.interactable = false;
+        gatchaXBtn.interactable = false;
+        questXBtn.interactable = false;
 
         Time.timeScale = 0;
-        DotText("유닛을 소환하고 싶은\n<color=green>타일</color>을 클릭해봐!");
+        DotText("유닛을 소환하고 싶은\n<color=green>타일</color>을 클릭해봐!", false);
 
-        yield return new WaitUntil(() => um.clickTile.activeSelf);
+        yield return new WaitUntil(() => um.clickTile.activeSelf && isTextEnd);
 
-        DotText("<color=brown>유닛 뽑기 버튼</color>을\n클릭해볼래?");
+        gatchaBtn.interactable = true;
+        DotText("<color=brown>유닛 뽑기 버튼</color>을\n클릭해볼래?", false);
         DotRect(0, true);
 
-        yield return new WaitUntil(() => um.gatchaPannel.gatchaPannel.activeSelf);
+        yield return new WaitUntil(() => um.gatchaPannel.gatchaPannel.activeSelf && isTextEnd);
 
         DotRect(0, false);
         Time.timeScale = (int)gm.gameTime / 10f;
-        DotText("<color=brown>Push버튼</color>을 <color=red>눌러!</color>");
-        yield return new WaitForSecondsRealtime(1.5f);
-        DotText("<color=red>두</color><color=yellow>구</color><color=green>두</color><color=blue>구</color>");
+        DotText("<color=brown>Push버튼</color>을 <color=red>눌러!</color>", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("<color=red>두</color><color=yellow>구</color><color=green>두</color><color=blue>구</color>", false);
+        gatchaBtn.interactable = false;
 
-        yield return new WaitUntil(() => sm.unitList.Count >= 1);
+        yield return new WaitUntil(() => sm.unitList.Count >= 1 && isTextEnd);
 
-        btn.interactable = true;
         Time.timeScale = 0;
-        DotText("나를 클릭해서\n<color=red>대화</color>를 이어가.");
-        yield return new WaitWhile(() => textId == 0);
-        DotText("유닛 소환 시 <color=brown>가챠 키\n1개</color>가 소모 돼.");
-        yield return new WaitWhile(() => textId == 1);
-        DotText("가챠 키 보유량은 <color=brown>왼쪽\n위</color>에서 확인 할 수 있어.");
-        yield return new WaitWhile(() => textId == 2);
-        DotText("같은 방법으로 유닛을\n하나 더 소환해볼래?");
-        Time.timeScale = (int)gm.gameTime / 10f;
-        btn.interactable = false;
+        DotText("유닛 소환 시 <color=brown>가챠 키\n1개</color>가 소모 돼.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("가챠 키 보유량은 <color=brown>왼쪽\n위</color>에서 확인 할 수 있어.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("같은 방법으로 유닛을\n하나 더 소환해볼래?", false);
+        gatchaBtn.interactable = true;
 
-        yield return new WaitUntil(() => sm.unitList.Count >= 2);
+        yield return new WaitUntil(() => sm.unitList.Count >= 2 && isTextEnd);
 
-        btn.interactable = true;
-        Time.timeScale = 0;
-        DotText("오! <color=brown>같은 유닛</color>이 나왔네!");
-        yield return new WaitWhile(() => textId == 3);
-        DotText("<color=brown>같은 유닛</color>을 합쳐볼까?");
-        yield return new WaitWhile(() => textId == 4);
-        DotText("두 유닛 중 하나를 클릭\n하고, 유닛 정보창에 있는\n<color=brown>+버튼</color>을 눌러볼래?");
-        Time.timeScale = (int)gm.gameTime / 10f;
-        btn.interactable = false;
+        gatchaBtn.interactable = false;
+        DotText("오! <color=brown>같은 유닛</color>이 나왔네!", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("<color=brown>같은 유닛</color>을 합쳐볼까?", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("두 유닛 중 하나를 클릭\n하고, 유닛 정보창에 있는\n<color=brown>+버튼</color>을 눌러볼래?", false);
 
-        yield return new WaitUntil(() => um.info.unitInfo.pannel.activeSelf);
+        yield return new WaitUntil(() => um.info.unitInfo.pannel.activeSelf && isTextEnd);
         DotRect(1, true);
 
-        yield return new WaitUntil(() => sm.unitList.Count < 2);
+        yield return new WaitUntil(() => sm.unitList.Count < 2 && isTextEnd);
 
-        btn.interactable = true;
+        Time.timeScale = 1;
         DotRect(1, false);
-        DotText("적을 처치할 때마다\n<color=green>경험치</color>가 쌓이고 <color=blue>레벨</color>이\n올라.");
-        yield return new WaitWhile(() => textId == 5);
-        DotText("<color=blue>레벨</color>이 오르면 <color=green>특성</color>을\n선택할 수 있어!");
-        yield return new WaitWhile(() => textId == 6);
-        DotText("참고로 <color=green>경험치</color>와 <color=blue>레벨</color>은\n왼쪽 위에서 볼 수 있어.");
-        yield return new WaitWhile(() => textId == 7);
-        DotText("일단 레벨을 1 올려줄 테니\n<color=green>특성Up! 버튼</color>을 눌러봐");
+        DotText("적을 처치할 때마다\n<color=green>경험치</color>가 쌓이고 <color=blue>레벨</color>이\n올라.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("<color=blue>레벨</color>이 오르면 <color=green>특성</color>을\n선택할 수 있어!", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("참고로 <color=green>경험치</color>와 <color=blue>레벨</color>은\n왼쪽 위에서 볼 수 있어.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("일단 레벨을 1 올려줄 테니\n<color=green>특성Up! 버튼</color>을 눌러봐", false);
         DotRect(2, true);
         gm.LevelUp(um);
-        btn.interactable = false;
+        Time.timeScale = 0;
 
-        yield return new WaitUntil(() => um.characCardPannel.pannel.activeSelf);
+        yield return new WaitUntil(() => um.characCardPannel.pannel.activeSelf && isTextEnd);
 
         DotRect(2, false);
-        DotText("원하는 <color=green>특성</color>을 선택해~");
+        DotText("원하는 <color=green>특성</color>을 선택해~", false);
+        yield return new WaitUntil(() => !um.rayCastPannel.activeSelf && isTextEnd);
 
-        yield return new WaitUntil(() => !um.rayCastPannel.activeSelf);
-
-        btn.interactable = true;
-        DotText("적이 최종 지점에 다다르면\n오른쪽 위 <color=red>체력</color>이 깎이고");
-        yield return new WaitWhile(() => textId == 8);
-        DotText("0미만이 되면 <color=red>게임오버</color>야.");
-        yield return new WaitWhile(() => textId == 9);
-        DotText("<color=green>퀘스트 버튼</color>을 눌러볼래?");
+        DotText("적이 최종 지점에 다다르면\n오른쪽 위 <color=red>체력</color>이 깎이고", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("0미만이 되면 <color=red>게임오버</color>야.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("<color=green>퀘스트 버튼</color>을 눌러볼래?", false);
         DotRect(3, true);
-        btn.interactable = false;
+        questBtn.interactable = true;
+        Time.timeScale = 0;
 
-        yield return new WaitUntil(() => um.questPannel.pannel.activeSelf);
+        yield return new WaitUntil(() => um.questPannel.pannel.activeSelf && isTextEnd);
 
-        btn.interactable = true;
         DotRect(3, false);
-        DotText("<color=green>퀘스트</color>는 클리어 시\n<color=white>하얀색</color>으로 변하고,");
-        yield return new WaitWhile(() => textId == 10);
-        DotText("클릭 시 <color=brown>보상</color>을\n받을 수 있어.");
-        yield return new WaitWhile(() => textId == 11);
-        DotText("새로운 <color=green>퀘스트</color>를 받고\n싶다면, 왼쪽 <color=gray>리롤\n버튼</color>을 누르면 돼.");
-        yield return new WaitWhile(() => textId == 12);
-        DotText("<color=gray>리롤 버튼</color>의 쿨은 <color=brown>3웨이브</color>\n마다 돌아.");
-        yield return new WaitWhile(() => textId == 13);
-        DotText("뭐 이 정도면 된거같네!");
-        yield return new WaitWhile(() => textId == 14);
-        DotText("그럼 <color=brown>실전</color>에서 봐~~ 안녕!");
-        btn.interactable = false;
-        yield return new WaitForSecondsRealtime(2f);
+        DotText("<color=green>퀘스트</color>는 클리어 시\n<color=white>하얀색</color>으로 변하고,", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("클릭 시 <color=brown>보상</color>을\n받을 수 있어.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("새로운 <color=green>퀘스트</color>를 받고\n싶다면, 왼쪽 <color=gray>리롤\n버튼</color>을 누르면 돼.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("<color=gray>리롤 버튼</color>의 쿨은 <color=brown>3웨이브</color>\n마다 돌아.", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("뭐 이 정도면 된거같네!", true);
+        yield return new WaitUntil(() => isTextEnd);
+        DotText("그럼 <color=brown>실전</color>에서 봐~~ 안녕!", true);
+        yield return new WaitUntil(() => isTextEnd);
 
         GPGSBinder.Inst.ETCAchievement(RTD.achievement_4); // 업적 4
         gm.isTutorial = false;
         BtnManager.Instance.TitleFX();
     }
 
-    private void DotText(string s)
+    private void DotText(string s, bool delay)
     {
+        isTextEnd = false;
         text.text = "";
-        text.DOText(s, 1f, true).SetUpdate(true);
+        text.DOText(s, 1f, true).SetUpdate(true).OnComplete(() => DOVirtual.DelayedCall(delay ? 2f : 0f, () => isTextEnd = true));
     }
 
     private void DotRect(int i, bool isScale)
     {
         if (isScale)
-            trans[i].DOScale(1.5f, 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce).SetUpdate(true);
+            trans[i].DOScale(1.3f, 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce).SetUpdate(true);
         else
             trans[i].DOScale(1f, 0.5f).SetEase(Ease.InOutExpo).SetUpdate(true);
     }
@@ -585,6 +581,7 @@ public class LevelUpBtn
     public Button btn;
     public GameObject img;
     public Text text;
+    public TextMeshProUGUI tmpro;
 
     public void SetUI()
     {
@@ -594,12 +591,32 @@ public class LevelUpBtn
             img.SetActive(true);
             btn.interactable = true;
             text.text = gm.levelPoint.ToString();
+            SetTmPro();
         }
         else
         {
             img.SetActive(false);
             btn.interactable = false;
         }
+    }
+
+    private void SetTmPro()
+    {
+        SpawnManager sm = SpawnManager.Instance;
+
+        int bowC, fighterC, fireC, germC, gunC, iceC, thunderC, swordC;
+
+        bowC = sm.NumUnit(UnitType.Bow);
+        fighterC = sm.NumUnit(UnitType.Fighter);
+        fireC = sm.NumUnit(UnitType.Fire);
+        germC = sm.NumUnit(UnitType.Germ);
+        gunC = sm.NumUnit(UnitType.Gun);
+        iceC = sm.NumUnit(UnitType.Ice);
+        thunderC = sm.NumUnit(UnitType.Thunder);
+        swordC = sm.NumUnit(UnitType.Sword);
+
+        tmpro.text = $"<sprite=1>: {bowC}개 <sprite=2>: {fighterC}개 <sprite=3>: {fireC}개 <sprite=4>: {germC}개\n" +
+            $"<sprite=5>: {gunC}개 <sprite=7>: {iceC}개 <sprite=8>: {thunderC}개 <sprite=9>: {swordC}개";
     }
 }
 

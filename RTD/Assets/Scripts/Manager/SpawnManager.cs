@@ -95,7 +95,6 @@ public class SpawnManager : Singleton<SpawnManager>
         Enemy babySlime = PoolManager.Instance.GetFromPool<Enemy>($"작{bigSlime.enemyStat.enemyName}");
         enemyList.Add(babySlime);
         UIManager.Instance.upPannel.UpdateCurWave(1); // 전체 웨이브 몬스터 증가(새로운 슬라임이 생성되었기 때문)
-        GameManager.Instance.killEnemyNum--;
 
         //위치 조정
         float ranPos = Random.Range(-5, 5) / 10f;

@@ -19,7 +19,7 @@ public class TierParticle : MonoBehaviour
     IEnumerator LifeDuration()
     {
         ps.Play();
-        yield return new WaitForSeconds(ps.duration);
+        yield return new WaitForSeconds(ps.main.duration);
         ps.Pause();
     }
 }

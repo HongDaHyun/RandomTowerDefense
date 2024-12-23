@@ -368,7 +368,8 @@ public class Enemy : MonoBehaviour, IPoolObject
 
         // 웨이브 전체 몬스터
         um.upPannel.UpdateCurWave(-1);
-        gm.killEnemyNum++;
+        if(enemyStat.enemyType != EnemyType.SlimeBaby)
+            gm.killEnemyNum++;
 
         SpawnManager.Instance.DeSpawnEnemy(this);
     }
