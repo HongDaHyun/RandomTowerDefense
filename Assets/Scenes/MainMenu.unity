@@ -908,7 +908,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &79720817
 RectTransform:
@@ -1683,7 +1683,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &143997905
 RectTransform:
@@ -3088,7 +3088,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &285997612
 RectTransform:
@@ -3828,7 +3828,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!224 &337795285
 RectTransform:
@@ -4756,7 +4756,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &475307176
 RectTransform:
@@ -5535,7 +5535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &556712719
 RectTransform:
@@ -6167,7 +6167,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &622485701
 RectTransform:
@@ -7096,7 +7096,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &747521028
 RectTransform:
@@ -7359,7 +7359,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &798595319
 RectTransform:
@@ -7701,7 +7701,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &848343352
 RectTransform:
@@ -7836,7 +7836,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &853294221
 RectTransform:
@@ -9604,7 +9604,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1035700308
 RectTransform:
@@ -10783,7 +10783,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1204527842
 RectTransform:
@@ -11814,7 +11814,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1332494985
 RectTransform:
@@ -12598,82 +12598,82 @@ MonoBehaviour:
     projectileStat: []
     shopStat:
     - shopName: "\uAD34\uB825"
-      explanation: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9\uB825 {0}% \uC99D\uAC00 (+{1}%)"
+      explanation: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9\uB825 {0}% \uC99D\uAC00 <color=red>(+{1}%)"
       condition: 3
       curLevel: 0
       maxLevel: 10
       index: 0
     - shopName: "\uCE58\uC18D"
       explanation: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9 \uC18D\uB3C4 {0}% \uC99D\uAC00
-        (+{1}%)"
+        <color=red>(+{1}%)"
       condition: 5
       curLevel: 0
       maxLevel: 10
       index: 1
     - shopName: "\uC7A5\uD3EC"
-      explanation: "\uB808\uBCA8 \uB2F9 \uC0AC\uAC70\uB9AC {0}% \uC99D\uAC00 (+{1}%)"
+      explanation: "\uB808\uBCA8 \uB2F9 \uC0AC\uAC70\uB9AC {0}% \uC99D\uAC00 <color=red>(+{1}%)"
       condition: 4
       curLevel: 0
       maxLevel: 10
       index: 2
     - shopName: "\uAE09\uC18C"
       explanation: "\uB808\uBCA8 \uB2F9 \uCE58\uBA85\uD0C0 \uD655\uB960 {0}% \uC99D\uAC00
-        (+{1}%)"
+        <color=red>(+{1}%)"
       condition: 5
       curLevel: 0
       maxLevel: 10
       index: 3
     - shopName: "\uC874\uBA85"
       explanation: "\uB808\uBCA8 \uB2F9 \uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0 {0}%
-        \uC99D\uAC00 (+{1}%)"
+        \uC99D\uAC00 <color=red>(+{1}%)"
       condition: 10
       curLevel: 0
       maxLevel: 10
       index: 4
     - shopName: "\uB3CB\uBCF4\uAE30"
       explanation: "\uB808\uBCA8 \uB2F9 \uD22C\uC0AC\uCCB4 \uD06C\uAE30 {0}% \uC99D\uAC00
-        (+{1}%)"
+        <color=red>(+{1}%)"
       condition: 7
       curLevel: 0
       maxLevel: 5
       index: 5
     - shopName: "\uBE5B"
       explanation: "\uB808\uBCA8 \uB2F9 \uD22C\uC0AC\uCCB4 \uC18D\uB3C4 {0}% \uC99D\uAC00
-        (+{1}%)"
+        <color=red>(+{1}%)"
       condition: 6
       curLevel: 0
       maxLevel: 10
       index: 6
     - shopName: "\uB514\uBC84\uD504"
       explanation: "\uB808\uBCA8 \uB2F9 \uB514\uBC84\uD504 \uD6A8\uACFC\uC640 \uC9C0\uC18D
-        \uC2DC\uAC04(\uD2F1) {0} \uC99D\uAC00 (+{1})"
+        \uC2DC\uAC04(\uD2F1) {0} \uC99D\uAC00 <color=red>(+{1})"
       condition: 1
       curLevel: 0
       maxLevel: 10
       index: 7
     - shopName: "\uB3FC\uC9C0"
-      explanation: "\uB808\uBCA8 \uB2F9 \uCCB4\uB825 {0} \uC99D\uAC00 (+{1})"
+      explanation: "\uB808\uBCA8 \uB2F9 \uCCB4\uB825 {0} \uC99D\uAC00 <color=red>(+{1})"
       condition: 3
       curLevel: 0
       maxLevel: 20
       index: 8
     - shopName: "\uC880\uBE44"
       explanation: "\uB808\uBCA8 \uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uB7C9 {0} \uC99D\uAC00
-        (+{1})"
+        <color=red>(+{1})"
       condition: 1
       curLevel: 0
       maxLevel: 10
       index: 9
     - shopName: "\uB2A5\uC219"
       explanation: "\uB808\uBCA8 \uB2F9 \uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 {0}%
-        \uC99D\uAC00 (+{1}%)"
+        \uC99D\uAC00 <color=red>(+{1}%)"
       condition: 1
       curLevel: 0
       maxLevel: 10
       index: 10
     - shopName: "\uD589\uC6B4"
       explanation: "\uB808\uBCA8 \uB2F9 \uB192\uC740 \uB4F1\uAE09\uC758 \uC720\uB2DB
-        \uB730 \uD655\uB960 {0}% \uC99D\uAC00 (+{1}%)"
+        \uB730 \uD655\uB960 {0}% \uC99D\uAC00 <color=red>(+{1}%)"
       condition: 1
       curLevel: 0
       maxLevel: 10
@@ -13064,7 +13064,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1476055165
 RectTransform:
@@ -14898,7 +14898,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1723605557
 RectTransform:
@@ -17496,7 +17496,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &2055256472
 RectTransform:
@@ -18126,6 +18126,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dmg
       objectReference: {fileID: 0}
+    - target: {fileID: 1360480976543917745, guid: e023a59fc92492b41b20504ff5437445, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473765855373817687, guid: e023a59fc92492b41b20504ff5437445, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440034239389428261, guid: e023a59fc92492b41b20504ff5437445, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591531463426270856, guid: e023a59fc92492b41b20504ff5437445, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739932984547421034, guid: e023a59fc92492b41b20504ff5437445, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6658765705880782320, guid: e023a59fc92492b41b20504ff5437445, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -18138,6 +18158,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1063790084}
+    - target: {fileID: 6864940649650308681, guid: e023a59fc92492b41b20504ff5437445, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687108089904999227, guid: e023a59fc92492b41b20504ff5437445, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e023a59fc92492b41b20504ff5437445, type: 3}
 --- !u!224 &6658765705880782317 stripped

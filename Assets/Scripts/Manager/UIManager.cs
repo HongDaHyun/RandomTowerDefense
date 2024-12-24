@@ -32,7 +32,7 @@ public class UIManager : Singleton<UIManager>
     public PausePannel pausePannel;
     public CharacteristicCard[] cards;
     public GameObject slotObj;
-    public Text gameSpeedTxt;
+    public TextMeshProUGUI gameSpeedTxt;
     public GameOverPannel gameOverPannel;
     public TextMeshProUGUI helpTxt;
     public WarningPannel warningPannel;
@@ -149,6 +149,7 @@ public class MainShop
     {
         CSVList cl = CSVReader.Instance.csvList;
         ShopStat[] shops = cl.shopStat;
+        ShopStat curStat = cl.FindShop(curSelect);
 
         // SelectPannel
 
@@ -165,7 +166,8 @@ public class MainShop
             }
         }
 
-        cost.text = cl.CalCost(cl.FindShop(curSelect)).ToString();
+        cost.text = cl.CalCost(curStat).ToString();
+        explain.text = string.Format(curStat.explanation, curStat.condition, curStat.condition * curStat.curLevel);
         UpdateCurMoney();
     }
 
@@ -277,7 +279,7 @@ public struct UnitInfo
     public GameObject pannel;
     public Image img, icon;
     public UnitRange unitRange;
-    public Text nameTxt, dmgTxt, atkSpeedTxt, rangeTxt, critPercentTxt, critDmgTxt, totalDmgTxt;
+    public TextMeshProUGUI nameTxt, dmgTxt, atkSpeedTxt, rangeTxt, critPercentTxt, critDmgTxt, totalDmgTxt;
 
     [HideInInspector]public Unit select;
 }
@@ -287,7 +289,7 @@ public struct EnemyInfo
 {
     public GameObject pannel;
     public Image img;
-    public Text nameTxt, hpTxt, moveSpeedTxt, defenseTxt, strengthTxt;
+    public TextMeshProUGUI nameTxt, hpTxt, moveSpeedTxt, defenseTxt, strengthTxt;
 
     [HideInInspector]public Enemy select;
 }
@@ -297,7 +299,7 @@ public class Tutiorial
 {
     bool isTextEnd;
     public GameObject pannel;
-    public Text text;
+    public TextMeshProUGUI text;
     public Button gatchaBtn, questBtn, pauseBtn, gatchaXBtn, questXBtn;
 
     public RectTransform[] trans;
@@ -321,14 +323,14 @@ public class Tutiorial
         yield return new WaitUntil(() => um.clickTile.activeSelf && isTextEnd);
 
         gatchaBtn.interactable = true;
-        DotText("<color=brown>유닛 뽑기 버튼</color>을\n클릭해볼래?", false);
+        DotText("<color=red>유닛 뽑기 버튼</color>을\n클릭해볼래?", false);
         DotRect(0, true);
 
         yield return new WaitUntil(() => um.gatchaPannel.gatchaPannel.activeSelf && isTextEnd);
 
         DotRect(0, false);
         Time.timeScale = (int)gm.gameTime / 10f;
-        DotText("<color=brown>Push버튼</color>을 <color=red>눌러!</color>", true);
+        DotText("<color=green>Push버튼</color>을 <color=red>눌러!</color>", true);
         yield return new WaitUntil(() => isTextEnd);
         DotText("<color=red>두</color><color=yellow>구</color><color=green>두</color><color=blue>구</color>", false);
         gatchaBtn.interactable = false;
@@ -336,9 +338,9 @@ public class Tutiorial
         yield return new WaitUntil(() => sm.unitList.Count >= 1 && isTextEnd);
 
         Time.timeScale = 0;
-        DotText("유닛 소환 시 <color=brown>가챠 키\n1개</color>가 소모 돼.", true);
+        DotText("유닛 소환 시 <color=red>가챠 키\n1개</color>가 소모 돼.", true);
         yield return new WaitUntil(() => isTextEnd);
-        DotText("가챠 키 보유량은 <color=brown>왼쪽\n위</color>에서 확인 할 수 있어.", true);
+        DotText("가챠 키 보유량은 <color=red>왼쪽\n위</color>에서 확인 할 수 있어.", true);
         yield return new WaitUntil(() => isTextEnd);
         DotText("같은 방법으로 유닛을\n하나 더 소환해볼래?", false);
         gatchaBtn.interactable = true;
@@ -346,11 +348,11 @@ public class Tutiorial
         yield return new WaitUntil(() => sm.unitList.Count >= 2 && isTextEnd);
 
         gatchaBtn.interactable = false;
-        DotText("오! <color=brown>같은 유닛</color>이 나왔네!", true);
+        DotText("오! <color=red>같은 유닛</color>이 나왔네!", true);
         yield return new WaitUntil(() => isTextEnd);
-        DotText("<color=brown>같은 유닛</color>을 합쳐볼까?", true);
+        DotText("<color=red>같은 유닛</color>을 합쳐볼까?", true);
         yield return new WaitUntil(() => isTextEnd);
-        DotText("두 유닛 중 하나를 클릭\n하고, 유닛 정보창에 있는\n<color=brown>+버튼</color>을 눌러볼래?", false);
+        DotText("두 유닛 중 하나를 클릭\n하고, 유닛 정보창에 있는\n<color=red>+버튼</color>을 눌러볼래?", false);
 
         yield return new WaitUntil(() => um.info.unitInfo.pannel.activeSelf && isTextEnd);
         DotRect(1, true);
@@ -390,15 +392,15 @@ public class Tutiorial
         DotRect(3, false);
         DotText("<color=green>퀘스트</color>는 클리어 시\n<color=white>하얀색</color>으로 변하고,", true);
         yield return new WaitUntil(() => isTextEnd);
-        DotText("클릭 시 <color=brown>보상</color>을\n받을 수 있어.", true);
+        DotText("클릭 시 <color=red>보상</color>을\n받을 수 있어.", true);
         yield return new WaitUntil(() => isTextEnd);
         DotText("새로운 <color=green>퀘스트</color>를 받고\n싶다면, 왼쪽 <color=gray>리롤\n버튼</color>을 누르면 돼.", true);
         yield return new WaitUntil(() => isTextEnd);
-        DotText("<color=gray>리롤 버튼</color>의 쿨은 <color=brown>3웨이브</color>\n마다 돌아.", true);
+        DotText("<color=green>리롤 버튼</color>의 쿨은 <color=red>3웨이브</color>\n마다 돌아.", true);
         yield return new WaitUntil(() => isTextEnd);
         DotText("뭐 이 정도면 된거같네!", true);
         yield return new WaitUntil(() => isTextEnd);
-        DotText("그럼 <color=brown>실전</color>에서 봐~~ 안녕!", true);
+        DotText("그럼 <color=red>실전</color>에서 봐~~ 안녕!", true);
         yield return new WaitUntil(() => isTextEnd);
 
         GPGSBinder.Inst.ETCAchievement(RTD.achievement_4); // 업적 4
@@ -410,7 +412,7 @@ public class Tutiorial
     {
         isTextEnd = false;
         text.text = "";
-        text.DOText(s, 1f, true).SetUpdate(true).OnComplete(() => DOVirtual.DelayedCall(delay ? 2f : 0f, () => isTextEnd = true));
+        text.DOText(s, 1f).SetUpdate(true).OnComplete(() => DOVirtual.DelayedCall(delay ? 2f : 0f, () => isTextEnd = true));
     }
 
     private void DotRect(int i, bool isScale)
@@ -432,7 +434,7 @@ public struct PausePannel
 public class UpPannel
 {
     public CurWavePannel curWavePannel;
-    public Text gatchaKeyTxt, healthTxt, waveTxt, timerTxt, levelTxt;
+    public TextMeshProUGUI gatchaKeyTxt, healthTxt, waveTxt, timerTxt, levelTxt;
     public Slider expSlider;
 
     public void UpdateUpPannel()
@@ -500,7 +502,7 @@ public class UpPannel
 public struct CurWavePannel
 {
     public RectTransform trans;
-    public Text text;
+    public TextMeshProUGUI text;
 }
 
 [Serializable]
@@ -509,7 +511,7 @@ public class QuestPannel
     public GameObject pannel, notice;
     public Quest[] quests;
     public Button refreshBtn;
-    public Text coolTxt;
+    public TextMeshProUGUI coolTxt;
     public int maxCool, curCool;
 
     public void QuestCool()
@@ -536,14 +538,14 @@ public struct GatchaPannel
 public struct CharacCardPannel
 {
     public GameObject pannel, miniPannel;
-    public Text btnTxt;
+    public TextMeshProUGUI btnTxt;
 }
 
 [Serializable]
 public struct CardPannel
 {
     public Image cardImg;
-    public Text cardNameTxt, explanationTxt;
+    public TextMeshProUGUI cardNameTxt, explanationTxt;
     public Image cardIconImg;
     public Image[] starImg;
 }
@@ -580,7 +582,7 @@ public class LevelUpBtn
 {
     public Button btn;
     public GameObject img;
-    public Text text;
+    public TextMeshProUGUI text;
     public TextMeshProUGUI tmpro;
 
     public void SetUI()
@@ -624,9 +626,9 @@ public class LevelUpBtn
 public class GameOverPannel
 {
     public GameObject pannel;
-    public Text title;
-    public Text killEnemyNum, curLevel, gatchaKey, curWave, stage, level;
-    public Text total;
+    public TextMeshProUGUI title;
+    public TextMeshProUGUI killEnemyNum, curLevel, gatchaKey, curWave, stage, level;
+    public TextMeshProUGUI total;
     public RectTransform coinRect;
     public Button titleBtn, restartBtn;
 
@@ -702,10 +704,10 @@ public class GameOverPannel
             .Append(total.DOText($"= {totalNum}", 0.5f))
             .Append(coinRect.DOScale(1f, 0.5f).SetEase(Ease.OutQuad))
             .OnComplete(() =>
-            {
-                titleBtn.interactable = true;
-                restartBtn.interactable = true;
-            });
+                    {
+                        titleBtn.interactable = true;
+                        restartBtn.interactable = true;
+                    });
     }
 }
 

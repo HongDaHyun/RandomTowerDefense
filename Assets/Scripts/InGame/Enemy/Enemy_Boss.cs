@@ -32,14 +32,14 @@ public class Enemy_Boss : Enemy
         switch(pace)
         {
             case BossPace.Defend:
-                enemyStat.defense += 50;
-                enemyStat.strength += 50;
+                enemyStat.defense += 10;
+                enemyStat.strength += 5;
                 break;
             case BossPace.Heal:
-                curHp += (enemyStat.hp - curHp) / 5f;
+                curHp += (enemyStat.hp - curHp) / 8f;
                 break;
             case BossPace.Run:
-                enemyStat.moveSpeed += 0.2f;
+                enemyStat.moveSpeed += 0.1f;
                 break;
         }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Quest : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Quest : MonoBehaviour
     private Tier tier;
     private int reward;
 
-    public Text[] texts;
+    public TextMeshProUGUI[] texts;
     public Button button;
 
     private void Update()

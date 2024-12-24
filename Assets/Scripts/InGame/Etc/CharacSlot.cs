@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class CharacSlot : MonoBehaviour, IPointerClickHandler
 {
     public bool isShow;
     public Image pannelImg;
     public Image icon;
-    public Text level;
+    public TextMeshProUGUI level;
 
     public string s;
 
