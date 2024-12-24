@@ -212,6 +212,9 @@ public class Enemy : MonoBehaviour, IPoolObject
         // »ç¸Á
         if (curHp <= 0) // Charac 30
         {
+            if (popUpText != null && popUpText.gameObject.activeSelf && !popUpText.isDestroy)
+                popUpText.Destroy();
+
             SpecificDie();
         }
     }
