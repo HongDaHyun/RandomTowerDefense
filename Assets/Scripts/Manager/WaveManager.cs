@@ -62,6 +62,9 @@ public class WaveManager : Singleton<WaveManager>
         else
             um.questPannel.refreshBtn.interactable = true;
 
+        if(um.questPannel.curCool == um.questPannel.maxCool)
+            um.questPannel.notice.SetActive(true);
+
         // Äù½ºÆ®
         QuestManager.Instance.UpQuest(0); // Äù½ºÆ® 0
 

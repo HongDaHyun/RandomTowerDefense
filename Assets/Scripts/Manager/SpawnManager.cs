@@ -213,17 +213,19 @@ public class SpawnManager : Singleton<SpawnManager>
     #endregion
 
     #region SpawnUI
-    public TextMeshPro SpawnDmgText(float dmg)
+    public PopUpText SpawnDmgText(Enemy enemy, float dmg, bool isCrit)
     {
-        TextMeshPro dmgText = PoolManager.Instance.GetFromPool<TextMeshPro>("DmgText");
-        dmgText.alpha = 1f;
-        dmgText.SetText(dmg.ToString("F1")); // 소수점 한자리까지만 표기
+        PopUpText dmgText = PoolManager.Instance.GetFromPool<PopUpText>("DmgText");
+        dmgText.PopUp_DMG_New(enemy, dmg, isCrit);
         return dmgText;
     }
 
-    public void DeSpawnDmgText(TextMeshPro tmpro)
+    public void DeSpawnDmgText(PopUpText text)
     {
-        PoolManager.Instance.TakeToPool<TextMeshPro>("DmgText", tmpro);
+        if (text == null)
+            return;
+
+        PoolManager.Instance.TakeToPool<PopUpText>(text);
     }
 
     public Particle SpawnVFX(string name, Transform trans)

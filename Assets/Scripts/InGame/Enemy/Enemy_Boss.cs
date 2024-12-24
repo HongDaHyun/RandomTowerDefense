@@ -20,7 +20,7 @@ public class Enemy_Boss : Enemy
     {
         base.OnGettingFromPool();
 
-        StartCoroutine(Activation(16f)); // 8초 주기로 페이스 변경
+        StartCoroutine(Activation(12f)); // 8초 주기로 페이스 변경
     }
 
     private IEnumerator Activation(float duration)

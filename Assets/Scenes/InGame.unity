@@ -2938,7 +2938,7 @@ MonoBehaviour:
     coinRect: {fileID: 408452823}
     titleBtn: {fileID: 1762598414}
     restartBtn: {fileID: 1585790151}
-  helpTxt: {fileID: 594672120}
+  helpTxt: {fileID: 594672123}
   warningPannel:
     pannel: {fileID: 1139989000}
     img: {fileID: 464769619}
@@ -6300,6 +6300,7 @@ GameObject:
   - component: {fileID: 594672122}
   - component: {fileID: 594672121}
   - component: {fileID: 594672120}
+  - component: {fileID: 594672123}
   m_Layer: 5
   m_Name: HelpTxt
   m_TagString: Untagged
@@ -6424,6 +6425,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: -100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &594672123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594672119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2429b881286037647908415c827c9600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 594672120}
 --- !u!1001 &603809953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9679,7 +9693,7 @@ MonoBehaviour:
     _container: {fileID: 0}
     _nonLazy: 0
   - _name: DmgText
-    _component: {fileID: 8880602827468229899, guid: d3251381b4bc0334fb5cf48a9e2ae9c6, type: 3}
+    _component: {fileID: 6463715023227573734, guid: d3251381b4bc0334fb5cf48a9e2ae9c6, type: 3}
     _count: 0
     _container: {fileID: 476115348}
     _nonLazy: 0

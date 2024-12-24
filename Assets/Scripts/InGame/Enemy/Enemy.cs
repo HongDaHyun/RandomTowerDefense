@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IPoolObject
     private SpriteRenderer spriteRenderer;
     protected Animator anim;
     public EnemyStat enemyStat;
+    [HideInInspector] public PopUpText popUpText;
     [HideInInspector] public float speed;
     private Dictionary<Attribute, bool> debuffState = new Dictionary<Attribute, bool>()
     {
@@ -201,15 +202,10 @@ public class Enemy : MonoBehaviour, IPoolObject
         StartCoroutine(HPHandlerCoroutine());
 
         // DmgPopUp
-        TMPro.TextMeshPro dmgText = sm.SpawnDmgText(totalDmg);
-        dmgText.transform.position = transform.position;
-
-        if (project.isCrit) // 크리티컬 색
-            dmgText.color = Color.yellow;
+        if (popUpText != null && popUpText.gameObject.activeSelf && !popUpText.isDestroy)
+            popUpText.PopUp_DMG_Remain(totalDmg, project.isCrit);
         else
-            dmgText.color = Color.white;
-
-        um.PopUp(dmgText);
+            popUpText = sm.SpawnDmgText(this, totalDmg, project.isCrit);
 
         StartCoroutine(HitColorAnimation(_color, time));
 

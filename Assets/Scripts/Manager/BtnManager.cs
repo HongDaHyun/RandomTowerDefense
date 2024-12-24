@@ -74,11 +74,7 @@ public class BtnManager : Singleton<BtnManager>
         if (um.helpTxt.gameObject.activeSelf)
             return;
 
-        um.helpTxt.gameObject.SetActive(true);
-
-        um.helpTxt.SetText(s);
-
-        um.PopUp(um.helpTxt, 450f);
+        um.helpTxt.PopUp_UI(s, 450f);
     }
 
     public void TabFrame()

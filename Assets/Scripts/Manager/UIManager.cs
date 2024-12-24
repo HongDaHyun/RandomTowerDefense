@@ -34,7 +34,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject slotObj;
     public TextMeshProUGUI gameSpeedTxt;
     public GameOverPannel gameOverPannel;
-    public TextMeshProUGUI helpTxt;
+    public PopUpText_UI helpTxt;
     public WarningPannel warningPannel;
 
     protected override void Awake()
@@ -57,32 +57,6 @@ public class UIManager : Singleton<UIManager>
 
             upPannel.UpdateUpPannel();
         }
-    }
-
-    public void PopUp(TextMeshPro meshPro)
-    {
-        meshPro.transform.DOMove(meshPro.transform.position + new Vector3(0f, 1f, 0f), 0.5f).SetEase(Ease.OutQuad).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
-        {
-            meshPro.DOFade(0f, 0.5f) //0.5f -> moveDuration
-            .OnComplete(() =>
-            {
-                SpawnManager.Instance.DeSpawnDmgText(meshPro);
-            });
-        });
-    }
-
-    public void PopUp(TextMeshProUGUI meshPro, float endValue)
-    {
-        meshPro.alpha = 1f;
-        meshPro.rectTransform.DOAnchorPosY(endValue, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true).SetDelay(0.1f).OnComplete(() => //0.5f -> moveDuration
-        {
-            meshPro.DOFade(0f, 0.5f).SetUpdate(true) //0.5f -> moveDuration
-            .OnComplete(() =>
-            {
-                meshPro.gameObject.SetActive(false);
-                meshPro.rectTransform.anchoredPosition -= new Vector2(0, 200f);
-            });
-        });
     }
 
     public void InitCard()

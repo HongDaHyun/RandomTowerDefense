@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1037
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 10120
+  controlID: 26
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 10161
+  controlID: 51
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,8 +166,8 @@ MonoBehaviour:
     y: 0
     width: 545
     height: 493
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -639,23 +639,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 40c1fdff
-      m_LastClickedID: -147136
-      m_ExpandedIDs: a4c2fdff7ef8fdffdcfbfdff1402feff3402feff5402feff7c03feff9e03feffe003feff9048feff5262feff086afeff1673feff9e7ffeff1ecbfeff76d8feffd6dbfeffeadefeff1af8ffff36f8ffff5ef8ffff62f8ffff86f8ffffa8f8ffffb0f8ffffd4f8fffff8f8ffff1cf9ffff40f9ffff64f9ffff9cfaffffc0faffffe4faffff08fbffff0afbfffff4ffffff46680000666800006e680000786800007e680000be680000c8680000d2680000e8680000f06800000a6900001a69000040690000746900008c690000a2690000246a0000306a0000386a00003e6a0000546a0000666a0000b86a0000ce6a0000e46a00000a6b0000106b00002e6b0000a46b0000da6b0000fa6b0000046c00000e6c00001c6c0000286c0000326c0000486c00004e6c00005a6c00006e6c0000786c0000866c0000906c0000966c0000a06c0000e26c0000346d00003c6d0000446d0000506d0000846d0000946d0000e4dc0200eedc020040de020018df020040df0200ecfe020042ff02002a000300a80103005c3303002e3503003835030078350300b83503006e360300543803007c3a0300863a0300bc3b0300e83b0300843c03004e3d03004a490300bc4a03007e4b030012770300527903002e7a0300aa7a0300b47a0300f47a0300207c03004c7c0300607c0300c67c03001c7d03006c980300dcc8030044c90300f6ca03006ccc0300
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 0afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Charac
-        m_OriginalName: Charac
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 27652
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -734,22 +734,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/InGame/Enemy
+    - Assets/Prefabs/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/InGame/Enemy
+  - Assets/Prefabs/UI
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\Github\RandomTowerDefense\RTD
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 239}
-    m_SelectedIDs: 7adb0000
-    m_LastClickedID: 56186
-    m_ExpandedIDs: 00000000f8970000fa970000fc970000f098000068db00006cdb0000b211020000ca9a3b
+    m_SelectedIDs: 96740000
+    m_LastClickedID: 29846
+    m_ExpandedIDs: 00000000587400005a7400005c7400005e74000060740000627400006e74000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -777,7 +777,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f8970000fa970000fc970000
+    m_ExpandedIDs: 00000000587400005a7400005c7400005e7400006074000062740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -808,15 +808,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c623000060820000e8bd00006c3500006a35000062720000047f0000cc7f0000127f00000a7300003e97000050d8000082b4000000000000cec200002a83000090820000fe80000034360000f07000006e2f00002a2f0000702f0000e8740000de710000f887000024830000b28800003677000016760000ea7e0000c08000003a770000788200006a710000ca7f00008a7f0000ac7f0000787f0000c27f0000807100005c750000ce6c0000ba700000808700000a6d0000345401004c540100188600005c850000328600009486000076850000927e00002473000084a3000092770000187100006c8a00000c960000527d00001e8900006a8c0000a6950000e2930000f88000001095000076890000a49700003494000032890000d07f0000209400004a700000366e00007692feff5c6e0000e46d00002a80ffffe66d0000926e0000e26d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: MainMenu
-      m_OriginalName: MainMenu
+      m_Name: TxtBubble
+      m_OriginalName: TxtBubble
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 56180
+      m_UserData: 43982
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0

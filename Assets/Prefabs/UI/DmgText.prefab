@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 281389435517948598}
   - component: {fileID: 8880602827468229899}
   - component: {fileID: 773899128764000671}
+  - component: {fileID: 6463715023227573734}
   m_Layer: 5
   m_Name: DmgText
   m_TagString: Untagged
@@ -172,3 +173,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6463715023227573734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572240330267288941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99529fa33f2ea2b43bb28e1fd5b25d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDestroy: 0
+  meshPro: {fileID: 8880602827468229899}
+  lifeTime: 0
